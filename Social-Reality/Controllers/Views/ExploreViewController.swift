@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import MapKit
 
 class ExploreViewController: UIViewController {
+    
+    @IBOutlet private var mapView: MKMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarItem.tag = TabbarItemTag.secondViewConroller.rawValue
     
     }
-    
 
 }

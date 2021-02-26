@@ -24,10 +24,10 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         super.viewDidLoad()
         
         self.delegate = self
-        self.buttonBarView.layer.shadowRadius = 10.0
+        self.buttonBarView.layer.shadowRadius = 16.0
         self.buttonBarView.layer.shadowColor = UIColor.black.cgColor
         self.buttonBarView.layer.shadowOffset = CGSize(width: 0.5, height: 1)
-        self.buttonBarView.layer.shadowOpacity = 0.3
+        self.buttonBarView.layer.shadowOpacity = 0.2
         self.buttonBarView.layer.masksToBounds = false
         
 //        for i in 0 ..< self.tabBar.items!.count {

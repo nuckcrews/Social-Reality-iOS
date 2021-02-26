@@ -49,6 +49,14 @@
 		A06B63E625E964A200AE746D /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63E525E964A200AE746D /* InboxViewController.swift */; };
 		A06B63EB25E964C500AE746D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63EA25E964C500AE746D /* AccountViewController.swift */; };
 		A06B63F025E968EE00AE746D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63EF25E968EE00AE746D /* UIColor.swift */; };
+		A06B63F825E9783A00AE746D /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63F725E9783A00AE746D /* CustomSegmentControl.swift */; };
+		A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63FC25E9787600AE746D /* VSTextField.swift */; };
+		A06B640225E978A400AE746D /* FadeViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B640125E978A400AE746D /* FadeViews.swift */; };
+		A06B640725E97A8300AE746D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B640625E97A8300AE746D /* String.swift */; };
+		A06B640C25E97CA000AE746D /* CustomImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B640B25E97CA000AE746D /* CustomImageViews.swift */; };
+		A06B641125E97F5F00AE746D /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B641025E97F5F00AE746D /* CustomButtons.swift */; };
+		A06B641B25E99B9000AE746D /* trowel.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A06B641925E99B9000AE746D /* trowel.usdz */; };
+		A06B641C25E99B9000AE746D /* toy_robot_vintage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A06B641A25E99B9000AE746D /* toy_robot_vintage.usdz */; };
 		BD4FB356594D21E0D9C1A22E /* Pods_Social_RealityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12DB50B404DB6E2C9AF05244 /* Pods_Social_RealityTests.framework */; };
 		DCFE77B4EA13255E33B7B626 /* Pods_Social_Reality.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38989FA5602C3D34FC130E00 /* Pods_Social_Reality.framework */; };
 /* End PBXBuildFile section */
@@ -126,6 +134,14 @@
 		A06B63E525E964A200AE746D /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		A06B63EA25E964C500AE746D /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A06B63EF25E968EE00AE746D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		A06B63F725E9783A00AE746D /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
+		A06B63FC25E9787600AE746D /* VSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSTextField.swift; sourceTree = "<group>"; };
+		A06B640125E978A400AE746D /* FadeViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeViews.swift; sourceTree = "<group>"; };
+		A06B640625E97A8300AE746D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A06B640B25E97CA000AE746D /* CustomImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageViews.swift; sourceTree = "<group>"; };
+		A06B641025E97F5F00AE746D /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
+		A06B641925E99B9000AE746D /* trowel.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = trowel.usdz; path = ../../../../Downloads/trowel.usdz; sourceTree = "<group>"; };
+		A06B641A25E99B9000AE746D /* toy_robot_vintage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = toy_robot_vintage.usdz; path = ../../../../Downloads/toy_robot_vintage.usdz; sourceTree = "<group>"; };
 		F51337364A2174CFB22E4DBD /* Pods-Social-Reality-Social-RealityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social-Reality-Social-RealityUITests.debug.xcconfig"; path = "Target Support Files/Pods-Social-Reality-Social-RealityUITests/Pods-Social-Reality-Social-RealityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +212,7 @@
 				A06B630025E94C9F00AE746D /* awsconfiguration.json */,
 				A06B633C25E951F500AE746D /* AmplifyModels */,
 				A038702C25E93D9D003989CE /* AppDelegate.swift */,
+				A06B641825E99B6E00AE746D /* 3DModels */,
 				A06B63D425E95B4500AE746D /* AugmentedReality */,
 				A06B63B925E9554500AE746D /* Models */,
 				A06B633325E9511500AE746D /* Data */,
@@ -233,6 +250,11 @@
 			isa = PBXGroup;
 			children = (
 				A03870BA25E944CC003989CE /* CustomTabBar.swift */,
+				A06B63F725E9783A00AE746D /* CustomSegmentControl.swift */,
+				A06B63FC25E9787600AE746D /* VSTextField.swift */,
+				A06B640125E978A400AE746D /* FadeViews.swift */,
+				A06B640B25E97CA000AE746D /* CustomImageViews.swift */,
+				A06B641025E97F5F00AE746D /* CustomButtons.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +264,7 @@
 			children = (
 				A06B63EF25E968EE00AE746D /* UIColor.swift */,
 				A03870C125E94508003989CE /* UIImage.swift */,
+				A06B640625E97A8300AE746D /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -333,6 +356,15 @@
 				A06B63D525E95B5D00AE746D /* ARView.swift */,
 			);
 			path = AugmentedReality;
+			sourceTree = "<group>";
+		};
+		A06B641825E99B6E00AE746D /* 3DModels */ = {
+			isa = PBXGroup;
+			children = (
+				A06B641A25E99B9000AE746D /* toy_robot_vintage.usdz */,
+				A06B641925E99B9000AE746D /* trowel.usdz */,
+			);
+			path = 3DModels;
 			sourceTree = "<group>";
 		};
 		F796CD064E1BF7CD31367252 /* Pods */ = {
@@ -460,7 +492,9 @@
 				A038703925E93D9E003989CE /* LaunchScreen.storyboard in Resources */,
 				A038703625E93D9E003989CE /* Assets.xcassets in Resources */,
 				A038703425E93D9D003989CE /* Main.storyboard in Resources */,
+				A06B641B25E99B9000AE746D /* trowel.usdz in Resources */,
 				A06B630125E94C9F00AE746D /* amplifyconfiguration.json in Resources */,
+				A06B641C25E99B9000AE746D /* toy_robot_vintage.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,16 +622,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A06B640725E97A8300AE746D /* String.swift in Sources */,
 				A06B63C325E9561B00AE746D /* Creation.swift in Sources */,
 				A06B63BB25E9554D00AE746D /* User.swift in Sources */,
 				A03870B625E944AB003989CE /* NavigationController.swift in Sources */,
 				A06B63F025E968EE00AE746D /* UIColor.swift in Sources */,
 				A06B63C825E9568400AE746D /* Comment.swift in Sources */,
+				A06B640225E978A400AE746D /* FadeViews.swift in Sources */,
 				A06B639C25E953F500AE746D /* CommentModel.swift in Sources */,
 				A06B63D625E95B5D00AE746D /* ARView.swift in Sources */,
 				A03870BB25E944CC003989CE /* CustomTabBar.swift in Sources */,
 				A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */,
 				A06B63A025E953F500AE746D /* CreationAccessibility.swift in Sources */,
+				A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */,
 				A06B636425E9533F00AE746D /* WriteMethods.swift in Sources */,
 				A06B63A625E953F500AE746D /* UserModel+Schema.swift in Sources */,
 				A038702F25E93D9D003989CE /* CreateViewController.swift in Sources */,
@@ -607,7 +644,9 @@
 				A06B639E25E953F500AE746D /* AmplifyModels.swift in Sources */,
 				A06B63B525E954D000AE746D /* SubscribeMethods.swift in Sources */,
 				A06B63A225E953F500AE746D /* CommentModel+Schema.swift in Sources */,
+				A06B63F825E9783A00AE746D /* CustomSegmentControl.swift in Sources */,
 				A06B63B025E954A900AE746D /* DeleteMethods.swift in Sources */,
+				A06B641125E97F5F00AE746D /* CustomButtons.swift in Sources */,
 				A06B63E625E964A200AE746D /* InboxViewController.swift in Sources */,
 				A06B63E125E9646900AE746D /* ExploreViewController.swift in Sources */,
 				A03870AB25E9447C003989CE /* CustomTabBarController.swift in Sources */,
@@ -616,6 +655,7 @@
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
 				A06B633525E9512400AE746D /* Query.swift in Sources */,
 				A038703125E93D9D003989CE /* Experience.rcproject in Sources */,
+				A06B640C25E97CA000AE746D /* CustomImageViews.swift in Sources */,
 				A03870C225E94508003989CE /* UIImage.swift in Sources */,
 				A06B63A325E953F500AE746D /* LikeModel+Schema.swift in Sources */,
 				A06B63A525E953F500AE746D /* CreationModel.swift in Sources */,
