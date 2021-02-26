@@ -1,0 +1,107 @@
+//
+//  ReadMethods.swift
+//  Social-Reality
+//
+//  Created by Nick Crews on 2/26/21.
+//
+
+import Foundation
+import Amplify
+import AmplifyPlugins
+
+struct ReadMethods {
+    
+    func user(id: String, completion: @escaping(_ result: UserModel?) -> Void) {
+        Amplify.DataStore.query(UserModel.self, byId: id) { (result) in
+            switch result {
+            case .success(let queriedUser):
+                if let queriedUser = queriedUser {
+                    print("Found account - \(queriedUser)")
+                    completion(queriedUser)
+                } else {
+                    print("No account found")
+                    completion(nil)
+                }
+            case .failure(let error):
+                print("Could not perform query for account - \(error)")
+                completion(nil)
+            }
+        }
+    }
+    
+    func creation(id: String, completion: @escaping(_ result: CreationModel?) -> Void) {
+        Amplify.DataStore.query(CreationModel.self, byId: id) { (result) in
+            switch result {
+            case .success(let queriedCreation):
+                if let queriedCreation = queriedCreation {
+                    print("Found creation - \(queriedCreation)")
+                    completion(queriedCreation)
+                } else {
+                    print("No creation found")
+                    completion(nil)
+                }
+            case .failure(let error):
+                print("Could not perform query for account - \(error)")
+                completion(nil)
+            }
+        }
+    }
+    
+    func comment(id: String, completion: @escaping(_ result: CommentModel?) -> Void) {
+        Amplify.DataStore.query(CommentModel.self, byId: id) { (result) in
+            switch result {
+            case .success(let queriedComment):
+                if let queriedComment = queriedComment {
+                    print("Found creation - \(queriedComment)")
+                    completion(queriedComment)
+                } else {
+                    print("No creation found")
+                    completion(nil)
+                }
+            case .failure(let error):
+                print("Could not perform query for account - \(error)")
+                completion(nil)
+            }
+        }
+    }
+    
+    func like(id: String, completion: @escaping(_ result: LikeModel?) -> Void) {
+        Amplify.DataStore.query(LikeModel.self, byId: id) { (result) in
+            switch result {
+            case .success(let queriedLike):
+                if let queriedLike = queriedLike {
+                    print("Found creation - \(queriedLike)")
+                    completion(queriedLike)
+                } else {
+                    print("No creation found")
+                    completion(nil)
+                }
+            case .failure(let error):
+                print("Could not perform query for account - \(error)")
+                completion(nil)
+            }
+        }
+    }
+    
+    
+    func userCreations(id: String, completion: @escaping(_ result: [CreationModel]?) -> Void) {
+
+    }
+    
+    func userLikes(id: String, completion: @escaping(_ result: [LikeModel]?) -> Void) {
+
+    }
+    
+    func userComments(id: String, completion: @escaping(_ result: [CommentModel]?) -> Void) {
+
+    }
+    
+    func creationComments(id: String, completion: @escaping(_ result: [CommentModel]?) -> Void) {
+
+    }
+    
+    func creationLikes(id: String, completion: @escaping(_ result: [LikeModel]?) -> Void) {
+
+    }
+    
+}
