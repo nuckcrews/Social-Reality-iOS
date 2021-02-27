@@ -53,3 +53,21 @@ class ShadowButtonCircle: UIButton {
     }
     
 }
+
+
+class BorderedButton: UIButton {
+    
+    @IBInspectable var borderColor: UIColor = .clear
+    @IBInspectable var borderWidth: CGFloat = 1
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layer.borderColor = borderColor.cgColor
+        layer.borderWidth = borderWidth
+        
+        
+        
+    }
+    
+}
