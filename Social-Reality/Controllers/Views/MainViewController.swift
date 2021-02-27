@@ -85,6 +85,21 @@ class MainViewController: UIViewController {
         }
     }
     
+    
+    // MARK: Creation Interaction
+    
+    @IBAction func tapLike(_ sender: UIButton) {
+        sender.jump()
+    }
+    
+    @IBAction func tapComment(_ sender: UIButton) {
+        sender.jump()
+    }
+    
+    @IBAction func tapShare(_ sender: UIButton) {
+        sender.jump()
+    }
+    
 }
 
 extension MainViewController: ARSessionDelegate {

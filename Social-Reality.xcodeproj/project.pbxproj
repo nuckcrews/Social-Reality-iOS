@@ -21,6 +21,7 @@
 		A03870BB25E944CC003989CE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03870BA25E944CC003989CE /* CustomTabBar.swift */; };
 		A03870C225E94508003989CE /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03870C125E94508003989CE /* UIImage.swift */; };
 		A03872C925E9497E003989CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03872C825E9497E003989CE /* MainViewController.swift */; };
+		A05AB2E725EAEEEC00748B04 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */; };
 		A06B630125E94C9F00AE746D /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A06B62FF25E94C9F00AE746D /* amplifyconfiguration.json */; };
 		A06B630225E94C9F00AE746D /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A06B630025E94C9F00AE746D /* awsconfiguration.json */; };
 		A06B633525E9512400AE746D /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B633425E9512400AE746D /* Query.swift */; };
@@ -57,6 +58,8 @@
 		A06B641125E97F5F00AE746D /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B641025E97F5F00AE746D /* CustomButtons.swift */; };
 		A06B641B25E99B9000AE746D /* trowel.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A06B641925E99B9000AE746D /* trowel.usdz */; };
 		A06B641C25E99B9000AE746D /* toy_robot_vintage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A06B641A25E99B9000AE746D /* toy_robot_vintage.usdz */; };
+		A06B642125E9A18E00AE746D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B642025E9A18E00AE746D /* UIButton.swift */; };
+		A09DE0E925EA2FED0007438B /* accountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE0E825EA2FED0007438B /* accountCell.swift */; };
 		BD4FB356594D21E0D9C1A22E /* Pods_Social_RealityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12DB50B404DB6E2C9AF05244 /* Pods_Social_RealityTests.framework */; };
 		DCFE77B4EA13255E33B7B626 /* Pods_Social_Reality.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38989FA5602C3D34FC130E00 /* Pods_Social_Reality.framework */; };
 /* End PBXBuildFile section */
@@ -106,6 +109,7 @@
 		A03870BA25E944CC003989CE /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		A03870C125E94508003989CE /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		A03872C825E9497E003989CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A06B62FF25E94C9F00AE746D /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
 		A06B630025E94C9F00AE746D /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		A06B633425E9512400AE746D /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 		A06B641025E97F5F00AE746D /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		A06B641925E99B9000AE746D /* trowel.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = trowel.usdz; path = ../../../../Downloads/trowel.usdz; sourceTree = "<group>"; };
 		A06B641A25E99B9000AE746D /* toy_robot_vintage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = toy_robot_vintage.usdz; path = ../../../../Downloads/toy_robot_vintage.usdz; sourceTree = "<group>"; };
+		A06B642025E9A18E00AE746D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		A09DE0E825EA2FED0007438B /* accountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountCell.swift; sourceTree = "<group>"; };
 		F51337364A2174CFB22E4DBD /* Pods-Social-Reality-Social-RealityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social-Reality-Social-RealityUITests.debug.xcconfig"; path = "Target Support Files/Pods-Social-Reality-Social-RealityUITests/Pods-Social-Reality-Social-RealityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +222,7 @@
 				A06B63D425E95B4500AE746D /* AugmentedReality */,
 				A06B63B925E9554500AE746D /* Models */,
 				A06B633325E9511500AE746D /* Data */,
+				A09DE0DC25EA2F980007438B /* Cells */,
 				A03870C925E9452F003989CE /* Controllers */,
 				A03870C025E944FC003989CE /* Extensions */,
 				A03870A925E9446A003989CE /* Views */,
@@ -265,6 +272,7 @@
 				A06B63EF25E968EE00AE746D /* UIColor.swift */,
 				A03870C125E94508003989CE /* UIImage.swift */,
 				A06B640625E97A8300AE746D /* String.swift */,
+				A06B642025E9A18E00AE746D /* UIButton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 				A038702E25E93D9D003989CE /* CreateViewController.swift */,
 				A06B63E525E964A200AE746D /* InboxViewController.swift */,
 				A06B63EA25E964C500AE746D /* AccountViewController.swift */,
+				A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -365,6 +374,14 @@
 				A06B641925E99B9000AE746D /* trowel.usdz */,
 			);
 			path = 3DModels;
+			sourceTree = "<group>";
+		};
+		A09DE0DC25EA2F980007438B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A09DE0E825EA2FED0007438B /* accountCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F796CD064E1BF7CD31367252 /* Pods */ = {
@@ -643,6 +660,7 @@
 				A06B63A125E953F500AE746D /* UserModel.swift in Sources */,
 				A06B639E25E953F500AE746D /* AmplifyModels.swift in Sources */,
 				A06B63B525E954D000AE746D /* SubscribeMethods.swift in Sources */,
+				A09DE0E925EA2FED0007438B /* accountCell.swift in Sources */,
 				A06B63A225E953F500AE746D /* CommentModel+Schema.swift in Sources */,
 				A06B63F825E9783A00AE746D /* CustomSegmentControl.swift in Sources */,
 				A06B63B025E954A900AE746D /* DeleteMethods.swift in Sources */,
@@ -654,9 +672,11 @@
 				A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */,
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
 				A06B633525E9512400AE746D /* Query.swift in Sources */,
+				A05AB2E725EAEEEC00748B04 /* SettingsViewController.swift in Sources */,
 				A038703125E93D9D003989CE /* Experience.rcproject in Sources */,
 				A06B640C25E97CA000AE746D /* CustomImageViews.swift in Sources */,
 				A03870C225E94508003989CE /* UIImage.swift in Sources */,
+				A06B642125E9A18E00AE746D /* UIButton.swift in Sources */,
 				A06B63A325E953F500AE746D /* LikeModel+Schema.swift in Sources */,
 				A06B63A525E953F500AE746D /* CreationModel.swift in Sources */,
 				A06B63CD25E956C000AE746D /* Like.swift in Sources */,
