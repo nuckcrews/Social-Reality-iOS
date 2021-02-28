@@ -11,6 +11,9 @@ target 'Social-Reality' do
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   
+  pod 'GoogleMaps', '4.1.0'
+  pod 'GooglePlaces', '4.1.0'
+  
   pod 'TransitionableTab', '~> 0.2.0'
 
   target 'Social-RealityTests' do

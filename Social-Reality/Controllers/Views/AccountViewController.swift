@@ -14,12 +14,11 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var contentSegement: CustomSegmentedControl! {
         didSet{
-            contentSegement.setButtonTitles(buttonTitles: ["Notifications","Messages"])
+            contentSegement.setButtonTitles(buttonTitles: [("",UIImage(systemName: "circle.grid.3x3.fill")), ("",UIImage(systemName: "heart"))])
             contentSegement.selectorViewColor = .mainText
             contentSegement.selectorTextColor = .mainText
             contentSegement.textColor = .lightGray
             contentSegement.delegate = self
-            
             contentSegement.backgroundColor = .clear
         }
     }
