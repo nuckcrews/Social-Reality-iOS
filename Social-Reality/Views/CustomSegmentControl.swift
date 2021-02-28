@@ -13,7 +13,8 @@ protocol CustomSegmentedControlDelegate:class {
 }
 
 class CustomSegmentedControl: UIView {
-    private var buttonTitles:[String]!
+    private var buttonTitles:[(String, UIImage?)]!
+    private var buttonImages:[UIImage]!
     private var buttons: [UIButton]!
     private var selectorView: UIView!
     
@@ -25,7 +26,7 @@ class CustomSegmentedControl: UIView {
     
     public private(set) var selectedIndex : Int = 0
     
-    convenience init(frame:CGRect,buttonTitle:[String]) {
+    convenience init(frame:CGRect,buttonTitle:[(String, UIImage?)]) {
         
         self.init(frame: frame)
         self.buttonTitles = buttonTitle
@@ -38,7 +39,7 @@ class CustomSegmentedControl: UIView {
         updateView()
     }
     
-    func setButtonTitles(buttonTitles:[String]) {
+    func setButtonTitles(buttonTitles:[(String, UIImage?)]) {
         
         self.buttonTitles = buttonTitles
         self.updateView()
@@ -47,9 +48,11 @@ class CustomSegmentedControl: UIView {
     func setIndex(index:Int) {
         
         buttons.forEach({ $0.setTitleColor(textColor, for: .normal) })
+        buttons.forEach({ $0.tintColor = textColor })
         let button = buttons[index]
         selectedIndex = index
         button.setTitleColor(selectorTextColor, for: .normal)
+        button.tintColor = selectorTextColor
         let selectorPosition = frame.width/CGFloat(buttonTitles.count) * CGFloat(index)
         UIView.animate(withDuration: 0.2) {
             self.selectorView.frame.origin.x = selectorPosition
@@ -60,6 +63,7 @@ class CustomSegmentedControl: UIView {
         
         for (buttonIndex, btn) in buttons.enumerated() {
             btn.setTitleColor(textColor, for: .normal)
+            btn.tintColor = textColor
             if btn == sender {
                 let selectorPosition = frame.width/CGFloat(buttonTitles.count) * CGFloat(buttonIndex)
                 selectedIndex = buttonIndex
@@ -68,6 +72,7 @@ class CustomSegmentedControl: UIView {
                     self.selectorView.frame.origin.x = selectorPosition
                 }
                 btn.setTitleColor(selectorTextColor, for: .normal)
+                btn.tintColor = selectorViewColor
             }
         }
     }
@@ -109,14 +114,16 @@ extension CustomSegmentedControl {
         subviews.forEach({$0.removeFromSuperview()})
         for buttonTitle in buttonTitles {
             let button = UIButton(type: .system)
-            button.setTitle(buttonTitle, for: .normal)
+            button.setTitle(buttonTitle.0, for: .normal)
+            button.setImage(buttonTitle.1, for: .normal)
             button.addTarget(self, action:#selector(CustomSegmentedControl.buttonAction(sender:)), for: .touchUpInside)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
             button.setTitleColor(textColor, for: .normal)
+            button.tintColor = textColor
             buttons.append(button)
         }
         buttons[selectedIndex].setTitleColor(selectorTextColor, for: .normal)
+        buttons[selectedIndex].tintColor = selectorTextColor
     }
-    
     
 }

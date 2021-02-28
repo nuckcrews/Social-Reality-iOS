@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3513A16E38E24145339CFD89 /* Pods_Social_Reality_Social_RealityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B52D22F6BED412EBD67F321 /* Pods_Social_Reality_Social_RealityUITests.framework */; };
+		A006461125EB0C8E00A3E1F3 /* inboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006461025EB0C8E00A3E1F3 /* inboxCell.swift */; };
+		A006461625EB0D1300A3E1F3 /* promoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006461525EB0D1300A3E1F3 /* promoCell.swift */; };
+		A006462825EB17F900A3E1F3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006462725EB17F900A3E1F3 /* Config.swift */; };
 		A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038702C25E93D9D003989CE /* AppDelegate.swift */; };
 		A038702F25E93D9D003989CE /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038702E25E93D9D003989CE /* CreateViewController.swift */; };
 		A038703125E93D9D003989CE /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = A038703025E93D9D003989CE /* Experience.rcproject */; };
@@ -90,6 +93,9 @@
 		6A5C1527C32270AD5178BB5D /* Pods-Social-RealityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social-RealityTests.debug.xcconfig"; path = "Target Support Files/Pods-Social-RealityTests/Pods-Social-RealityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7D3B9D12F84E754ABCB0087C /* Pods-Social-Reality-Social-RealityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social-Reality-Social-RealityUITests.release.xcconfig"; path = "Target Support Files/Pods-Social-Reality-Social-RealityUITests/Pods-Social-Reality-Social-RealityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B08FBFAB5210AA192259AB4 /* Pods-Social-RealityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social-RealityTests.release.xcconfig"; path = "Target Support Files/Pods-Social-RealityTests/Pods-Social-RealityTests.release.xcconfig"; sourceTree = "<group>"; };
+		A006461025EB0C8E00A3E1F3 /* inboxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inboxCell.swift; sourceTree = "<group>"; };
+		A006461525EB0D1300A3E1F3 /* promoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = promoCell.swift; sourceTree = "<group>"; };
+		A006462725EB17F900A3E1F3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A038702925E93D9D003989CE /* Social-Reality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social-Reality.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A038702C25E93D9D003989CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A038702E25E93D9D003989CE /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +224,7 @@
 				A06B630025E94C9F00AE746D /* awsconfiguration.json */,
 				A06B633C25E951F500AE746D /* AmplifyModels */,
 				A038702C25E93D9D003989CE /* AppDelegate.swift */,
+				A006462725EB17F900A3E1F3 /* Config.swift */,
 				A06B641825E99B6E00AE746D /* 3DModels */,
 				A06B63D425E95B4500AE746D /* AugmentedReality */,
 				A06B63B925E9554500AE746D /* Models */,
@@ -380,6 +387,8 @@
 			isa = PBXGroup;
 			children = (
 				A09DE0E825EA2FED0007438B /* accountCell.swift */,
+				A006461025EB0C8E00A3E1F3 /* inboxCell.swift */,
+				A006461525EB0D1300A3E1F3 /* promoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -409,6 +418,7 @@
 				A038702625E93D9D003989CE /* Frameworks */,
 				A038702725E93D9D003989CE /* Resources */,
 				29FD45EB48C5259641FB2771 /* [CP] Embed Pods Frameworks */,
+				75A14EB2052516F6AC910D3E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -447,6 +457,7 @@
 				A038704725E93D9E003989CE /* Frameworks */,
 				A038704825E93D9E003989CE /* Resources */,
 				E2875D723F7D5A85D1F3D5A2 /* [CP] Embed Pods Frameworks */,
+				40C47CCA3075B1BABEDDB6CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -549,6 +560,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Social-Reality/Pods-Social-Reality-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		40C47CCA3075B1BABEDDB6CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Social-Reality-Social-RealityUITests/Pods-Social-Reality-Social-RealityUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Social-Reality-Social-RealityUITests/Pods-Social-Reality-Social-RealityUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Social-Reality-Social-RealityUITests/Pods-Social-Reality-Social-RealityUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4D3FB87ABE201E1671884DDA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -569,6 +597,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75A14EB2052516F6AC910D3E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Social-Reality/Pods-Social-Reality-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Social-Reality/Pods-Social-Reality-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Social-Reality/Pods-Social-Reality-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		98617BFC949BCB8D56700239 /* [CP] Check Pods Manifest.lock */ = {
@@ -649,6 +694,7 @@
 				A06B639C25E953F500AE746D /* CommentModel.swift in Sources */,
 				A06B63D625E95B5D00AE746D /* ARView.swift in Sources */,
 				A03870BB25E944CC003989CE /* CustomTabBar.swift in Sources */,
+				A006461125EB0C8E00A3E1F3 /* inboxCell.swift in Sources */,
 				A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */,
 				A06B63A025E953F500AE746D /* CreationAccessibility.swift in Sources */,
 				A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */,
@@ -661,6 +707,7 @@
 				A06B639E25E953F500AE746D /* AmplifyModels.swift in Sources */,
 				A06B63B525E954D000AE746D /* SubscribeMethods.swift in Sources */,
 				A09DE0E925EA2FED0007438B /* accountCell.swift in Sources */,
+				A006461625EB0D1300A3E1F3 /* promoCell.swift in Sources */,
 				A06B63A225E953F500AE746D /* CommentModel+Schema.swift in Sources */,
 				A06B63F825E9783A00AE746D /* CustomSegmentControl.swift in Sources */,
 				A06B63B025E954A900AE746D /* DeleteMethods.swift in Sources */,
@@ -678,6 +725,7 @@
 				A03870C225E94508003989CE /* UIImage.swift in Sources */,
 				A06B642125E9A18E00AE746D /* UIButton.swift in Sources */,
 				A06B63A325E953F500AE746D /* LikeModel+Schema.swift in Sources */,
+				A006462825EB17F900A3E1F3 /* Config.swift in Sources */,
 				A06B63A525E953F500AE746D /* CreationModel.swift in Sources */,
 				A06B63CD25E956C000AE746D /* Like.swift in Sources */,
 				A03872C925E9497E003989CE /* MainViewController.swift in Sources */,

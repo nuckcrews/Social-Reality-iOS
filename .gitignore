@@ -1,5 +1,7 @@
 Pods/
 
+Social-Reality/Config.swift
+
 #amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
