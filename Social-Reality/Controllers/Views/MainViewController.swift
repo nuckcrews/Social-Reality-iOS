@@ -53,7 +53,7 @@ class MainViewController: UIViewController {
     }
     
     func pauseARView() {
-//        arView.session.pause()
+        arView.session.pause()
     }
     
     // MARK: Object Placement

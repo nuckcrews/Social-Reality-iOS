@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import KRLCollectionViewGridLayout
 
 class AccountViewController: UIViewController {
     
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var contentSegement: CustomSegmentedControl! {
         didSet{
-            contentSegement.setButtonTitles(buttonTitles: [("",UIImage(systemName: "circle.grid.3x3.fill")), ("",UIImage(systemName: "heart"))])
+            contentSegement.setButtonTitles(buttonTitles: [("",UIImage(systemName: "square.grid.3x3")), ("",UIImage(systemName: "heart"))])
             contentSegement.selectorViewColor = .mainText
             contentSegement.selectorTextColor = .mainText
             contentSegement.textColor = .lightGray
@@ -23,7 +25,6 @@ class AccountViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarItem.tag = TabbarItemTag.fifthViewConroller.rawValue
@@ -31,6 +32,22 @@ class AccountViewController: UIViewController {
         mainScrollView.delegate = self
         contentScrollView.delegate = self
         
+        contentCollectionView.delegate = self
+        contentCollectionView.dataSource = self
+        
+        setupCollection()
+        
+    }
+    
+    func setupCollection() {
+        let flowLayout = KRLCollectionViewGridLayout()
+        flowLayout.aspectRatio = 1
+        flowLayout.sectionInset = UIEdgeInsets(top: 4, left: 2, bottom: 0, right: 2)
+        flowLayout.interitemSpacing = 4
+        flowLayout.lineSpacing = 4
+        flowLayout.numberOfItemsPerLine = 3
+        flowLayout.scrollDirection = .vertical
+        self.contentCollectionView.collectionViewLayout = flowLayout
     }
     
     @IBAction func tapSettings(_ sender: UIButton) {
@@ -41,7 +58,13 @@ class AccountViewController: UIViewController {
 }
 extension AccountViewController: CustomSegmentedControlDelegate {
     func change(to index: Int) {
-        //
+        let x = (index == 0) ? 0 : view.frame.width
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) {
+            self.contentScrollView.contentOffset.x = x
+        } completion: { _ in
+            print("done")
+        }
+
     }
 }
 extension AccountViewController: UIScrollViewDelegate {
@@ -50,7 +73,33 @@ extension AccountViewController: UIScrollViewDelegate {
         if scrollView == mainScrollView {
             if scrollView.contentOffset.y >= topView.frame.height {
                 scrollView.contentOffset.y = topView.frame.height
+                contentCollectionView.isScrollEnabled = true
+            } else {
+                contentCollectionView.isScrollEnabled = false
             }
+        } else if scrollView == contentScrollView {
+            if scrollView.contentOffset.x == 0 {
+                contentSegement.setIndex(index: 0)
+            } else if scrollView.contentOffset.x == view.frame.width {
+                contentSegement.setIndex(index: 1)
+            }
+        } else if scrollView == contentCollectionView {
+            
         }
     }
+}
+extension AccountViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 18
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "accountContentCell", for: indexPath as IndexPath) as? accountContentCell {
+            return cell
+        } else {
+            return accountContentCell()
+        }
+    }
+    
 }

@@ -21,6 +21,9 @@ class SettingsViewController: UIViewController {
         
     }
     
+    @IBAction func tapBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 
 }
 

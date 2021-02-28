@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             try Amplify.add(plugin: dataStorePlugin)
             try Amplify.add(plugin: apiPlugin) // UNCOMMENT this line once backend is deployed
+            try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.configure()
             print("Initialized Amplify");
         } catch {
