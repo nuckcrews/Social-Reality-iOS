@@ -12,16 +12,23 @@ import GooglePlaces
 
 class ExploreViewController: UIViewController {
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarItem.tag = TabbarItemTag.secondViewConroller.rawValue
+        
+        setupMapView()
+        
+    }
     
+    func setupMapView() {
+        mapView.settings.myLocationButton = true
+        
         // Set initial location in Honolulu
         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
-        mapView.centerToLocation(initialLocation)
-        mapView.mapType = .mutedStandard
+        mapView.camera = GMSCameraPosition(target: initialLocation.coordinate, zoom: 14)
+        
     }
 
     
