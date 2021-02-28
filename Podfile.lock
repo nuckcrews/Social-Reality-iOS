@@ -6,16 +6,44 @@ PODS:
     - AppSyncRealTimeClient (~> 1.4.0)
     - AWSCore (~> 2.23.0)
     - AWSPluginsCore (= 1.6.1)
+  - AmplifyPlugins/AWSCognitoAuthPlugin (1.6.1):
+    - AWSAuthCore (~> 2.23.0)
+    - AWSCognitoIdentityProvider (~> 2.23.0)
+    - AWSCognitoIdentityProviderASF (~> 2.23.0)
+    - AWSCore (~> 2.23.0)
+    - AWSMobileClient (~> 2.23.0)
+    - AWSPluginsCore (= 1.6.1)
   - AmplifyPlugins/AWSDataStorePlugin (1.6.1):
     - AWSCore (~> 2.23.0)
     - AWSPluginsCore (= 1.6.1)
     - SQLite.swift (~> 0.12.0)
   - AppSyncRealTimeClient (1.4.3):
     - Starscream (~> 3.1.0)
+  - AWSAuthCore (2.23.0):
+    - AWSCore (= 2.23.0)
+  - AWSCognitoIdentityProvider (2.23.0):
+    - AWSCognitoIdentityProviderASF (= 2.23.0)
+    - AWSCore (= 2.23.0)
+  - AWSCognitoIdentityProviderASF (2.23.0)
   - AWSCore (2.23.0)
+  - AWSMobileClient (2.23.0):
+    - AWSAuthCore (= 2.23.0)
+    - AWSCognitoIdentityProvider (= 2.23.0)
+    - AWSCognitoIdentityProviderASF (= 2.23.0)
+    - AWSCore (= 2.23.0)
   - AWSPluginsCore (1.6.1):
     - Amplify (= 1.6.1)
     - AWSCore (~> 2.23.0)
+  - FBSDKCoreKit (9.0.1):
+    - FBSDKCoreKit/Basics (= 9.0.1)
+    - FBSDKCoreKit/Core (= 9.0.1)
+  - FBSDKCoreKit/Basics (9.0.1)
+  - FBSDKCoreKit/Core (9.0.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (9.0.1):
+    - FBSDKLoginKit/Login (= 9.0.1)
+  - FBSDKLoginKit/Login (9.0.1):
+    - FBSDKCoreKit (~> 9.0.1)
   - GoogleMaps (4.1.0):
     - GoogleMaps/Maps (= 4.1.0)
   - GoogleMaps/Base (4.1.0)
@@ -23,6 +51,7 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (4.1.0):
     - GoogleMaps/Base (= 4.1.0)
+  - KRLCollectionViewGridLayout (1.0.0)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -32,9 +61,12 @@ PODS:
 DEPENDENCIES:
   - Amplify
   - AmplifyPlugins/AWSAPIPlugin
+  - AmplifyPlugins/AWSCognitoAuthPlugin
   - AmplifyPlugins/AWSDataStorePlugin
+  - FBSDKLoginKit
   - GoogleMaps (= 4.1.0)
   - GooglePlaces (= 4.1.0)
+  - KRLCollectionViewGridLayout (~> 1.0.0)
   - TransitionableTab (~> 0.2.0)
 
 SPEC REPOS:
@@ -42,10 +74,17 @@ SPEC REPOS:
     - Amplify
     - AmplifyPlugins
     - AppSyncRealTimeClient
+    - AWSAuthCore
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
     - AWSCore
+    - AWSMobileClient
     - AWSPluginsCore
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - GoogleMaps
     - GooglePlaces
+    - KRLCollectionViewGridLayout
     - SQLite.swift
     - Starscream
     - TransitionableTab
@@ -54,14 +93,21 @@ SPEC CHECKSUMS:
   Amplify: 4d0c3b0871e1f268c81ce5e9b65532df0a013900
   AmplifyPlugins: 51dfaeafe662cd571c4d4dfd3bdc5987fef2d5a7
   AppSyncRealTimeClient: 04df4dffe57cfbd06da336d0bfcd5641ba9adcb5
+  AWSAuthCore: 037e5faef3f7a0b4501eddcc382f9c74a22c0a77
+  AWSCognitoIdentityProvider: c078ed88e0f8d2df52850acfa2dae91c451ae47e
+  AWSCognitoIdentityProviderASF: fa862263b46ce6dcd28b85a906d21874fb28b15a
   AWSCore: 589ad0bd5b72e9a95ce33834f12339b50cfc9f14
+  AWSMobileClient: 5701d5ac51ec0de781d848754f9d9952ead1c639
   AWSPluginsCore: f41f8a478fe3fd8839ec16278b86dededefb0628
+  FBSDKCoreKit: fada1a6a0076724678993ff05a633848765ff18c
+  FBSDKLoginKit: d5ffe6d808897019ccf16feb6f0a7ab260bc5cd6
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
+  KRLCollectionViewGridLayout: 147113b086d446d50b5b8aa907a1c2bc19e89836
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
 
-PODFILE CHECKSUM: c43a98c117c75cb7d5e8e269a29e1699e9f3dc54
+PODFILE CHECKSUM: 364821b7c41d8817b352d5d67a7f530a912f60f8
 
 COCOAPODS: 1.8.4

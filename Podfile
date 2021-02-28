@@ -7,15 +7,24 @@ target 'Social-Reality' do
 
   # Pods for Social-Reality
   
+  # AWS Pods
   pod 'Amplify'
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
+  pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
   
+  # GCP Pods
   pod 'GoogleMaps', '4.1.0'
   pod 'GooglePlaces', '4.1.0'
   
+  # FB Pods
+  pod 'FBSDKLoginKit'
+  
+  
+  # Design Pods
   pod 'TransitionableTab', '~> 0.2.0'
-
+  pod "KRLCollectionViewGridLayout", "~> 1.0.0"
+  
   target 'Social-RealityTests' do
     inherit! :search_paths
     # Pods for testing
