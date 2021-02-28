@@ -15,11 +15,14 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var arView: ARView!
     
+    private var readyForReality = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarItem.tag = TabbarItemTag.firstViewController.rawValue
         
-
+        CoverToMainDelegate? = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,15 +33,20 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        setupARView()
         
         arView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:))))
+        
+        if readyForReality {
+            setupARView()
+        }
         
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        pauseARView()
+        if readyForReality {
+            pauseARView()
+        }
     }
     
     // MARK: Setup Methods
@@ -109,5 +117,11 @@ extension MainViewController: ARSessionDelegate {
                 placeObject(named: anchorName, for: anchor)
             }
         }
+    }
+}
+extension MainViewController: CoverToMainProtocolDelegate {
+    func readyForSession() {
+        readyForReality = true
+        setupARView()
     }
 }
