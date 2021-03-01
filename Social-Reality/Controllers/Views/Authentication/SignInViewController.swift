@@ -25,8 +25,16 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func tapEmailContinue(_ sender: UIButton) {
-        sender.pulsate()
-        
+        if emailTextField.text!.isValidEmail() {
+            Auth().userExists(email: emailTextField.text!) { (res) in
+                if res != nil {
+                    !res! ? self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil) : self.performSegue(withIdentifier: "toNewUserfromSign", sender: nil)
+                }
+            }
+            sender.pulsate()
+        } else {
+            sender.shake()
+        }
     }
     
     @IBAction func tapGoogleSignIn(_ sender: UIButton) {
@@ -45,7 +53,16 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func tapBack(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CreateUserViewController {
+            dest.email = emailTextField.text
+        }
+        if let dest = segue.destination as? PasswordViewController {
+            dest.email = emailTextField.text
+        }
     }
     
 }
@@ -53,6 +70,8 @@ extension SignInViewController: UITextFieldDelegate {
     
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        textField.text = textField.text!.trimmingCharacters(in: .whitespaces)
+
         if textField.text == "" {
             UIView.animate(withDuration: 0.3) {
                 self.emailIndicatorButton.alpha = 0
@@ -80,7 +99,16 @@ extension SignInViewController: UITextFieldDelegate {
         }
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if emailTextField.text!.isValidEmail() {
+            Auth().userExists(email: emailTextField.text!) { (res) in
+                if res != nil {
+                    res! ? self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil) : self.performSegue(withIdentifier: "toNewUserfromSign", sender: nil)
+                }
+            }
+            return true
+        } else {
+            return false
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)

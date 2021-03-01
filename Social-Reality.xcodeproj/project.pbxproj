@@ -74,6 +74,10 @@
 		A06B642125E9A18E00AE746D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B642025E9A18E00AE746D /* UIButton.swift */; };
 		A09DE0E925EA2FED0007438B /* accountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE0E825EA2FED0007438B /* accountCell.swift */; };
 		A0DCF1EC25EC4ADC00F699E9 /* AuthenticationMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1EB25EC4ADC00F699E9 /* AuthenticationMethods.swift */; };
+		A0DCF1F425EC7CFC00F699E9 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */; };
+		A0DCF1F925EC7E3C00F699E9 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1F825EC7E3C00F699E9 /* UIView.swift */; };
+		A0DCF1FE25EC90CE00F699E9 /* CreatePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1FD25EC90CE00F699E9 /* CreatePasswordViewController.swift */; };
+		A0DCF20325EC95FC00F699E9 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF20225EC95FC00F699E9 /* PasswordViewController.swift */; };
 		BD4FB356594D21E0D9C1A22E /* Pods_Social_RealityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12DB50B404DB6E2C9AF05244 /* Pods_Social_RealityTests.framework */; };
 		DCFE77B4EA13255E33B7B626 /* Pods_Social_Reality.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38989FA5602C3D34FC130E00 /* Pods_Social_Reality.framework */; };
 /* End PBXBuildFile section */
@@ -176,6 +180,10 @@
 		A06B642025E9A18E00AE746D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		A09DE0E825EA2FED0007438B /* accountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = accountCell.swift; sourceTree = "<group>"; };
 		A0DCF1EB25EC4ADC00F699E9 /* AuthenticationMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMethods.swift; sourceTree = "<group>"; };
+		A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
+		A0DCF1F825EC7E3C00F699E9 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		A0DCF1FD25EC90CE00F699E9 /* CreatePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordViewController.swift; sourceTree = "<group>"; };
+		A0DCF20225EC95FC00F699E9 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		F51337364A2174CFB22E4DBD /* Pods-Social-Reality-Social-RealityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social-Reality-Social-RealityUITests.debug.xcconfig"; path = "Target Support Files/Pods-Social-Reality-Social-RealityUITests/Pods-Social-Reality-Social-RealityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -258,6 +266,9 @@
 			isa = PBXGroup;
 			children = (
 				A02397FC25EC197400F13F72 /* SignInViewController.swift */,
+				A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */,
+				A0DCF1FD25EC90CE00F699E9 /* CreatePasswordViewController.swift */,
+				A0DCF20225EC95FC00F699E9 /* PasswordViewController.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -396,6 +407,7 @@
 				A06B63EF25E968EE00AE746D /* UIColor.swift */,
 				A03870C125E94508003989CE /* UIImage.swift */,
 				A06B640625E97A8300AE746D /* String.swift */,
+				A0DCF1F825EC7E3C00F699E9 /* UIView.swift */,
 				A06B642025E9A18E00AE746D /* UIButton.swift */,
 			);
 			path = Extensions;
@@ -790,6 +802,7 @@
 				A03870B625E944AB003989CE /* NavigationController.swift in Sources */,
 				A06B63F025E968EE00AE746D /* UIColor.swift in Sources */,
 				A02397FD25EC197400F13F72 /* SignInViewController.swift in Sources */,
+				A0DCF1F425EC7CFC00F699E9 /* CreateUserViewController.swift in Sources */,
 				A02397F125EC09C800F13F72 /* LikeModel+Schema.swift in Sources */,
 				A06B63C825E9568400AE746D /* Comment.swift in Sources */,
 				A06B640225E978A400AE746D /* FadeViews.swift in Sources */,
@@ -799,6 +812,7 @@
 				A006461125EB0C8E00A3E1F3 /* inboxCell.swift in Sources */,
 				A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */,
 				A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */,
+				A0DCF1FE25EC90CE00F699E9 /* CreatePasswordViewController.swift in Sources */,
 				A06B636425E9533F00AE746D /* WriteMethods.swift in Sources */,
 				A038702F25E93D9D003989CE /* CreateViewController.swift in Sources */,
 				A06B63B525E954D000AE746D /* SubscribeMethods.swift in Sources */,
@@ -824,6 +838,8 @@
 				A038703125E93D9D003989CE /* Experience.rcproject in Sources */,
 				A02397EB25EC09C800F13F72 /* ProfileAccessibility.swift in Sources */,
 				A02397EC25EC09C800F13F72 /* AmplifyModels.swift in Sources */,
+				A0DCF1F925EC7E3C00F699E9 /* UIView.swift in Sources */,
+				A0DCF20325EC95FC00F699E9 /* PasswordViewController.swift in Sources */,
 				A023980E25EC27E900F13F72 /* Variables.swift in Sources */,
 				A02397D425EB291B00F13F72 /* CustomScrollView.swift in Sources */,
 				A02397EA25EC09C800F13F72 /* CommentModel.swift in Sources */,

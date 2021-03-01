@@ -57,6 +57,7 @@ PODS:
   - SQLite.swift/standard (0.12.2)
   - Starscream (3.1.1)
   - TransitionableTab (0.2.0)
+  - WaterfallLayout (0.2)
 
 DEPENDENCIES:
   - Amplify
@@ -68,6 +69,7 @@ DEPENDENCIES:
   - GooglePlaces (= 4.1.0)
   - KRLCollectionViewGridLayout (~> 1.0.0)
   - TransitionableTab (~> 0.2.0)
+  - WaterfallLayout (~> 0.1)
 
 SPEC REPOS:
   trunk:
@@ -88,6 +90,7 @@ SPEC REPOS:
     - SQLite.swift
     - Starscream
     - TransitionableTab
+    - WaterfallLayout
 
 SPEC CHECKSUMS:
   Amplify: 4d0c3b0871e1f268c81ce5e9b65532df0a013900
@@ -107,7 +110,8 @@ SPEC CHECKSUMS:
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
+  WaterfallLayout: 030e04b041e5c6c47ae2c1eaa685c60289fab0b1
 
-PODFILE CHECKSUM: 364821b7c41d8817b352d5d67a7f530a912f60f8
+PODFILE CHECKSUM: 9fc19cb2cb69a0aa8576fcf2523d3c595b8f9f24
 
 COCOAPODS: 1.8.4

@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var arView: ARView!
     
-    private var readyForReality = false
+    private var readyForReality = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
