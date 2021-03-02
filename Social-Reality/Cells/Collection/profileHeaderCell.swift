@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileHeaderCell: UICollectionViewCell {
+class profileHeaderCell: UICollectionViewCell {
 
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!

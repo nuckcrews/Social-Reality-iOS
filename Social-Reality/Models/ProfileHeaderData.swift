@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct ProfileHeaderData: Hashable { 
+    let name: String
+    let username: String
+    let postCount: Int
+}
