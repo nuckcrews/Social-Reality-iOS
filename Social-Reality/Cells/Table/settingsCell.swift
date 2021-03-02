@@ -7,7 +7,7 @@
 
 import UIKit
 
-class accountCell: UITableViewCell {
+class settingsCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
 

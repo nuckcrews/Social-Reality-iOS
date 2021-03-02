@@ -34,7 +34,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell") as? accountCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as? settingsCell {
             if indexPath.row == 0 {
                 cell.configureCell(title: "Inforamtion")
             } else if indexPath.row == 1 {
@@ -50,7 +50,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return cell
         } else {
-            return accountCell()
+            return settingsCell()
         }
     }
     

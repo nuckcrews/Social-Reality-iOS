@@ -9,12 +9,30 @@ import UIKit
 
 class CustomCollectionView: UICollectionView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBInspectable var extraHeight: CGFloat = 0
+    @IBInspectable var minimumHeight: CGFloat = 0
+    @IBInspectable var minimumWidth: CGFloat = -1
+    
+    override var contentSize: CGSize {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
     }
-    */
 
+    override var intrinsicContentSize: CGSize {
+        layoutIfNeeded()
+        var width = UIView.noIntrinsicMetric
+        if minimumWidth > -1 {
+            width = minimumWidth
+        }
+        if minimumHeight > contentSize.height + extraHeight {
+            return CGSize(width: width, height: minimumHeight)
+        } else {
+            return CGSize(width: width, height: contentSize.height + extraHeight)
+        }
+        
+    }
+    
+    
 }
+
