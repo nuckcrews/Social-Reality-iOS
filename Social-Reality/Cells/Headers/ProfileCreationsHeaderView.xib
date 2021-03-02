@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCreationsHeaderView" id="U6b-Vx-4bR" customClass="ProfileCreationsHeaderView" customModule="Social_Reality" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B3d-Wd-whl">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mpi-ME-Hzt">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                            <color key="backgroundColor" name="Seperator"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Dr1-Xb-EXt"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="532-ct-BeR">
+                            <rect key="frame" x="0.0" y="49" width="320" height="1"/>
+                            <color key="backgroundColor" name="Seperator"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="iVI-KQ-dRD"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aW6-qO-4le" customClass="CustomSegmentedControl" customModule="Social_Reality" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="1" width="320" height="46"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="Background"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Mpi-ME-Hzt" secondAttribute="trailing" id="4XN-Dm-9pv"/>
+                        <constraint firstItem="aW6-qO-4le" firstAttribute="leading" secondItem="B3d-Wd-whl" secondAttribute="leading" id="IUN-do-009"/>
+                        <constraint firstItem="Mpi-ME-Hzt" firstAttribute="leading" secondItem="B3d-Wd-whl" secondAttribute="leading" id="UJe-dA-ag9"/>
+                        <constraint firstAttribute="bottom" secondItem="aW6-qO-4le" secondAttribute="bottom" constant="3" id="ZaU-Pf-Fcs"/>
+                        <constraint firstAttribute="trailing" secondItem="532-ct-BeR" secondAttribute="trailing" id="eXP-j5-W41"/>
+                        <constraint firstAttribute="trailing" secondItem="aW6-qO-4le" secondAttribute="trailing" id="fcF-sp-Dgt"/>
+                        <constraint firstItem="532-ct-BeR" firstAttribute="leading" secondItem="B3d-Wd-whl" secondAttribute="leading" id="fyr-9O-clR"/>
+                        <constraint firstItem="Mpi-ME-Hzt" firstAttribute="top" secondItem="B3d-Wd-whl" secondAttribute="top" id="kcs-zO-wCH"/>
+                        <constraint firstItem="aW6-qO-4le" firstAttribute="top" secondItem="B3d-Wd-whl" secondAttribute="top" constant="1" id="yrG-N4-ci5"/>
+                        <constraint firstAttribute="bottom" secondItem="532-ct-BeR" secondAttribute="bottom" id="zpc-54-RXX"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="B3d-Wd-whl" secondAttribute="bottom" id="nCI-Sy-AWa"/>
+                <constraint firstItem="B3d-Wd-whl" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="pWr-Zb-53c"/>
+                <constraint firstItem="B3d-Wd-whl" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="uOp-eJ-0gV"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="B3d-Wd-whl" secondAttribute="trailing" id="ygm-dL-JAO"/>
+            </constraints>
+            <connections>
+                <outlet property="contentSegment" destination="aW6-qO-4le" id="88s-94-Bd5"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="89.732142857142847"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="Seperator">
+            <color red="0.83499997854232788" green="0.83499997854232788" blue="0.83499997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

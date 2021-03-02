@@ -87,6 +87,12 @@ extension AccountViewController: UIScrollViewDelegate {
             
         }
     }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        
+    }
+    
+    
 }
 extension AccountViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -101,5 +107,17 @@ extension AccountViewController: UICollectionViewDelegate, UICollectionViewDataS
             return accountContentCell()
         }
     }
+    
+    func collectionViewLayout(for section: Int) -> WaterfallLayout.Layout {
+        switch section {
+        case 0: return .flow(column: 1) // single column flow layout
+        case 1: return .waterfall(column: 3) // three waterfall layout
+        default: return .flow(column: 2)
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(...)
+    }    
     
 }

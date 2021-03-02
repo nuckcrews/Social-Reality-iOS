@@ -24,6 +24,7 @@ target 'Social-Reality' do
   # Design Pods
   pod 'TransitionableTab', '~> 0.2.0'
   pod "KRLCollectionViewGridLayout", "~> 1.0.0"
+  pod 'WaterfallLayout', '~> 0.1'
   
   target 'Social-RealityTests' do
     inherit! :search_paths
