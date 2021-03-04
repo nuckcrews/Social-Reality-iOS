@@ -10,6 +10,7 @@ import Amplify
 import AmplifyPlugins
 import GoogleMaps
 import GooglePlaces
+import GoogleSignIn
 import FBSDKCoreKit
 
 @main
@@ -24,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GMSServices.provideAPIKey(GOOGLE_API_KEY)
         GMSPlacesClient.provideAPIKey(GOOGLE_API_KEY)
+        GIDSignIn.sharedInstance().clientID = GOOGLE_AUTH_ID
+        
         
         let dataStorePlugin = AWSDataStorePlugin(modelRegistration: AmplifyModels())
         let apiPlugin = AWSAPIPlugin(modelRegistration: AmplifyModels()) // UNCOMMENT this line once backend is deployed
@@ -35,21 +38,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try Amplify.configure()
             // load data when user is signedin
             self.checkUserSignedIn()
-
+            
             // listen to auth events
             _ = Amplify.Hub.listen(to: .auth) { (payload) in
-
+                
                 switch payload.eventName {
-
+                
                 case HubPayload.EventName.Auth.signedIn:
                     self.updateUI(forSignInStatus: true)
-
+                    
                 case HubPayload.EventName.Auth.signedOut:
                     self.updateUI(forSignInStatus: false)
                     
                 case HubPayload.EventName.Auth.sessionExpired:
                     self.updateUI(forSignInStatus: false)
-
+                    
                 default:
                     break
                 }
@@ -73,44 +76,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // when user is signed in, fetch its details
     func checkUserSignedIn() {
-
+        
         // every time auth status changes, let's check if user is signedIn or not
         // updating userData will automatically update the UI
         _ = Amplify.Auth.fetchAuthSession { (result) in
-
+            
             do {
                 let session = try result.get()
                 self.updateUI(forSignInStatus: session.isSignedIn)
             } catch {
                 print("Fetch auth session failed with error - \(error)")
             }
-
+            
         }
     }
     
-    // signout globally
-    public func signOut() {
-        let options = AuthSignOutRequest.Options(globalSignOut: true)
-        _ = Amplify.Auth.signOut(options: options) { (result) in
-            switch result {
-            case .success:
-                print("Successfully signed out")
-            case .failure(let error):
-                print("Sign out failed with error \(error)")
-            }
-        }
-    }
+
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-
-            ApplicationDelegate.shared.application(
-                app,
-                open: url,
-                sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-            )
-
-        }
+        
+        print("handling URL")
+        print(url)
+        return true
+    }
+    
+//
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//
+//        ApplicationDelegate.shared.application(
+//            app,
+//            open: url,
+//            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+//            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+//        )
+//
+//
+//        return GIDSignIn.sharedInstance().handle(url)
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

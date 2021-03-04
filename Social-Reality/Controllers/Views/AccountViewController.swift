@@ -20,12 +20,12 @@ class AccountViewController: UIViewController {
         case header
         case creations
     }
-
+    
     enum Item: Hashable {
-        case header(ProfileHeaderData)
+        case header(ProfileHeaderData) 
         case creation(CreationView)
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,7 @@ extension AccountViewController {
     }
     
     private func configureDatasource() {
-            datasource = Datasource(collectionView: collectionView, cellProvider: cell(collectionView:indexPath:item:))
+        datasource = Datasource(collectionView: collectionView, cellProvider: cell(collectionView:indexPath:item:))
         
         datasource.apply(snapshot(), animatingDifferences: false)
         datasource.supplementaryViewProvider = supplementary(collectionView:kind:indexPath:)
@@ -74,7 +74,7 @@ extension AccountViewController {
     
     func snapshot() -> Snapshot {
         var snapshot = Snapshot()
-
+        
         snapshot.appendSections([.header, .creations])
         snapshot.appendItems([.header(ProfileHeaderData(name: "Nick", username: "ncrews", postCount: 26))], toSection: .header)
         snapshot.appendItems(CreationView.demoPhotos.map({ Item.creation($0) }), toSection: .creations)
@@ -94,13 +94,13 @@ extension AccountViewController {
     func createHeaderSection() -> NSCollectionLayoutSection {
         let headerItem = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         let headerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(280)), subitems: [headerItem])
-
+        
         return NSCollectionLayoutSection(group: headerGroup)
     }
     
     func sectionFor(index: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
         let section = datasource.snapshot().sectionIdentifiers[index]
-
+        
         switch section {
         case .header:
             return createHeaderSection()
@@ -111,33 +111,33 @@ extension AccountViewController {
     
     func createCreationsSection() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                 heightDimension: .fractionalHeight(1.0))
-           let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-           let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .fractionalWidth(1/3))
-           let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-
-           let section = NSCollectionLayoutSection(group: group)
-
-           let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
-
-           let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-//        section.orthogonalScrollingBehavior = .paging
-
-
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .fractionalWidth(1/3))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+        
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        
+        //        section.orthogonalScrollingBehavior = .paging
+        
+        
         header.pinToVisibleBounds = true
         
         section.boundarySupplementaryItems = [header]
         
-
+        
         return section
     }
     
     private func supplementary(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ProfileCreationsHeaderView", for: indexPath)
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ProfileCreationsHeaderView", for: indexPath)
     }
     
 }

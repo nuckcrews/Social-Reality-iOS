@@ -12,10 +12,13 @@ target 'Social-Reality' do
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
+  pod 'AWSUserPoolsSignIn'
+  pod 'AWSGoogleSignIn'
   
   # GCP Pods
   pod 'GoogleMaps', '4.1.0'
   pod 'GooglePlaces', '4.1.0'
+  pod 'GoogleSignIn'
   
   # FB Pods
   pod 'FBSDKLoginKit'

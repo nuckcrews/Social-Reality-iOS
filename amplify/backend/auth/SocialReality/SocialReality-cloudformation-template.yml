@@ -133,15 +133,6 @@ Parameters:
   adminQueries:
     Type: String
             
-            
-  
-  thirdPartyAuth:
-    Type: String
-            
-        
-  authProviders:
-    Type: CommaDelimitedList
-      
   
   hostedUI:
     Type: String
@@ -158,14 +149,6 @@ Parameters:
     Type: String
   
             
-  hostedUIProviderCreds:
-    Type: String
-  
-            
-  oAuthMetadata:
-    Type: String
-  
-            
   
   usernameCaseSensitive:
     Type: String
@@ -174,6 +157,23 @@ Parameters:
   dependsOn:
     Type: CommaDelimitedList
       
+  oAuthMetadata:
+    Type: String
+  
+            
+        
+  authProviders:
+    Type: CommaDelimitedList
+      
+  hostedUIProviderCreds:
+    Type: String
+  
+            
+            
+  
+  thirdPartyAuth:
+    Type: String
+            
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
   
@@ -238,13 +238,16 @@ Resources:
       AutoVerifiedAttributes: !Ref autoVerifiedAttributes
       
       
+      EmailVerificationMessage: !Ref emailVerificationMessage
+      EmailVerificationSubject: !Ref emailVerificationSubject
+      
       Policies:
         PasswordPolicy:
           MinimumLength: !Ref passwordPolicyMinLength
-          RequireLowercase: true
-          RequireNumbers: true
-          RequireSymbols: true
-          RequireUppercase: true
+          RequireLowercase: false
+          RequireNumbers: false
+          RequireSymbols: false
+          RequireUppercase: false
       
       UsernameAttributes: !Ref usernameAttributes
       

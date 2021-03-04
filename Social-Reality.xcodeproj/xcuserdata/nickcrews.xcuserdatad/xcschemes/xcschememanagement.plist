@@ -7,7 +7,25 @@
 		<key>Social-Reality.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>19</integer>
+			<integer>27</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A038702825E93D9D003989CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A038703E25E93D9E003989CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A038704925E93D9E003989CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

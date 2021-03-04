@@ -10,6 +10,11 @@
       "StackName": "amplify-socialreality-staging-143928",
       "StackId": "arn:aws:cloudformation:us-east-2:297535061769:stack/amplify-socialreality-staging-143928/6ea2dfa0-7840-11eb-b9eb-02e961f9e5aa",
       "AmplifyAppId": "d3mken8xrlg0s6"
+    },
+    "categories": {
+      "auth": {
+        "SocialReality": {}
+      }
     }
   }
 }
