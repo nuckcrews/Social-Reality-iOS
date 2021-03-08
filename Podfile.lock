@@ -24,28 +24,28 @@ PODS:
   - AppAuth/ExternalUserAgent (1.4.0)
   - AppSyncRealTimeClient (1.4.3):
     - Starscream (~> 3.1.0)
-  - AWSAuthCore (2.23.0):
-    - AWSCore (= 2.23.0)
-  - AWSCognitoIdentityProvider (2.23.0):
-    - AWSCognitoIdentityProviderASF (= 2.23.0)
-    - AWSCore (= 2.23.0)
-  - AWSCognitoIdentityProviderASF (2.23.0)
-  - AWSCore (2.23.0)
-  - AWSGoogleSignIn (2.23.0):
-    - AWSAuthCore (= 2.23.0)
-    - AWSCore (= 2.23.0)
-  - AWSMobileClient (2.23.0):
-    - AWSAuthCore (= 2.23.0)
-    - AWSCognitoIdentityProvider (= 2.23.0)
-    - AWSCognitoIdentityProviderASF (= 2.23.0)
-    - AWSCore (= 2.23.0)
+  - AWSAuthCore (2.23.1):
+    - AWSCore (= 2.23.1)
+  - AWSCognitoIdentityProvider (2.23.1):
+    - AWSCognitoIdentityProviderASF (= 2.23.1)
+    - AWSCore (= 2.23.1)
+  - AWSCognitoIdentityProviderASF (2.23.1)
+  - AWSCore (2.23.1)
+  - AWSGoogleSignIn (2.23.1):
+    - AWSAuthCore (= 2.23.1)
+    - AWSCore (= 2.23.1)
+  - AWSMobileClient (2.23.1):
+    - AWSAuthCore (= 2.23.1)
+    - AWSCognitoIdentityProvider (= 2.23.1)
+    - AWSCognitoIdentityProviderASF (= 2.23.1)
+    - AWSCore (= 2.23.1)
   - AWSPluginsCore (1.6.1):
     - Amplify (= 1.6.1)
     - AWSCore (~> 2.23.0)
-  - AWSUserPoolsSignIn (2.23.0):
-    - AWSAuthCore (= 2.23.0)
-    - AWSCognitoIdentityProvider (= 2.23.0)
-    - AWSCore (= 2.23.0)
+  - AWSUserPoolsSignIn (2.23.1):
+    - AWSAuthCore (= 2.23.1)
+    - AWSCognitoIdentityProvider (= 2.23.1)
+    - AWSCore (= 2.23.1)
   - FBSDKCoreKit (9.0.1):
     - FBSDKCoreKit/Basics (= 9.0.1)
     - FBSDKCoreKit/Core (= 9.0.1)
@@ -124,14 +124,14 @@ SPEC CHECKSUMS:
   AmplifyPlugins: 51dfaeafe662cd571c4d4dfd3bdc5987fef2d5a7
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   AppSyncRealTimeClient: 04df4dffe57cfbd06da336d0bfcd5641ba9adcb5
-  AWSAuthCore: 037e5faef3f7a0b4501eddcc382f9c74a22c0a77
-  AWSCognitoIdentityProvider: c078ed88e0f8d2df52850acfa2dae91c451ae47e
-  AWSCognitoIdentityProviderASF: fa862263b46ce6dcd28b85a906d21874fb28b15a
-  AWSCore: 589ad0bd5b72e9a95ce33834f12339b50cfc9f14
-  AWSGoogleSignIn: 16a924eef4e96f254768771f9c40314106160fa4
-  AWSMobileClient: 5701d5ac51ec0de781d848754f9d9952ead1c639
+  AWSAuthCore: d9f9c418df00f45f399e407dc6c2bce33870b0af
+  AWSCognitoIdentityProvider: 8bf316cc96554d4c88ca4b1dcae0589923fb95f5
+  AWSCognitoIdentityProviderASF: f9b0d373dfce6d5395f0b69f2301f5db927d9fc8
+  AWSCore: 48bf561f5fb3616ef42c1f7f3eeb4b502d11f69d
+  AWSGoogleSignIn: 2d686803d0d547eaf1dd46e3da494d5d1d549a5a
+  AWSMobileClient: ffe1179b9e6d5db7cea3f807df7d47f5d00a5c65
   AWSPluginsCore: f41f8a478fe3fd8839ec16278b86dededefb0628
-  AWSUserPoolsSignIn: aa27a291cde86bbe3b2ed63ee5515a8daf76e1a6
+  AWSUserPoolsSignIn: 5397fa0da35e78d9ca8404dbaa0b8be080797418
   FBSDKCoreKit: fada1a6a0076724678993ff05a633848765ff18c
   FBSDKLoginKit: d5ffe6d808897019ccf16feb6f0a7ab260bc5cd6
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef

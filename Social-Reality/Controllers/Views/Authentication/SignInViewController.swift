@@ -43,20 +43,17 @@ class SignInViewController: UIViewController {
     
     @IBAction func tapEmailContinue(_ sender: UIButton) {
         
-        Amplify.Auth.signInWithWebUI(presentationAnchor: self.view.window!) { result in
-            
+        if emailTextField.text!.isValidEmail() {
+            Auth().userExists(email: emailTextField.text!) { (res) in
+                if res != nil {
+                    !res! ? self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil) : self.performSegue(withIdentifier: "toNewUserfromSign", sender: nil)
+                }
+            }
+            sender.pulsate()
+        } else {
+            sender.shake()
         }
         
-//        if emailTextField.text!.isValidEmail() {
-//            Auth().userExists(email: emailTextField.text!) { (res) in
-//                if res != nil {
-//                    !res! ? self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil) : self.performSegue(withIdentifier: "toNewUserfromSign", sender: nil)
-//                }
-//            }
-//            sender.pulsate()
-//        } else {
-//            sender.shake()
-//        }
     }
     
     @IBAction func tapGoogleSignIn(_ sender: UIButton) {
