@@ -16,11 +16,36 @@ import GTMAppAuth
 import AppAuth
 import AuthenticationServices
 
+// MARK: Authentication Methods - Global
+
 struct Auth {
     
-    var signedIn: Bool {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.userData.isSignedIn
+    var loggedIn: Bool {
+        if Amplify.Auth.getCurrentUser() == nil {
+            return false
+        }
+        return true
+    }
+    
+    var user: AuthUser? {
+        return Amplify.Auth.getCurrentUser()
+    }
+    
+    func userAttributes(completion: @escaping(_ result: [String: String]?) -> Void) {
+        Amplify.Auth.fetchUserAttributes { (result) in
+            switch result {
+            case .success(let authResult):
+                print(authResult)
+                var data: [String: String] = [:]
+                for attribute in authResult {
+                    data[attribute.key.rawValue] = attribute.value
+                }
+                completion(data)
+            case .failure(let error):
+                print(error)
+                completion(nil)
+            }
+        }
     }
     
     func checkSessionStatus(completion: @escaping(_ result: Bool) -> Void) {
@@ -41,17 +66,36 @@ struct Auth {
         if email.isValidEmail() {
             
         }
-        
-        
     }
     
     func userExists(email: String, completion: @escaping(_ result: Bool?) -> Void) {
         guard email.isValidEmail() else {
+            print("Invalid Email", email)
             completion(nil)
             return
         }
-        completion(false) // Fix this
-        
+        let userKeys = UserModel.keys
+        let predicate = userKeys.email == email
+        Query.get.usersWithPredicate(predicate: predicate) { (users) in
+            if users == nil || users?.count ?? 0 > 0 {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func usernameExists(username: String, completion: @escaping(_ result: Bool) -> Void) {
+        let userKeys = UserModel.keys
+        let predicate = userKeys.username == username
+        Query.get.usersWithPredicate(predicate: predicate) { (result) in
+            if result == nil || result?.count ?? 0 > 0 {
+                print("Username Taken")
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
     }
     
     func signUp(username: String, password: String, email: String, completion: @escaping(_ result: ResultType) -> Void) {
@@ -91,55 +135,28 @@ struct Auth {
         }
     }
     
-    
-//    func finishedWithAuth(auth: GTMOAuth2Authentication!, error: NSError!) {
-//        if error != nil {
-//          print(error.localizedDescription)
-//        }
-//        else {
-//          let idToken = auth.parameters.objectForKey("id_token")
-//          credentialsProvider.logins = [AWSCognitoLoginProviderKey.Google.rawValue: idToken!]
-//        }
-//    }
-
     func signInWithProvider(provider: AuthProvider, window: UIWindow, completion: @escaping(_ result: ResultType) -> Void) {
         Amplify.Auth.signInWithWebUI(for: provider, presentationAnchor: window, options: nil) { result in
-            print(result)
-            completion(.success)
+            switch result {
+            case .success:
+                do {
+                    let res = try result.get()
+                    print(res.isSignedIn)
+                    print(res.nextStep)
+                    completion(.success)
+                } catch {
+                    print("error")
+                    completion(.error)
+                }
+            case .failure(let error):
+                print("Sign in failed \(error)")
+                completion(.error)
+            }
         }
         
         
     }
     
-    func signInWithFacebook(loginButton: FBLoginButton) {
-        loginButton.sendActions(for: .touchUpInside)
-    }
-    
-    func signInWithGoogle(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-                          withError error: Error!, completion: @escaping(_ result: [String: Any]?) -> Void) {
-      if let error = error {
-        if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-          print("The user has not signed in before or they have since signed out.")
-        } else {
-          print("\(error.localizedDescription)")
-        }
-        completion(nil)
-        return
-      }
-      // Perform any operations on signed in user here.
-      let userId = user.userID                  // For client-side use only!
-      let idToken = user.authentication.idToken // Safe to send to the server
-      let fullName = user.profile.name
-      let givenName = user.profile.givenName
-      let familyName = user.profile.familyName
-      let email = user.profile.email
-        completion(nil) // FIX THIS
-      // ...
-    }
-    
-    func signOutGoogle() {
-        GIDSignIn.sharedInstance().signOut()
-    }
     
     func signIn(username: String, password: String, completion: @escaping(_ result: ResultType) -> Void) {
         guard username != "" else {
@@ -204,8 +221,10 @@ struct Auth {
             switch result {
             case .success:
                 print("Successfully signed out")
+                completion(.success)
             case .failure(let error):
                 print("Sign out failed with error \(error)")
+                completion(.error)
             }
         }
     }

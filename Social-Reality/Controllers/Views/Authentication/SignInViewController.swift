@@ -17,12 +17,14 @@ import AppAuth
 import AuthenticationServices
 
 class SignInViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailIndicatorButton: UIButton!
     
     var loginButton: FBLoginButton!
     var googleBtn: GIDSignInButton?
+    var email: String?
+    var social = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,23 +32,35 @@ class SignInViewController: UIViewController {
         emailTextField.delegate = self
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
-        GIDSignIn.sharedInstance()?.delegate = self
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        
-        loginButton = FBLoginButton()
-        loginButton.delegate = self
-        loginButton.permissions = ["public_profile", "email"]
-        loginButton.isHidden = true
-
+    }
+    
+    func presentAlert(title: String, message: String, button: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: button, style: .default, handler: { action in
+                                            switch action.style{
+                                            case .default:
+                                                print("default")
+                                            case .cancel:
+                                                print("cancel")
+                                            case .destructive:
+                                                print("destructive")
+                                            @unknown default:
+                                                print("Error")
+                                            }}))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     
-    @IBAction func tapEmailContinue(_ sender: UIButton) {
+    @IBAction func tapEmailContinue(_ sender: UIButton) { // FIXME: Sing in through Email
         
         if emailTextField.text!.isValidEmail() {
             Auth().userExists(email: emailTextField.text!) { (res) in
                 if res != nil {
-                    !res! ? self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil) : self.performSegue(withIdentifier: "toNewUserfromSign", sender: nil)
+                    self.social = false
+                    self.email = self.emailTextField.text
+                    !res! ? self.toEmailPassword() : self.toNewUser()
                 }
             }
             sender.pulsate()
@@ -56,29 +70,68 @@ class SignInViewController: UIViewController {
         
     }
     
+    func checkForUserInformation(provider: String) { // FIXME: Have to check for provider
+        if !Auth().loggedIn {
+            self.presentAlert(title: "Error Signing In", message: "There could have been a mistake on our end. Please try signing in again.", button: "Ok")
+        } else {
+            Auth().userAttributes { (attributes) in
+                if let attributeEmail = attributes?["email"] {
+                    self.email = attributeEmail
+                    Auth().userExists(email: attributeEmail) { (res) in
+                        if res != nil {
+                            !res! ? self.toNewUser() : self.toHome()
+                        } else {
+                            print("No result")
+                            self.presentAlert(title: "Error Signing In", message: "There could have been a mistake on our end. Please try signing in again.", button: "Ok")
+                        }
+                    }
+                } else {
+                    print("No email")
+                    self.presentAlert(title: "Error Signing In", message: "There could have been a mistake on our end. Please try signing in again.", button: "Ok")
+                }
+            }
+        }
+    }
+    
     @IBAction func tapGoogleSignIn(_ sender: UIButton) {
         sender.pulsate()
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .google, window: window) { res in
-            print(res)
+            if res == .success {
+                self.social = true
+                self.checkForUserInformation(provider: "Google")
+            } else {
+                print("Error signing In")
+                
+            }
         }
-//        GIDSignIn.sharedInstance()?.signIn()
     }
     
     @IBAction func tapFacebookSignIn(_ sender: UIButton) {
         sender.pulsate()
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .facebook, window: window) { res in
-            print(res)
+            if res == .success {
+                self.social = true
+                self.checkForUserInformation(provider: "Facebook")
+            } else {
+                print("Error signing In")
+                
+            }
         }
-//        loginButton.sendActions(for: .touchUpInside)
     }
     
     @IBAction func tapAppleSignIn(_ sender: UIButton) {
         sender.pulsate()
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .apple, window: window) { res in
-            print(res)
+            if res == .success {
+                self.social = true
+                self.checkForUserInformation(provider: "Apple")
+            } else {
+                print("Error signing In")
+                
+            }
         }
     }
     
@@ -86,45 +139,31 @@ class SignInViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    func toEmailPassword() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil)
+        }
+    }
+    func toNewUser() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "toNewUserfromSign", sender: nil)
+        }
+    }
+    func toHome() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "toHomefromSignIn", sender: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
-            dest.email = emailTextField.text
+            dest.email = email
+            dest.social = social
         }
         if let dest = segue.destination as? PasswordViewController {
             dest.email = emailTextField.text
         }
     }
-    
-    
-}
-
-extension SignInViewController: LoginButtonDelegate, GIDSignInDelegate {
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("Logged Out")
-    }
-    
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        if AccessToken.current != nil && result != nil {
-            
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        guard let error = error else { return }
-        guard let authentication = user.authentication else { return }
-//        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-//        self.firCredential = credential
-//        self.userEmail = user.profile.email
-//        self.signSocial()
-        
-    }
-    
-    
     
 }
 
@@ -133,7 +172,7 @@ extension SignInViewController: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.trimmingCharacters(in: .whitespaces)
-
+        
         if textField.text == "" {
             UIView.animate(withDuration: 0.3) {
                 self.emailIndicatorButton.alpha = 0

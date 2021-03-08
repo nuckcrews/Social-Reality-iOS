@@ -9,6 +9,8 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
+// MARK: Update Query Methods - Global
+
 struct UpdateMethods {
     
     func user(_ item: UserModel, completion: @escaping(_ result: ResultType) -> Void) {

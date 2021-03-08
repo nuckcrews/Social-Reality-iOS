@@ -32,11 +32,12 @@ enum ProfileAccessibility {
 
 type UserModel @model @auth(rules: [{allow: public}]) {
   id: ID!
-  userName: String!
+  username: String!
   status: String
   first: String
   last: String
   lastActive: String
   access: ProfileAccessibility!
+  email: String!
 }
  

@@ -26,6 +26,7 @@ class AccountViewController: UIViewController {
         case creation(CreationView)
     }
     
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,21 @@ class AccountViewController: UIViewController {
         
         configureDatasource()
         
+        getUser()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        print(user?.model?.username)
+    }
+    
+    func getUser() {
+        print(Auth().user)
+        if let id = Auth().user?.userId {
+            user = User(id: id, subscribe: false)
+            print(user?.model?.first)
+        }
     }
     
     

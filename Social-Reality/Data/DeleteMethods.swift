@@ -9,6 +9,8 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
+// MARK: Delete Query Methods - Global
+
 struct DeleteMethods {
     
     func user(_ item: UserModel, completion: @escaping(_ result: ResultType) -> Void) {

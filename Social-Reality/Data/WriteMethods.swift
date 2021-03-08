@@ -9,6 +9,8 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
+// MARK: Write Query Methods - Global
+
 struct WriteMethods {
     
     func user(_ user: UserModel, completion: @escaping(_ result: UserModel?) -> Void) {

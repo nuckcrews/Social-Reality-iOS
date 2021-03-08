@@ -16,7 +16,7 @@ class CoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if Auth().signedIn {
+        if Auth().loggedIn {
             print("signed In")
         } else {
             print("Signed Out")
@@ -27,8 +27,14 @@ class CoverViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if !Auth().signedIn && !opened {
+        if !Auth().loggedIn && !opened {
             toSignIn()
+        }
+        
+        if Auth().loggedIn {
+            print("signed In")
+        } else {
+            print("Signed Out")
         }
         
         opened = true

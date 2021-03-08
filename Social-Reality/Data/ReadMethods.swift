@@ -9,6 +9,8 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
+// MARK: Read Query Methods - Global
+
 struct ReadMethods {
     
     func user(id: String, completion: @escaping(_ result: UserModel?) -> Void) {
@@ -26,6 +28,20 @@ struct ReadMethods {
                 print("Could not perform query for account - \(error)")
                 completion(nil)
             }
+        }
+    }
+    
+    func usersWithPredicate(predicate: QueryPredicate?, completion: @escaping(_ result: [UserModel]?) -> Void) {
+        Amplify.DataStore.query(UserModel.self, where: predicate, sort: nil, paginate: .firstPage) { (result) in
+            switch result {
+            case .success(let users):
+                print("Got Users", users.count)
+                completion(users)
+            case .failure(let error):
+                print(error)
+                completion(nil)
+            }
+            
         }
     }
     

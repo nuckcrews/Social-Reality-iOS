@@ -45,13 +45,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 switch payload.eventName {
                 
                 case HubPayload.EventName.Auth.signedIn:
-                    self.updateUI(forSignInStatus: true)
+                    self.updateSignIn(forSignInStatus: true)
                     
                 case HubPayload.EventName.Auth.signedOut:
-                    self.updateUI(forSignInStatus: false)
+                    self.updateSignIn(forSignInStatus: false)
                     
                 case HubPayload.EventName.Auth.sessionExpired:
-                    self.updateUI(forSignInStatus: false)
+                    self.updateSignIn(forSignInStatus: false)
                     
                 default:
                     break
@@ -68,22 +68,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func updateUI(forSignInStatus : Bool) {
-        DispatchQueue.main.async() {
-            self.userData.isSignedIn = forSignInStatus
-        }
+    func updateSignIn(forSignInStatus : Bool) {
+        self.userData.isSignedIn = forSignInStatus
     }
     
-    // when user is signed in, fetch its details
     func checkUserSignedIn() {
-        
-        // every time auth status changes, let's check if user is signedIn or not
-        // updating userData will automatically update the UI
         _ = Amplify.Auth.fetchAuthSession { (result) in
-            
             do {
                 let session = try result.get()
-                self.updateUI(forSignInStatus: session.isSignedIn)
+                self.updateSignIn(forSignInStatus: session.isSignedIn)
             } catch {
                 print("Fetch auth session failed with error - \(error)")
             }
@@ -91,29 +84,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-
+    
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        print("handling URL")
         print(url)
         return true
     }
     
-//
-//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-//
-//        ApplicationDelegate.shared.application(
-//            app,
-//            open: url,
-//            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-//            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-//        )
-//
-//
-//        return GIDSignIn.sharedInstance().handle(url)
-//    }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

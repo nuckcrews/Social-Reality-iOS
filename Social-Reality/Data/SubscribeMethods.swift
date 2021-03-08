@@ -9,6 +9,8 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
+// MARK: Subscribe Query Methods - Global
+
 struct SubscribeMethods {
     
     func user(id: String, completion: @escaping(_ result: UserModel?, _ type: EventType?) -> Void) {

@@ -10,6 +10,8 @@ import RealityKit
 import Amplify
 import AmplifyPlugins
 
+// MARK: Content Creation View Controller
+
 class CreateViewController: UIViewController {
     
 //    @IBOutlet var arView: ARView!
@@ -22,6 +24,17 @@ class CreateViewController: UIViewController {
         
         // Add the box anchor to the scene
 //        arView.scene.anchors.append(boxAnchor)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        print(Auth().loggedIn)
+        Auth().signOutLocally { (res) in
+            print(res)
+            print(Auth().loggedIn)
+        }
+        
     }
     
     
