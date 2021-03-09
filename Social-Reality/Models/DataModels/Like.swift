@@ -24,7 +24,7 @@ class Like : ObservableObject {
     }
     
     private func getLike(id: String) {
-        Query.get.like(id: id) { (res) in
+        Query.api.get.like(id: id) { (res) in
             guard let res = res else { return }
             print(res)
             self.model = res
@@ -32,7 +32,7 @@ class Like : ObservableObject {
     }
     
     private func subscribeToLike(id: String) {
-        Query.subscribe.like(id: id) { (res, event) in
+        Query.api.subscribe.like(id: id) { (res, event) in
             guard let res = res else { return }
             print(res)
             print(event as Any)
@@ -47,14 +47,14 @@ class Like : ObservableObject {
     
     public func updateLike(item: LikeModel) {
         model = item
-        Query.update.like(item) { (res) in
+        Query.api.update.like(item) { (res) in
             print(res)
         }
     }
     
     public func delete() {
         guard let model = model else { return }
-        Query.delete.like(model) { (res) in
+        Query.api.delete.like(model) { (res) in
             print(res)
         }
     }

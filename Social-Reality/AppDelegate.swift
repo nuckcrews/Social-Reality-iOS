@@ -34,10 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             try Amplify.add(plugin: dataStorePlugin)
             try Amplify.add(plugin: apiPlugin) // UNCOMMENT this line once backend is deployed
+            try Amplify.add(plugin: AWSS3StoragePlugin())
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.configure()
             // load data when user is signedin
-            self.checkUserSignedIn()
+//            self.checkUserSignedIn()
             
             // listen to auth events
             _ = Amplify.Hub.listen(to: .auth) { (payload) in
@@ -62,8 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("Could not initialize Amplify: \(error)")
         }
-        
-        
         
         return true
     }

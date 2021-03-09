@@ -1459,6 +1459,7 @@
                         <segue destination="Cbh-jO-4nN" kind="show" identifier="toNewUserfromSign" id="qR0-h3-joD"/>
                         <segue destination="71Q-2i-1HC" kind="show" identifier="toPasswordfromSign" id="7Zr-v9-OTR"/>
                         <segue destination="kyh-3S-HQa" kind="show" identifier="toHomefromSignIn" id="c5R-lK-t0X"/>
+                        <segue destination="k0r-YN-57c" kind="show" identifier="toCreatePasswordfromSignIn" id="Bsv-0t-qTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2E-pT-Xg1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1704,7 +1705,7 @@
                                                         <rect key="frame" x="102.5" y="2" width="213.5" height="38"/>
                                                         <color key="tintColor" name="Primary"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="continue"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="continue"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfm-EO-IMa">
                                                         <rect key="frame" x="8" y="12" width="70.5" height="18"/>
@@ -1840,13 +1841,119 @@
                         <outlet property="usernameTakenLabel" destination="63R-d8-Ci8" id="Tbs-10-c7o"/>
                         <outlet property="usernameTextField" destination="Ghu-Je-6XA" id="CfG-NX-WeC"/>
                         <outlet property="usernameTextIndicator" destination="a0C-eE-Qhi" id="CyN-CC-VKg"/>
-                        <segue destination="k0r-YN-57c" kind="show" identifier="toPasswordfromCreateUser" id="FLd-gy-tVP"/>
                         <segue destination="kyh-3S-HQa" kind="show" identifier="toHomefromCreateUser" id="WWb-yj-wws"/>
+                        <segue destination="wHK-9Z-j3w" kind="show" identifier="toAvatarfromCreateUser" id="CO7-sE-Qvt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGb-n8-cnm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2294.202898550725" y="-476.11607142857139"/>
+        </scene>
+        <!--Create Avatar View Controller-->
+        <scene sceneID="TDa-Mf-FQz">
+            <objects>
+                <viewController id="wHK-9Z-j3w" customClass="CreateAvatarViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JFD-kd-w5o">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="aJ2-ED-IPk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okJ-eN-Fm2">
+                                <rect key="frame" x="16" y="56" width="15" height="22"/>
+                                <color key="tintColor" name="MainText"/>
+                                <state key="normal" image="chevron.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBack:" destination="wHK-9Z-j3w" eventType="touchUpInside" id="prx-6H-zAo"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="vol-73-NNo" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
+                                <rect key="frame" x="64" y="138" width="286" height="286"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vol-73-NNo" secondAttribute="height" multiplier="1:1" id="VRJ-9C-8cW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Avatar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmf-CM-nUu">
+                                <rect key="frame" x="123" y="90" width="168" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" name="Primary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1GA-CB-hVd" customClass="BorderedButton" customModule="Social_Reality" customModuleProvider="target">
+                                <rect key="frame" x="32" y="492" width="350" height="36"/>
+                                <color key="backgroundColor" name="Primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="1fh-cx-AWy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="Primary"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapContinue:" destination="wHK-9Z-j3w" eventType="touchUpInside" id="gcZ-op-x1A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsY-Ps-bRU">
+                                <rect key="frame" x="168" y="436" width="78" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Edit Avatar">
+                                    <color key="titleColor" name="AccentColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapEditAvatar:" destination="wHK-9Z-j3w" eventType="touchUpInside" id="gAO-jo-KqZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnC-M5-Xzs">
+                                <rect key="frame" x="64" y="138" width="286" height="286"/>
+                                <connections>
+                                    <action selector="tapEditAvatar:" destination="wHK-9Z-j3w" eventType="touchUpInside" id="jPr-5n-SLL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ITC-B8-adf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="aJ2-ED-IPk" secondAttribute="bottom" id="04r-tM-dCP"/>
+                            <constraint firstItem="WnC-M5-Xzs" firstAttribute="centerY" secondItem="vol-73-NNo" secondAttribute="centerY" id="3z2-8v-vaM"/>
+                            <constraint firstItem="okJ-eN-Fm2" firstAttribute="top" secondItem="ITC-B8-adf" secondAttribute="top" constant="12" id="6WA-E3-5iz"/>
+                            <constraint firstItem="1GA-CB-hVd" firstAttribute="leading" secondItem="ITC-B8-adf" secondAttribute="leading" constant="32" id="6uf-1L-Vqg"/>
+                            <constraint firstItem="wmf-CM-nUu" firstAttribute="centerX" secondItem="JFD-kd-w5o" secondAttribute="centerX" id="8aY-jp-GS3"/>
+                            <constraint firstItem="wmf-CM-nUu" firstAttribute="top" secondItem="okJ-eN-Fm2" secondAttribute="bottom" constant="12" id="9v1-aK-kZ2"/>
+                            <constraint firstItem="aJ2-ED-IPk" firstAttribute="top" secondItem="JFD-kd-w5o" secondAttribute="top" id="Apz-6m-lF6"/>
+                            <constraint firstItem="ITC-B8-adf" firstAttribute="trailing" secondItem="vol-73-NNo" secondAttribute="trailing" constant="64" id="AuI-SZ-gP3"/>
+                            <constraint firstItem="1GA-CB-hVd" firstAttribute="top" secondItem="QsY-Ps-bRU" secondAttribute="bottom" constant="24" id="Kcv-Ex-mPt"/>
+                            <constraint firstItem="aJ2-ED-IPk" firstAttribute="leading" secondItem="ITC-B8-adf" secondAttribute="leading" id="MBG-vA-tC1"/>
+                            <constraint firstItem="ITC-B8-adf" firstAttribute="trailing" secondItem="aJ2-ED-IPk" secondAttribute="trailing" id="Mdr-0g-vAC"/>
+                            <constraint firstItem="QsY-Ps-bRU" firstAttribute="centerX" secondItem="JFD-kd-w5o" secondAttribute="centerX" id="NIJ-UX-i93"/>
+                            <constraint firstItem="okJ-eN-Fm2" firstAttribute="leading" secondItem="ITC-B8-adf" secondAttribute="leading" constant="16" id="Ol0-Ml-HEk"/>
+                            <constraint firstItem="WnC-M5-Xzs" firstAttribute="width" secondItem="vol-73-NNo" secondAttribute="width" id="P70-cM-HPK"/>
+                            <constraint firstItem="WnC-M5-Xzs" firstAttribute="height" secondItem="vol-73-NNo" secondAttribute="height" id="Rmf-Zu-Q3h"/>
+                            <constraint firstItem="vol-73-NNo" firstAttribute="top" secondItem="wmf-CM-nUu" secondAttribute="bottom" constant="24" id="Vny-5L-hJJ"/>
+                            <constraint firstItem="vol-73-NNo" firstAttribute="leading" secondItem="ITC-B8-adf" secondAttribute="leading" constant="64" id="kWG-Xv-OvR"/>
+                            <constraint firstItem="WnC-M5-Xzs" firstAttribute="centerX" secondItem="vol-73-NNo" secondAttribute="centerX" id="r03-Nw-WTf"/>
+                            <constraint firstItem="ITC-B8-adf" firstAttribute="trailing" secondItem="1GA-CB-hVd" secondAttribute="trailing" constant="32" id="sTD-VY-r65"/>
+                            <constraint firstItem="QsY-Ps-bRU" firstAttribute="top" secondItem="vol-73-NNo" secondAttribute="bottom" constant="12" id="tLF-Qc-P3B"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8Qs-V6-fOm"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="vol-73-NNo" id="7me-A9-ary"/>
+                        <outlet property="loadingIndicator" destination="aJ2-ED-IPk" id="i9n-O7-aoV"/>
+                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomefromAvatar" id="ZG6-Wg-h0e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbQ-98-M8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1465.217391304348" y="-477.45535714285711"/>
         </scene>
         <!--Create Password View Controller-->
         <scene sceneID="dHD-Cc-oaW">
@@ -2012,12 +2119,12 @@
                     <connections>
                         <outlet property="passwordTextField" destination="Sz6-u5-nwe" id="Y0j-KR-rg1"/>
                         <outlet property="reenterTextField" destination="QKY-nh-OLA" id="TRB-db-RAV"/>
-                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomefromCreatePassword" id="Kbb-aG-O27"/>
+                        <segue destination="Cbh-jO-4nN" kind="show" identifier="toCreateUserfromPassword" id="L1w-Bt-HCQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8b-BJ-KLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1468.1159420289857" y="-475.44642857142856"/>
+            <point key="canvasLocation" x="-1464" y="-1185"/>
         </scene>
         <!--Home-->
         <scene sceneID="Zjf-8Q-bXZ">
@@ -2038,11 +2145,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WWb-yj-wws"/>
+        <segue reference="qR0-h3-joD"/>
+        <segue reference="c5R-lK-t0X"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="7D170C57-2A05-4F0E-8F6D-511DFF7A4BBB" width="3024" height="4032"/>
         <image name="AppleSignLogo" width="770" height="770"/>
+        <image name="DefaultProfileImage" width="251" height="250"/>
         <image name="FacebookSognLogo" width="512" height="512"/>
         <image name="GoogleSign" width="225" height="225"/>
         <image name="bell" catalog="system" width="128" height="124"/>
@@ -2066,6 +2175,9 @@
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.rectangle.on.rectangle.fill" catalog="system" width="128" height="96"/>
+        <namedColor name="AccentColor">
+            <color red="0.49399998784065247" green="0.4309999942779541" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="Background">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>

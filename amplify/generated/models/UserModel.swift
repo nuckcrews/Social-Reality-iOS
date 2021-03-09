@@ -11,6 +11,7 @@ public struct UserModel: Model {
   public var lastActive: String?
   public var access: ProfileAccessibility
   public var email: String
+  public var image: String?
   
   public init(id: String = UUID().uuidString,
       username: String,
@@ -19,7 +20,8 @@ public struct UserModel: Model {
       last: String? = nil,
       lastActive: String? = nil,
       access: ProfileAccessibility,
-      email: String) {
+      email: String,
+      image: String? = nil) {
       self.id = id
       self.username = username
       self.status = status
@@ -28,5 +30,6 @@ public struct UserModel: Model {
       self.lastActive = lastActive
       self.access = access
       self.email = email
+      self.image = image
   }
 }

@@ -33,6 +33,7 @@ class CreateViewController: UIViewController {
         Auth().signOutLocally { (res) in
             print(res)
             print(Auth().loggedIn)
+//            Amplify.DataStore.clear()
         }
         
     }

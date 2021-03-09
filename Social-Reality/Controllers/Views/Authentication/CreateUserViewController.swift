@@ -22,7 +22,6 @@ class CreateUserViewController: UIViewController {
     @IBOutlet weak var usernameTakenLabel: UILabel!
     
     var email: String?
-    var social = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +51,7 @@ class CreateUserViewController: UIViewController {
                     self.usernameTextIndicator.tintColor = .red
                 } else {
                     self.usernameTextIndicator.tintColor = .green
-                    self.social ? self.createUser() : self.toPassword()
+                    self.createUser()
                 }
             }
         }
@@ -60,17 +59,15 @@ class CreateUserViewController: UIViewController {
     }
     
     func createUser() {
-        
-        let user = UserModel(id: Auth().user!.userId, username: usernameTextField.text!, status: nil, first: firstnameTextField.text, last: lastnameTextField.text, lastActive: nil, access: .public, email: email!)
-        Query.write.user(user) { (result) in
+        let user = UserModel(id: Auth().user!.userId, username: usernameTextField.text!, status: "", first: firstnameTextField.text, last: lastnameTextField.text, lastActive: "", access: .public, email: email!, image: "")
+        Query.api.write.user(user) { (result) in
             if result != nil {
                 print("Created user")
-                self.toHome()
+                self.toAvatar()
             } else {
                 print("Error Creating User")
             }
         }
-        
         
     }
     
@@ -87,9 +84,9 @@ class CreateUserViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    func toPassword() {
+    func toAvatar() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toPasswordfromCreateUser", sender: nil)
+            self.performSegue(withIdentifier: "toAvatarfromCreateUser", sender: nil)
         }
     }
     
@@ -118,6 +115,8 @@ extension CreateUserViewController: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == usernameTextField {
+            textField.text = textField.text?.lowercased()
+            textField.text = textField.text?.replacingOccurrences(of: " ", with: "_")
             usernameTakenLabel.alpha = 0
             usernameTextIndicator.tintColor = .systemGray4
         } else if textField == firstnameTextField {
@@ -138,7 +137,7 @@ extension CreateUserViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if usernameTextField.text != "" {
-//            checkUserName()
+            //            checkUserName()
             
             return true
         } else {

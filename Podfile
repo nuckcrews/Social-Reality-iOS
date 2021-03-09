@@ -10,6 +10,7 @@ target 'Social-Reality' do
   # AWS Pods
   pod 'Amplify'
   pod 'AmplifyPlugins/AWSAPIPlugin'
+  pod 'AmplifyPlugins/AWSS3StoragePlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
   pod 'AWSUserPoolsSignIn'

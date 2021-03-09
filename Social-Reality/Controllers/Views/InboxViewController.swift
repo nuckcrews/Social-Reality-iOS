@@ -18,6 +18,19 @@ class InboxViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        addData()
+        
+    }
+    
+    func addData() {
+        var creation = CreationModel(id: "firstCreation", title: "Robot", description: "", lastViewed: "", accessibility: .public, status: "draft")
+//        Query.api.write.creation(creation) { (model) in
+//            print(creation)
+//        }
+        creation.description = "The first ever"
+        Query.api.update.creation(creation) { (res) in
+            print(res)
+        }
     }
     
     

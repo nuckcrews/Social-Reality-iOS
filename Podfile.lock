@@ -17,6 +17,10 @@ PODS:
     - AWSCore (~> 2.23.0)
     - AWSPluginsCore (= 1.6.1)
     - SQLite.swift (~> 0.12.0)
+  - AmplifyPlugins/AWSS3StoragePlugin (1.6.1):
+    - AWSCore (~> 2.23.0)
+    - AWSPluginsCore (= 1.6.1)
+    - AWSS3 (~> 2.23.0)
   - AppAuth (1.4.0):
     - AppAuth/Core (= 1.4.0)
     - AppAuth/ExternalUserAgent (= 1.4.0)
@@ -42,6 +46,8 @@ PODS:
   - AWSPluginsCore (1.6.1):
     - Amplify (= 1.6.1)
     - AWSCore (~> 2.23.0)
+  - AWSS3 (2.23.1):
+    - AWSCore (= 2.23.1)
   - AWSUserPoolsSignIn (2.23.1):
     - AWSAuthCore (= 2.23.1)
     - AWSCognitoIdentityProvider (= 2.23.1)
@@ -86,6 +92,7 @@ DEPENDENCIES:
   - AmplifyPlugins/AWSAPIPlugin
   - AmplifyPlugins/AWSCognitoAuthPlugin
   - AmplifyPlugins/AWSDataStorePlugin
+  - AmplifyPlugins/AWSS3StoragePlugin
   - AWSGoogleSignIn
   - AWSUserPoolsSignIn
   - FBSDKLoginKit
@@ -107,6 +114,7 @@ SPEC REPOS:
     - AWSGoogleSignIn
     - AWSMobileClient
     - AWSPluginsCore
+    - AWSS3
     - AWSUserPoolsSignIn
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -131,6 +139,7 @@ SPEC CHECKSUMS:
   AWSGoogleSignIn: 2d686803d0d547eaf1dd46e3da494d5d1d549a5a
   AWSMobileClient: ffe1179b9e6d5db7cea3f807df7d47f5d00a5c65
   AWSPluginsCore: f41f8a478fe3fd8839ec16278b86dededefb0628
+  AWSS3: 66bf4071639d0bebaec10e7b6587712df5f05a26
   AWSUserPoolsSignIn: 5397fa0da35e78d9ca8404dbaa0b8be080797418
   FBSDKCoreKit: fada1a6a0076724678993ff05a633848765ff18c
   FBSDKLoginKit: d5ffe6d808897019ccf16feb6f0a7ab260bc5cd6
@@ -143,6 +152,6 @@ SPEC CHECKSUMS:
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
 
-PODFILE CHECKSUM: 570a49dbb586440dde7c848c8d6acce29d742199
+PODFILE CHECKSUM: 0cb27a4e86d813782e9be1655e2abe621700813f
 
 COCOAPODS: 1.8.4

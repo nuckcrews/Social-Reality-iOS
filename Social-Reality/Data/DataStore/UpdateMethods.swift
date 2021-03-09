@@ -9,9 +9,9 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
-// MARK: Update Query Methods - Global
+// MARK: Update Query Methods - Local
 
-struct UpdateMethods {
+struct DataStoreUpdateMethods {
     
     func user(_ item: UserModel, completion: @escaping(_ result: ResultType) -> Void) {
         Amplify.DataStore.save(item) {

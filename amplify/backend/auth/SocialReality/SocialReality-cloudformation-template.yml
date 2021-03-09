@@ -165,20 +165,19 @@ Parameters:
   authProviders:
     Type: CommaDelimitedList
       
-  hostedUIProviderCreds:
-    Type: String
-  
-            
-            
   
   thirdPartyAuth:
     Type: String
+            
+  hostedUIProviderCreds:
+    Type: String
+  
             
 Conditions:
   ShouldNotCreateEnvResources: !Equals [ !Ref env, NONE ]
   
   ShouldOutputAppClientSecrets: !Equals [!Ref userpoolClientGenerateSecret, true ]
-   
+  
 
 Resources:
   
@@ -326,7 +325,7 @@ Resources:
             - ' }'
             - '};'
       Handler: index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       Timeout: '300'
       Role: !GetAtt
         - UserPoolClientRole
@@ -452,7 +451,7 @@ Resources:
 
 
       Handler: index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       Timeout: '300'
       Role: !GetAtt
         - UserPoolClientRole
@@ -584,7 +583,7 @@ Resources:
             - '} '
 
       Handler: index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       Timeout: '300'
       Role: !GetAtt
         - UserPoolClientRole
@@ -683,7 +682,7 @@ Resources:
             - '}'
 
       Handler: index.handler
-      Runtime: nodejs10.x
+      Runtime: nodejs12.x
       Timeout: '300'
       Role: !GetAtt
         - UserPoolClientRole

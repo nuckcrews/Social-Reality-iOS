@@ -1,6 +1,6 @@
 {
     "identityPoolName": "testAuthIdentityPool",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "socialb56b4f45",
     "userPoolName": "SocialReality",
     "autoVerifiedAttributes": [

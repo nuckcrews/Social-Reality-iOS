@@ -42,18 +42,35 @@ class AccountViewController: UIViewController {
         
         getUser()
         
+        // uploadImage()
+    }
+    
+    func uploadImage() {
+        Storage.upload.image(key: "defaultprofile", image: UIImage(named: "DefaultProfileImage")!) { (result) in
+            Storage.download.imageURL(key: "defaultprofile") { (url) in
+                print(url?.absoluteString)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        print(user?.model?.username)
+        print(user?.model?.image)
     }
     
     func getUser() {
         print(Auth().user)
         if let id = Auth().user?.userId {
-            user = User(id: id, subscribe: false)
-            print(user?.model?.first)
+            user = User(id: id, subscribe: false, completion: { (result) in
+                print(result)
+//                print(self.user?.model)
+                self.user?.model?.last = "Crews"
+                print(self.user?.model)
+                self.user?.updateUser(item: self.user!.model!)
+//                print(self.user?.model)
+            })
+                //User(id: id, subscribe: false)
+            
         }
     }
     

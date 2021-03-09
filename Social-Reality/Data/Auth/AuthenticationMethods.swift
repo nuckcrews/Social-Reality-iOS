@@ -76,8 +76,8 @@ struct Auth {
         }
         let userKeys = UserModel.keys
         let predicate = userKeys.email == email
-        Query.get.usersWithPredicate(predicate: predicate) { (users) in
-            if users == nil || users?.count ?? 0 > 0 {
+        Query.api.get.usersWithPredicate(predicate: predicate) { (users) in
+            if users?.count ?? 0 > 0 {
                 completion(true)
             } else {
                 completion(false)
@@ -88,7 +88,7 @@ struct Auth {
     func usernameExists(username: String, completion: @escaping(_ result: Bool) -> Void) {
         let userKeys = UserModel.keys
         let predicate = userKeys.username == username
-        Query.get.usersWithPredicate(predicate: predicate) { (result) in
+        Query.api.get.usersWithPredicate(predicate: predicate) { (result) in
             if result == nil || result?.count ?? 0 > 0 {
                 print("Username Taken")
                 completion(true)
@@ -153,8 +153,6 @@ struct Auth {
                 completion(.error)
             }
         }
-        
-        
     }
     
     

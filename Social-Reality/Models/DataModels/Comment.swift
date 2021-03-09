@@ -24,7 +24,7 @@ class Comment : ObservableObject {
     }
     
     private func getComment(id: String) {
-        Query.get.comment(id: id) { (res) in
+        Query.api.get.comment(id: id) { (res) in
             guard let res = res else { return }
             print(res)
             self.model = res
@@ -32,7 +32,7 @@ class Comment : ObservableObject {
     }
     
     private func subscribeToComment(id: String) {
-        Query.subscribe.comment(id: id) { (res, event) in
+        Query.api.subscribe.comment(id: id) { (res, event) in
             guard let res = res else { return }
             print(res)
             print(event as Any)
@@ -47,14 +47,14 @@ class Comment : ObservableObject {
     
     public func updateComment(item: CommentModel) {
         model = item
-        Query.update.comment(item) { (res) in
+        Query.api.update.comment(item) { (res) in
             print(res)
         }
     }
     
     public func delete() {
         guard let model = model else { return }
-        Query.delete.comment(model) { (res) in
+        Query.api.delete.comment(model) { (res) in
             print(res)
         }
     }

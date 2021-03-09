@@ -9,9 +9,9 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
-// MARK: Delete Query Methods - Global
+// MARK: Delete Query Methods - Local
 
-struct DeleteMethods {
+struct DataStoreDeleteMethods {
     
     func user(_ item: UserModel, completion: @escaping(_ result: ResultType) -> Void) {
         Amplify.DataStore.delete(item) {

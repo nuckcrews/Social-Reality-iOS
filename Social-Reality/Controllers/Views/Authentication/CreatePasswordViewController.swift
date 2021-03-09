@@ -25,9 +25,15 @@ class CreatePasswordViewController: UIViewController {
         
     }
     
+    func toCreateUser() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "toCreateUserfromPassword", sender: nil)
+        }
+    }
+    
     @IBAction func tapContinue(_ sender: UIButton) {
         sender.pulsate()
-        self.performSegue(withIdentifier: "toHomefromCreatePassword", sender: nil)
+        toCreateUser()
     }
     
     @IBAction func tapBack(_ sender: AnyObject) {

@@ -24,7 +24,7 @@ class Creation : ObservableObject {
     }
     
     private func getCreation(id: String) {
-        Query.get.creation(id: id) { (res) in
+        Query.api.get.creation(id: id) { (res) in
             guard let res = res else { return }
             print(res)
             self.model = res
@@ -32,7 +32,7 @@ class Creation : ObservableObject {
     }
     
     private func subscribeToCreation(id: String) {
-        Query.subscribe.creation(id: id) { (res, event) in
+        Query.api.subscribe.creation(id: id) { (res, event) in
             guard let res = res else { return }
             print(res)
             print(event as Any)
@@ -47,14 +47,14 @@ class Creation : ObservableObject {
     
     public func updateCreation(item: CreationModel) {
         model = item
-        Query.update.creation(item) { (res) in
+        Query.api.update.creation(item) { (res) in
             print(res)
         }
     }
     
     public func delete() {
         guard let model = model else { return }
-        Query.delete.creation(model) { (res) in
+        Query.api.delete.creation(model) { (res) in
             print(res)
         }
     }

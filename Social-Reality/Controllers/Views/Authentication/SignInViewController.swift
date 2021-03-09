@@ -21,8 +21,8 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailIndicatorButton: UIButton!
     
-    var loginButton: FBLoginButton!
-    var googleBtn: GIDSignInButton?
+//    var loginButton: FBLoginButton!
+//    var googleBtn: GIDSignInButton?
     var email: String?
     var social = false
     
@@ -58,9 +58,8 @@ class SignInViewController: UIViewController {
         if emailTextField.text!.isValidEmail() {
             Auth().userExists(email: emailTextField.text!) { (res) in
                 if res != nil {
-                    self.social = false
                     self.email = self.emailTextField.text
-                    !res! ? self.toEmailPassword() : self.toNewUser()
+                    !res! ? self.toEmailPassword() : self.toCreatePassword()
                 }
             }
             sender.pulsate()
@@ -98,7 +97,6 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .google, window: window) { res in
             if res == .success {
-                self.social = true
                 self.checkForUserInformation(provider: "Google")
             } else {
                 print("Error signing In")
@@ -112,7 +110,6 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .facebook, window: window) { res in
             if res == .success {
-                self.social = true
                 self.checkForUserInformation(provider: "Facebook")
             } else {
                 print("Error signing In")
@@ -126,7 +123,6 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .apple, window: window) { res in
             if res == .success {
-                self.social = true
                 self.checkForUserInformation(provider: "Apple")
             } else {
                 print("Error signing In")
@@ -139,6 +135,11 @@ class SignInViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    func toCreatePassword() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "toCreatePasswordfromSignIn", sender: nil)
+        }
+    }
     func toEmailPassword() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil)
@@ -158,7 +159,9 @@ class SignInViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email
-            dest.social = social
+        }
+        if let dest = segue.destination as? CreatePasswordViewController {
+            dest.email = emailTextField.text
         }
         if let dest = segue.destination as? PasswordViewController {
             dest.email = emailTextField.text

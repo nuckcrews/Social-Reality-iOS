@@ -39,5 +39,6 @@ type UserModel @model @auth(rules: [{allow: public}]) {
   lastActive: String
   access: ProfileAccessibility!
   email: String!
+  image: String
 }
- 
+  
