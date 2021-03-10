@@ -40,7 +40,7 @@ class AccountViewController: UIViewController {
         
         configureDatasource()
         
-        getUser()
+//        getUser()
         
         // uploadImage()
     }

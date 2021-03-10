@@ -30,11 +30,11 @@ class CreateViewController: UIViewController {
         super.viewDidAppear(true)
         
         print(Auth().loggedIn)
-        Auth().signOutLocally { (res) in
-            print(res)
-            print(Auth().loggedIn)
-//            Amplify.DataStore.clear()
-        }
+//        Auth().signOutLocally { (res) in
+//            print(res)
+//            print(Auth().loggedIn)
+////            Amplify.DataStore.clear()
+//        }
         
     }
     

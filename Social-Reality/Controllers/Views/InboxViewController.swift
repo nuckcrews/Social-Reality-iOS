@@ -18,7 +18,7 @@ class InboxViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        addData()
+//        addData()
         
     }
     
