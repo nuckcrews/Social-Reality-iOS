@@ -19,13 +19,20 @@ class CreateAvatarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let uid = Auth().user?.userId {
-            user = User(id: uid, subscribe: false, completion: { (result) in
-                print(result)
-            })
-        }
+        getUser()
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+    }
+    
+    func getUser() {
+        
+        guard let id = Auth().user?.userId else { return }
+        
+        user = User(id: id)
+        user?.getModel(id: id, completion: { result in
+            print(result)
+        })
         
     }
     

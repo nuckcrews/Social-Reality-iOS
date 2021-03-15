@@ -9,7 +9,12 @@ import UIKit
 
 class AccountViewController: UIViewController {
     
+    @IBOutlet weak var usernameTitleButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var followers = [String]()
+    var following = [String]()
+    var likes = [String]()
     
     private var datasource: Datasource!
     
@@ -49,18 +54,24 @@ class AccountViewController: UIViewController {
     func getUser() {
         
         guard let id = Auth().user?.userId else {
-            self.configureDatasource()
+            self.populateViews()
             return
         }
         
         user = User(id: id)
         user?.getModel(id: id, completion: { result in
             print(result)
-            self.configureDatasource()
+            self.populateViews()
         })
         
     }
     
+    func populateViews() {
+        configureDatasource()
+        DispatchQueue.main.async {
+            self.usernameTitleButton.setTitle(self.user?.model?.username ?? "My Account", for: .normal)
+        }
+    }
     
     @IBAction func tapSettings(_ sender: UIButton) {
         
@@ -76,14 +87,20 @@ extension AccountViewController {
         
         switch item {
         case .header(let data):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.profileHeaderCell.rawValue, for: indexPath) as! profileHeaderCell
-            cell.configure(with: data)
-            
-            return cell
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.profileHeaderCell.rawValue, for: indexPath) as? profileHeaderCell {
+                cell.configure(with: data)
+                return cell
+            } else {
+                return profileHeaderCell()
+            }
         case .creation(let data):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as! creationViewCell
-            cell.configure(with: data.image)
-            return cell
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
+                cell.configure(with: data.image)
+                return cell
+            } else {
+                return creationViewCell()
+            }
+            
         }
         
     }
@@ -100,8 +117,16 @@ extension AccountViewController {
         
         var snapshot = Snapshot()
         
+        let profileData = ProfileHeaderData(
+            first: user?.model?.first ?? "Your",
+            last: user?.model?.last ?? "Name",
+            username: user?.model?.username ?? "username",
+            followerCount: followers.count,
+            followingCount: following.count,
+            likesCount: likes.count)
+        
         snapshot.appendSections([.header, .creations])
-        snapshot.appendItems([.header(ProfileHeaderData(name: user?.model?.first ?? "", username: user?.model?.username ?? "username", postCount: 26))], toSection: .header)
+        snapshot.appendItems([.header(profileData)], toSection: .header)
         snapshot.appendItems(CreationView.demoPhotos.map({ Item.creation($0) }), toSection: .creations)
         snapshot.appendItems(CreationView.demoPhotos2.map({ Item.creation($0) }), toSection: .creations)
         
@@ -152,11 +177,11 @@ extension AccountViewController {
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
         
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-    
+        
         header.pinToVisibleBounds = true
         
         section.boundarySupplementaryItems = [header]
-    
+        
         return section
         
     }

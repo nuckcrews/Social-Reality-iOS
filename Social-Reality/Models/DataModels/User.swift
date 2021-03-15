@@ -34,29 +34,6 @@ class User : ObservableObject {
         _model = item
     }
     
-    init(id: String, subscribe: Bool, completion: @escaping(_ result: ResultType) -> Void) {
-        _id = id
-//        subscribe ? subscribeToUser(id: id) : getUser(id: id)
-        if subscribe {
-            Query.datastore.subscribe.user(id: id) { (res, event) in
-                guard let res = res else { return }
-                print(res)
-                print(event as Any)
-                self._model = res
-                completion(.success)
-            }
-        } else {
-            Query.datastore.get.user(id: id) { (res) in
-                guard let res = res else { return }
-                print(res)
-                self._model = res
-                print("username:", self.model?.username)
-                self.str = "finish"
-                completion(.success)
-            }
-        }
-    }
-    
     public func getModel(id: String, completion: @escaping(_ result: ResultType) -> Void) {
         Query.datastore.get.user(id: id) { (res) in
             guard let res = res else {

@@ -14,4 +14,8 @@ class ExploreMapHeaderView: UICollectionReusableView, InstantiatesFromNib {
         // Initialization code
     }
     
+    func setupView() {
+        
+    }
+    
 }

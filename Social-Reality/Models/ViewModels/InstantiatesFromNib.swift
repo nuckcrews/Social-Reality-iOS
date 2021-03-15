@@ -22,9 +22,10 @@ extension InstantiatesFromNib where Self: UIView {
         view.setupView()
         return view
     }
-
+    
     func setupView() {
         
         
     }
+    
 }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CustomSegmentedControlDelegate:class {
+protocol CustomSegmentedControlDelegate: AnyObject {
     func change(to index:Int)
 }
 
@@ -22,7 +22,7 @@ class CustomSegmentedControl: UIView {
     var selectorViewColor: UIColor = .red
     var selectorTextColor: UIColor = .red
     
-    weak var delegate:CustomSegmentedControlDelegate?
+    weak var delegate: CustomSegmentedControlDelegate?
     
     public private(set) var selectedIndex : Int = 0
     
