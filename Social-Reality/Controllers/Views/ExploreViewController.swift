@@ -42,11 +42,10 @@ class ExploreViewController: UIViewController {
         searchTextField.delegate = self
         
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
-        collectionView.register(ExploreMapHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ExploreMapHeaderView")
-        collectionView.register(ExploreCreationHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ExploreCreationHeaderView")
+        collectionView.register(ExploreMapHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreMapHeaderView.rawValue)
+        collectionView.register(ExploreCreationHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreCreationHeaderView.rawValue)
         
-        
-        collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: "creationViewCell")
+        collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: Cells.creationViewCell.rawValue)
         
         configureDatasource()
         setupMapView()
@@ -102,11 +101,11 @@ extension ExploreViewController {
     private func cell(collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell {
         switch item {
         case .map(let data):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mapViewCell", for: indexPath) as! mapViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.mapViewCell.rawValue, for: indexPath) as! mapViewCell
             cell.configure(with: data, delegate: self)
             return cell
         case .creation(let data):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "creationViewCell", for: indexPath) as! creationViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as! creationViewCell
             cell.configure(with: data.image)
             return cell
         }
@@ -168,38 +167,31 @@ extension ExploreViewController {
     }
     
     func createCreationsSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .fractionalHeight(1.0))
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .fractionalWidth(1/3))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1/3))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-        
         let section = NSCollectionLayoutSection(group: group)
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
-        
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-        
-        
-        //        section.orthogonalScrollingBehavior = .paging
-        
         
         header.pinToVisibleBounds = true
         
         section.boundarySupplementaryItems = [header]
         
-        
         return section
+        
     }
     
     private func supplementary(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
         
         if indexPath.section == 0 {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ExploreMapHeaderView", for: indexPath)
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreMapHeaderView.rawValue, for: indexPath)
         } else {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ExploreCreationHeaderView", for: indexPath)
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreCreationHeaderView.rawValue, for: indexPath)
         }
         
     }
