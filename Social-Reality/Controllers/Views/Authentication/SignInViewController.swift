@@ -21,10 +21,14 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailIndicatorButton: UIButton!
     
-//    var loginButton: FBLoginButton!
-//    var googleBtn: GIDSignInButton?
     var email: String?
     var social = false
+    
+    struct AlertError {
+        static var title = "Error Signing In"
+        static var message = "There could have been a mistake on our end. Please try signing in again."
+        static var button = "Ok"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,24 +74,23 @@ class SignInViewController: UIViewController {
     }
     
     func checkForUserInformation(provider: String) { // FIXME: Have to check for provider
-        if !Auth().loggedIn {
-            self.presentAlert(title: "Error Signing In", message: "There could have been a mistake on our end. Please try signing in again.", button: "Ok")
-        } else {
-            Auth().userAttributes { (attributes) in
-                if let attributeEmail = attributes?["email"] {
-                    self.email = attributeEmail
-                    Auth().userExists(email: attributeEmail) { (res) in
-                        if res != nil {
-                            !res! ? self.toNewUser() : self.toHome()
-                        } else {
-                            print("No result")
-                            self.presentAlert(title: "Error Signing In", message: "There could have been a mistake on our end. Please try signing in again.", button: "Ok")
-                        }
+        
+        guard Auth().loggedIn else {
+            self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
+            return
+        }
+        Auth().userAttributes { (attributes) in
+            if let attributeEmail = attributes?["email"] {
+                self.email = attributeEmail
+                Auth().userExists(email: attributeEmail) { (res) in
+                    if res != nil {
+                        !res! ? self.toNewUser() : self.toHome()
+                    } else {
+                        self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
                     }
-                } else {
-                    print("No email")
-                    self.presentAlert(title: "Error Signing In", message: "There could have been a mistake on our end. Please try signing in again.", button: "Ok")
                 }
+            } else {
+                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
             }
         }
     }
@@ -97,7 +100,7 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .google, window: window) { res in
             if res == .success {
-                self.checkForUserInformation(provider: "Google")
+                self.checkForUserInformation(provider: Provider.Google.rawValue)
             } else {
                 print("Error signing In")
                 
@@ -110,10 +113,9 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .facebook, window: window) { res in
             if res == .success {
-                self.checkForUserInformation(provider: "Facebook")
+                self.checkForUserInformation(provider: Provider.Facebook.rawValue)
             } else {
                 print("Error signing In")
-                
             }
         }
     }
@@ -123,10 +125,9 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .apple, window: window) { res in
             if res == .success {
-                self.checkForUserInformation(provider: "Apple")
+                self.checkForUserInformation(provider: Provider.Apple.rawValue)
             } else {
                 print("Error signing In")
-                
             }
         }
     }

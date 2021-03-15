@@ -79,29 +79,31 @@ class CreateAvatarViewController: UIViewController {
 }
 
 extension CreateAvatarViewController: ImagePickerDelegate {
+    
     func didSelect(image: UIImage?) {
-        if let image = image {
-            self.avatarImageView.image = image
-            self.uploadImage(image: image)
-        }
+        guard let image = image else { return }
+        self.avatarImageView.image = image
+        self.uploadImage(image: image)
     }
+    
     func uploadImage(image: UIImage) {
-        if let uid = Auth().user?.userId {
-            startLoading()
-            Storage.upload.image(key: uid, image: image) { (result) in
-                if result == .success {
-                    Storage.download.imageURL(key: uid) { (url) in
-                        if let url = url {
-                            print(url.absoluteString)
-                            self.imageURL = url.absoluteString
-                            self.stopLoading()
-                        }
+        guard let uid = Auth().user?.userId else { return }
+        startLoading()
+        Storage.upload.image(key: uid, image: image) { (result) in
+            if result == .success {
+                Storage.download.imageURL(key: uid) { (url) in
+                    if let url = url {
+                        print(url.absoluteString)
+                        self.imageURL = url.absoluteString
+                        self.stopLoading()
                     }
                 }
             }
         }
+        
     }
 }
+
 
 
 

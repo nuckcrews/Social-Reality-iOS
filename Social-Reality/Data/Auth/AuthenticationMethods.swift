@@ -56,7 +56,6 @@ struct Auth {
                 completion(session.isSignedIn)
             case .failure(let error):
                 print("Fetch session failed with error \(error)")
-                
                 completion(false)
             }
         }
