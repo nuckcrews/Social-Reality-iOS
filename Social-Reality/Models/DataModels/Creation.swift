@@ -1,5 +1,5 @@
 //
-//  Like.swift
+//  Creation.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 2/26/21.
@@ -10,29 +10,29 @@ import UIKit
 import Amplify
 import AmplifyPlugins
 
-class Like : ObservableObject {
+class Creation : ObservableObject {
     
-    var model: LikeModel?
+    var model: CreationModel?
     
-    init(item: LikeModel, subscribe: Bool) {
+    init(item: CreationModel, subscribe: Bool) {
         model = item
-        subscribe ? subscribeToLike(id: item.id) : getLike(id: item.id)
+        subscribe ? subscribeToCreation(id: item.id) : getCreation(id: item.id)
     }
     
     init(id: String, subscribe: Bool) {
-        subscribe ? subscribeToLike(id: id) : getLike(id: id)
+        subscribe ? subscribeToCreation(id: id) : getCreation(id: id)
     }
     
-    private func getLike(id: String) {
-        Query.get.like(id: id) { (res) in
+    private func getCreation(id: String) {
+        Query.datastore.get.creation(id: id) { (res) in
             guard let res = res else { return }
             print(res)
             self.model = res
         }
     }
     
-    private func subscribeToLike(id: String) {
-        Query.subscribe.like(id: id) { (res, event) in
+    private func subscribeToCreation(id: String) {
+        Query.datastore.subscribe.creation(id: id) { (res, event) in
             guard let res = res else { return }
             print(res)
             print(event as Any)
@@ -45,16 +45,16 @@ class Like : ObservableObject {
 //        subscription?.cancel()
     }
     
-    public func updateLike(item: LikeModel) {
+    public func updateCreation(item: CreationModel) {
         model = item
-        Query.update.like(item) { (res) in
+        Query.datastore.update.creation(item) { (res) in
             print(res)
         }
     }
     
     public func delete() {
         guard let model = model else { return }
-        Query.delete.like(model) { (res) in
+        Query.datastore.delete.creation(model) { (res) in
             print(res)
         }
     }

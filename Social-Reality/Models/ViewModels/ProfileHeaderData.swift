@@ -12,3 +12,5 @@ struct ProfileHeaderData: Hashable {
     let username: String
     let postCount: Int
 }
+
+

@@ -22,7 +22,7 @@ class PasswordViewController: UIViewController {
     
     @IBAction func tapContinue(_ sender: UIButton) {
         sender.pulsate()
-        self.performSegue(withIdentifier: "toHomefromPassword", sender: nil)
+        self.performSegue(withIdentifier: Segue.toHomefromPassword.rawValue, sender: nil)
     }
     
     @IBAction func tapBack(_ sender: AnyObject) {

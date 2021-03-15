@@ -1,4 +1,22 @@
 {
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-socialreality-dev-25329-authRole",
+      "UnauthRoleArn": "arn:aws:iam::297535061769:role/amplify-socialreality-dev-25329-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::297535061769:role/amplify-socialreality-dev-25329-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-socialreality-dev-25329-deployment",
+      "UnauthRoleName": "amplify-socialreality-dev-25329-unauthRole",
+      "StackName": "amplify-socialreality-dev-25329",
+      "StackId": "arn:aws:cloudformation:us-east-2:297535061769:stack/amplify-socialreality-dev-25329/a139ddc0-8082-11eb-a251-066f83490874",
+      "AmplifyAppId": "d3mken8xrlg0s6"
+    },
+    "categories": {
+      "auth": {
+        "SocialReality": {}
+      }
+    }
+  },
   "staging": {
     "awscloudformation": {
       "AuthRoleName": "amplify-socialreality-staging-143928-authRole",
@@ -10,6 +28,11 @@
       "StackName": "amplify-socialreality-staging-143928",
       "StackId": "arn:aws:cloudformation:us-east-2:297535061769:stack/amplify-socialreality-staging-143928/6ea2dfa0-7840-11eb-b9eb-02e961f9e5aa",
       "AmplifyAppId": "d3mken8xrlg0s6"
+    },
+    "categories": {
+      "auth": {
+        "SocialReality": {}
+      }
     }
   }
 }

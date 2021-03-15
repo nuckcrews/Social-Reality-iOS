@@ -18,6 +18,18 @@ class InboxViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        
+    }
+    
+    func addData() {
+        var creation = CreationModel(id: "secondCreation", title: "Robot", description: "", lastViewed: "", accessibility: .public, status: "draft")
+//        Query.api.write.creation(creation) { (model) in
+//            print(creation)
+//        }
+        creation.description = "The third ever"
+        Query.datastore.update.creation(creation) { (res) in
+            print(res)
+        }
     }
     
     
@@ -41,13 +53,13 @@ extension InboxViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row % 2 == 0 { // Need to fix this
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "inboxCell") as? inboxCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.inboxCell.rawValue) as? inboxCell {
                 return cell
             } else {
                 return inboxCell()
             }
         } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "promoCell") as? promoCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.promoCell.rawValue) as? promoCell {
                 return cell
             } else {
                 return promoCell()

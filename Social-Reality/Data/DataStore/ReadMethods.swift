@@ -9,7 +9,9 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
-struct ReadMethods {
+// MARK: Read Query Methods - Local
+
+struct DataStoreReadMethods {
     
     func user(id: String, completion: @escaping(_ result: UserModel?) -> Void) {
         Amplify.DataStore.query(UserModel.self, byId: id) { (result) in
@@ -27,7 +29,26 @@ struct ReadMethods {
                 completion(nil)
             }
         }
+        
+        
     }
+    
+    
+    func usersWithPredicate(predicate: QueryPredicate?, completion: @escaping(_ result: [UserModel]?) -> Void) {
+        Amplify.DataStore.query(UserModel.self, where: predicate, sort: nil, paginate: .firstPage) { (result) in
+            switch result {
+            case .success(let users):
+                print("Got Users", users)
+                completion(users)
+            case .failure(let error):
+                print(error)
+                completion(nil)
+            }
+            
+        }
+    }
+    
+
     
     func creation(id: String, completion: @escaping(_ result: CreationModel?) -> Void) {
         Amplify.DataStore.query(CreationModel.self, byId: id) { (result) in

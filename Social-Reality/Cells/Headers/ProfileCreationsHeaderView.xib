@@ -32,17 +32,17 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aW6-qO-4le" customClass="CustomSegmentedControl" customModule="Social_Reality" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="1" width="320" height="46"/>
+                            <rect key="frame" x="2" y="1" width="316" height="46"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" name="Background"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Mpi-ME-Hzt" secondAttribute="trailing" id="4XN-Dm-9pv"/>
-                        <constraint firstItem="aW6-qO-4le" firstAttribute="leading" secondItem="B3d-Wd-whl" secondAttribute="leading" id="IUN-do-009"/>
+                        <constraint firstItem="aW6-qO-4le" firstAttribute="leading" secondItem="B3d-Wd-whl" secondAttribute="leading" constant="2" id="IUN-do-009"/>
                         <constraint firstItem="Mpi-ME-Hzt" firstAttribute="leading" secondItem="B3d-Wd-whl" secondAttribute="leading" id="UJe-dA-ag9"/>
                         <constraint firstAttribute="bottom" secondItem="aW6-qO-4le" secondAttribute="bottom" constant="3" id="ZaU-Pf-Fcs"/>
                         <constraint firstAttribute="trailing" secondItem="532-ct-BeR" secondAttribute="trailing" id="eXP-j5-W41"/>
-                        <constraint firstAttribute="trailing" secondItem="aW6-qO-4le" secondAttribute="trailing" id="fcF-sp-Dgt"/>
+                        <constraint firstAttribute="trailing" secondItem="aW6-qO-4le" secondAttribute="trailing" constant="2" id="fcF-sp-Dgt"/>
                         <constraint firstItem="532-ct-BeR" firstAttribute="leading" secondItem="B3d-Wd-whl" secondAttribute="leading" id="fyr-9O-clR"/>
                         <constraint firstItem="Mpi-ME-Hzt" firstAttribute="top" secondItem="B3d-Wd-whl" secondAttribute="top" id="kcs-zO-wCH"/>
                         <constraint firstItem="aW6-qO-4le" firstAttribute="top" secondItem="B3d-Wd-whl" secondAttribute="top" constant="1" id="yrG-N4-ci5"/>

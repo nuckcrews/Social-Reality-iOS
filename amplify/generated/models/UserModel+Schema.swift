@@ -6,12 +6,14 @@ extension UserModel {
   // MARK: - CodingKeys 
    public enum CodingKeys: String, ModelKey {
     case id
-    case userName
+    case username
     case status
     case first
     case last
     case lastActive
     case access
+    case email
+    case image
   }
   
   public static let keys = CodingKeys.self
@@ -24,12 +26,14 @@ extension UserModel {
     
     model.fields(
       .id(),
-      .field(userModel.userName, is: .required, ofType: .string),
+      .field(userModel.username, is: .required, ofType: .string),
       .field(userModel.status, is: .optional, ofType: .string),
       .field(userModel.first, is: .optional, ofType: .string),
       .field(userModel.last, is: .optional, ofType: .string),
       .field(userModel.lastActive, is: .optional, ofType: .string),
-      .field(userModel.access, is: .required, ofType: .enum(type: ProfileAccessibility.self))
+      .field(userModel.access, is: .required, ofType: .enum(type: ProfileAccessibility.self)),
+      .field(userModel.email, is: .required, ofType: .string),
+      .field(userModel.image, is: .optional, ofType: .string)
     )
     }
 }

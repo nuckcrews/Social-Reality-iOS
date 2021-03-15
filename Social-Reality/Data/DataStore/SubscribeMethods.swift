@@ -9,7 +9,9 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
-struct SubscribeMethods {
+// MARK: Subscribe Query Methods - Local
+
+struct DataStoreSubscribeMethods {
     
     func user(id: String, completion: @escaping(_ result: UserModel?, _ type: EventType?) -> Void) {
 

@@ -8,11 +8,8 @@
 import Foundation
 
 struct Query {
-    static var get = ReadMethods()
-    static var write = WriteMethods()
-    static var update = UpdateMethods()
-    static var delete = DeleteMethods()
-    static var subscribe = SubscribeMethods()
+    static var datastore = DataStore()
+    static var api = API()
 }
 
 enum EventType {
@@ -24,4 +21,21 @@ enum EventType {
 enum ResultType {
     case success
     case error
+}
+
+
+struct DataStore {
+    var get = DataStoreReadMethods()
+    var write = DataStoreWriteMethods()
+    var update = DataStoreUpdateMethods()
+    var delete = DataStoreDeleteMethods()
+    var subscribe = DataStoreSubscribeMethods()
+}
+
+struct API {
+    var get = APIReadMethods()
+    var write = APIWriteMethods()
+    var update = APIUpdateMethods()
+    var delete = APIDeleteMethods()
+    var subscribe = APISubscribeMethods()
 }

@@ -9,7 +9,9 @@ import Foundation
 import Amplify
 import AmplifyPlugins
 
-struct WriteMethods {
+// MARK: Write Query Methods - Local
+
+struct DataStoreWriteMethods {
     
     func user(_ user: UserModel, completion: @escaping(_ result: UserModel?) -> Void) {
         Amplify.DataStore.save(user) { result in

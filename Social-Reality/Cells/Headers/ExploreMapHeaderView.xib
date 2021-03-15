@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExploreMapHeaderView" id="U6b-Vx-4bR" customClass="ExploreMapHeaderView" customModule="Social_Reality" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ve6-GA-jXA">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creations Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIL-sf-uvM">
+                            <rect key="frame" x="109" y="16" width="102" height="18"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                            <color key="textColor" name="GrayText"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" name="Background"/>
+                    <constraints>
+                        <constraint firstItem="UIL-sf-uvM" firstAttribute="centerY" secondItem="Ve6-GA-jXA" secondAttribute="centerY" id="Djc-r6-8dx"/>
+                        <constraint firstItem="UIL-sf-uvM" firstAttribute="centerX" secondItem="Ve6-GA-jXA" secondAttribute="centerX" id="eFx-Qn-uYH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="Ve6-GA-jXA" secondAttribute="trailing" id="E70-gl-pf6"/>
+                <constraint firstItem="Ve6-GA-jXA" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="Q9R-xm-2FX"/>
+                <constraint firstItem="Ve6-GA-jXA" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="Ywp-1k-GK5"/>
+                <constraint firstAttribute="bottom" secondItem="Ve6-GA-jXA" secondAttribute="bottom" id="eaG-8g-EW6"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="132"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="GrayText">
+            <color red="0.5690000057220459" green="0.5690000057220459" blue="0.5690000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
