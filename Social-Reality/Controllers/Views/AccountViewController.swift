@@ -40,7 +40,7 @@ class AccountViewController: UIViewController {
         
         configureDatasource()
         
-//        getUser()
+        getUser()
         
         // uploadImage()
     }
@@ -67,7 +67,7 @@ class AccountViewController: UIViewController {
                 self.user?.model?.last = "Crews"
                 print(self.user?.model)
                 self.user?.updateUser(item: self.user!.model!)
-//                print(self.user?.model)
+                print(self.user?.model)
             })
                 //User(id: id, subscribe: false)
             
@@ -77,7 +77,7 @@ class AccountViewController: UIViewController {
     
     @IBAction func tapSettings(_ sender: UIButton) {
         sender.jump()
-        self.performSegue(withIdentifier: "toSettingsfromProfile", sender: nil)
+        self.performSegue(withIdentifier: Segue.toSettingsfromProfile.rawValue, sender: nil)
     }
     
 }

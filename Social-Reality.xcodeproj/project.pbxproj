@@ -11,6 +11,7 @@
 		A006461125EB0C8E00A3E1F3 /* inboxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006461025EB0C8E00A3E1F3 /* inboxCell.swift */; };
 		A006461625EB0D1300A3E1F3 /* promoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006461525EB0D1300A3E1F3 /* promoCell.swift */; };
 		A006462825EB17F900A3E1F3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006462725EB17F900A3E1F3 /* Config.swift */; };
+		A016E05B25FAC03600D6D5D9 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A016E05A25FAC03600D6D5D9 /* Segues.swift */; };
 		A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02397D125EB1B5A00F13F72 /* CustomViews.swift */; };
 		A02397D425EB291B00F13F72 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02397D325EB291B00F13F72 /* CustomScrollView.swift */; };
 		A02397EA25EC09C800F13F72 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02397DF25EC09C800F13F72 /* CommentModel.swift */; };
@@ -139,6 +140,7 @@
 		A006461525EB0D1300A3E1F3 /* promoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = promoCell.swift; sourceTree = "<group>"; };
 		A006462725EB17F900A3E1F3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A008BAF125F2F6F400F70ECF /* Social-Reality.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Social-Reality.entitlements"; sourceTree = "<group>"; };
+		A016E05A25FAC03600D6D5D9 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		A02397D125EB1B5A00F13F72 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		A02397D325EB291B00F13F72 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		A02397DF25EC09C800F13F72 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				A03870B525E944AB003989CE /* NavigationController.swift */,
 				A02397FE25EC1C6200F13F72 /* CoverNavigationController.swift */,
 				A03870AA25E9447C003989CE /* CustomTabBarController.swift */,
+				A016E05A25FAC03600D6D5D9 /* Segues.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -1020,6 +1023,7 @@
 				A06B642125E9A18E00AE746D /* UIButton.swift in Sources */,
 				A006462825EB17F900A3E1F3 /* Config.swift in Sources */,
 				A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */,
+				A016E05B25FAC03600D6D5D9 /* Segues.swift in Sources */,
 				A06B63CD25E956C000AE746D /* Like.swift in Sources */,
 				A023980925EC262B00F13F72 /* Environment.swift in Sources */,
 				A03872C925E9497E003989CE /* MainViewController.swift in Sources */,

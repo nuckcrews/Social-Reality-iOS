@@ -47,7 +47,7 @@ class CreateAvatarViewController: UIViewController {
     func saveImage() {
         if var model = user?.model {
             model.image = imageURL
-            Query.api.update.user(model) { (result) in
+            Query.datastore.update.user(model) { (result) in
                 if result == .success {
                     self.toHome()
                 } else {
@@ -57,15 +57,9 @@ class CreateAvatarViewController: UIViewController {
         }
     }
     
-    func toPassword() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toHomefromAvatar", sender: nil)
-        }
-    }
-    
     func toHome() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toHomefromAvatar", sender: nil)
+            self.performSegue(withIdentifier: Segue.toHomefromAvatar.rawValue, sender: nil)
         }
     }
     

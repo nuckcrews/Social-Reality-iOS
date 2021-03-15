@@ -55,7 +55,7 @@ class CoverViewController: UIViewController {
     }
     
     func toSignIn() {
-        self.performSegue(withIdentifier: "toSignInfromCover", sender: nil)
+        self.performSegue(withIdentifier: Segue.toSignInfromCover.rawValue, sender: nil)
     }
     
 }

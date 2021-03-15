@@ -23,7 +23,7 @@ class User : ObservableObject {
     init(id: String, subscribe: Bool, completion: @escaping(_ result: ResultType) -> Void) {
         subscribe ? subscribeToUser(id: id) : getUser(id: id)
         if subscribe {
-            Query.api.subscribe.user(id: id) { (res, event) in
+            Query.datastore.subscribe.user(id: id) { (res, event) in
                 guard let res = res else { return }
                 print(res)
                 print(event as Any)
@@ -31,7 +31,7 @@ class User : ObservableObject {
                 completion(.success)
             }
         } else {
-            Query.api.get.user(id: id) { (res) in
+            Query.datastore.get.user(id: id) { (res) in
                 guard let res = res else { return }
                 print(res)
                 self.model = res
@@ -41,7 +41,7 @@ class User : ObservableObject {
     }
     
     private func getUser(id: String) {
-        Query.api.get.user(id: id) { (res) in
+        Query.datastore.get.user(id: id) { (res) in
             guard let res = res else { return }
             print(res)
             self.model = res
@@ -49,7 +49,7 @@ class User : ObservableObject {
     }
     
     private func subscribeToUser(id: String) {
-        Query.api.subscribe.user(id: id) { (res, event) in
+        Query.datastore.subscribe.user(id: id) { (res, event) in
             guard let res = res else { return }
             print(res)
             print(event as Any)
@@ -63,7 +63,7 @@ class User : ObservableObject {
     }
     
     public func getCreations(id: String) {
-        Query.api.get.userCreations(id: id) { (res) in
+        Query.datastore.get.userCreations(id: id) { (res) in
             guard let res = res else { return }
             print(res)
             self.creations = res
@@ -72,14 +72,14 @@ class User : ObservableObject {
     
     public func updateUser(item: UserModel) {
         model = item
-        Query.api.update.user(item) { (res) in
+        Query.datastore.update.user(item) { (res) in
             print(res)
         }
     }
     
     public func delete() {
         guard let user = model else { return }
-        Query.api.delete.user(user) { (res) in
+        Query.datastore.delete.user(user) { (res) in
             print(res)
         }
     }

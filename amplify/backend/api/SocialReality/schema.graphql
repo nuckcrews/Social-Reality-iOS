@@ -41,4 +41,4 @@ type UserModel @model @auth(rules: [{allow: public}]) {
   email: String!
   image: String
 }
-  
+ 

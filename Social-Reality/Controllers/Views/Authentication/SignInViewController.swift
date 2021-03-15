@@ -137,22 +137,22 @@ class SignInViewController: UIViewController {
     
     func toCreatePassword() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toCreatePasswordfromSignIn", sender: nil)
+            self.performSegue(withIdentifier: Segue.toCreatePasswordfromSignIn.rawValue, sender: nil)
         }
     }
     func toEmailPassword() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil)
+            self.performSegue(withIdentifier: Segue.toPasswordfromSign.rawValue, sender: nil)
         }
     }
     func toNewUser() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toNewUserfromSign", sender: nil)
+            self.performSegue(withIdentifier: Segue.toNewUserfromSign.rawValue, sender: nil)
         }
     }
     func toHome() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toHomefromSignIn", sender: nil)
+            self.performSegue(withIdentifier: Segue.toHomefromSignIn.rawValue, sender: nil)
         }
     }
     
@@ -206,7 +206,7 @@ extension SignInViewController: UITextFieldDelegate {
         if emailTextField.text!.isValidEmail() {
             Auth().userExists(email: emailTextField.text!) { (res) in
                 if res != nil {
-                    res! ? self.performSegue(withIdentifier: "toPasswordfromSign", sender: nil) : self.performSegue(withIdentifier: "toNewUserfromSign", sender: nil)
+                    res! ? self.toEmailPassword() : self.toNewUser()
                 }
             }
             return true

@@ -60,7 +60,7 @@ class CreateUserViewController: UIViewController {
     
     func createUser() {
         let user = UserModel(id: Auth().user!.userId, username: usernameTextField.text!, status: "", first: firstnameTextField.text, last: lastnameTextField.text, lastActive: "", access: .public, email: email!, image: "")
-        Query.api.write.user(user) { (result) in
+        Query.datastore.write.user(user) { (result) in
             if result != nil {
                 print("Created user")
                 self.toAvatar()
@@ -86,13 +86,13 @@ class CreateUserViewController: UIViewController {
     
     func toAvatar() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toAvatarfromCreateUser", sender: nil)
+            self.performSegue(withIdentifier: Segue.toAvatarfromCreateUser.rawValue, sender: nil)
         }
     }
     
     func toHome() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toHomefromCreateUser", sender: nil)
+            self.performSegue(withIdentifier: Segue.toHomefromCreateUser.rawValue, sender: nil)
         }
     }
     

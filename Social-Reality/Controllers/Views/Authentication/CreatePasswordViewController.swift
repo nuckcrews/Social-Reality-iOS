@@ -27,7 +27,7 @@ class CreatePasswordViewController: UIViewController {
     
     func toCreateUser() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "toCreateUserfromPassword", sender: nil)
+            self.performSegue(withIdentifier: Segue.toCreateUserfromPassword.rawValue, sender: nil)
         }
     }
     
