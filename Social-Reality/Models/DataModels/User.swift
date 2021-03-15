@@ -12,49 +12,70 @@ import AmplifyPlugins
 
 class User : ObservableObject {
     
-    var model: UserModel?
+    private var _id: String!
+    private var _model: UserModel?
     var creations = [CreationModel]()
     
-    init(item: UserModel, subscribe: Bool) {
-        model = item
-        subscribe ? subscribeToUser(id: item.id) : getUser(id: item.id)
+    var str = ""
+    
+    var id: String! {
+        return _id
+    }
+    var model: UserModel? {
+        return _model
+    }
+    
+    init(id: String) {
+        _id = id
+    }
+    
+    init(item: UserModel) {
+        _id = item.id
+        _model = item
     }
     
     init(id: String, subscribe: Bool, completion: @escaping(_ result: ResultType) -> Void) {
-        subscribe ? subscribeToUser(id: id) : getUser(id: id)
+        _id = id
+//        subscribe ? subscribeToUser(id: id) : getUser(id: id)
         if subscribe {
             Query.datastore.subscribe.user(id: id) { (res, event) in
                 guard let res = res else { return }
                 print(res)
                 print(event as Any)
-                self.model = res
+                self._model = res
                 completion(.success)
             }
         } else {
             Query.datastore.get.user(id: id) { (res) in
                 guard let res = res else { return }
                 print(res)
-                self.model = res
+                self._model = res
+                print("username:", self.model?.username)
+                self.str = "finish"
                 completion(.success)
             }
         }
     }
     
-    private func getUser(id: String) {
+    public func getModel(id: String, completion: @escaping(_ result: ResultType) -> Void) {
         Query.datastore.get.user(id: id) { (res) in
-            guard let res = res else { return }
+            guard let res = res else {
+                completion(.error)
+                return
+            }
             print(res)
-            self.model = res
+            self._model = res
+            completion(.success)
         }
     }
     
-    private func subscribeToUser(id: String) {
+    public func subscribeToUser(id: String) {
         Query.datastore.subscribe.user(id: id) { (res, event) in
             guard let res = res else { return }
             print(res)
             print(event as Any)
             
-            self.model = res
+            self._model = res
         }
     }
     
@@ -71,7 +92,7 @@ class User : ObservableObject {
     }
     
     public func updateUser(item: UserModel) {
-        model = item
+        _model = item
         Query.datastore.update.user(item) { (res) in
             print(res)
         }

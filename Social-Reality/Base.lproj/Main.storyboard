@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kyh-3S-HQa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kyh-3S-HQa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -72,7 +72,7 @@
                                         <rect key="frame" x="8" y="68" width="48" height="48"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <color key="tintColor" name="Primary"/>
-                                        <state key="normal" image="ellipses.bubble.fill" catalog="system">
+                                        <state key="normal" image="ellipsis.bubble.fill" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                         </state>
                                         <connections>
@@ -640,14 +640,14 @@
                                                 <color key="backgroundColor" name="Background"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" rowHeight="62" id="um5-of-RCG" customClass="settingsCell" customModule="Social_Reality" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="406" height="62"/>
+                                                        <rect key="frame" x="0.0" y="24.5" width="406" height="62"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="um5-of-RCG" id="cup-Tg-Tkq">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="376.5" height="62"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KB-PR-ipK">
-                                                                    <rect key="frame" x="24" y="23" width="331" height="20"/>
+                                                                    <rect key="frame" x="24" y="23" width="332.5" height="20"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" name="MainText"/>
                                                                     <nil key="highlightedColor"/>
@@ -776,10 +776,10 @@
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="inboxCell" rowHeight="68" id="jtz-XU-C8H" customClass="inboxCell" customModule="Social_Reality" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="406" height="68"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="406" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jtz-XU-C8H" id="EOG-TL-U8O">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376.5" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wj-Uf-apd">
@@ -792,7 +792,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the subtitle of the text that was last sent." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1k-tT-uJN">
-                                                    <rect key="frame" x="72" y="32" width="263" height="13"/>
+                                                    <rect key="frame" x="72" y="32" width="264.5" height="13"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" name="GrayText"/>
                                                     <nil key="highlightedColor"/>
@@ -806,7 +806,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 mins" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMv-2b-TPI">
-                                                    <rect key="frame" x="324" y="12" width="39" height="14.5"/>
+                                                    <rect key="frame" x="325.5" y="12" width="39" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                                     <color key="textColor" name="GrayText"/>
                                                     <nil key="highlightedColor"/>
@@ -835,7 +835,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="promoCell" rowHeight="102" id="JDM-1J-O89" customClass="promoCell" customModule="Social_Reality" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="96" width="406" height="102"/>
+                                        <rect key="frame" x="0.0" y="92.5" width="406" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JDM-1J-O89" id="zgR-oP-qS2">
                                             <rect key="frame" x="0.0" y="0.0" width="406" height="102"/>
@@ -905,8 +905,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjU-eu-b0I">
-                                <rect key="frame" x="285" y="61" width="85" height="38"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjU-eu-b0I">
+                                <rect key="frame" x="285" y="69" width="85" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <color key="tintColor" name="MainText"/>
                                 <state key="normal" title="My Account">
@@ -1063,7 +1063,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="coverView" destination="jdT-Xc-UdC" id="ggg-SN-bJi"/>
-                        <segue destination="FTn-T2-yFV" kind="push" identifier="toSignInfromCover" id="w9h-BB-7bt"/>
+                        <segue destination="FTn-T2-yFV" kind="show" identifier="toSignInfromCover" id="w9h-BB-7bt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syM-Qd-I2w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2160,7 +2160,7 @@
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="ellipses.bubble.fill" catalog="system" width="128" height="110"/>
+        <image name="ellipsis.bubble.fill" catalog="system" width="128" height="110"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="106"/>

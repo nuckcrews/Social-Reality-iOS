@@ -18,7 +18,6 @@ class InboxViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        addData()
         
     }
     
@@ -27,7 +26,7 @@ class InboxViewController: UIViewController {
 //        Query.api.write.creation(creation) { (model) in
 //            print(creation)
 //        }
-        creation.description = "The second ever"
+        creation.description = "The third ever"
         Query.datastore.update.creation(creation) { (res) in
             print(res)
         }
