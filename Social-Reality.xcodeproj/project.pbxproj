@@ -112,6 +112,7 @@
 		A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */; };
 		A0CBAFC826012FB9001953C8 /* EmailModel+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC626012FB9001953C8 /* EmailModel+Schema.swift */; };
 		A0CBAFC926012FB9001953C8 /* EmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC726012FB9001953C8 /* EmailModel.swift */; };
+		A0CBAFCB26015EC3001953C8 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */; };
 		A0DCF1EC25EC4ADC00F699E9 /* AuthenticationMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1EB25EC4ADC00F699E9 /* AuthenticationMethods.swift */; };
 		A0DCF1F425EC7CFC00F699E9 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */; };
 		A0DCF1F925EC7E3C00F699E9 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1F825EC7E3C00F699E9 /* UIView.swift */; };
@@ -253,6 +254,7 @@
 		A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserViewController.swift; sourceTree = "<group>"; };
 		A0CBAFC626012FB9001953C8 /* EmailModel+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EmailModel+Schema.swift"; sourceTree = "<group>"; };
 		A0CBAFC726012FB9001953C8 /* EmailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailModel.swift; sourceTree = "<group>"; };
+		A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A0DCF1EB25EC4ADC00F699E9 /* AuthenticationMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMethods.swift; sourceTree = "<group>"; };
 		A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		A0DCF1F825EC7E3C00F699E9 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */,
+				A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1021,6 +1024,7 @@
 				A06B63B025E954A900AE746D /* DeleteMethods.swift in Sources */,
 				A023980C25EC27DD00F13F72 /* Protocols.swift in Sources */,
 				A02397F425EC09C800F13F72 /* UserModel+Schema.swift in Sources */,
+				A0CBAFCB26015EC3001953C8 /* EditProfileViewController.swift in Sources */,
 				A006C01F26003072003613C0 /* UIImageView.swift in Sources */,
 				A06B641125E97F5F00AE746D /* CustomButtons.swift in Sources */,
 				A02397F225EC09C800F13F72 /* LikeModel.swift in Sources */,

@@ -73,10 +73,29 @@ class AccountViewController: UIViewController {
         }
     }
     
+    func toEditProfile() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
+        }
+    }
+    
+    func toSettings() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
+        }
+    }
+    
     @IBAction func tapSettings(_ sender: UIButton) {
         
         sender.jump()
-        self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
+        toSettings()
+        
+    }
+    
+    @IBAction func tapEditProfile(_ sender: UIButton) {
+        
+        sender.jump()
+        toEditProfile()
         
     }
     

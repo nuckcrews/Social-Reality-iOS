@@ -130,7 +130,6 @@ class PasswordViewController: UIViewController {
 
 extension PasswordViewController: UITextFieldDelegate {
     
-    
     @objc func textFieldDidChange(_ textField: UITextField) {
         if passwordTextField.text != nil && passwordTextField.text!.isValidPassword() {
             passwordIndicator.tintColor = .systemGreen

@@ -45,6 +45,25 @@ class SettingsViewController: UIViewController {
         
     }
     
+    
+    func signOut() {
+        print(Auth().loggedIn)
+        Auth().signOutLocally { res in
+            print(res)
+            print(Auth().loggedIn)
+            Amplify.DataStore.clear { _ in
+                print("Datastore cleared")
+                self.backToHome()
+            }
+        }
+    }
+    
+    func backToHome() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toHomeFromSettings.rawValue, sender: nil)
+        }
+    }
+    
     @IBAction func tapBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -59,12 +78,16 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.settingsCell.rawValue) as? settingsCell {
-            cell.configureCell(title: CellTitles.title(indexPath.row))
+            cell.configureCell(title: CellTitles.title(indexPath.row), index: indexPath.row)
             return cell
         } else {
             return settingsCell()
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 5 {
+            signOut()
+        }
+    }
 }

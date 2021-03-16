@@ -58,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     break
                 }
             }
-            
             print("Initialized Amplify");
         } catch {
             print("Could not initialize Amplify: \(error)")
