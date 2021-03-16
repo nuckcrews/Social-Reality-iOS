@@ -22,7 +22,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailIndicatorButton: UIButton!
     
     var email: String?
-    var social = false
+    var provider: AuthenticationProvider = .email
     
     struct AlertError {
         static var title = "Error Signing In"
@@ -57,41 +57,101 @@ class SignInViewController: UIViewController {
     }
     
     
-    @IBAction func tapEmailContinue(_ sender: UIButton) { // FIXME: Sing in through Email
+    @IBAction func tapEmailContinue(_ sender: UIButton) {
         
-        if emailTextField.text!.isValidEmail() {
-            Auth().userExists(email: emailTextField.text!) { (res) in
-                if res != nil {
-                    self.email = self.emailTextField.text
-                    !res! ? self.toEmailPassword() : self.toCreatePassword()
-                }
-            }
-            sender.pulsate()
-        } else {
+        guard emailTextField.text!.isValidEmail() else {
             sender.shake()
+            return
+        }
+        
+        Auth().userExists(email: emailTextField.text!) { (res) in
+            guard res.0 != nil else {
+                return
+            }
+            self.email = self.emailTextField.text
+            if res.0! {
+                guard let window = self.view.window else { return }
+                self.provider = res.1 ?? .email
+                if res.1 == .google {
+                    Auth().signInWithProvider(provider: .google, window: window) { res in
+                        if res == .success {
+                            self.checkForUserInformation(authProvider: .google)
+                        } else {
+                            print("Error signing In")
+                        }
+                    }
+                } else if res.1 == .facebook {
+                    Auth().signInWithProvider(provider: .facebook, window: window) { res in
+                        if res == .success {
+                            self.checkForUserInformation(authProvider: .facebook)
+                        } else {
+                            print("Error signing In")
+                        }
+                    }
+                } else if res.1 == .apple {
+                    Auth().signInWithProvider(provider: .apple, window: window) { res in
+                        if res == .success {
+                            self.checkForUserInformation(authProvider: .apple)
+                        } else {
+                            print("Error signing In")
+                        }
+                    }
+                } else if res.1 == .email {
+                    self.toEmailPassword()
+                }
+            } else {
+                self.emailSignIn(text: self.emailTextField.text!)
+            }
+            
+        }
+        sender.pulsate()
+        
+    }
+    
+    func emailSignIn(text: String) {
+        
+        Auth().emailExists(email: text) { result in
+            print(result)
+            if result {
+                self.toEmailPassword()
+            } else {
+                self.toCreatePassword()
+            }
         }
         
     }
     
-    func checkForUserInformation(provider: String) { // FIXME: Have to check for provider
-        
+    func checkForUserInformation(authProvider: AuthenticationProvider) { // FIXME: Have to check for provider
         guard Auth().loggedIn else {
-            self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
+            self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
             return
         }
+        provider = authProvider
         Auth().userAttributes { (attributes) in
-            if let attributeEmail = attributes?["email"] {
+            if let attributeEmail = attributes?["email"] as? String {
                 self.email = attributeEmail
                 Auth().userExists(email: attributeEmail) { (res) in
-                    if res != nil {
-                        !res! ? self.toNewUser() : self.toHome()
+                    if res.0 != nil {
+                        if !res.0! {
+                            self.addEmail(text: attributeEmail, authProvider: authProvider)
+                            self.toNewUser()
+                        } else {
+                            self.toHome()
+                        }
                     } else {
-                        self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
+                        self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
                     }
                 }
             } else {
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
+                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
             }
+        }
+    }
+    
+    func addEmail(text: String, authProvider: AuthenticationProvider) {
+        let model = EmailModel(email: text, provider: authProvider)
+        Query.datastore.write.email(model) { result in
+            print(result ?? "")
         }
     }
     
@@ -100,7 +160,7 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .google, window: window) { res in
             if res == .success {
-                self.checkForUserInformation(provider: Provider.Google.rawValue)
+                self.checkForUserInformation(authProvider: .google)
             } else {
                 print("Error signing In")
                 
@@ -113,7 +173,7 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .facebook, window: window) { res in
             if res == .success {
-                self.checkForUserInformation(provider: Provider.Facebook.rawValue)
+                self.checkForUserInformation(authProvider: .facebook)
             } else {
                 print("Error signing In")
             }
@@ -125,7 +185,7 @@ class SignInViewController: UIViewController {
         guard let window = view.window else { return }
         Auth().signInWithProvider(provider: .apple, window: window) { res in
             if res == .success {
-                self.checkForUserInformation(provider: Provider.Apple.rawValue)
+                self.checkForUserInformation(authProvider: .apple)
             } else {
                 print("Error signing In")
             }
@@ -138,28 +198,29 @@ class SignInViewController: UIViewController {
     
     func toCreatePassword() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreatePasswordfromSignIn.rawValue, sender: nil)
+            self.performSegue(withIdentifier: Segue.toCreatePasswordFromSignIn.rawValue, sender: nil)
         }
     }
     func toEmailPassword() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toPasswordfromSign.rawValue, sender: nil)
+            self.performSegue(withIdentifier: Segue.toPasswordFromSign.rawValue, sender: nil)
         }
     }
     func toNewUser() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toNewUserfromSign.rawValue, sender: nil)
+            self.performSegue(withIdentifier: Segue.toNewUserFromSign.rawValue, sender: nil)
         }
     }
     func toHome() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toHomefromSignIn.rawValue, sender: nil)
+            self.performSegue(withIdentifier: Segue.toHomeFromSignIn.rawValue, sender: nil)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email
+            dest.provider = provider
         }
         if let dest = segue.destination as? CreatePasswordViewController {
             dest.email = emailTextField.text
@@ -206,8 +267,42 @@ extension SignInViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if emailTextField.text!.isValidEmail() {
             Auth().userExists(email: emailTextField.text!) { (res) in
-                if res != nil {
-                    res! ? self.toEmailPassword() : self.toNewUser()
+                guard res.0 != nil else {
+                    return
+                }
+                self.email = self.emailTextField.text
+                if res.0! {
+                    guard let window = self.view.window else { return }
+                    self.provider = res.1 ?? .email
+                    if res.1 == .google {
+                        Auth().signInWithProvider(provider: .google, window: window) { res in
+                            if res == .success {
+                                self.checkForUserInformation(authProvider: .apple)
+                            } else {
+                                print("Error signing In")
+                            }
+                        }
+                    } else if res.1 == .facebook {
+                        Auth().signInWithProvider(provider: .facebook, window: window) { res in
+                            if res == .success {
+                                self.checkForUserInformation(authProvider: .apple)
+                            } else {
+                                print("Error signing In")
+                            }
+                        }
+                    } else if res.1 == .apple {
+                        Auth().signInWithProvider(provider: .apple, window: window) { res in
+                            if res == .success {
+                                self.checkForUserInformation(authProvider: .apple)
+                            } else {
+                                print("Error signing In")
+                            }
+                        }
+                    } else if res.1 == .email {
+                        self.toEmailPassword()
+                    }
+                } else {
+                    self.toCreatePassword()
                 }
             }
             return true

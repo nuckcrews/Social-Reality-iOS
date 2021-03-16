@@ -31,14 +31,33 @@ struct Auth {
         return Amplify.Auth.getCurrentUser()
     }
     
-    func userAttributes(completion: @escaping(_ result: [String: String]?) -> Void) {
+    
+    func fetchAuthProvider(completion: @escaping(_ result: Provider?) -> Void) {
+        userAttributes { result in
+            guard let identities = result?["identities"] as? String else {
+                return
+            }
+            if identities.contains(Provider.Google.rawValue) {
+                completion(.Google)
+            } else if identities.contains(Provider.Facebook.rawValue) {
+                completion(.Facebook)
+            } else if identities.contains(Provider.Apple.rawValue) {
+                completion(.Apple)
+            } else {
+                completion(.Email)
+            }
+        }
+    }
+    
+    func userAttributes(completion: @escaping(_ result: [String: Any]?) -> Void) {
         Amplify.Auth.fetchUserAttributes { (result) in
             switch result {
             case .success(let authResult):
                 print(authResult)
-                var data: [String: String] = [:]
+                var data: [String: Any] = [:]
                 for attribute in authResult {
                     data[attribute.key.rawValue] = attribute.value
+                    print(attribute.key.rawValue, attribute.value)
                 }
                 completion(data)
             case .failure(let error):
@@ -61,25 +80,41 @@ struct Auth {
         }
     }
     
-    func signInWithEmail(email: String, password: String, completion: @escaping(_ result: ResultType) -> Void) {
-        if email.isValidEmail() {
-            
+    func emailExists(email: String, completion: @escaping(_ result: Bool) -> Void) {
+        let emailKeys = EmailModel.keys
+        let predicate = emailKeys.email == email
+        Query.datastore.get.emailsWithPredicate(predicate: predicate) { emails in
+            if emails?.count ?? 0 > 0 {
+                completion(true)
+            } else {
+                completion(false)
+            }
         }
     }
     
-    func userExists(email: String, completion: @escaping(_ result: Bool?) -> Void) {
+    func hasUsername(id: String, completion: @escaping(_ result: Bool) -> Void) {
+        Query.datastore.get.user(id: id) { user in
+            if user?.username.count ?? 0 > 0 {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func userExists(email: String, completion: @escaping(_ result: (Bool?, AuthenticationProvider?)) -> Void) {
         guard email.isValidEmail() else {
             print("Invalid Email", email)
-            completion(nil)
+            completion((nil, nil))
             return
         }
         let userKeys = UserModel.keys
         let predicate = userKeys.email == email
         Query.datastore.get.usersWithPredicate(predicate: predicate) { (users) in
             if users?.count ?? 0 > 0 {
-                completion(true)
+                completion((true, users![0].provider))
             } else {
-                completion(false)
+                completion((false, nil))
             }
         }
     }
@@ -115,7 +150,7 @@ struct Auth {
                     completion(.success)
                 }
             case .failure(let error):
-                completion(.success)
+                completion(.error)
                 print("An error occurred while registering a user \(error)")
             }
         }
@@ -133,6 +168,21 @@ struct Auth {
             }
         }
     }
+    
+    
+    func resendConfirmationCode(for username: String, completion: @escaping(_ result: ResultType) -> Void) {
+        Amplify.Auth.resendSignUpCode(for: username) { result in
+            switch result {
+            case .success(let details):
+                print("Resent verification code:", details)
+                completion(.success)
+            case .failure(let error):
+                print(error)
+                completion(.error)
+            }
+        }
+    }
+    
     
     func signInWithProvider(provider: AuthProvider, window: UIWindow, completion: @escaping(_ result: ResultType) -> Void) {
         Amplify.Auth.signInWithWebUI(for: provider, presentationAnchor: window, options: nil) { result in
@@ -226,7 +276,7 @@ struct Auth {
         }
     }
     
-    func signOutGloball(completion: @escaping(_ result: ResultType) -> Void) {
+    func signOutGlobally(completion: @escaping(_ result: ResultType) -> Void) {
         Amplify.Auth.signOut(options: .init(globalSignOut: true)) { result in
             switch result {
             case .success:

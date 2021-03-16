@@ -14,11 +14,11 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
     
     @IBOutlet weak var buttonBarView: UITabBar!
     
-    var firstTabbarItemImageView: UIImageView!
-    var secondTabbarItemImageView: UIImageView!
-    var thirdTabbarItemImageView: UIImageView!
-    var fourthTabbarItemImageView: UIImageView!
-    var fifthTabbarItemImageView: UIImageView!
+    var firstTabBarItemImageView: UIImageView!
+    var secondTabBarItemImageView: UIImageView!
+    var thirdTabBarItemImageView: UIImageView!
+    var fourthTabBarItemImageView: UIImageView!
+    var fifthTabBarItemImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,43 +45,43 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
 //        }
         
         let firstItemView = tabBar.subviews.first!
-        firstTabbarItemImageView = firstItemView.subviews.first as? UIImageView
-        firstTabbarItemImageView.contentMode = .center
+        firstTabBarItemImageView = firstItemView.subviews.first as? UIImageView
+        firstTabBarItemImageView.contentMode = .center
 
         let secondItemView = self.tabBar.subviews[1]
-        self.secondTabbarItemImageView = secondItemView.subviews.first as? UIImageView
-        self.secondTabbarItemImageView.contentMode = .center
+        self.secondTabBarItemImageView = secondItemView.subviews.first as? UIImageView
+        self.secondTabBarItemImageView.contentMode = .center
         
         let thirdItemView = tabBar.subviews[2]
-        thirdTabbarItemImageView = thirdItemView.subviews.first as? UIImageView
-        thirdTabbarItemImageView.contentMode = .center
+        thirdTabBarItemImageView = thirdItemView.subviews.first as? UIImageView
+        thirdTabBarItemImageView.contentMode = .center
 
         let fourthItemView = self.tabBar.subviews[3]
-        self.fourthTabbarItemImageView = fourthItemView.subviews.first as? UIImageView
-        self.fourthTabbarItemImageView.contentMode = .center
+        self.fourthTabBarItemImageView = fourthItemView.subviews.first as? UIImageView
+        self.fourthTabBarItemImageView.contentMode = .center
         
         let fifthItemView = tabBar.subviews.last!
-        fifthTabbarItemImageView = fifthItemView.subviews.first as? UIImageView
-        fifthTabbarItemImageView.contentMode = .center
+        fifthTabBarItemImageView = fifthItemView.subviews.first as? UIImageView
+        fifthTabBarItemImageView.contentMode = .center
         
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        guard let tabbarItemTag = TabbarItemTag(rawValue: item.tag) else {
+        guard let tabBarItemTag = TabBarItemTag(rawValue: item.tag) else {
             return
         }
 
-        switch tabbarItemTag {
+        switch tabBarItemTag {
         case .firstViewController:
-            animate(firstTabbarItemImageView)
-        case .secondViewConroller:
-            animate(secondTabbarItemImageView)
-        case .thirdViewConroller:
-            animate(thirdTabbarItemImageView)
-        case .fourthViewConroller:
-            animate(fourthTabbarItemImageView)
-        case .fifthViewConroller:
-            animate(fifthTabbarItemImageView)
+            animate(firstTabBarItemImageView)
+        case .secondViewController:
+            animate(secondTabBarItemImageView)
+        case .thirdViewController:
+            animate(thirdTabBarItemImageView)
+        case .fourthViewController:
+            animate(fourthTabBarItemImageView)
+        case .fifthViewController:
+            animate(fifthTabBarItemImageView)
         }
         
     }
@@ -103,10 +103,10 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
 }
 
 
-enum TabbarItemTag: Int {
+enum TabBarItemTag: Int {
     case firstViewController = 101
-    case secondViewConroller = 102
-    case thirdViewConroller = 103
-    case fourthViewConroller = 104
-    case fifthViewConroller = 105
+    case secondViewController = 102
+    case thirdViewController = 103
+    case fourthViewController = 104
+    case fifthViewController = 105
 }

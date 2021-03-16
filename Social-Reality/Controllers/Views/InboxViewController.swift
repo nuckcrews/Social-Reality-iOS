@@ -13,23 +13,11 @@ class InboxViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarItem.tag = TabbarItemTag.fourthViewConroller.rawValue
+        tabBarItem.tag = TabBarItemTag.fourthViewController.rawValue
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
-    }
-    
-    func addData() {
-        var creation = CreationModel(id: "secondCreation", title: "Robot", description: "", lastViewed: "", accessibility: .public, status: "draft")
-//        Query.api.write.creation(creation) { (model) in
-//            print(creation)
-//        }
-        creation.description = "The third ever"
-        Query.datastore.update.creation(creation) { (res) in
-            print(res)
-        }
+            
     }
     
     

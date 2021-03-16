@@ -9,5 +9,5 @@ import Foundation
 import CoreLocation
 
 struct MapHeaderData: Hashable {
-    let lcoation: CLLocation
+    let location: CLLocation
 }

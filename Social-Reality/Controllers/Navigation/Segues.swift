@@ -10,16 +10,20 @@ import Foundation
 
 enum Segue: String {
     
-    case toSignInfromCover
-    case toCreatePasswordfromSignIn
-    case toPasswordfromSign
-    case toNewUserfromSign
-    case toHomefromSignIn
-    case toCreateUserfromPassword
-    case toHomefromPassword
-    case toAvatarfromCreateUser
-    case toHomefromCreateUser
-    case toHomefromAvatar
-    case toSettingsfromProfile
+    case toSignInFromCover
+    case toCreatePasswordFromSignIn
+    case toPasswordFromSign
+    case toNewUserFromSign
+    case toHomeFromSignIn
+    case toCreateUserFromPassword
+    case toHomeFromPassword
+    case toAvatarFromCreateUser
+    case toHomeFromCreateUser
+    case toHomeFromAvatar
+    case toSettingsFromProfile
+    case toCreateUserFromPasswordEnter
+    case toConfirmUserFromCreatePassword
+    case toConfirmUserFromPassword
+    case toCreateUserFromConfirm
     
 }

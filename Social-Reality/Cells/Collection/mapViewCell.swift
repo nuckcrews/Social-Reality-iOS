@@ -18,14 +18,14 @@ class mapViewCell: UICollectionViewCell {
     func configure(with data: MapHeaderData, delegate: MapCellDelegate) {
         
         cellDelegate = delegate
-        setupMapView(location: data.lcoation)
+        setupMapView(location: data.location)
+        
     }
     
     func setupMapView(location: CLLocation) {
         
         mapView.delegate = self
         mapView.settings.myLocationButton = false
-        
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 14)
         
     }

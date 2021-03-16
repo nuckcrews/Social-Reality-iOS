@@ -66,7 +66,7 @@ class CreateAvatarViewController: UIViewController {
     
     func toHome() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toHomefromAvatar.rawValue, sender: nil)
+            self.performSegue(withIdentifier: Segue.toHomeFromAvatar.rawValue, sender: nil)
         }
     }
     

@@ -12,8 +12,8 @@ import AmplifyPlugins
 class CreateUserViewController: UIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var firstnameTextField: UITextField!
-    @IBOutlet weak var lastnameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     
     @IBOutlet weak var usernameTextIndicator: UIButton!
     @IBOutlet weak var firstTextIndicator: UIButton!
@@ -22,6 +22,7 @@ class CreateUserViewController: UIViewController {
     @IBOutlet weak var usernameTakenLabel: UILabel!
     
     var email: String?
+    var provider: AuthenticationProvider = .email
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +30,30 @@ class CreateUserViewController: UIViewController {
         usernameTakenLabel.alpha = 0
         
         usernameTextField.delegate = self
-        firstnameTextField.delegate = self
-        lastnameTextField.delegate = self
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
         
         usernameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        firstnameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        lastnameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        firstNameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        lastNameTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
+    }
+    
+    func getProvider() {
+        
+        Auth().fetchAuthProvider { result in
+            if let result = result {
+                if result == .Google {
+                    self.provider = .google
+                } else if result == .Facebook {
+                    self.provider = .facebook
+                } else if result == .Apple {
+                    self.provider = .apple
+                } else if result == .Email {
+                    self.provider = .email
+                }
+            }
+        }
         
     }
     
@@ -59,7 +78,10 @@ class CreateUserViewController: UIViewController {
     }
     
     func createUser() {
-        let user = UserModel(id: Auth().user!.userId, username: usernameTextField.text!, status: "", first: firstnameTextField.text, last: lastnameTextField.text, lastActive: "", access: .public, email: email!, image: "")
+        guard let id = Auth().user?.userId else {
+            return
+        }
+        let user = UserModel(id: id, username: usernameTextField.text!, status: "", first: firstNameTextField.text, last: lastNameTextField.text, lastActive: "", access: .public, email: email!, image: "", provider: provider)
         Query.datastore.write.user(user) { (result) in
             if result != nil {
                 print("Created user")
@@ -72,7 +94,7 @@ class CreateUserViewController: UIViewController {
     }
     
     @IBAction func tapContinue(_ sender: UIButton) {
-        if usernameTextField.text != "" {
+        if usernameTextField.text != "" && firstNameTextField.text != "" {
             sender.pulsate()
             checkUserName()
         } else {
@@ -86,13 +108,13 @@ class CreateUserViewController: UIViewController {
     
     func toAvatar() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toAvatarfromCreateUser.rawValue, sender: nil)
+            self.performSegue(withIdentifier: Segue.toAvatarFromCreateUser.rawValue, sender: nil)
         }
     }
     
     func toHome() {
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toHomefromCreateUser.rawValue, sender: nil)
+            self.performSegue(withIdentifier: Segue.toHomeFromCreateUser.rawValue, sender: nil)
         }
     }
     
@@ -100,8 +122,8 @@ class CreateUserViewController: UIViewController {
         if let dest = segue.destination as? CreatePasswordViewController {
             dest.email = email
             dest.username = usernameTextField.text
-            dest.first = firstnameTextField.text
-            dest.last = lastnameTextField.text
+            dest.first = firstNameTextField.text
+            dest.last = lastNameTextField.text
         }
     }
     
@@ -119,7 +141,7 @@ extension CreateUserViewController: UITextFieldDelegate {
             textField.text = textField.text?.replacingOccurrences(of: " ", with: "_")
             usernameTakenLabel.alpha = 0
             usernameTextIndicator.tintColor = .systemGray4
-        } else if textField == firstnameTextField {
+        } else if textField == firstNameTextField {
             if textField.text?.count ?? 0 > 0 {
                 firstTextIndicator.tintColor = .green
             } else {
@@ -137,8 +159,6 @@ extension CreateUserViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if usernameTextField.text != "" {
-            //            checkUserName()
-            
             return true
         } else {
             return false

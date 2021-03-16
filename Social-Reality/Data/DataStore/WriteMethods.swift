@@ -65,5 +65,18 @@ struct DataStoreWriteMethods {
         }
     }
 
+    func email( _ email: EmailModel, completion: @escaping (_ result: EmailModel?) -> Void) {
+        Amplify.DataStore.save(email) { result in
+            switch result {
+            case .success(let item):
+                print("Email saved - \(item)")
+                completion(item)
+            case .failure(let error):
+                print("Could not create - \(error)")
+                completion(nil)
+            }
+        }
+    }
+
     
 }
