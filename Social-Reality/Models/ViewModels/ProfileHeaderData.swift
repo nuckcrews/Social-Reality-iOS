@@ -8,6 +8,7 @@
 import Foundation
 
 struct ProfileHeaderData: Hashable {
+    let image: String
     let first: String
     let last: String
     let username: String

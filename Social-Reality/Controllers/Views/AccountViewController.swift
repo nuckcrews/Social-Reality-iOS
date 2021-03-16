@@ -118,6 +118,7 @@ extension AccountViewController {
         var snapshot = Snapshot()
         
         let profileData = ProfileHeaderData(
+            image: user?.model?.image ?? ProfileImage.defaultURL,
             first: user?.model?.first ?? "Your",
             last: user?.model?.last ?? "Name",
             username: user?.model?.username ?? "username",
@@ -147,7 +148,7 @@ extension AccountViewController {
     func createHeaderSection() -> NSCollectionLayoutSection {
         
         let headerItem = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
-        let headerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(280)), subitems: [headerItem])
+        let headerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(300)), subitems: [headerItem])
         
         return NSCollectionLayoutSection(group: headerGroup)
         
