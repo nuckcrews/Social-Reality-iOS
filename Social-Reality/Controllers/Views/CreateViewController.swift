@@ -16,7 +16,7 @@ class CreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarItem.tag = TabbarItemTag.thirdViewConroller.rawValue
+        tabBarItem.tag = TabBarItemTag.thirdViewController.rawValue
 
         
     }

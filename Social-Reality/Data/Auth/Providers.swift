@@ -11,4 +11,5 @@ enum Provider: String {
     case Google
     case Facebook
     case Apple
+    case Email
 }

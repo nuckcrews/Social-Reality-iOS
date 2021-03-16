@@ -617,7 +617,7 @@
                     <connections>
                         <outlet property="collectionView" destination="pfq-GT-Eda" id="60z-bN-f4g"/>
                         <outlet property="usernameTitleButton" destination="KAK-rs-HJP" id="lQP-O2-kMn"/>
-                        <segue destination="Ckp-vX-0P0" kind="show" identifier="toSettingsfromProfile" id="S3J-AL-Xtl"/>
+                        <segue destination="Ckp-vX-0P0" kind="show" identifier="toSettingsFromProfile" id="S3J-AL-Xtl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgq-Pg-r6O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1066,7 +1066,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="coverView" destination="jdT-Xc-UdC" id="ggg-SN-bJi"/>
-                        <segue destination="FTn-T2-yFV" kind="show" identifier="toSignInfromCover" id="w9h-BB-7bt"/>
+                        <segue destination="FTn-T2-yFV" kind="show" identifier="toSignInFromCover" id="w9h-BB-7bt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syM-Qd-I2w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1459,10 +1459,10 @@
                     <connections>
                         <outlet property="emailIndicatorButton" destination="dj9-C7-Vu7" id="8CW-xM-OND"/>
                         <outlet property="emailTextField" destination="4IL-gv-3BX" id="WGn-gs-nnb"/>
-                        <segue destination="Cbh-jO-4nN" kind="show" identifier="toNewUserfromSign" id="qR0-h3-joD"/>
-                        <segue destination="71Q-2i-1HC" kind="show" identifier="toPasswordfromSign" id="7Zr-v9-OTR"/>
-                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomefromSignIn" id="c5R-lK-t0X"/>
-                        <segue destination="k0r-YN-57c" kind="show" identifier="toCreatePasswordfromSignIn" id="Bsv-0t-qTU"/>
+                        <segue destination="Cbh-jO-4nN" kind="show" identifier="toNewUserFromSign" id="qR0-h3-joD"/>
+                        <segue destination="71Q-2i-1HC" kind="show" identifier="toPasswordFromSign" id="7Zr-v9-OTR"/>
+                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomeFromSignIn" id="c5R-lK-t0X"/>
+                        <segue destination="k0r-YN-57c" kind="show" identifier="toCreatePasswordFromSignIn" id="Bsv-0t-qTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2E-pT-Xg1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1576,7 +1576,7 @@
                     <navigationItem key="navigationItem" id="VlO-bL-MmU"/>
                     <connections>
                         <outlet property="passwordTextField" destination="dhh-fa-1Da" id="RKz-Xx-gpd"/>
-                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomefromPassword" id="oIz-d0-JjT"/>
+                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomeFromPassword" id="oIz-d0-JjT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAT-oP-uil" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1616,10 +1616,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v3N-qG-jZx" customClass="BorderedView" customModule="Social_Reality" customModuleProvider="target">
                                                 <rect key="frame" x="32" y="252" width="350" height="42"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlI-cq-fUH">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(Required)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nlI-cq-fUH">
                                                         <rect key="frame" x="90" y="2" width="226" height="38"/>
                                                         <color key="tintColor" name="Primary"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="continue" textContentType="given-name"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0o-ip-noC">
@@ -1663,7 +1663,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LhO-Hu-hoa">
                                                         <rect key="frame" x="89.5" y="2" width="226.5" height="38"/>
                                                         <color key="tintColor" name="Primary"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="continue" textContentType="family-name"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLz-0g-yXZ">
@@ -1837,15 +1837,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="6dw-Dj-SYb"/>
                     <connections>
+                        <outlet property="firstNameTextField" destination="nlI-cq-fUH" id="gPp-1j-CIz"/>
                         <outlet property="firstTextIndicator" destination="GCT-c2-YcE" id="FcO-8R-Hec"/>
-                        <outlet property="firstnameTextField" destination="nlI-cq-fUH" id="4NE-ah-bD7"/>
+                        <outlet property="lastNameTextField" destination="LhO-Hu-hoa" id="o33-lj-a50"/>
                         <outlet property="lastTextIndicator" destination="gNR-EG-xr9" id="m5c-U5-Ndk"/>
-                        <outlet property="lastnameTextField" destination="LhO-Hu-hoa" id="DVR-S5-dtq"/>
                         <outlet property="usernameTakenLabel" destination="63R-d8-Ci8" id="Tbs-10-c7o"/>
                         <outlet property="usernameTextField" destination="Ghu-Je-6XA" id="CfG-NX-WeC"/>
                         <outlet property="usernameTextIndicator" destination="a0C-eE-Qhi" id="CyN-CC-VKg"/>
-                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomefromCreateUser" id="WWb-yj-wws"/>
-                        <segue destination="wHK-9Z-j3w" kind="show" identifier="toAvatarfromCreateUser" id="CO7-sE-Qvt"/>
+                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomeFromCreateUser" id="WWb-yj-wws"/>
+                        <segue destination="wHK-9Z-j3w" kind="show" identifier="toAvatarFromCreateUser" id="CO7-sE-Qvt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lGb-n8-cnm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1951,7 +1951,7 @@
                     <connections>
                         <outlet property="avatarImageView" destination="vol-73-NNo" id="7me-A9-ary"/>
                         <outlet property="loadingIndicator" destination="aJ2-ED-IPk" id="i9n-O7-aoV"/>
-                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomefromAvatar" id="ZG6-Wg-h0e"/>
+                        <segue destination="kyh-3S-HQa" kind="show" identifier="toHomeFromAvatar" id="ZG6-Wg-h0e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wbQ-98-M8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2122,7 +2122,7 @@
                     <connections>
                         <outlet property="passwordTextField" destination="Sz6-u5-nwe" id="Y0j-KR-rg1"/>
                         <outlet property="reenterTextField" destination="QKY-nh-OLA" id="TRB-db-RAV"/>
-                        <segue destination="Cbh-jO-4nN" kind="show" identifier="toCreateUserfromPassword" id="L1w-Bt-HCQ"/>
+                        <segue destination="Cbh-jO-4nN" kind="show" identifier="toCreateUserFromPassword" id="L1w-Bt-HCQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8b-BJ-KLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2148,8 +2148,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qR0-h3-joD"/>
-        <segue reference="c5R-lK-t0X"/>
+        <segue reference="L1w-Bt-HCQ"/>
+        <segue reference="WWb-yj-wws"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="7D170C57-2A05-4F0E-8F6D-511DFF7A4BBB" width="3024" height="4032"/>

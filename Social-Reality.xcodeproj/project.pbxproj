@@ -104,6 +104,8 @@
 		A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5625ED335E00D59382 /* TestViewController.swift */; };
 		A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */; };
 		A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE0E825EA2FED0007438B /* settingsCell.swift */; };
+		A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB58EE260042C900523005 /* CLLocationManager.swift */; };
+		A0BB58F12600625900523005 /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB58F02600625900523005 /* AuthenticationProvider.swift */; };
 		A0C1149825F7156C005ADAFF /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C1149725F7156C005ADAFF /* amplifyconfiguration.json */; };
 		A0DCF1EC25EC4ADC00F699E9 /* AuthenticationMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1EB25EC4ADC00F699E9 /* AuthenticationMethods.swift */; };
 		A0DCF1F425EC7CFC00F699E9 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */; };
@@ -243,6 +245,8 @@
 		A072FC5625ED335E00D59382 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		A09DE0E825EA2FED0007438B /* settingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCell.swift; sourceTree = "<group>"; };
+		A0BB58EE260042C900523005 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
+		A0BB58F02600625900523005 /* AuthenticationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationProvider.swift; sourceTree = "<group>"; };
 		A0C1149725F7156C005ADAFF /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
 		A0DCF1EB25EC4ADC00F699E9 /* AuthenticationMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMethods.swift; sourceTree = "<group>"; };
 		A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				A02397DF25EC09C800F13F72 /* CommentModel.swift */,
+				A0BB58F02600625900523005 /* AuthenticationProvider.swift */,
 				A02397E025EC09C800F13F72 /* ProfileAccessibility.swift */,
 				A02397E125EC09C800F13F72 /* AmplifyModels.swift */,
 				A02397E225EC09C800F13F72 /* CreationModel+Schema.swift */,
@@ -484,6 +489,7 @@
 				A0DCF1F825EC7E3C00F699E9 /* UIView.swift */,
 				A006C01E26003072003613C0 /* UIImageView.swift */,
 				A06B642025E9A18E00AE746D /* UIButton.swift */,
+				A0BB58EE260042C900523005 /* CLLocationManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -964,6 +970,7 @@
 				A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */,
 				A02397F325EC09C800F13F72 /* CreationModel.swift in Sources */,
 				A06B63BB25E9554D00AE746D /* User.swift in Sources */,
+				A0BB58F12600625900523005 /* AuthenticationProvider.swift in Sources */,
 				A03870B625E944AB003989CE /* NavigationController.swift in Sources */,
 				A06B63F025E968EE00AE746D /* UIColor.swift in Sources */,
 				A006C01925FFF62C003613C0 /* Utility.swift in Sources */,
@@ -1022,6 +1029,7 @@
 				A06B633525E9512400AE746D /* Query.swift in Sources */,
 				A03FAC8625EEDD09000BFC02 /* CreationView.swift in Sources */,
 				A02397EE25EC09C800F13F72 /* CreationAccessibility.swift in Sources */,
+				A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */,
 				A05AB2E725EAEEEC00748B04 /* SettingsViewController.swift in Sources */,
 				A038703125E93D9D003989CE /* Experience.rcproject in Sources */,
 				A02397EB25EC09C800F13F72 /* ProfileAccessibility.swift in Sources */,

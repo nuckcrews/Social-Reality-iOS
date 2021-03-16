@@ -36,7 +36,7 @@ class AccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBarItem.tag = TabbarItemTag.fifthViewConroller.rawValue
+        tabBarItem.tag = TabBarItemTag.fifthViewController.rawValue
         
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
         collectionView.register(ProfileCreationsHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ProfileCreationsHeaderView.rawValue)
@@ -76,7 +76,7 @@ class AccountViewController: UIViewController {
     @IBAction func tapSettings(_ sender: UIButton) {
         
         sender.jump()
-        self.performSegue(withIdentifier: Segue.toSettingsfromProfile.rawValue, sender: nil)
+        self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
         
     }
     
@@ -111,6 +111,11 @@ extension AccountViewController {
         datasource.apply(snapshot(), animatingDifferences: false)
         datasource.supplementaryViewProvider = supplementary(collectionView:kind:indexPath:)
         
+    }
+    
+    private func reloadDataSource() {
+        guard datasource != nil else { return }
+        datasource.apply(snapshot(), animatingDifferences: false)
     }
     
     func snapshot() -> Snapshot {

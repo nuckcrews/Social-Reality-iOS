@@ -26,8 +26,7 @@ class profileHeaderCell: UICollectionViewCell {
     func configure(with data: ProfileHeaderData) {
         
         avatarImageView.setImageFromURL(data.image)
-        
-        nameLabel.text = "\(data.first) \(data.last)"
+        nameLabel.text = data.last.count > 0 ? "\(data.first) \(data.last)" : data.first
         numberOfFollowersLabel.text = String(data.followerCount)
         numberOfFollowingLabel.text = String(data.followingCount)
         numberOfLikesLabel.text = String(data.likesCount)

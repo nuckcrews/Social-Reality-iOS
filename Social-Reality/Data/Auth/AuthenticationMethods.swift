@@ -31,14 +31,33 @@ struct Auth {
         return Amplify.Auth.getCurrentUser()
     }
     
-    func userAttributes(completion: @escaping(_ result: [String: String]?) -> Void) {
+    
+    func fetchAuthProvider(completion: @escaping(_ result: Provider?) -> Void) {
+        userAttributes { result in
+            guard let identities = result?["identities"] as? String else {
+                return
+            }
+            if identities.contains(Provider.Google.rawValue) {
+                completion(.Google)
+            } else if identities.contains(Provider.Facebook.rawValue) {
+                completion(.Facebook)
+            } else if identities.contains(Provider.Apple.rawValue) {
+                completion(.Apple)
+            } else {
+                completion(.Email)
+            }
+        }
+    }
+    
+    func userAttributes(completion: @escaping(_ result: [String: Any]?) -> Void) {
         Amplify.Auth.fetchUserAttributes { (result) in
             switch result {
             case .success(let authResult):
                 print(authResult)
-                var data: [String: String] = [:]
+                var data: [String: Any] = [:]
                 for attribute in authResult {
                     data[attribute.key.rawValue] = attribute.value
+                    print(attribute.key.rawValue, attribute.value)
                 }
                 completion(data)
             case .failure(let error):
@@ -67,19 +86,19 @@ struct Auth {
         }
     }
     
-    func userExists(email: String, completion: @escaping(_ result: Bool?) -> Void) {
+    func userExists(email: String, completion: @escaping(_ result: (Bool?, AuthenticationProvider?)) -> Void) {
         guard email.isValidEmail() else {
             print("Invalid Email", email)
-            completion(nil)
+            completion((nil, nil))
             return
         }
         let userKeys = UserModel.keys
         let predicate = userKeys.email == email
         Query.datastore.get.usersWithPredicate(predicate: predicate) { (users) in
             if users?.count ?? 0 > 0 {
-                completion(true)
+                completion((true, users![0].provider))
             } else {
-                completion(false)
+                completion((false, nil))
             }
         }
     }

@@ -14,6 +14,7 @@ extension UserModel {
     case access
     case email
     case image
+    case provider
   }
   
   public static let keys = CodingKeys.self
@@ -33,7 +34,8 @@ extension UserModel {
       .field(userModel.lastActive, is: .optional, ofType: .string),
       .field(userModel.access, is: .required, ofType: .enum(type: ProfileAccessibility.self)),
       .field(userModel.email, is: .required, ofType: .string),
-      .field(userModel.image, is: .optional, ofType: .string)
+      .field(userModel.image, is: .optional, ofType: .string),
+      .field(userModel.provider, is: .required, ofType: .enum(type: AuthenticationProvider.self))
     )
     }
 }

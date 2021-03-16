@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarItem.tag = TabbarItemTag.firstViewController.rawValue
+        tabBarItem.tag = TabBarItemTag.firstViewController.rawValue
         
         CoverToMainDelegate? = self
         
