@@ -104,6 +104,19 @@ struct DataStoreReadMethods {
         }
     }
     
+    func emailsWithPredicate(predicate: QueryPredicate?, completion: @escaping(_ result: [EmailModel]?) -> Void) {
+        Amplify.DataStore.query(EmailModel.self, where: predicate, sort: nil, paginate: .firstPage) { (result) in
+            switch result {
+            case .success(let emails):
+                print("Got Emails", emails)
+                completion(emails)
+            case .failure(let error):
+                print(error)
+                completion(nil)
+            }
+            
+        }
+    }
     
     func userCreations(id: String, completion: @escaping(_ result: [CreationModel]?) -> Void) {
 

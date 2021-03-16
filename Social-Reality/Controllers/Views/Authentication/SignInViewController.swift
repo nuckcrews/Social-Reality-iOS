@@ -100,7 +100,7 @@ class SignInViewController: UIViewController {
                     self.toEmailPassword()
                 }
             } else {
-                self.toCreatePassword()
+                self.emailSignIn(text: self.emailTextField.text!)
             }
             
         }
@@ -108,9 +108,22 @@ class SignInViewController: UIViewController {
         
     }
     
+    func emailSignIn(text: String) {
+        
+        Auth().emailExists(email: text) { result in
+            print(result)
+            if result {
+                self.toEmailPassword()
+            } else {
+                self.toCreatePassword()
+            }
+        }
+        
+    }
+    
     func checkForUserInformation(authProvider: AuthenticationProvider) { // FIXME: Have to check for provider
         guard Auth().loggedIn else {
-            self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
+            self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
             return
         }
         provider = authProvider
@@ -119,14 +132,26 @@ class SignInViewController: UIViewController {
                 self.email = attributeEmail
                 Auth().userExists(email: attributeEmail) { (res) in
                     if res.0 != nil {
-                        !res.0! ? self.toNewUser() : self.toHome()
+                        if !res.0! {
+                            self.addEmail(text: attributeEmail, authProvider: authProvider)
+                            self.toNewUser()
+                        } else {
+                            self.toHome()
+                        }
                     } else {
-                        self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
+                        self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
                     }
                 }
             } else {
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.message)
+                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
             }
+        }
+    }
+    
+    func addEmail(text: String, authProvider: AuthenticationProvider) {
+        let model = EmailModel(email: text, provider: authProvider)
+        Query.datastore.write.email(model) { result in
+            print(result ?? "")
         }
     }
     

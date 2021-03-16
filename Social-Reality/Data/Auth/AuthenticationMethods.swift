@@ -80,9 +80,25 @@ struct Auth {
         }
     }
     
-    func signInWithEmail(email: String, password: String, completion: @escaping(_ result: ResultType) -> Void) {
-        if email.isValidEmail() {
-            
+    func emailExists(email: String, completion: @escaping(_ result: Bool) -> Void) {
+        let emailKeys = EmailModel.keys
+        let predicate = emailKeys.email == email
+        Query.datastore.get.emailsWithPredicate(predicate: predicate) { emails in
+            if emails?.count ?? 0 > 0 {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func hasUsername(id: String, completion: @escaping(_ result: Bool) -> Void) {
+        Query.datastore.get.user(id: id) { user in
+            if user?.username.count ?? 0 > 0 {
+                completion(true)
+            } else {
+                completion(false)
+            }
         }
     }
     
@@ -134,7 +150,7 @@ struct Auth {
                     completion(.success)
                 }
             case .failure(let error):
-                completion(.success)
+                completion(.error)
                 print("An error occurred while registering a user \(error)")
             }
         }
@@ -152,6 +168,21 @@ struct Auth {
             }
         }
     }
+    
+    
+    func resendConfirmationCode(for username: String, completion: @escaping(_ result: ResultType) -> Void) {
+        Amplify.Auth.resendSignUpCode(for: username) { result in
+            switch result {
+            case .success(let details):
+                print("Resent verification code:", details)
+                completion(.success)
+            case .failure(let error):
+                print(error)
+                completion(.error)
+            }
+        }
+    }
+    
     
     func signInWithProvider(provider: AuthProvider, window: UIWindow, completion: @escaping(_ result: ResultType) -> Void) {
         Amplify.Auth.signInWithWebUI(for: provider, presentationAnchor: window, options: nil) { result in
@@ -245,7 +276,7 @@ struct Auth {
         }
     }
     
-    func signOutGloball(completion: @escaping(_ result: ResultType) -> Void) {
+    func signOutGlobally(completion: @escaping(_ result: ResultType) -> Void) {
         Amplify.Auth.signOut(options: .init(globalSignOut: true)) { result in
             switch result {
             case .success:

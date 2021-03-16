@@ -21,5 +21,9 @@ enum Segue: String {
     case toHomeFromCreateUser
     case toHomeFromAvatar
     case toSettingsFromProfile
+    case toCreateUserFromPasswordEnter
+    case toConfirmUserFromCreatePassword
+    case toConfirmUserFromPassword
+    case toCreateUserFromConfirm
     
 }

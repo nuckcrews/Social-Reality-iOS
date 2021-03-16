@@ -104,7 +104,7 @@ DEPENDENCIES:
   - TransitionableTab (~> 0.2.0)
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - Amplify
     - AmplifyPlugins
     - AppAuth
@@ -156,6 +156,6 @@ SPEC CHECKSUMS:
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
 
-PODFILE CHECKSUM: 9da5c34546db8c8d957ee4ebe93b37a6edc347ff
+PODFILE CHECKSUM: 6a4b3ed937051185281c104bb5915f56bc6b1a9c
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

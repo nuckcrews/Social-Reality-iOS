@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-// MARK: Location Manager Utitlity Methods
+// MARK: Location Manager Utility Methods
 
 extension CLLocationManager {
     

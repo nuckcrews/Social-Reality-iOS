@@ -78,7 +78,10 @@ class CreateUserViewController: UIViewController {
     }
     
     func createUser() {
-        let user = UserModel(id: Auth().user!.userId, username: usernameTextField.text!, status: "", first: firstNameTextField.text, last: lastNameTextField.text, lastActive: "", access: .public, email: email!, image: "", provider: provider)
+        guard let id = Auth().user?.userId else {
+            return
+        }
+        let user = UserModel(id: id, username: usernameTextField.text!, status: "", first: firstNameTextField.text, last: lastNameTextField.text, lastActive: "", access: .public, email: email!, image: "", provider: provider)
         Query.datastore.write.user(user) { (result) in
             if result != nil {
                 print("Created user")

@@ -28,7 +28,7 @@ extension UIColor {
         }
     }
     
-    static var seperator: UIColor {
+    static var separator: UIColor {
         return UIColor { (traits) -> UIColor in
             return traits.userInterfaceStyle == .dark ?
                 UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00) :
