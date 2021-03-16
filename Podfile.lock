@@ -81,6 +81,7 @@ PODS:
   - GTMSessionFetcher/Core (1.5.0)
   - GTMSessionFetcher/Full (1.5.0):
     - GTMSessionFetcher/Core (= 1.5.0)
+  - Kingfisher (6.2.1)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -99,6 +100,7 @@ DEPENDENCIES:
   - GoogleMaps (= 4.1.0)
   - GooglePlaces (= 4.1.0)
   - GoogleSignIn
+  - Kingfisher
   - TransitionableTab (~> 0.2.0)
 
 SPEC REPOS:
@@ -123,6 +125,7 @@ SPEC REPOS:
     - GoogleSignIn
     - GTMAppAuth
     - GTMSessionFetcher
+    - Kingfisher
     - SQLite.swift
     - Starscream
     - TransitionableTab
@@ -148,10 +151,11 @@ SPEC CHECKSUMS:
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GTMAppAuth: 197a8dabfea5d665224aa00d17f164fc2248dab9
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
+  Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
 
-PODFILE CHECKSUM: 0cb27a4e86d813782e9be1655e2abe621700813f
+PODFILE CHECKSUM: 9da5c34546db8c8d957ee4ebe93b37a6edc347ff
 
 COCOAPODS: 1.8.4

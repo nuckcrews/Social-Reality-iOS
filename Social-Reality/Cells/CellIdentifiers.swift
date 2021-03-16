@@ -26,5 +26,6 @@ enum Cells: String {
     // Table Cells
     case inboxCell
     case promoCell
+    case settingsCell
     
 }

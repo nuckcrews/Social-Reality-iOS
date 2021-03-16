@@ -13,6 +13,30 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    struct CellTitles {
+        
+        static func title(_ index: Int) -> String {
+            switch index {
+            case 0:
+                return "Information"
+            case 1:
+                return "Accessibility"
+            case 2:
+                return "Contact"
+            case 3:
+                return "Security"
+            case 4:
+                return "Payment"
+            case 5:
+                return "Sign Out"
+            default:
+                return ""
+            }
+        }
+        
+    }
+     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,20 +58,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "settingsCell") as? settingsCell {
-            if indexPath.row == 0 {
-                cell.configureCell(title: "Inforamtion")
-            } else if indexPath.row == 1 {
-                cell.configureCell(title: "Accessibility")
-            } else if indexPath.row == 2 {
-                cell.configureCell(title: "Contact")
-            } else if indexPath.row == 3 {
-                cell.configureCell(title: "Security")
-            } else if indexPath.row == 4 {
-                cell.configureCell(title: "Payment")
-            } else if indexPath.row == 5 {
-                cell.configureCell(title: "Sign Out")
-            }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.settingsCell.rawValue) as? settingsCell {
+            cell.configureCell(title: CellTitles.title(indexPath.row))
             return cell
         } else {
             return settingsCell()

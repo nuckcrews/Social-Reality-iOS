@@ -24,16 +24,18 @@ class CreateViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-
+        signOut()
         
     }
     
     func signOut() {
         print(Auth().loggedIn)
-        Auth().signOutLocally { (res) in
+        Auth().signOutLocally { res in
             print(res)
             print(Auth().loggedIn)
-            Amplify.DataStore.clear()
+            Amplify.DataStore.clear { _ in
+                print("Datastore cleared")
+            }
         }
     }
     

@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct ProfileHeaderData: Hashable { 
-    let name: String
+struct ProfileHeaderData: Hashable {
+    let image: String
+    let first: String
+    let last: String
     let username: String
-    let postCount: Int
+    let followerCount: Int
+    let followingCount: Int
+    let likesCount: Int
 }
 
 

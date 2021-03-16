@@ -8,10 +8,10 @@
 import UIKit
 
 class ProfileCreationsHeaderView: UICollectionReusableView, InstantiatesFromNib, CustomSegmentedControlDelegate {
-
+    
     @IBOutlet weak var contentSegment: CustomSegmentedControl! {
         didSet {
-            contentSegment.setButtonTitles(buttonTitles: [("",UIImage(systemName: "square.grid.3x3.fill")), ("",UIImage(systemName: "heart.fill"))])
+            contentSegment.setButtonTitles(buttonTitles: [("", UIImage(systemName: "square.grid.3x3.fill")), ("", UIImage(systemName: "heart.fill"))])
             contentSegment.selectorViewColor = .mainText
             contentSegment.selectorTextColor = .mainText
             contentSegment.textColor = .lightGray
@@ -22,6 +22,10 @@ class ProfileCreationsHeaderView: UICollectionReusableView, InstantiatesFromNib,
 
     func change(to index: Int) {
         print(index)
+    }
+    
+    func setupView() {
+        
     }
 
 }

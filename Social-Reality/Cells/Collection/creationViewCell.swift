@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class creationViewCell: UICollectionViewCell {
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

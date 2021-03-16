@@ -14,4 +14,9 @@ class ExploreCreationHeaderView: UICollectionReusableView, InstantiatesFromNib {
         // Initialization code
     }
     
+    func setupView() {
+        
+    }
+    
+    
 }

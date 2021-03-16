@@ -24,6 +24,8 @@ target 'Social-Reality' do
   # FB Pods
   pod 'FBSDKLoginKit'
   
+  # Utility Pods
+  pod 'Kingfisher'
   
   # Design Pods
   pod 'TransitionableTab', '~> 0.2.0'

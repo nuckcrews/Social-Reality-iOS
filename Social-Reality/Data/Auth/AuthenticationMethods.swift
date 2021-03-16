@@ -75,7 +75,7 @@ struct Auth {
         }
         let userKeys = UserModel.keys
         let predicate = userKeys.email == email
-        Query.api.get.usersWithPredicate(predicate: predicate) { (users) in
+        Query.datastore.get.usersWithPredicate(predicate: predicate) { (users) in
             if users?.count ?? 0 > 0 {
                 completion(true)
             } else {
@@ -87,7 +87,7 @@ struct Auth {
     func usernameExists(username: String, completion: @escaping(_ result: Bool) -> Void) {
         let userKeys = UserModel.keys
         let predicate = userKeys.username == username
-        Query.api.get.usersWithPredicate(predicate: predicate) { (result) in
+        Query.datastore.get.usersWithPredicate(predicate: predicate) { (result) in
             if result == nil || result?.count ?? 0 > 0 {
                 print("Username Taken")
                 completion(true)
