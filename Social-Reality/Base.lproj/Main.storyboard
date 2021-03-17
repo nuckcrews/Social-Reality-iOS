@@ -1317,7 +1317,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BKn-ss-Zgz">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </view>
-                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuu-cp-EeL">
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuu-cp-EeL" customClass="ARViewCreation" customModule="Social_Reality" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCK-7u-bBf">
@@ -1559,7 +1559,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9sz-YS-FNn"/>
                     <connections>
-                        <outlet property="arView" destination="xuu-cp-EeL" id="KDB-Pg-u9b"/>
+                        <outlet property="arView" destination="xuu-cp-EeL" id="ASB-VT-FSq"/>
                         <outlet property="backView" destination="BKn-ss-Zgz" id="X3W-nc-I2x"/>
                         <outlet property="bottomContentConstraint" destination="gBb-ki-gtj" id="Bfh-Oj-H2s"/>
                         <outlet property="bottomContentView" destination="3H0-FW-hhp" id="l8O-6d-5HO"/>

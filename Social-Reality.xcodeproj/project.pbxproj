@@ -82,7 +82,7 @@
 		A06B63C325E9561B00AE746D /* Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63C225E9561B00AE746D /* Creation.swift */; };
 		A06B63C825E9568400AE746D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63C725E9568400AE746D /* Comment.swift */; };
 		A06B63CD25E956C000AE746D /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63CC25E956C000AE746D /* Like.swift */; };
-		A06B63D625E95B5D00AE746D /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63D525E95B5D00AE746D /* ARView.swift */; };
+		A06B63D625E95B5D00AE746D /* ARViewCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63D525E95B5D00AE746D /* ARViewCreation.swift */; };
 		A06B63E125E9646900AE746D /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63E025E9646900AE746D /* ExploreViewController.swift */; };
 		A06B63E625E964A200AE746D /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63E525E964A200AE746D /* InboxViewController.swift */; };
 		A06B63EB25E964C500AE746D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63EA25E964C500AE746D /* AccountViewController.swift */; };
@@ -109,6 +109,8 @@
 		A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB58EE260042C900523005 /* CLLocationManager.swift */; };
 		A0BB58F12600625900523005 /* AuthenticationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB58F02600625900523005 /* AuthenticationProvider.swift */; };
 		A0C1149825F7156C005ADAFF /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C1149725F7156C005ADAFF /* amplifyconfiguration.json */; };
+		A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2FBAE26025C8D005D773A /* CustomBox.swift */; };
+		A0C2FBB2260268B4005D773A /* PencilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2FBB1260268B4005D773A /* PencilView.swift */; };
 		A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */; };
 		A0CBAFC826012FB9001953C8 /* EmailModel+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC626012FB9001953C8 /* EmailModel+Schema.swift */; };
 		A0CBAFC926012FB9001953C8 /* EmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC726012FB9001953C8 /* EmailModel.swift */; };
@@ -224,7 +226,7 @@
 		A06B63C225E9561B00AE746D /* Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creation.swift; sourceTree = "<group>"; };
 		A06B63C725E9568400AE746D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		A06B63CC25E956C000AE746D /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
-		A06B63D525E95B5D00AE746D /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		A06B63D525E95B5D00AE746D /* ARViewCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewCreation.swift; sourceTree = "<group>"; };
 		A06B63E025E9646900AE746D /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		A06B63E525E964A200AE746D /* InboxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxViewController.swift; sourceTree = "<group>"; };
 		A06B63EA25E964C500AE746D /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +253,8 @@
 		A0BB58EE260042C900523005 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		A0BB58F02600625900523005 /* AuthenticationProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationProvider.swift; sourceTree = "<group>"; };
 		A0C1149725F7156C005ADAFF /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
+		A0C2FBAE26025C8D005D773A /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
+		A0C2FBB1260268B4005D773A /* PencilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilView.swift; sourceTree = "<group>"; };
 		A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserViewController.swift; sourceTree = "<group>"; };
 		A0CBAFC626012FB9001953C8 /* EmailModel+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EmailModel+Schema.swift"; sourceTree = "<group>"; };
 		A0CBAFC726012FB9001953C8 /* EmailModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailModel.swift; sourceTree = "<group>"; };
@@ -627,7 +631,8 @@
 		A06B63D425E95B4500AE746D /* AugmentedReality */ = {
 			isa = PBXGroup;
 			children = (
-				A06B63D525E95B5D00AE746D /* ARView.swift */,
+				A0C2FBB026025C93005D773A /* ARViews */,
+				A0C2FBAD26025C75005D773A /* Entities */,
 			);
 			path = AugmentedReality;
 			sourceTree = "<group>";
@@ -680,6 +685,23 @@
 				A02397D525EB3C3300F13F72 /* Table */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A0C2FBAD26025C75005D773A /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				A0C2FBAE26025C8D005D773A /* CustomBox.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		A0C2FBB026025C93005D773A /* ARViews */ = {
+			isa = PBXGroup;
+			children = (
+				A06B63D525E95B5D00AE746D /* ARViewCreation.swift */,
+				A0C2FBB1260268B4005D773A /* PencilView.swift */,
+			);
+			path = ARViews;
 			sourceTree = "<group>";
 		};
 		A0CBAFCC26017D05001953C8 /* Creation */ = {
@@ -1004,11 +1026,12 @@
 				A02397F125EC09C800F13F72 /* LikeModel+Schema.swift in Sources */,
 				A06B63C825E9568400AE746D /* Comment.swift in Sources */,
 				A06B640225E978A400AE746D /* FadeViews.swift in Sources */,
-				A06B63D625E95B5D00AE746D /* ARView.swift in Sources */,
+				A06B63D625E95B5D00AE746D /* ARViewCreation.swift in Sources */,
 				A02397EF25EC09C800F13F72 /* UserModel.swift in Sources */,
 				A03870BB25E944CC003989CE /* CustomTabBar.swift in Sources */,
 				A006C01B25FFFF11003613C0 /* CellIdentifiers.swift in Sources */,
 				A040AB4A25F682D10064978A /* DownloadMethods.swift in Sources */,
+				A0C2FBB2260268B4005D773A /* PencilView.swift in Sources */,
 				A006461125EB0C8E00A3E1F3 /* inboxCell.swift in Sources */,
 				A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */,
 				A040AB4225F682C80064978A /* UploadMethods.swift in Sources */,
@@ -1045,6 +1068,7 @@
 				A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */,
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
 				A040AB1025F676ED0064978A /* CreateAvatarViewController.swift in Sources */,
+				A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */,
 				A023980625EC242600F13F72 /* CustomShadows.swift in Sources */,
 				A02397F025EC09C800F13F72 /* CommentModel+Schema.swift in Sources */,
 				A02397ED25EC09C800F13F72 /* CreationModel+Schema.swift in Sources */,

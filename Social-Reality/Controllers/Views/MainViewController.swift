@@ -23,6 +23,8 @@ class MainViewController: UIViewController {
         
         CoverToMainDelegate? = self
         
+//        arView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:))))
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,11 +36,11 @@ class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        arView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:))))
         
-        if readyForReality {
-            setupARView()
-        }
+        
+//        if readyForReality {
+//            setupARView()
+//        }
         
     }
     

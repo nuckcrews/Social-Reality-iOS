@@ -7,6 +7,8 @@
 
 import UIKit
 import RealityKit
+import PencilKit
+import Vision
 import Amplify
 import AmplifyPlugins
 
@@ -14,35 +16,87 @@ import AmplifyPlugins
 
 class CreateViewController: UIViewController {
     
-    @IBOutlet weak var arView: ARView!
+    @IBOutlet weak var arView: ARViewCreation!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var tutorialView: UIView!
     @IBOutlet weak var tutorialScrollView: UIScrollView!
     @IBOutlet weak var tutorialPageControl: UIPageControl!
-    
     @IBOutlet weak var bottomContentView: UIView!
     @IBOutlet weak var bottomContentConstraint: NSLayoutConstraint!
     
     var bottomConstraintDefault: CGFloat = -92
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarItem.tag = TabBarItemTag.thirdViewController.rawValue
         
+        tutorialScrollView.delegate = self
         view.sendSubviewToBack(arView)
-
         bottomContentConstraint.constant = 200
-        
         backView.backgroundColor = UIColor(white: 0.0, alpha: 0.7)
         
-        tutorialScrollView.delegate = self
+        arView.setupView()
         
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
+        
     }
+
+    
+    @IBAction func tapBack(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    
+}
+
+// MARK: Augmented Reality Functionality
+
+extension CreateViewController {
+ 
+    func initializeReality() {
+        
+        self.arView.startCoaching()
+        
+        let box = CustomBox(color: .red)
+        
+        arView.installGestures(.all, for: box) // Can change what gestures to use
+        box.generateCollisionShapes(recursive: true)
+        
+        arView.scene.anchors.append(box)
+        
+        
+        let mesh = MeshResource.generateText(
+                    "RealityKit",
+                    extrusionDepth: 0.1,
+                    font: .systemFont(ofSize: 2),
+                    containerFrame: .zero,
+                    alignment: .left,
+                    lineBreakMode: .byTruncatingTail)
+                
+                let material = SimpleMaterial(color: .white, isMetallic: false)
+                let entity = ModelEntity(mesh: mesh, materials: [material])
+                entity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
+                
+                box.addChild(entity)
+                
+                entity.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: box)
+        
+        
+    }
+    
+    
+    
+}
+
+// MARK: Tutorial Functionality
+
+extension CreateViewController {
     
     @IBAction func tapGetStarted(_ sender: UIButton) {
         sender.pulsate()
@@ -51,7 +105,10 @@ class CreateViewController: UIViewController {
             self.backView.alpha = 0
             self.tutorialView.alpha = 0
             self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.initializeReality()
         }
+
     }
     
     @IBAction func changePager(_ sender: UIPageControl) {
@@ -66,11 +123,6 @@ class CreateViewController: UIViewController {
             scrollToOffset(0)
         }
     }
-    
-    @IBAction func tapBack(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
     
 }
 
