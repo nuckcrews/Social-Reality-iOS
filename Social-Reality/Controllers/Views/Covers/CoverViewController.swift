@@ -41,6 +41,7 @@ class CoverViewController: UIViewController {
         
         opened = true
         openCover()
+        
     }
 
     func openCover() {
@@ -51,7 +52,7 @@ class CoverViewController: UIViewController {
         }
     }
     
-    func readyForRality() {
+    func readyForReality() {
         CoverToMainDelegate?.readyForSession()
     }
     

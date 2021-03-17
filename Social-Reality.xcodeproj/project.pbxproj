@@ -362,7 +362,6 @@
 			children = (
 				A03872C825E9497E003989CE /* MainViewController.swift */,
 				A06B63E025E9646900AE746D /* ExploreViewController.swift */,
-				A038702E25E93D9D003989CE /* CreateViewController.swift */,
 				A06B63E525E964A200AE746D /* InboxViewController.swift */,
 				A06B63EA25E964C500AE746D /* AccountViewController.swift */,
 			);
@@ -529,6 +528,7 @@
 		A03870CC25E94575003989CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A0CBAFCC26017D05001953C8 /* Creation */,
 				A072FC5525ED334100D59382 /* Testing */,
 				A023980325EC1CF200F13F72 /* Covers */,
 				A02397FB25EC195400F13F72 /* Authentication */,
@@ -680,6 +680,14 @@
 				A02397D525EB3C3300F13F72 /* Table */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A0CBAFCC26017D05001953C8 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				A038702E25E93D9D003989CE /* CreateViewController.swift */,
+			);
+			path = Creation;
 			sourceTree = "<group>";
 		};
 		F796CD064E1BF7CD31367252 /* Pods */ = {

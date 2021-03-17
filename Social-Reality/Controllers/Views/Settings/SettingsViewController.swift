@@ -14,7 +14,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     struct CellTitles {
-        
         static func title(_ index: Int) -> String {
             switch index {
             case 0:
@@ -33,7 +32,6 @@ class SettingsViewController: UIViewController {
                 return ""
             }
         }
-        
     }
      
     
