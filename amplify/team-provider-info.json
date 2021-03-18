@@ -1,4 +1,22 @@
 {
+  "devv": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-socialreality-devv-160931-authRole",
+      "UnauthRoleArn": "arn:aws:iam::297535061769:role/amplify-socialreality-devv-160931-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::297535061769:role/amplify-socialreality-devv-160931-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-socialreality-devv-160931-deployment",
+      "UnauthRoleName": "amplify-socialreality-devv-160931-unauthRole",
+      "StackName": "amplify-socialreality-devv-160931",
+      "StackId": "arn:aws:cloudformation:us-east-2:297535061769:stack/amplify-socialreality-devv-160931/52fe3410-8804-11eb-966f-02b00a4002c0",
+      "AmplifyAppId": "d3mken8xrlg0s6"
+    },
+    "categories": {
+      "auth": {
+        "SocialReality": {}
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-socialreality-dev-25329-authRole",

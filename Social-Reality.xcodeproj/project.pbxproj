@@ -17,6 +17,7 @@
 		A006C01B25FFFF11003613C0 /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006C01A25FFFF11003613C0 /* CellIdentifiers.swift */; };
 		A006C01D260002AE003613C0 /* Providers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006C01C260002AE003613C0 /* Providers.swift */; };
 		A006C01F26003072003613C0 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A006C01E26003072003613C0 /* UIImageView.swift */; };
+		A00DD4102603964B00E6C818 /* CreationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD40F2603964B00E6C818 /* CreationDetailViewController.swift */; };
 		A016E05B25FAC03600D6D5D9 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A016E05A25FAC03600D6D5D9 /* Segues.swift */; };
 		A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02397D125EB1B5A00F13F72 /* CustomViews.swift */; };
 		A02397D425EB291B00F13F72 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02397D325EB291B00F13F72 /* CustomScrollView.swift */; };
@@ -155,6 +156,7 @@
 		A006C01C260002AE003613C0 /* Providers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Providers.swift; sourceTree = "<group>"; };
 		A006C01E26003072003613C0 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		A008BAF125F2F6F400F70ECF /* Social-Reality.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Social-Reality.entitlements"; sourceTree = "<group>"; };
+		A00DD40F2603964B00E6C818 /* CreationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationDetailViewController.swift; sourceTree = "<group>"; };
 		A016E05A25FAC03600D6D5D9 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		A02397D125EB1B5A00F13F72 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		A02397D325EB291B00F13F72 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
@@ -304,6 +306,14 @@
 				5D8E4CB88DFBABEFB1F44899 /* Pods_Social_RealityTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A00DD40E2603961C00E6C818 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				A00DD40F2603964B00E6C818 /* CreationDetailViewController.swift */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 		A02397D525EB3C3300F13F72 /* Table */ = {
@@ -533,11 +543,12 @@
 			isa = PBXGroup;
 			children = (
 				A0CBAFCC26017D05001953C8 /* Creation */,
-				A072FC5525ED334100D59382 /* Testing */,
 				A023980325EC1CF200F13F72 /* Covers */,
 				A02397FB25EC195400F13F72 /* Authentication */,
 				A023980225EC1CDB00F13F72 /* Tabs */,
+				A00DD40E2603961C00E6C818 /* Content */,
 				A023980425EC1D0400F13F72 /* Settings */,
+				A072FC5525ED334100D59382 /* Testing */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1071,6 +1082,7 @@
 				A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */,
 				A023980625EC242600F13F72 /* CustomShadows.swift in Sources */,
 				A02397F025EC09C800F13F72 /* CommentModel+Schema.swift in Sources */,
+				A00DD4102603964B00E6C818 /* CreationDetailViewController.swift in Sources */,
 				A02397ED25EC09C800F13F72 /* CreationModel+Schema.swift in Sources */,
 				A06B633525E9512400AE746D /* Query.swift in Sources */,
 				A03FAC8625EEDD09000BFC02 /* CreationView.swift in Sources */,

@@ -15,6 +15,7 @@ extension UserModel {
     case email
     case image
     case provider
+    case creations
   }
   
   public static let keys = CodingKeys.self
@@ -35,7 +36,8 @@ extension UserModel {
       .field(userModel.access, is: .required, ofType: .enum(type: ProfileAccessibility.self)),
       .field(userModel.email, is: .required, ofType: .string),
       .field(userModel.image, is: .optional, ofType: .string),
-      .field(userModel.provider, is: .required, ofType: .enum(type: AuthenticationProvider.self))
+      .field(userModel.provider, is: .required, ofType: .enum(type: AuthenticationProvider.self)),
+      .hasMany(userModel.creations, is: .optional, ofType: CreationModel.self, associatedWith: CreationModel.keys.userID)
     )
     }
 }

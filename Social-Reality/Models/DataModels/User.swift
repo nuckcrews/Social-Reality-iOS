@@ -16,8 +16,6 @@ class User : ObservableObject {
     private var _model: UserModel?
     var creations = [CreationModel]()
     
-    var str = ""
-    
     var id: String! {
         return _id
     }
@@ -36,10 +34,7 @@ class User : ObservableObject {
     
     public func getModel(id: String, completion: @escaping(_ result: ResultType) -> Void) {
         Query.datastore.get.user(id: id) { (res) in
-            guard let res = res else {
-                completion(.error)
-                return
-            }
+            guard let res = res else { completion(.error); return }
             print(res)
             self._model = res
             completion(.success)

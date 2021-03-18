@@ -38,6 +38,7 @@ class AccountViewController: UIViewController {
         
         tabBarItem.tag = TabBarItemTag.fifthViewController.rawValue
         
+        collectionView.delegate = self
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
         collectionView.register(ProfileCreationsHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ProfileCreationsHeaderView.rawValue)
         collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: Cells.creationViewCell.rawValue)
@@ -85,6 +86,12 @@ class AccountViewController: UIViewController {
         }
     }
     
+    func toContentDetail() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toCreationDetailFromAccount.rawValue, sender: nil)
+        }
+    }
+    
     @IBAction func tapSettings(_ sender: UIButton) {
         
         sender.jump()
@@ -100,7 +107,8 @@ class AccountViewController: UIViewController {
     }
     
 }
-extension AccountViewController {
+
+extension AccountViewController: UICollectionViewDelegate {
     
     private func cell(collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell {
         
@@ -122,6 +130,10 @@ extension AccountViewController {
             
         }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.toContentDetail()
     }
     
     private func configureDatasource() {

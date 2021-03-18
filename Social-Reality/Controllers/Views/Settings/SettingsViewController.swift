@@ -50,7 +50,7 @@ class SettingsViewController: UIViewController {
             print(res)
             print(Auth().loggedIn)
             Amplify.DataStore.clear { _ in
-                print("Datastore cleared")
+                print("Datastore cleared") // Add Loader
                 self.backToHome()
             }
         }

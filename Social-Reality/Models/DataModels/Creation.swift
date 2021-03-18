@@ -12,22 +12,51 @@ import AmplifyPlugins
 
 class Creation : ObservableObject {
     
-    var model: CreationModel?
     
-    init(item: CreationModel, subscribe: Bool) {
-        model = item
-        subscribe ? subscribeToCreation(id: item.id) : getCreation(id: item.id)
+    private var _id: String!
+    private var _model: CreationModel?
+
+    var id: String! {
+        return _id
+    }
+    var model: CreationModel? {
+        return _model
     }
     
-    init(id: String, subscribe: Bool) {
-        subscribe ? subscribeToCreation(id: id) : getCreation(id: id)
+    var user: User?
+    
+    init(id: String) {
+        _id = id
     }
     
-    private func getCreation(id: String) {
+    init(item: CreationModel) {
+        _id = item.id
+        _model = item
+    }
+    
+    public func getCreation(id: String, completion: @escaping(_ result: ResultType) -> Void) {
         Query.datastore.get.creation(id: id) { (res) in
-            guard let res = res else { return }
+            guard let res = res else { completion(.error); return }
             print(res)
-            self.model = res
+            self._model = res
+            completion(.success)
+        }
+    }
+    
+    public func getCreationWithUser(id: String, completion: @escaping(_ result: ResultType) -> Void) {
+        Query.datastore.get.creation(id: id) { (res) in
+            guard let res = res else { completion(.error); return }
+            print(res)
+            self._model = res
+            if let userID = res.userID {
+                self.user = User(id: userID)
+                self.user?.getModel(id: userID, completion: { result in
+                    print(result)
+                    completion(.success)
+                })
+            } else {
+                completion(.error)
+            }
         }
     }
     
@@ -37,7 +66,7 @@ class Creation : ObservableObject {
             print(res)
             print(event as Any)
             
-            self.model = res
+            self._model = res
         }
     }
     
@@ -46,7 +75,7 @@ class Creation : ObservableObject {
     }
     
     public func updateCreation(item: CreationModel) {
-        model = item
+        _model = item
         Query.datastore.update.creation(item) { (res) in
             print(res)
         }
