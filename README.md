@@ -17,7 +17,7 @@ Location based social media application with Augmented Reality based content.
 
 ### Installation
 
-Install cocoapods at root directory
+Install cocoapods at root directory.
 
 ```
 pod install
@@ -33,12 +33,17 @@ pod install
 
 ---
 
+### License
+
+This library is licensed under the MIT License.
+
+---
+
 ### Contributors
 
 If you are interested in contributing to this project please feel free to make a pull request or send me an email.
 
 nickcrews35@gmail.com
-
 
 I'm working on creating an open source contribution guide soon.
 
