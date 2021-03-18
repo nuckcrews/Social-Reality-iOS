@@ -7,6 +7,10 @@ extension LikeModel {
    public enum CodingKeys: String, ModelKey {
     case id
     case status
+    case creationID
+    case userID
+    case userImage
+    case userName
   }
   
   public static let keys = CodingKeys.self
@@ -19,7 +23,11 @@ extension LikeModel {
     
     model.fields(
       .id(),
-      .field(likeModel.status, is: .optional, ofType: .string)
+      .field(likeModel.status, is: .optional, ofType: .string),
+      .field(likeModel.creationID, is: .optional, ofType: .string),
+      .field(likeModel.userID, is: .optional, ofType: .string),
+      .field(likeModel.userImage, is: .optional, ofType: .string),
+      .field(likeModel.userName, is: .optional, ofType: .string)
     )
     }
 }

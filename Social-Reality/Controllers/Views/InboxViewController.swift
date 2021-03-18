@@ -10,6 +10,7 @@ import UIKit
 class InboxViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,12 @@ class InboxViewController: UIViewController {
             
     }
     
+    func setupView() {
+        let img = UIImage(named: "magnifyingglass")?.withTintColor(.primary)
+        searchBar.setImage(img, for: .search, state: .normal)
+        
+//        searchBar.searchTextField.leftView?.tintColor = .primary
+    }
     
 }
 

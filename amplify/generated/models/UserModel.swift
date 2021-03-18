@@ -13,6 +13,7 @@ public struct UserModel: Model {
   public var email: String
   public var image: String?
   public var provider: AuthenticationProvider
+  public var creations: List<CreationModel>?
   
   public init(id: String = UUID().uuidString,
       username: String,
@@ -23,7 +24,8 @@ public struct UserModel: Model {
       access: ProfileAccessibility,
       email: String,
       image: String? = nil,
-      provider: AuthenticationProvider) {
+      provider: AuthenticationProvider,
+      creations: List<CreationModel>? = []) {
       self.id = id
       self.username = username
       self.status = status
@@ -34,5 +36,6 @@ public struct UserModel: Model {
       self.email = email
       self.image = image
       self.provider = provider
+      self.creations = creations
   }
 }

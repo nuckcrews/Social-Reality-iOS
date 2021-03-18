@@ -11,24 +11,38 @@ enum AuthenticationProvider {
   EMAIL
 }
 
-type LikeModel @model @auth(rules: [{allow: public}]) {
+type LikeModel @model @auth(rules: [{allow: public}]) @key(name: "byCreationModel", fields: ["creationID"]) {
   id: ID!
   status: String
+  creationID: ID
+  userID: String
+  userImage: String
+  userName: String
 }
 
-type CommentModel @model @auth(rules: [{allow: public}]) {
+type CommentModel @model @auth(rules: [{allow: public}]) @key(name: "byCreationModel", fields: ["creationID"]) {
   id: ID!
   content: String!
   status: String
+  creationID: ID
+  userID: String
+  userImage: String
+  userName: String
 }
 
-type CreationModel @model @auth(rules: [{allow: public}]) {
+type CreationModel @model @auth(rules: [{allow: public}]) @key(name: "byUserModel", fields: ["userID"]) {
   id: ID!
   title: String
   description: String
   lastViewed: String
   accessibility: CreationAccessibility!
   status: String
+  date: AWSDate
+  userID: ID
+  comments: [CommentModel] @connection(keyName: "byCreationModel", fields: ["id"])
+  likes: [LikeModel] @connection(keyName: "byCreationModel", fields: ["id"])
+  userName: String
+  userImage: String
 }
 
 enum CreationAccessibility {
@@ -54,5 +68,6 @@ type UserModel @model @auth(rules: [{allow: public}]) {
   email: String!
   image: String
   provider: AuthenticationProvider!
+  creations: [CreationModel] @connection(keyName: "byUserModel", fields: ["id"])
 }
  
