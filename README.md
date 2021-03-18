@@ -43,7 +43,7 @@ This library is licensed under the MIT License.
 
 If you are interested in contributing to this project please feel free to make a pull request or send me an email.
 
-nickcrews35@gmail.com
+nickcrews35@gmail.com 
 
 I'm working on creating an open source contribution guide soon.
 
