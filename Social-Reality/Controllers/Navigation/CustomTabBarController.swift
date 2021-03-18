@@ -77,7 +77,12 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         case .secondViewController:
             animate(secondTabBarItemImageView)
         case .thirdViewController:
-            animate(thirdTabBarItemImageView)
+            if let createViewController = storyboard?.instantiateViewController(identifier: "CreateViewController") as? CreateViewController {
+                self.present(createViewController, animated: true) {
+                    print("Presented Creation")
+                }
+            }
+//            animate(thirdTabBarItemImageView)
         case .fourthViewController:
             animate(fourthTabBarItemImageView)
         case .fifthViewController:
@@ -95,9 +100,13 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
             }, completion: nil)
         }
     }
+
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        return animateTransition(tabBarController, shouldSelect: viewController)
+        
+        
+        
+        return viewController != tabBarController.viewControllers?[2] && animateTransition(tabBarController, shouldSelect: viewController)
     }
     
 }

@@ -29,8 +29,6 @@ struct DataStoreReadMethods {
                 completion(nil)
             }
         }
-        
-        
     }
     
     

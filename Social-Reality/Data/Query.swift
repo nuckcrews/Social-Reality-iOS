@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Amplify
+import AmplifyPlugins
 
 struct Query {
     static var datastore = DataStore()
@@ -25,6 +27,16 @@ enum ResultType {
 
 
 struct DataStore {
+    func start() {
+        Amplify.DataStore.start { result in
+            switch result {
+            case .success(let detail):
+            print(detail)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     var get = DataStoreReadMethods()
     var write = DataStoreWriteMethods()
     var update = DataStoreUpdateMethods()

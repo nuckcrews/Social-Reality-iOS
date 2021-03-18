@@ -22,8 +22,11 @@ class settingsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(title: String) {
+    func configureCell(title: String, index: Int) {
         titleLabel.text = title
+        if index == 5 {
+            titleLabel.textColor = .red
+        }
     }
 
 }

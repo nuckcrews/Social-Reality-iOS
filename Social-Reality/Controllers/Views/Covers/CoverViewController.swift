@@ -16,6 +16,8 @@ class CoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Query.datastore.start()
+        
         if Auth().loggedIn {
             print("signed In")
         } else {
@@ -38,8 +40,8 @@ class CoverViewController: UIViewController {
         }
         
         opened = true
-        
         openCover()
+        
     }
 
     func openCover() {
@@ -50,7 +52,7 @@ class CoverViewController: UIViewController {
         }
     }
     
-    func readyForRality() {
+    func readyForReality() {
         CoverToMainDelegate?.readyForSession()
     }
     

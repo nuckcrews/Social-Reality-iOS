@@ -25,5 +25,7 @@ enum Segue: String {
     case toConfirmUserFromCreatePassword
     case toConfirmUserFromPassword
     case toCreateUserFromConfirm
+    case toEditProfileFromAccount
+    case toHomeFromSettings
     
 }
