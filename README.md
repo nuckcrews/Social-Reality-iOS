@@ -27,10 +27,19 @@ pod install
 
 ### TODO
 
-- [ ] Backend Configuration
-- [ ] Social Network Functionality
 - [ ] User Finger Tracing
 - [ ] Remote Scene Storage
 - [ ] More...
 
 ---
+
+### Contributors
+
+If you are interested in contributing to this project please feel free to make a pull request or send me an email.
+
+nickcrews35@gmail.com
+
+
+I'm working on creating an open source contribution guide soon.
+
+#### Enjoy!
