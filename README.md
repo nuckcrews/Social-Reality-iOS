@@ -1,7 +1,7 @@
 # Social-Reality-iOS
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/33267791/111557504-2b209600-8763-11eb-9093-4aff5a1cb031.png" />
+  <img src="https://user-images.githubusercontent.com/33267791/111558678-a125fc80-8765-11eb-98a5-000ecb4d18c9.png" />
 </p>
 <h3 align="center">Making Augmented Reality Social</h3>
 
