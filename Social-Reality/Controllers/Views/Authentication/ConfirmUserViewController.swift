@@ -53,28 +53,7 @@ class ConfirmUserViewController: UIViewController {
             return
         }
         
-        Auth().confirmSignUp(for: email, with: text) { result in
-            print(result)
-            if result == .success {
-                
-                Auth().signIn(username: email, password: password) { result in
-                    print(result)
-                    if result == .success {
-                        if Auth().loggedIn {
-                            self.toCreateUser()
-                        } else {
-                            self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-                        }
-                    } else {
-                        self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-                    }
-                }
-            } else {
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-                self.confirmationTextField.text = ""
-                self.confirmationIndicator.tintColor = .grayText
-            }
-        }
+
         
     }
     
@@ -99,7 +78,6 @@ class ConfirmUserViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email
-            dest.provider = .email
         }
     }
 

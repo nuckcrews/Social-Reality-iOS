@@ -769,7 +769,6 @@
                                         </state>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="OAW-Ix-8u7" secondAttribute="trailing" id="2bY-7J-eBe"/>
                                     <constraint firstAttribute="trailing" secondItem="x2k-kO-E9t" secondAttribute="trailing" constant="16" id="D8V-OD-7jA"/>

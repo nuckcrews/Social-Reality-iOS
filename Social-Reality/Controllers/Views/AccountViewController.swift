@@ -54,23 +54,20 @@ class AccountViewController: UIViewController {
     
     func getUser() {
         
-        guard let id = Auth().user?.userId else {
+        guard let id = Auth0.uid else {
             self.populateViews()
             return
         }
         
-        user = User(id: id)
-        user?.getModel(id: id, completion: { result in
-            print(result)
-            self.populateViews()
-        })
+        
+        
         
     }
     
     func populateViews() {
         configureDatasource()
         DispatchQueue.main.async {
-            self.usernameTitleButton.setTitle(self.user?.model?.username ?? "My Account", for: .normal)
+            
         }
     }
     

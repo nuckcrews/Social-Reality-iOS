@@ -7,13 +7,8 @@
 
 import Foundation
 import UIKit
-import Amplify
-import AmplifyPlugins
 
-func uploadImage() {
-    Storage.upload.image(key: "defaultprofile", image: UIImage(named: "DefaultProfileImage")!) { (result) in
-        Storage.download.imageURL(key: "defaultprofile") { (url) in
-            print(url?.absoluteString as Any)
-        }
-    }
+
+func uploadImage() { // UPLOAD DEFAULT IMAGE
+    
 }

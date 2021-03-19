@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import Amplify
-import AmplifyPlugins
+import Firebase
 
 class SettingsViewController: UIViewController {
     
@@ -45,15 +44,7 @@ class SettingsViewController: UIViewController {
     
     
     func signOut() {
-        print(Auth().loggedIn)
-        Auth().signOutLocally { res in
-            print(res)
-            print(Auth().loggedIn)
-            Amplify.DataStore.clear { _ in
-                print("Datastore cleared") // Add Loader
-                self.backToHome()
-            }
-        }
+
     }
     
     func backToHome() {

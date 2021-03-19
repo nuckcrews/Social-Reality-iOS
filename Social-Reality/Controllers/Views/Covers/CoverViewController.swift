@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CoverViewController: UIViewController {
     
@@ -16,27 +17,13 @@ class CoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Query.datastore.start()
-        
-        if Auth().loggedIn {
-            print("signed In")
-        } else {
-            print("Signed Out")
-        }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        if !Auth().loggedIn && !opened {
+        if !Auth0.loggedIn && !opened {
             toSignIn()
-        }
-        
-        if Auth().loggedIn {
-            print("signed In")
-        } else {
-            print("Signed Out")
         }
         
         opened = true

@@ -8,8 +8,7 @@
 import UIKit
 import RealityKit
 import ARKit
-import Amplify
-import AmplifyPlugins
+import Firebase
 
 class MainViewController: UIViewController {
 

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import AVKit
 
 class CreationDetailViewController: UIViewController {
 
+    @IBOutlet weak var creationAVPlayerView: UIView!
     @IBOutlet weak var creatorAvatarImage: UIImageView!
     @IBOutlet weak var creationTitleLabel: UILabel!
     @IBOutlet weak var creationDescriptionLabel: UILabel!
@@ -17,6 +19,7 @@ class CreationDetailViewController: UIViewController {
     
     var user: User?
     var creation: Creation?
+//    var player = CreationAVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,9 @@ class CreationDetailViewController: UIViewController {
     }
     
     func setupView() {
+        
+        
+//        creationAVPlayerView.addSubview(player)
         
         guard let creation = creation else { return }
         

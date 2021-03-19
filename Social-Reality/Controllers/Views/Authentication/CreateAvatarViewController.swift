@@ -27,12 +27,8 @@ class CreateAvatarViewController: UIViewController {
     
     func getUser() {
         
-        guard let id = Auth().user?.userId else { return }
-        
-        user = User(id: id)
-        user?.getModel(id: id, completion: { result in
-            print(result)
-        })
+        guard let id = Auth0.uid else { return }
+
         
     }
     
@@ -52,16 +48,7 @@ class CreateAvatarViewController: UIViewController {
     }
     
     func saveImage() {
-        if var model = user?.model {
-            model.image = imageURL
-            Query.datastore.update.user(model) { (result) in
-                if result == .success {
-                    self.toHome()
-                } else {
-                    print("Error saving data")
-                }
-            }
-        }
+        
     }
     
     func toHome() {
@@ -94,19 +81,9 @@ extension CreateAvatarViewController: ImagePickerDelegate {
     }
     
     func uploadImage(image: UIImage) {
-        guard let uid = Auth().user?.userId else { return }
+        guard let uid = Auth0.uid else { return }
         startLoading()
-        Storage.upload.image(key: uid, image: image) { (result) in
-            if result == .success {
-                Storage.download.imageURL(key: uid) { (url) in
-                    if let url = url {
-                        print(url.absoluteString)
-                        self.imageURL = url.absoluteString
-                        self.stopLoading()
-                    }
-                }
-            }
-        }
+
         
     }
 }

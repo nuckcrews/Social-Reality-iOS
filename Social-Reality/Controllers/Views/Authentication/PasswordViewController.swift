@@ -49,37 +49,11 @@ class PasswordViewController: UIViewController {
     func signInUser() {
         guard let email = email, let password = passwordTextField.text else { return }
         
-        Auth().signIn(username: email, password: password) { result in
-            print(result)
-            if result == .success {
-                if let id = Auth().user?.userId {
-                    Auth().hasUsername(id: id) { res in
-                        if res {
-                            self.toHome()
-                        } else {
-                            self.toCreateUser()
-                        }
-                    }
-                } else {
-                    self.confirmUser(text: email)
-                }
-            } else {
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-            }
-        }
         
     }
     
     func confirmUser(text: String) {
-        
-        Auth().resendConfirmationCode(for: text) { result in
-            print(result)
-            if result == .success {
-                self.toConfirmUser()
-            } else {
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-            }
-        }
+
         
     }
     
@@ -118,7 +92,6 @@ class PasswordViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email
-            dest.provider = .email
         }
         if let dest = segue.destination as? ConfirmUserViewController {
             dest.email = email

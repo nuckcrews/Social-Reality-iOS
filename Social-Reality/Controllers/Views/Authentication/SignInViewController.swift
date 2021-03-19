@@ -6,15 +6,11 @@
 //
 
 import UIKit
-import Amplify
-import AmplifyPlugins
+import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
-import AWSGoogleSignIn
-import AWSUserPoolsSignIn
-import GTMAppAuth
-import AppAuth
 import AuthenticationServices
+import CryptoKit
 
 class SignInViewController: UIViewController {
     
@@ -22,7 +18,10 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailIndicatorButton: UIButton!
     
     var email: String?
-    var provider: AuthenticationProvider = .email
+    
+    var loginButton = FBLoginButton()
+    var googleButton: GIDSignInButton?
+    var currentNonce: String?
     
     struct AlertError {
         static var title = "Error Signing In"
@@ -35,6 +34,14 @@ class SignInViewController: UIViewController {
         
         emailTextField.delegate = self
         emailTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
+        loginButton = FBLoginButton()
+        loginButton.delegate = self
+        loginButton.permissions = ["public_profile", "email"]
+        loginButton.isHidden = true
         
     }
     
@@ -64,132 +71,62 @@ class SignInViewController: UIViewController {
             return
         }
         
-        Auth().userExists(email: emailTextField.text!) { (res) in
-            guard res.0 != nil else {
-                return
-            }
-            self.email = self.emailTextField.text
-            if res.0! {
-                guard let window = self.view.window else { return }
-                self.provider = res.1 ?? .email
-                if res.1 == .google {
-                    Auth().signInWithProvider(provider: .google, window: window) { res in
-                        if res == .success {
-                            self.checkForUserInformation(authProvider: .google)
-                        } else {
-                            print("Error signing In")
-                        }
-                    }
-                } else if res.1 == .facebook {
-                    Auth().signInWithProvider(provider: .facebook, window: window) { res in
-                        if res == .success {
-                            self.checkForUserInformation(authProvider: .facebook)
-                        } else {
-                            print("Error signing In")
-                        }
-                    }
-                } else if res.1 == .apple {
-                    Auth().signInWithProvider(provider: .apple, window: window) { res in
-                        if res == .success {
-                            self.checkForUserInformation(authProvider: .apple)
-                        } else {
-                            print("Error signing In")
-                        }
-                    }
-                } else if res.1 == .email {
-                    self.toEmailPassword()
-                }
-            } else {
-                self.emailSignIn(text: self.emailTextField.text!)
-            }
-            
-        }
+        Buzz.light()
         sender.pulsate()
         
-    }
-    
-    func emailSignIn(text: String) {
-        
-        Auth().emailExists(email: text) { result in
-            print(result)
-            if result {
-                self.toEmailPassword()
-            } else {
-                self.toCreatePassword()
-            }
-        }
+        checkUser(text: emailTextField.text!)
         
     }
     
-    func checkForUserInformation(authProvider: AuthenticationProvider) { // FIXME: Have to check for provider
-        guard Auth().loggedIn else {
-            self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-            return
-        }
-        provider = authProvider
-        Auth().userAttributes { (attributes) in
-            if let attributeEmail = attributes?["email"] as? String {
-                self.email = attributeEmail
-                Auth().userExists(email: attributeEmail) { (res) in
-                    if res.0 != nil {
-                        if !res.0! {
-                            self.addEmail(text: attributeEmail, authProvider: authProvider)
-                            self.toNewUser()
-                        } else {
-                            self.toHome()
-                        }
-                    } else {
-                        self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-                    }
-                }
-            } else {
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
+    func checkUser(text: String) {
+        Auth0.userExists(email: text, completion: { result in
+            if let result = result {
+                result ? self.toEmailPassword() : self.toCreatePassword()
             }
+        })
+    }
+    
+    
+    func checkUserData(id: String) {
+        Auth0.userDataExists(id: id) { result in
+            result ? self.toHome() : self.toNewUser()
         }
     }
     
-    func addEmail(text: String, authProvider: AuthenticationProvider) {
-        let model = EmailModel(email: text, provider: authProvider)
-        Query.datastore.write.email(model) { result in
-            print(result ?? "")
-        }
-    }
-    
+
     @IBAction func tapGoogleSignIn(_ sender: UIButton) {
+        Buzz.light()
         sender.pulsate()
-        guard let window = view.window else { return }
-        Auth().signInWithProvider(provider: .google, window: window) { res in
-            if res == .success {
-                self.checkForUserInformation(authProvider: .google)
-            } else {
-                print("Error signing In")
-                
-            }
-        }
+        GIDSignIn.sharedInstance()?.signIn()
     }
     
     @IBAction func tapFacebookSignIn(_ sender: UIButton) {
+        Buzz.light()
         sender.pulsate()
-        guard let window = view.window else { return }
-        Auth().signInWithProvider(provider: .facebook, window: window) { res in
-            if res == .success {
-                self.checkForUserInformation(authProvider: .facebook)
-            } else {
-                print("Error signing In")
-            }
-        }
+        loginButton.sendActions(for: .touchUpInside)
     }
     
     @IBAction func tapAppleSignIn(_ sender: UIButton) {
+        Buzz.light()
         sender.pulsate()
-        guard let window = view.window else { return }
-        Auth().signInWithProvider(provider: .apple, window: window) { res in
-            if res == .success {
-                self.checkForUserInformation(authProvider: .apple)
-            } else {
-                print("Error signing In")
-            }
-        }
+        appleSignIn()
+    }
+    
+    func appleSignIn() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        // Generate nonce for validation after authentication successful
+        self.currentNonce = Crypto.randomNonceString()
+        // Set the SHA256 hashed nonce to ASAuthorizationAppleIDRequest
+        request.nonce = Crypto.sha256(currentNonce!) 
+        
+        // Present Apple authorization form
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
     }
     
     @IBAction func tapBack(_ sender: AnyObject) {
@@ -220,7 +157,6 @@ class SignInViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email
-            dest.provider = provider
         }
         if let dest = segue.destination as? CreatePasswordViewController {
             dest.email = emailTextField.text
@@ -228,6 +164,23 @@ class SignInViewController: UIViewController {
         if let dest = segue.destination as? PasswordViewController {
             dest.email = emailTextField.text
         }
+    }
+    
+}
+
+extension SignInViewController {
+    
+    
+    func signInWithProvider(credential: AuthCredential) {
+        
+        Auth0.signInWithProvider(credential: credential) { result in
+            if result == nil {
+                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
+            } else {
+                self.checkUserData(id: result!.user.uid)
+            }
+        }
+    
     }
     
 }
@@ -266,45 +219,6 @@ extension SignInViewController: UITextFieldDelegate {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if emailTextField.text!.isValidEmail() {
-            Auth().userExists(email: emailTextField.text!) { (res) in
-                guard res.0 != nil else {
-                    return
-                }
-                self.email = self.emailTextField.text
-                if res.0! {
-                    guard let window = self.view.window else { return }
-                    self.provider = res.1 ?? .email
-                    if res.1 == .google {
-                        Auth().signInWithProvider(provider: .google, window: window) { res in
-                            if res == .success {
-                                self.checkForUserInformation(authProvider: .apple)
-                            } else {
-                                print("Error signing In")
-                            }
-                        }
-                    } else if res.1 == .facebook {
-                        Auth().signInWithProvider(provider: .facebook, window: window) { res in
-                            if res == .success {
-                                self.checkForUserInformation(authProvider: .apple)
-                            } else {
-                                print("Error signing In")
-                            }
-                        }
-                    } else if res.1 == .apple {
-                        Auth().signInWithProvider(provider: .apple, window: window) { res in
-                            if res == .success {
-                                self.checkForUserInformation(authProvider: .apple)
-                            } else {
-                                print("Error signing In")
-                            }
-                        }
-                    } else if res.1 == .email {
-                        self.toEmailPassword()
-                    }
-                } else {
-                    self.toCreatePassword()
-                }
-            }
             return true
         } else {
             return false
@@ -313,4 +227,68 @@ extension SignInViewController: UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+}
+
+extension SignInViewController: GIDSignInDelegate {
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        if let error = error {
+            print(error)
+            return
+        }
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        email = user.profile.email
+        signInWithProvider(credential: credential)
+    }
+    
+}
+
+extension SignInViewController: LoginButtonDelegate {
+    
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        if AccessToken.current != nil && result != nil {
+            let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+            signInWithProvider(credential: credential)
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("loggedOut")
+    }
+    
+}
+
+extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            // Do something with the credential...
+            UserDefaults.standard.set(appleIDCredential.user, forKey: "appleAuthorizedUserIdKey")
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+            // Retrieve Apple identity token
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Failed to fetch identity token")
+                return
+            }
+            // Convert Apple identity token to string
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Failed to decode identity token")
+                return
+            }
+            // Initialize a Firebase credential using secure nonce and Apple identity token
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            signInWithProvider(credential: credential)
+        }
+    }
+    
 }
