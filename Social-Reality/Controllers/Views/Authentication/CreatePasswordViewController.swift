@@ -60,28 +60,10 @@ class CreatePasswordViewController: UIViewController {
         guard let password = passwordTextField.text, let email = email else {
             return
         }
-        Auth().signUp(username: email, password: password, email: email) { result in
-            print(result)
-            if result == .success {
-                self.addEmail(text: email)
-            } else {
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-            }
-        }
+
         
     }
-    
-    func addEmail(text: String) {
-        
-        let model = EmailModel(email: text, provider: .email)
-        Query.datastore.write.email(model) { result in
-            if result != nil {
-                self.toConfirmUser()
-            } else {
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
-            }
-        }
-    }
+
 
     
     func toConfirmUser() {
@@ -117,7 +99,6 @@ class CreatePasswordViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email
-            dest.provider = .email
         }
         if let dest = segue.destination as? ConfirmUserViewController {
             dest.email = email

@@ -9,8 +9,6 @@ import UIKit
 import RealityKit
 import PencilKit
 import Vision
-import Amplify
-import AmplifyPlugins
 
 // MARK: Content Creation View Controller
 

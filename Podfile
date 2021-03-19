@@ -8,19 +8,24 @@ target 'Social-Reality' do
 
   # Pods for Social-Reality
   
-  # AWS Pods
-  pod 'Amplify'
-  pod 'AmplifyPlugins/AWSAPIPlugin'
-  pod 'AmplifyPlugins/AWSS3StoragePlugin'
-  pod 'AmplifyPlugins/AWSDataStorePlugin'
-  pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
-  pod 'AWSUserPoolsSignIn'
-  pod 'AWSGoogleSignIn'
-  
   # GCP Pods
+  pod 'Firebase'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/DynamicLinks'
+  pod 'Firebase/Performance'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Functions'
   pod 'GoogleMaps', '4.1.0'
   pod 'GooglePlaces', '4.1.0'
   pod 'GoogleSignIn'
+  
+  # Codable
+  pod 'CodableFirebase'
   
   # FB Pods
   pod 'FBSDKLoginKit'

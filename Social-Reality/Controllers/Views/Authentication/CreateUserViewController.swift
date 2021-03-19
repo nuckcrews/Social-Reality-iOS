@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import Amplify
-import AmplifyPlugins
 
 class CreateUserViewController: UIViewController {
     
@@ -22,7 +20,6 @@ class CreateUserViewController: UIViewController {
     @IBOutlet weak var usernameTakenLabel: UILabel!
     
     var email: String?
-    var provider: AuthenticationProvider = .email
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,56 +36,16 @@ class CreateUserViewController: UIViewController {
         
     }
     
-    func getProvider() {
-        
-        Auth().fetchAuthProvider { result in
-            if let result = result {
-                if result == .Google {
-                    self.provider = .google
-                } else if result == .Facebook {
-                    self.provider = .facebook
-                } else if result == .Apple {
-                    self.provider = .apple
-                } else if result == .Email {
-                    self.provider = .email
-                }
-            }
-        }
-        
-    }
-    
     func checkUserName() {
         guard let username = usernameTextField.text else {
             return
-        }
-        Auth().usernameExists(username: username) { (exists) in
-            DispatchQueue.main.async {
-                if exists {
-                    print("username exists")
-                    
-                    self.usernameTakenLabel.alpha = 1
-                    self.usernameTextIndicator.tintColor = .red
-                } else {
-                    self.usernameTextIndicator.tintColor = .green
-                    self.createUser()
-                }
-            }
         }
         
     }
     
     func createUser() {
-        guard let id = Auth().user?.userId else {
+        guard let id = Auth0.uid else { 
             return
-        }
-        let user = UserModel(id: id, username: usernameTextField.text!, status: "", first: firstNameTextField.text, last: lastNameTextField.text, lastActive: "", access: .public, email: email!, image: "", provider: provider)
-        Query.datastore.write.user(user) { (result) in
-            if result != nil {
-                print("Created user")
-                self.toAvatar()
-            } else {
-                print("Error Creating User")
-            }
         }
         
     }
