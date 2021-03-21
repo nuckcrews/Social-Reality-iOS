@@ -46,7 +46,7 @@ class ExploreViewController: UIViewController {
         collectionView.register(ExploreMapHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreMapHeaderView.rawValue)
         collectionView.register(ExploreCreationHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreCreationHeaderView.rawValue)
         
-        collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: Cells.creationViewCell.rawValue)
+//        collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: Cells.creationViewCell.rawValue)
         
         configureDatasource()
         setupLocationManager()
@@ -61,7 +61,7 @@ class ExploreViewController: UIViewController {
         // Set initial location in Honolulu
         let initialLocation = userLocation ? locationManager.location : CLLocation(latitude: 21.282778, longitude: -157.829444)
         mapView.camera = GMSCameraPosition(target: initialLocation?.coordinate ?? CLLocation(latitude: 21.282778, longitude: -157.829444).coordinate, zoom: 14)
-    
+        
         reloadDataSource()
     }
     
@@ -125,7 +125,7 @@ extension ExploreViewController: MapCellDelegate {
             self.searchView.alpha = 0
             self.topMapView.alpha = 0
         } completion: { _ in }
-
+        
     }
 }
 extension ExploreViewController {
@@ -133,13 +133,20 @@ extension ExploreViewController {
     private func cell(collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell {
         switch item {
         case .map(let data):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.mapViewCell.rawValue, for: indexPath) as! mapViewCell
-            cell.configure(with: data, delegate: self)
-            return cell
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.mapViewCell.rawValue, for: indexPath) as? mapViewCell {
+                cell.configure(with: data, delegate: self)
+                return cell
+            } else {
+                return mapViewCell()
+            }
         case .creation(let data):
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as! creationViewCell
-            cell.configure(with: data.image)
-            return cell
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
+                cell.configure(with: data.image)
+                return cell
+            } else {
+                return creationViewCell()
+            }
+            
         }
     }
     
@@ -174,9 +181,7 @@ extension ExploreViewController {
 extension ExploreViewController {
     
     func createLayout() -> UICollectionViewLayout {
-        
         return UICollectionViewCompositionalLayout(sectionProvider: sectionFor(index:environment:))
-        
     }
     
     func createHeaderSection() -> NSCollectionLayoutSection {
@@ -235,5 +240,5 @@ extension ExploreViewController {
         }
         
     }
-
+    
 }

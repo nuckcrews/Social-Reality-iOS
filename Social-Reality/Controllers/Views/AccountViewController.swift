@@ -41,16 +41,10 @@ class AccountViewController: UIViewController {
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
         collectionView.register(ProfileCreationsHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ProfileCreationsHeaderView.rawValue)
-        collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: Cells.creationViewCell.rawValue)
         
         configureDatasource()
         
         getUser()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
         
     }
     
@@ -133,7 +127,6 @@ extension AccountViewController: UICollectionViewDelegate {
             } else {
                 return creationViewCell()
             }
-            
         }
         
     }
