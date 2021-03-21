@@ -12,19 +12,49 @@ import Firebase
 
 struct UpdateMethods {
     
-    func user(_ item: UserModel, completion: @escaping(_ result: ResultType) -> Void) {
+    private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
+    
+    func user(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.users.rawValue).document(id).setData(data, merge: true) { error in
+            if error != nil {
+                completion(.error)
+            } else {
+                completion(.success)
+            }
+        }
+        
+    }
+    
+    func creation(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.creations.rawValue).document(id).setData(data, merge: true) { error in
+            if error != nil {
+                completion(.error)
+            } else {
+                completion(.success)
+            }
+        }
 
     }
     
-    func creation(_ item: CreationModel, completion: @escaping(_ result: ResultType) -> Void) {
+    func comment(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.comments.rawValue).document(id).setData(data, merge: true) { error in
+            if error != nil {
+                completion(.error)
+            } else {
+                completion(.success)
+            }
+        }
 
     }
     
-    func comment(_ item: CommentModel, completion: @escaping(_ result: ResultType) -> Void) {
-
-    }
-    
-    func like(_ item: LikeModel, completion: @escaping(_ result: ResultType) -> Void) {
+    func like(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.likes.rawValue).document(id).setData(data, merge: true) { error in
+            if error != nil {
+                completion(.error)
+            } else {
+                completion(.success)
+            }
+        }
 
     }
     

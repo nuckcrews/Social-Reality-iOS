@@ -61,6 +61,15 @@ class CreatePasswordViewController: UIViewController {
             return
         }
 
+        Auth0.signUp(email: email, password: password) { result in
+            if result != nil {
+                self.toCreateUser()
+            } else {
+                self.presentAlert(title: AlertError.title,
+                                  message: AlertError.message,
+                                  button: AlertError.button)
+            }
+        }
         
     }
 
@@ -112,21 +121,13 @@ extension CreatePasswordViewController: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == passwordTextField {
-            
             if textField.text!.isValidPassword() {
                 passwordIndicator.tintColor = .systemGreen
             } else {
                 passwordIndicator.tintColor = .grayText
             }
-            
-            if reenterTextField.text == textField.text {
-                reenterIndicator.tintColor = .systemGreen
-            } else {
-                reenterIndicator.tintColor = .grayText
-            }
-            
         } else {
-            if reenterTextField.text == passwordTextField.text {
+            if textField.text!.isValidPassword() {
                 reenterIndicator.tintColor = .systemGreen
             } else {
                 reenterIndicator.tintColor = .grayText

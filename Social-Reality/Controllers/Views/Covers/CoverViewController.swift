@@ -29,6 +29,15 @@ class CoverViewController: UIViewController {
         opened = true
         openCover()
         
+        
+    }
+    
+    // Fixing
+    func postData() {
+        let model = LikeModel(id: "first", status: "", creationID: "", userID: "ko", userImage: "", userName: "")
+        Query.write.like(model) { res in
+            print(res)
+        }
     }
 
     func openCover() {

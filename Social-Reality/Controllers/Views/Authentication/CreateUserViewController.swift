@@ -21,6 +21,12 @@ class CreateUserViewController: UIViewController {
     
     var email: String?
     
+    struct AlertError {
+        static var title = "Confirmation Error"
+        static var message = "Please try entering the code again."
+        static var button = "Ok"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,17 +42,63 @@ class CreateUserViewController: UIViewController {
         
     }
     
+    func presentAlert(title: String, message: String, button: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: button, style: .default, handler: { action in
+                                            switch action.style{
+                                            case .default:
+                                                print("default")
+                                            case .cancel:
+                                                print("cancel")
+                                            case .destructive:
+                                                print("destructive")
+                                            @unknown default:
+                                                print("Error")
+                                            }}))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func checkUserName() {
         guard let username = usernameTextField.text else {
-            return
+            print("no username"); return
         }
         
+        
+        Auth0.usernameExists(username: username) { result in
+            if result {
+                self.usernameTakenLabel.alpha = 1
+            } else {
+                self.createUser()
+            }
+        }
     }
     
     func createUser() {
-        guard let id = Auth0.uid else { 
-            return
+        guard let id = Auth0.uid, let email = email else {
+            print("no user"); return
         }
+        let user = UserModel(id: id,
+                             username: self.usernameTextField.text ?? "NO_USERNAME",
+                             status: Auth0.status.active.rawValue,
+                             first: firstNameTextField.text ?? "NO_FIRST_NAME",
+                             last: lastNameTextField.text ?? "",
+                             lastActive: Date().rawDateString,
+                             email: email,
+                             image: "",
+                             access: .public)
+        
+        Query.write.user(user) { result in
+            if result == .success {
+                self.toAvatar()
+            } else {
+                self.presentAlert(title: AlertError.title,
+                                  message: AlertError.message,
+                                  button: AlertError.button)
+            }
+        }
+        
         
     }
     

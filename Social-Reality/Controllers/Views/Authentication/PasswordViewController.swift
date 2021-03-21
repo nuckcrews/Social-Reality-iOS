@@ -49,7 +49,28 @@ class PasswordViewController: UIViewController {
     func signInUser() {
         guard let email = email, let password = passwordTextField.text else { return }
         
+        Auth0.signIn(email: email, password: password) { result in
+            if result != nil {
+                guard let id = Auth0.uid else {
+                    self.presentAlert(title: AlertError.title,
+                                      message: AlertError.message,
+                                      button: AlertError.button)
+                    return
+                }
+                self.checkUserData(id: id)
+            } else {
+                self.presentAlert(title: AlertError.title,
+                                  message: AlertError.message,
+                                  button: AlertError.button)
+            }
+        }
         
+    }
+    
+    func checkUserData(id: String) {
+        Auth0.userDataExists(id: id) { res in
+            res ? self.toHome() : self.toCreateUser()
+        }
     }
     
     func confirmUser(text: String) {

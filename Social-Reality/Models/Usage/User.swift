@@ -33,11 +33,15 @@ class User {
         _model = model
     }
     
-    private func getModel(id: String) {
-
+    public func getModel(id: String, completion: @escaping(_ result: UserModel?) -> Void) {
+        Query.get.user(id: id) { res in
+            guard let res = res else { completion(nil); return }
+            self._model = res
+            completion(res)
+        }
     }
     
-    private func subscribeModel(id: String) {
+    public func subscribeModel(id: String) {
 
     }
     
@@ -45,8 +49,10 @@ class User {
         
     }
     
-    public func updateModel(item: UserModel) {
-
+    public func updateModel(data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        Query.update.user(id: id, data: data) { res in
+            completion(res)
+        }
     }
     
     public func deleteModel() {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Storage {
+struct Storage0 {
     static var upload = UploadMethods()
     static var download = DownloadMethods()
     static var remove = RemoveMethods()

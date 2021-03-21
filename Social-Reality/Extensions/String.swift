@@ -34,4 +34,13 @@ extension String {
     }
     
     
+    var rawDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = ""
+        if let date = dateFormatter.date(from: self) {
+            return date
+        }
+        return nil
+    }
+    
 }

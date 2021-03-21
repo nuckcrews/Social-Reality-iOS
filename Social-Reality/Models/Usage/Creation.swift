@@ -17,12 +17,8 @@ class Creation {
     public var comments: [CommentModel]?
     public var likes: [LikeModel]?
     
-    var id: String! {
-        return _id
-    }
-    var model: CreationModel? {
-        return _model
-    }
+    var id: String! { return _id }
+    var model: CreationModel? { return _model }
     
     init(id: String) {
         _id = id
