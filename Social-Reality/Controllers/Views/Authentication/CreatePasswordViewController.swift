@@ -9,6 +9,8 @@ import UIKit
 
 class CreatePasswordViewController: UIViewController {
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var reenterTextField: UITextField!
     @IBOutlet weak var passwordRequirementsLabel: UILabel!
@@ -34,9 +36,25 @@ class CreatePasswordViewController: UIViewController {
         reenterTextField.delegate = self
         
         passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        reenterIndicator.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        reenterTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
     }
+    
+    func startLoading() {
+        DispatchQueue.main.async {
+            self.view.bringSubviewToFront(self.loadingIndicator)
+            self.loadingIndicator.alpha = 1
+            self.loadingIndicator.startAnimating()
+        }
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.alpha = 0
+        }
+    }
+    
     
     func presentAlert(title: String, message: String, button: String) {
         DispatchQueue.main.async {
@@ -60,11 +78,13 @@ class CreatePasswordViewController: UIViewController {
         guard let password = passwordTextField.text, let email = email else {
             return
         }
-
+        self.startLoading()
         Auth0.signUp(email: email, password: password) { result in
             if result != nil {
+                self.stopLoading()
                 self.toCreateUser()
             } else {
+                self.stopLoading()
                 self.presentAlert(title: AlertError.title,
                                   message: AlertError.message,
                                   button: AlertError.button)

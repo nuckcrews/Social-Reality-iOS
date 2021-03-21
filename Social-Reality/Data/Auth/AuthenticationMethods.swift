@@ -29,10 +29,6 @@ struct Auth0 {
         case inactive = "INACTIVE"
     }
     
-    static func emailExists(email: String, completion: @escaping(_ result: Bool) -> Void) {
-        
-    }
-    
     static func userExists(email: String, completion: @escaping(_ result: Bool?) -> Void) {
         guard email.isValidEmail() else { completion(nil); return }
         Auth.auth().fetchSignInMethods(forEmail: email) { methods, error in
@@ -68,9 +64,10 @@ struct Auth0 {
     }
     
     static func sendEmailVerification(email: String, completion: @escaping(_ result: ResultType) -> Void) {
-        
+        Auth.auth().currentUser?.sendEmailVerification(completion: { error in
+            error == nil ? completion(.success) : completion(.error)
+        })
     }
-    
     
     static func signInWithProvider(credential: AuthCredential, completion: @escaping(_ result: AuthDataResult?) -> Void) {
         Auth.auth().signIn(with: credential) { (authResult, error) in

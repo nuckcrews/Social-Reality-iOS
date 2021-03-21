@@ -1867,6 +1867,7 @@
                     <connections>
                         <outlet property="coverView" destination="jdT-Xc-UdC" id="ggg-SN-bJi"/>
                         <segue destination="FTn-T2-yFV" kind="show" identifier="toSignInFromCover" id="w9h-BB-7bt"/>
+                        <segue destination="Cbh-jO-4nN" kind="show" identifier="toCreateUserFromCover" id="JU7-we-xcG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syM-Qd-I2w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2243,6 +2244,10 @@
                                     <constraint firstAttribute="trailing" secondItem="ufm-3x-g35" secondAttribute="trailing" id="oUU-yz-js6"/>
                                 </constraints>
                             </scrollView>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="MEv-vU-LyD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PTD-ga-PhF"/>
                         <color key="backgroundColor" name="Background"/>
@@ -2250,6 +2255,10 @@
                             <constraint firstItem="ufm-3x-g35" firstAttribute="width" secondItem="22j-SS-KKj" secondAttribute="width" id="2GZ-Xa-g4c"/>
                             <constraint firstItem="r3F-Qm-qAe" firstAttribute="top" secondItem="PTD-ga-PhF" secondAttribute="top" id="2ub-GN-lPN"/>
                             <constraint firstItem="r3F-Qm-qAe" firstAttribute="leading" secondItem="22j-SS-KKj" secondAttribute="leading" id="3za-Md-lnv"/>
+                            <constraint firstAttribute="trailing" secondItem="MEv-vU-LyD" secondAttribute="trailing" id="MfK-NT-jhx"/>
+                            <constraint firstItem="MEv-vU-LyD" firstAttribute="leading" secondItem="22j-SS-KKj" secondAttribute="leading" id="U8M-2n-LOq"/>
+                            <constraint firstItem="MEv-vU-LyD" firstAttribute="top" secondItem="22j-SS-KKj" secondAttribute="top" id="XLO-ZS-1jw"/>
+                            <constraint firstAttribute="bottom" secondItem="MEv-vU-LyD" secondAttribute="bottom" id="h97-E7-gfi"/>
                             <constraint firstAttribute="bottom" secondItem="r3F-Qm-qAe" secondAttribute="bottom" id="kgK-dl-p7a"/>
                             <constraint firstItem="ufm-3x-g35" firstAttribute="height" secondItem="22j-SS-KKj" secondAttribute="height" priority="250" id="ppw-vh-aYj"/>
                             <constraint firstItem="r3F-Qm-qAe" firstAttribute="trailing" secondItem="PTD-ga-PhF" secondAttribute="trailing" id="ug3-6f-eQY"/>
@@ -2259,6 +2268,7 @@
                     <connections>
                         <outlet property="emailIndicatorButton" destination="dj9-C7-Vu7" id="8CW-xM-OND"/>
                         <outlet property="emailTextField" destination="4IL-gv-3BX" id="WGn-gs-nnb"/>
+                        <outlet property="loadingIndicator" destination="MEv-vU-LyD" id="tWq-TO-tMe"/>
                         <segue destination="Cbh-jO-4nN" kind="show" identifier="toNewUserFromSign" id="qR0-h3-joD"/>
                         <segue destination="71Q-2i-1HC" kind="show" identifier="toPasswordFromSign" id="7Zr-v9-OTR"/>
                         <segue destination="kyh-3S-HQa" kind="show" identifier="toHomeFromSignIn" id="c5R-lK-t0X"/>
@@ -2267,7 +2277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2E-pT-Xg1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3142" y="-475"/>
+            <point key="canvasLocation" x="-3142.0289855072465" y="-475.44642857142856"/>
         </scene>
         <!--Password View Controller-->
         <scene sceneID="xZI-C9-Zqg">
@@ -2364,26 +2374,35 @@
                                     <color key="titleColor" name="GrayText"/>
                                 </state>
                             </button>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="PgY-0f-RgE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ee2-bZ-Zxc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xhV-BV-78Q" firstAttribute="centerX" secondItem="T7A-3S-vhX" secondAttribute="centerX" id="9Gx-pN-5Ar"/>
+                            <constraint firstAttribute="trailing" secondItem="PgY-0f-RgE" secondAttribute="trailing" id="9Y2-EB-G9t"/>
                             <constraint firstItem="xzf-kG-dAa" firstAttribute="leading" secondItem="ee2-bZ-Zxc" secondAttribute="leading" constant="32" id="Ns2-5T-l93"/>
                             <constraint firstItem="LEy-9g-xRh" firstAttribute="top" secondItem="xzf-kG-dAa" secondAttribute="bottom" constant="12" id="OWb-PJ-BWh"/>
+                            <constraint firstItem="PgY-0f-RgE" firstAttribute="leading" secondItem="T7A-3S-vhX" secondAttribute="leading" id="Ssg-ao-XN2"/>
                             <constraint firstItem="1Ys-UF-f9L" firstAttribute="top" secondItem="LEy-9g-xRh" secondAttribute="bottom" constant="2" id="W4o-Y5-n46"/>
                             <constraint firstItem="qMl-CT-5Xi" firstAttribute="leading" secondItem="ee2-bZ-Zxc" secondAttribute="leading" constant="16" id="Ycn-gU-Szg"/>
                             <constraint firstItem="xhV-BV-78Q" firstAttribute="top" secondItem="ee2-bZ-Zxc" secondAttribute="top" constant="80" id="Zgq-OD-Ycd"/>
                             <constraint firstItem="ee2-bZ-Zxc" firstAttribute="trailing" secondItem="xzf-kG-dAa" secondAttribute="trailing" constant="32" id="asW-Xv-uqV"/>
                             <constraint firstItem="1Ys-UF-f9L" firstAttribute="leading" secondItem="ee2-bZ-Zxc" secondAttribute="leading" constant="32" id="dAs-NG-gkN"/>
+                            <constraint firstAttribute="bottom" secondItem="PgY-0f-RgE" secondAttribute="bottom" id="fJ5-dP-a6E"/>
                             <constraint firstItem="ee2-bZ-Zxc" firstAttribute="trailing" secondItem="LEy-9g-xRh" secondAttribute="trailing" constant="32" id="kp8-jK-91L"/>
                             <constraint firstItem="LEy-9g-xRh" firstAttribute="leading" secondItem="ee2-bZ-Zxc" secondAttribute="leading" constant="32" id="mP6-9J-soX"/>
                             <constraint firstItem="xzf-kG-dAa" firstAttribute="top" secondItem="xhV-BV-78Q" secondAttribute="bottom" constant="24" id="rkE-cG-45x"/>
+                            <constraint firstItem="PgY-0f-RgE" firstAttribute="top" secondItem="T7A-3S-vhX" secondAttribute="top" id="ruk-oR-EAF"/>
                             <constraint firstItem="qMl-CT-5Xi" firstAttribute="top" secondItem="ee2-bZ-Zxc" secondAttribute="top" constant="12" id="xTr-SY-eX9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VlO-bL-MmU"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="PgY-0f-RgE" id="2lL-xR-aoq"/>
                         <outlet property="passwordIndicator" destination="0Yg-BP-stq" id="Xgl-sH-6on"/>
                         <outlet property="passwordTextField" destination="dhh-fa-1Da" id="RKz-Xx-gpd"/>
                         <segue destination="kyh-3S-HQa" kind="show" identifier="toHomeFromPassword" id="oIz-d0-JjT"/>
@@ -2393,7 +2412,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAT-oP-uil" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3142" y="-1186"/>
+            <point key="canvasLocation" x="-3142.0289855072465" y="-1186.6071428571429"/>
         </scene>
         <!--Create User View Controller-->
         <scene sceneID="QBg-UX-7de">
@@ -2403,6 +2422,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ctC-cC-Dr7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7K-Yb-OV7" customClass="CustomScrollView" customModule="Social_Reality" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
@@ -2644,7 +2667,11 @@
                             <constraint firstItem="j7K-Yb-OV7" firstAttribute="leading" secondItem="aMp-ij-RjH" secondAttribute="leading" id="QNf-3C-O4Y"/>
                             <constraint firstItem="atc-70-UxS" firstAttribute="height" secondItem="7r0-CE-8Ym" secondAttribute="height" priority="250" id="RUR-eV-Zuw"/>
                             <constraint firstAttribute="bottom" secondItem="j7K-Yb-OV7" secondAttribute="bottom" id="b14-qS-HxR"/>
+                            <constraint firstItem="ctC-cC-Dr7" firstAttribute="top" secondItem="7r0-CE-8Ym" secondAttribute="top" id="cCe-F6-7tE"/>
                             <constraint firstItem="j7K-Yb-OV7" firstAttribute="top" secondItem="7r0-CE-8Ym" secondAttribute="top" id="prI-1M-UUX"/>
+                            <constraint firstAttribute="trailing" secondItem="ctC-cC-Dr7" secondAttribute="trailing" id="ryg-a5-4JN"/>
+                            <constraint firstAttribute="bottom" secondItem="ctC-cC-Dr7" secondAttribute="bottom" id="uAK-3F-LNd"/>
+                            <constraint firstItem="ctC-cC-Dr7" firstAttribute="leading" secondItem="aMp-ij-RjH" secondAttribute="leading" id="uIT-XY-2RF"/>
                             <constraint firstItem="aMp-ij-RjH" firstAttribute="trailing" secondItem="j7K-Yb-OV7" secondAttribute="trailing" id="yoe-4Q-VYb"/>
                         </constraints>
                     </view>
@@ -2654,6 +2681,7 @@
                         <outlet property="firstTextIndicator" destination="GCT-c2-YcE" id="FcO-8R-Hec"/>
                         <outlet property="lastNameTextField" destination="LhO-Hu-hoa" id="o33-lj-a50"/>
                         <outlet property="lastTextIndicator" destination="gNR-EG-xr9" id="m5c-U5-Ndk"/>
+                        <outlet property="loadingIndicator" destination="ctC-cC-Dr7" id="mKc-Y7-qsr"/>
                         <outlet property="usernameTakenLabel" destination="63R-d8-Ci8" id="Tbs-10-c7o"/>
                         <outlet property="usernameTextField" destination="Ghu-Je-6XA" id="CfG-NX-WeC"/>
                         <outlet property="usernameTextIndicator" destination="a0C-eE-Qhi" id="CyN-CC-VKg"/>
@@ -2914,15 +2942,22 @@
                                 <color key="textColor" name="GrayText"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="UUe-iP-fr6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qx8-Ew-6An"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="yUC-GD-OXL" firstAttribute="leading" secondItem="qx8-Ew-6An" secondAttribute="leading" constant="32" id="3Hn-ld-eeB"/>
                             <constraint firstItem="qx8-Ew-6An" firstAttribute="trailing" secondItem="yUC-GD-OXL" secondAttribute="trailing" constant="32" id="Al1-fN-ItB"/>
+                            <constraint firstAttribute="trailing" secondItem="UUe-iP-fr6" secondAttribute="trailing" id="EN3-eZ-EKk"/>
                             <constraint firstItem="yUC-GD-OXL" firstAttribute="top" secondItem="xGQ-J5-IxI" secondAttribute="bottom" constant="24" id="JD4-c3-BJ7"/>
                             <constraint firstItem="xGQ-J5-IxI" firstAttribute="top" secondItem="qx8-Ew-6An" secondAttribute="top" constant="80" id="Mlv-5I-N36"/>
+                            <constraint firstAttribute="bottom" secondItem="UUe-iP-fr6" secondAttribute="bottom" id="NvZ-vu-6uf"/>
                             <constraint firstItem="nnF-Nm-zZw" firstAttribute="top" secondItem="WWr-jS-oh3" secondAttribute="bottom" constant="8" id="QUl-b0-Hlx"/>
+                            <constraint firstItem="UUe-iP-fr6" firstAttribute="leading" secondItem="49J-4f-ylW" secondAttribute="leading" id="RIc-sC-Ior"/>
                             <constraint firstItem="zPu-EG-O5h" firstAttribute="top" secondItem="yUC-GD-OXL" secondAttribute="bottom" constant="12" id="WUJ-m8-ICm"/>
                             <constraint firstItem="WWr-jS-oh3" firstAttribute="leading" secondItem="qx8-Ew-6An" secondAttribute="leading" constant="32" id="ZYq-5H-OlH"/>
                             <constraint firstItem="7ua-Or-Aj0" firstAttribute="leading" secondItem="qx8-Ew-6An" secondAttribute="leading" constant="16" id="ayM-3d-14F"/>
@@ -2933,12 +2968,14 @@
                             <constraint firstItem="qx8-Ew-6An" firstAttribute="trailing" secondItem="nnF-Nm-zZw" secondAttribute="trailing" constant="32" id="oas-J3-xpv"/>
                             <constraint firstItem="7ua-Or-Aj0" firstAttribute="top" secondItem="qx8-Ew-6An" secondAttribute="top" constant="12" id="pRe-yY-wA7"/>
                             <constraint firstItem="zPu-EG-O5h" firstAttribute="leading" secondItem="qx8-Ew-6An" secondAttribute="leading" constant="32" id="q0v-mv-zUf"/>
+                            <constraint firstItem="UUe-iP-fr6" firstAttribute="top" secondItem="49J-4f-ylW" secondAttribute="top" id="sgf-NE-qFU"/>
                             <constraint firstItem="xGQ-J5-IxI" firstAttribute="leading" secondItem="qx8-Ew-6An" secondAttribute="leading" constant="64" id="xoW-Jb-hXT"/>
                             <constraint firstItem="WWr-jS-oh3" firstAttribute="top" secondItem="zPu-EG-O5h" secondAttribute="bottom" constant="12" id="z2c-kA-UDG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3M6-JC-wpI"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="UUe-iP-fr6" id="BoN-tY-aLf"/>
                         <outlet property="passwordIndicator" destination="7MQ-QY-GwX" id="1Mv-xv-CTD"/>
                         <outlet property="passwordRequirementsLabel" destination="nnF-Nm-zZw" id="oTf-bE-GTj"/>
                         <outlet property="passwordTextField" destination="Sz6-u5-nwe" id="Y0j-KR-rg1"/>
@@ -2950,7 +2987,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8b-BJ-KLW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2294" y="-1185"/>
+            <point key="canvasLocation" x="-2294.202898550725" y="-1185.2678571428571"/>
         </scene>
         <!--Confirm User View Controller-->
         <scene sceneID="ZfA-3C-AP1">
@@ -3096,8 +3133,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fnc-XW-6Bv"/>
-        <segue reference="5Oi-ZE-qyI"/>
-        <segue reference="67m-qx-B5J"/>
+        <segue reference="JU7-we-xcG"/>
+        <segue reference="oIz-d0-JjT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="7D170C57-2A05-4F0E-8F6D-511DFF7A4BBB" width="3024" height="4032"/>
