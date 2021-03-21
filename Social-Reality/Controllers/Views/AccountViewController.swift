@@ -43,6 +43,8 @@ class AccountViewController: UIViewController {
         collectionView.register(ProfileCreationsHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ProfileCreationsHeaderView.rawValue)
         collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: Cells.creationViewCell.rawValue)
         
+        configureDatasource()
+        
         getUser()
         
     }
@@ -59,16 +61,23 @@ class AccountViewController: UIViewController {
             return
         }
         
+        user = User(id: id)
         
-        
+        user?.subscribeModel(completion: { res in
+            if res != nil {
+                self.populateViews()
+            }
+        })
         
     }
     
     func populateViews() {
-        configureDatasource()
-        DispatchQueue.main.async {
-            
-        }
+        reloadDataSource()
+        
+        guard let model = user?.model else { return }
+        
+        usernameTitleButton.setTitle(model.username, for: .normal)
+        
     }
     
     func toEditProfile() {

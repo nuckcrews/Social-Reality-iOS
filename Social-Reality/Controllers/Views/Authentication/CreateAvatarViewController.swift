@@ -28,6 +28,14 @@ class CreateAvatarViewController: UIViewController {
     func getUser() {
         
         guard let id = Auth0.uid else { return }
+        user = User(id: id)
+        user?.getModel(completion: { res in
+            if let res = res {
+                print(res)
+            } else {
+                print("no date")
+            }
+        })
 
         
     }
@@ -48,7 +56,9 @@ class CreateAvatarViewController: UIViewController {
     }
     
     func saveImage() {
-        
+        user?.updateModel(data: ["image": imageURL], completion: { res in
+            self.toHome()
+        })
     }
     
     func toHome() {
@@ -83,9 +93,20 @@ extension CreateAvatarViewController: ImagePickerDelegate {
     func uploadImage(image: UIImage) {
         guard let uid = Auth0.uid else { return }
         startLoading()
-
+        
+        Storage0.upload.image(key: uid, image: image) { res in
+            guard let res = res else { return }
+            self.imageURL = res
+            self.stopLoading()
+        }
+        
         
     }
+    
+    
+
+    
+    
 }
 
 

@@ -13,12 +13,13 @@ import CodableFirebase
 
 struct WriteMethods {
     
-    let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
+    private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
     func user(_ user: UserModel, completion: @escaping(_ result: ResultType) -> Void) {
+        guard user.id.count > 0  else { completion(.error); return }
         do {
             let docData = try FirestoreEncoder().encode(user)
-            db.collection(Collections.users.rawValue).document(user.id).setData(docData) { error in
+            db.collection(Collections.users.rawValue).document(user.id).setData(docData, merge: true, completion: { error in
                 if let error = error {
                     print("Error writing document: \(error)")
                     completion(.error)
@@ -26,16 +27,17 @@ struct WriteMethods {
                     print("Document successfully written!")
                     completion(.success)
                 }
-            }
+            })
         } catch {
             completion(.error)
         }
     }
     
     func creation(_ creation: CreationModel, completion: @escaping(_ result: ResultType) -> Void) {
+        guard creation.id.count > 0  else { completion(.error); return }
         do {
             let docData = try FirestoreEncoder().encode(creation)
-            db.collection(Collections.creations.rawValue).document(creation.id).setData(docData) { error in
+            db.collection(Collections.creations.rawValue).document(creation.id).setData(docData, merge: true, completion: { error in
                 if let error = error {
                     print("Error writing document: \(error)")
                     completion(.error)
@@ -43,16 +45,17 @@ struct WriteMethods {
                     print("Document successfully written!")
                     completion(.success)
                 }
-            }
+            })
         } catch {
             completion(.error)
         }
     }
     
     func comment(_ comment: CommentModel, completion: @escaping (_ result: ResultType) -> Void) {
+        guard comment.id.count > 0  else { completion(.error); return }
         do {
             let docData = try FirestoreEncoder().encode(comment)
-            db.collection(Collections.comments.rawValue).document(comment.id).setData(docData) { error in
+            db.collection(Collections.comments.rawValue).document(comment.id).setData(docData, merge: true, completion: { error in
                 if let error = error {
                     print("Error writing document: \(error)")
                     completion(.error)
@@ -60,16 +63,17 @@ struct WriteMethods {
                     print("Document successfully written!")
                     completion(.success)
                 }
-            }
+            })
         } catch {
             completion(.error)
         }
     }
 
     func like( _ like: LikeModel, completion: @escaping (_ result: ResultType) -> Void) {
+        guard like.id.count > 0  else { completion(.error); return }
         do {
             let docData = try FirestoreEncoder().encode(like)
-            db.collection(Collections.likes.rawValue).document(like.id).setData(docData) { error in
+            db.collection(Collections.likes.rawValue).document(like.id).setData(docData, merge: true, completion: { error in
                 if let error = error {
                     print("Error writing document: \(error)")
                     completion(.error)
@@ -77,7 +81,7 @@ struct WriteMethods {
                     print("Document successfully written!")
                     completion(.success)
                 }
-            }
+            })
         } catch {
             completion(.error)
         }

@@ -12,6 +12,7 @@ import FBSDKLoginKit
 import AuthenticationServices
 import CryptoKit
 
+
 class SignInViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -172,15 +173,14 @@ extension SignInViewController {
     
     
     func signInWithProvider(credential: AuthCredential) {
-        
         Auth0.signInWithProvider(credential: credential) { result in
             if result == nil {
                 self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
             } else {
+                self.email = result?.user.email
                 self.checkUserData(id: result!.user.uid)
             }
         }
-    
     }
     
 }
@@ -238,7 +238,6 @@ extension SignInViewController: GIDSignInDelegate {
         }
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        email = user.profile.email
         signInWithProvider(credential: credential)
     }
     

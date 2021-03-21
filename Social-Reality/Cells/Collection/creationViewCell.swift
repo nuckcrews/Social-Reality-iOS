@@ -10,6 +10,13 @@ import UIKit
 
 class creationViewCell: UICollectionViewCell {
     
+    private lazy var playButton: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.clipsToBounds = true
+        return btn
+    }()
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +37,8 @@ class creationViewCell: UICollectionViewCell {
     
     func configure(with image: UIImage) {
         imageView.image = image
+        
+        bringSubviewToFront(playButton)
     }
     
     private func setupView() {
@@ -41,6 +50,20 @@ class creationViewCell: UICollectionViewCell {
             contentView.topAnchor.constraint(equalTo: imageView.topAnchor, constant: -1),
             contentView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 1)
         ])
+        
+        playButton.setImage(UIImage(named: "play.fill"), for: .normal)
+        playButton.tintColor = .primary
+        
+        playButton.frame = CGRect(x: contentView.frame.width - 20, y: contentView.frame.height - 30, width: 12, height: 22)
+        
+        contentView.addSubview(playButton)
+        self.addSubview((playButton))
+//        
+//        NSLayoutConstraint.activate([
+//            contentView.trailingAnchor.constraint(equalTo: playButton.trailingAnchor, constant: 8),
+//            contentView.bottomAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 8)
+//        ])
+        
     }
     
 }

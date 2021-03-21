@@ -12,20 +12,22 @@ import Firebase
 
 struct DeleteMethods {
     
-    func user(_ item: UserModel, completion: @escaping(_ result: ResultType) -> Void) {
-
+    private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
+    
+    func user(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.users.rawValue).document(id).delete()
     }
     
-    func creation(_ item: CreationModel, completion: @escaping(_ result: ResultType) -> Void) {
-
+    func creation(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.creations.rawValue).document(id).delete()
     }
     
-    func comment(_ item: CommentModel, completion: @escaping(_ result: ResultType) -> Void) {
-
+    func comment(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.comments.rawValue).document(id).delete()
     }
     
-    func like(_ item: LikeModel, completion: @escaping(_ result: ResultType) -> Void) {
-
+    func like(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.likes.rawValue).document(id).delete()
     }
     
 }

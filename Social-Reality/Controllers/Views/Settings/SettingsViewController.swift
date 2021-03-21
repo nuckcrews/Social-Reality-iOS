@@ -12,6 +12,8 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var alertController: UIAlertController?
+    
     struct CellTitles {
         static func title(_ index: Int) -> String {
             switch index {
@@ -42,9 +44,29 @@ class SettingsViewController: UIViewController {
         
     }
     
+    func setupAlert() {
+        let alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .actionSheet)
+            
+        let ok = UIAlertAction(title: "Sign Out", style: .destructive, handler: { action in
+                self.signOut()
+             })
+             alert.addAction(ok)
+             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in
+                
+             })
+             alert.addAction(cancel)
+             DispatchQueue.main.async(execute: {
+                self.present(alert, animated: true)
+        })
+    }
+    
     
     func signOut() {
-
+        Auth0.signOut { res in
+            if res == .success {
+                self.backToHome()
+            }
+        }
     }
     
     func backToHome() {
@@ -76,7 +98,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 5 {
-            signOut()
+            setupAlert()
         }
     }
 }

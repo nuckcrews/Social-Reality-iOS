@@ -325,7 +325,23 @@
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FLn-bl-Bea">
                                                     <rect key="frame" x="0.0" y="0.0" width="412" height="261"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0P9-L1-3ta">
+                                                            <rect key="frame" x="392" y="231" width="12" height="22"/>
+                                                            <color key="tintColor" name="Primary"/>
+                                                            <state key="normal" image="play.fill" catalog="system">
+                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="0P9-L1-3ta" secondAttribute="bottom" constant="8" id="8vU-W5-m4W"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0P9-L1-3ta" secondAttribute="trailing" constant="8" id="SNa-VC-A7Y"/>
+                                                    </constraints>
                                                 </collectionViewCellContentView>
+                                                <connections>
+                                                    <outlet property="playButton" destination="0P9-L1-3ta" id="s6D-QY-Uop"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
@@ -370,7 +386,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gio-6P-spl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864" y="-476"/>
+            <point key="canvasLocation" x="863.768115942029" y="-476.11607142857139"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="OL1-Yh-fpH">
@@ -400,7 +416,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzk-aa-lI3">
                                                     <rect key="frame" x="0.0" y="0.0" width="367" height="268"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7D170C57-2A05-4F0E-8F6D-511DFF7A4BBB" translatesAutoresizingMaskIntoConstraints="NO" id="8am-Qi-z0N" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="8am-Qi-z0N" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
                                                             <rect key="frame" x="143.5" y="12" width="80" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="80" id="tDa-bD-LZe"/>
@@ -554,12 +570,29 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="creationViewCell" id="R8e-vN-oId" customClass="creationViewCell" customModule="Social_Reality" customModuleProvider="target">
-                                        <rect key="frame" x="23.5" y="278" width="367" height="268"/>
+                                        <rect key="frame" x="151.5" y="278" width="111" height="107"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JDY-9l-dO6">
-                                            <rect key="frame" x="0.0" y="0.0" width="367" height="268"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="111" height="107"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="neU-ae-26P">
+                                                    <rect key="frame" x="91" y="77" width="12" height="22"/>
+                                                    <color key="tintColor" name="Primary"/>
+                                                    <state key="normal" image="play.fill" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="neU-ae-26P" secondAttribute="trailing" constant="8" id="4yg-gq-8Va"/>
+                                                <constraint firstAttribute="bottom" secondItem="neU-ae-26P" secondAttribute="bottom" constant="8" id="Ase-l3-gWI"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="111" height="107"/>
+                                        <connections>
+                                            <outlet property="playButton" destination="neU-ae-26P" id="QCg-lg-WqJ"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -635,7 +668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgq-Pg-r6O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="864" y="1702"/>
+            <point key="canvasLocation" x="863.768115942029" y="1701.5625"/>
         </scene>
         <!--Creation Detail View Controller-->
         <scene sceneID="MMz-Y0-TRp">
@@ -3094,6 +3127,7 @@
         <image name="person.crop.circle" catalog="system" width="128" height="121"/>
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="plus.rectangle.on.rectangle.fill" catalog="system" width="128" height="96"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
