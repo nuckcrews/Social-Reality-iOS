@@ -9,11 +9,23 @@ import Foundation
 
 struct Environment {
     
-    static var env = "dev"
-    static var dbs = "dbs"
+    static var env = Environments.dev.rawValue
+    static var dbs = Databases.dbs.rawValue
+
+    enum Databases: String {
+        case dbs
+    }
+
+    enum Environments: String {
+        case dev
+        case staging
+        case prod
+    }
     
 }
 
 struct ProfileImage {
     static var defaultURL = "" // UPDATE
 }
+
+

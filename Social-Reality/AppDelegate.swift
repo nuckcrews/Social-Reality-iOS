@@ -17,14 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    static let NOTIFICATION_URL = "https://fcm.googleapis.com/fcm/send"
     static var DEVICEID = String()
     static var fcmTOKEN = String()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        Environment.env = "dev"
+        Environment.env = Environment.Environments.dev.rawValue
         
         FirebaseApp.configure()
         
@@ -33,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             didFinishLaunchingWithOptions: launchOptions
         )
         
-        GMSServices.provideAPIKey(GOOGLE_API_KEY)
-        GMSPlacesClient.provideAPIKey(GOOGLE_API_KEY)
+        GMSServices.provideAPIKey(Config.GOOGLE_API_KEY)
+        GMSPlacesClient.provideAPIKey(Config.GOOGLE_API_KEY)
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
 
         application.applicationIconBadgeNumber = 0

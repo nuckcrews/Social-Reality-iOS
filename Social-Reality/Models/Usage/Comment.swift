@@ -33,24 +33,23 @@ class Comment {
         _model = model
     }
     
-    private func getModel(id: String) {
-
+    private func getModel(completion: @escaping(_ result: CommentModel?) -> Void) {
+        Query.get.comment(id: id) { result in
+            if result != nil {
+                self._model = result
+            }
+            completion(result)
+        }
     }
     
-    private func subscribeModel(id: String) {
-
-    }
-    
-    public func cancelSubscription() {
-        
-    }
-    
-    public func updateModel(item: CommentModel) {
-
+    public func updateModel(data: [String: Any], completion: @escaping(_ result: ResultType?) -> Void) {
+        Query.update.comment(id: id, data: data) { res in
+            completion(res)
+        }
     }
     
     public func deleteModel() {
-
+        Query.delete.comment(id) { _ in }
     }
     
     

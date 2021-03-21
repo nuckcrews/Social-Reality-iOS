@@ -29,7 +29,7 @@ class CreateAvatarViewController: UIViewController {
         
         guard let id = Auth0.uid else { return }
         user = User(id: id)
-        user?.getModel(id: id, completion: { res in
+        user?.getModel(completion: { res in
             if let res = res {
                 print(res)
             } else {

@@ -23,7 +23,6 @@ class Like {
         return _model
     }
     
-    
     init(id: String) {
         _id = id
     }
@@ -33,24 +32,23 @@ class Like {
         _model = model
     }
     
-    private func getModel(id: String) {
-
+    private func getModel(completion: @escaping(_ result: LikeModel?) -> Void) {
+        Query.get.like(id: id) { result in
+            if result != nil {
+                self._model = result
+            }
+            completion(result)
+        }
     }
     
-    private func subscribeModel(id: String) {
-
-    }
-    
-    public func cancelSubscription() {
-        
-    }
-    
-    public func updateModel(item: LikeModel) {
-
+    public func updateModel(data: [String: Any], completion: @escaping(_ result: ResultType?) -> Void) {
+        Query.update.like(id: id, data: data) { res in
+            completion(res)
+        }
     }
     
     public func deleteModel() {
-
+        Query.delete.like(id) { _ in }
     }
     
     

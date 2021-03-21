@@ -42,7 +42,9 @@ class AccountViewController: UIViewController {
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
         collectionView.register(ProfileCreationsHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ProfileCreationsHeaderView.rawValue)
         collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: Cells.creationViewCell.rawValue)
+        
         configureDatasource()
+        
         getUser()
         
     }
@@ -60,10 +62,12 @@ class AccountViewController: UIViewController {
         }
         
         user = User(id: id)
-        user?.getModel(id: id, completion: { _ in
-            self.populateViews()
-        })
         
+        user?.subscribeModel(completion: { res in
+            if res != nil {
+                self.populateViews()
+            }
+        })
         
     }
     
