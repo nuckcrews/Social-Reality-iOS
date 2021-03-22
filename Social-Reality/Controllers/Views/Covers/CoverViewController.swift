@@ -24,20 +24,13 @@ class CoverViewController: UIViewController {
         
         if !Auth0.loggedIn && !opened {
             toSignIn()
+        } else {
+            checkuserData()
         }
         
         opened = true
         openCover()
         
-        
-    }
-    
-    // Fixing
-    func postData() {
-        let model = LikeModel(id: "first", status: "", creationID: "", userID: "ko", userImage: "", userName: "")
-        Query.write.like(model) { res in
-            print(res)
-        }
     }
 
     func openCover() {
@@ -52,8 +45,29 @@ class CoverViewController: UIViewController {
         CoverToMainDelegate?.readyForSession()
     }
     
+    func checkuserData() {
+        guard let id = Auth0.uid else { self.toSignIn(); return }
+        Auth0.userDataExists(id: id) { res in
+            if !res {
+                self.toCreateUser()
+            }
+        }
+    }
+    
+    func toCreateUser() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toCreateUserFromCover.rawValue, sender: nil)
+        }
+    }
+    
     func toSignIn() {
         self.performSegue(withIdentifier: Segue.toSignInFromCover.rawValue, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CreateUserViewController {
+            dest.email = Auth.auth().currentUser?.email
+        }
     }
     
 }

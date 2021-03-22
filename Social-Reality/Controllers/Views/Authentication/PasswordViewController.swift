@@ -9,6 +9,8 @@ import UIKit
 
 class PasswordViewController: UIViewController {
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordIndicator: UIButton!
     
@@ -27,6 +29,22 @@ class PasswordViewController: UIViewController {
         passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
     }
+    
+    func startLoading() {
+        DispatchQueue.main.async {
+            self.view.bringSubviewToFront(self.loadingIndicator)
+            self.loadingIndicator.alpha = 1
+            self.loadingIndicator.startAnimating()
+        }
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.alpha = 0
+        }
+    }
+    
     
     func presentAlert(title: String, message: String, button: String) {
         DispatchQueue.main.async {
@@ -48,10 +66,11 @@ class PasswordViewController: UIViewController {
     
     func signInUser() {
         guard let email = email, let password = passwordTextField.text else { return }
-        
+        self.startLoading()
         Auth0.signIn(email: email, password: password) { result in
             if result != nil {
                 guard let id = Auth0.uid else {
+                    self.stopLoading()
                     self.presentAlert(title: AlertError.title,
                                       message: AlertError.message,
                                       button: AlertError.button)
@@ -59,6 +78,7 @@ class PasswordViewController: UIViewController {
                 }
                 self.checkUserData(id: id)
             } else {
+                self.stopLoading()
                 self.presentAlert(title: AlertError.title,
                                   message: AlertError.message,
                                   button: AlertError.button)
@@ -69,15 +89,10 @@ class PasswordViewController: UIViewController {
     
     func checkUserData(id: String) {
         Auth0.userDataExists(id: id) { res in
+            self.stopLoading()
             res ? self.toHome() : self.toCreateUser()
         }
     }
-    
-    func confirmUser(text: String) {
-
-        
-    }
-    
     
     func toHome() {
         DispatchQueue.main.async {

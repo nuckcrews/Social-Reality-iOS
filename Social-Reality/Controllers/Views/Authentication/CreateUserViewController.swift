@@ -9,6 +9,8 @@ import UIKit
 
 class CreateUserViewController: UIViewController {
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -42,6 +44,22 @@ class CreateUserViewController: UIViewController {
         
     }
     
+    func startLoading() {
+        DispatchQueue.main.async {
+            self.view.bringSubviewToFront(self.loadingIndicator)
+            self.loadingIndicator.alpha = 1
+            self.loadingIndicator.startAnimating()
+        }
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.alpha = 0
+        }
+    }
+    
+    
     func presentAlert(title: String, message: String, button: String) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -65,7 +83,7 @@ class CreateUserViewController: UIViewController {
             print("no username"); return
         }
         
-        
+        startLoading()
         Auth0.usernameExists(username: username) { result in
             if result {
                 self.usernameTakenLabel.alpha = 1
@@ -77,7 +95,7 @@ class CreateUserViewController: UIViewController {
     
     func createUser() {
         guard let id = Auth0.uid, let email = email else {
-            print("no user"); return
+            self.stopLoading(); print("no user"); return
         }
         let user = UserModel(id: id,
                              username: self.usernameTextField.text ?? "NO_USERNAME",
@@ -90,6 +108,7 @@ class CreateUserViewController: UIViewController {
                              access: .public)
         
         Query.write.user(user) { result in
+            self.stopLoading()
             if result == .success {
                 self.toAvatar()
             } else {

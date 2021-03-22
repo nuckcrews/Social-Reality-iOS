@@ -11,7 +11,11 @@ class ProfileCreationsHeaderView: UICollectionReusableView, InstantiatesFromNib,
     
     @IBOutlet weak var contentSegment: CustomSegmentedControl! {
         didSet {
-            contentSegment.setButtonTitles(buttonTitles: [("", UIImage(systemName: "square.grid.3x3.fill")), ("", UIImage(systemName: "heart.fill"))])
+            contentSegment.setButtonTitles(buttonTitles: [
+                    ("", UIImage(systemName: "square.grid.3x3.fill")),
+                    ("", UIImage(named: Images.pinDrop.rawValue)),
+                    ("", UIImage(systemName: "heart.fill"))
+            ])
             contentSegment.selectorViewColor = .mainText
             contentSegment.selectorTextColor = .mainText
             contentSegment.textColor = .lightGray

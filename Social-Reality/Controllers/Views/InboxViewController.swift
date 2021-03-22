@@ -18,14 +18,14 @@ class InboxViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        setupView()
             
     }
     
     func setupView() {
-        let img = UIImage(named: "magnifyingglass")?.withTintColor(.primary)
-        searchBar.setImage(img, for: .search, state: .normal)
         
-//        searchBar.searchTextField.leftView?.tintColor = .primary
+        searchBar.searchTextField.leftView?.tintColor = .primary
+        
     }
     
 }
@@ -86,4 +86,5 @@ extension InboxViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 42
     }
+    
 }

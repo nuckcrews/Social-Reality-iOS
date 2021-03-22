@@ -15,6 +15,8 @@ import CryptoKit
 
 class SignInViewController: UIViewController {
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailIndicatorButton: UIButton!
     
@@ -45,6 +47,22 @@ class SignInViewController: UIViewController {
         loginButton.isHidden = true
         
     }
+    
+    func startLoading() {
+        DispatchQueue.main.async {
+            self.view.bringSubviewToFront(self.loadingIndicator)
+            self.loadingIndicator.alpha = 1
+            self.loadingIndicator.startAnimating()
+        }
+    }
+    
+    func stopLoading() {
+        DispatchQueue.main.async {
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.alpha = 0
+        }
+    }
+    
     
     func presentAlert(title: String, message: String, button: String) {
         DispatchQueue.main.async {
@@ -80,8 +98,10 @@ class SignInViewController: UIViewController {
     }
     
     func checkUser(text: String) {
+        self.startLoading()
         Auth0.userExists(email: text, completion: { result in
             if let result = result {
+                self.stopLoading()
                 result ? self.toEmailPassword() : self.toCreatePassword()
             }
         })
@@ -90,6 +110,7 @@ class SignInViewController: UIViewController {
     
     func checkUserData(id: String) {
         Auth0.userDataExists(id: id) { result in
+            self.stopLoading()
             result ? self.toHome() : self.toNewUser()
         }
     }
@@ -173,8 +194,10 @@ extension SignInViewController {
     
     
     func signInWithProvider(credential: AuthCredential) {
+        self.startLoading()
         Auth0.signInWithProvider(credential: credential) { result in
             if result == nil {
+                self.stopLoading()
                 self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
             } else {
                 self.email = result?.user.email

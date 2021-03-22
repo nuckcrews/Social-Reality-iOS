@@ -116,6 +116,7 @@ extension CustomSegmentedControl {
             let button = UIButton(type: .system)
             button.setTitle(buttonTitle.0, for: .normal)
             button.setImage(buttonTitle.1, for: .normal)
+            button.imageView?.contentMode = .scaleAspectFit
             button.addTarget(self, action:#selector(CustomSegmentedControl.buttonAction(sender:)), for: .touchUpInside)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
             button.setTitleColor(textColor, for: .normal)

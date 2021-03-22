@@ -27,10 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        ApplicationDelegate.shared.application(
-            application,
-            didFinishLaunchingWithOptions: launchOptions
-        )
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         GMSServices.provideAPIKey(Config.GOOGLE_API_KEY)
         GMSPlacesClient.provideAPIKey(Config.GOOGLE_API_KEY)
