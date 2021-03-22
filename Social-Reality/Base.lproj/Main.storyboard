@@ -80,7 +80,7 @@
                                         <rect key="frame" x="8" y="68" width="48" height="48"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <color key="tintColor" name="Primary"/>
-                                        <state key="normal" image="ellipsis.bubble.fill" catalog="system">
+                                        <state key="normal" image="ellipses.bubble.fill" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
                                         </state>
                                         <connections>
@@ -431,7 +431,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzk-aa-lI3">
                                                     <rect key="frame" x="0.0" y="0.0" width="367" height="268"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="8am-Qi-z0N" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.image.default" translatesAutoresizingMaskIntoConstraints="NO" id="8am-Qi-z0N" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
                                                             <rect key="frame" x="143.5" y="12" width="80" height="80"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="80" id="tDa-bD-LZe"/>
@@ -732,7 +732,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7D170C57-2A05-4F0E-8F6D-511DFF7A4BBB" translatesAutoresizingMaskIntoConstraints="NO" id="LG1-eW-HWG" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gibby" translatesAutoresizingMaskIntoConstraints="NO" id="LG1-eW-HWG" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="2" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="24" id="2g3-h4-Xy3"/>
@@ -1174,7 +1174,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFy-oV-Wnr">
                                                 <rect key="frame" x="157" y="76" width="100" height="124"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="55N-ZP-pk5" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.image.default" translatesAutoresizingMaskIntoConstraints="NO" id="55N-ZP-pk5" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="IVO-Y3-Dxa"/>
@@ -1555,11 +1555,11 @@
             </objects>
             <point key="canvasLocation" x="-36" y="1702"/>
         </scene>
-        <!--Create-->
+        <!--Navigation Controller-->
         <scene sceneID="MdD-lP-4Wi">
             <objects>
                 <navigationController navigationBarHidden="YES" id="DsT-cv-Q20" customClass="NavigationController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="103" title="Create" image="plus.rectangle.on.rectangle.fill" catalog="system" id="33r-ql-tLv"/>
+                    <tabBarItem key="tabBarItem" tag="103" title="" image="plus.circle.fill" catalog="system" id="33r-ql-tLv"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XPY-uQ-S3E">
                         <autoresizingMask key="autoresizingMask"/>
@@ -1971,7 +1971,7 @@
                                                 <color key="textColor" name="GrayText"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo (14)" translatesAutoresizingMaskIntoConstraints="NO" id="mDm-kz-6oI">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.primary" translatesAutoresizingMaskIntoConstraints="NO" id="mDm-kz-6oI">
                                                 <rect key="frame" x="127" y="8" width="160" height="160"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="ASS-cy-0RC"/>
@@ -2066,7 +2066,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wNR-Se-gLz" customClass="BorderedView" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="32" y="298" width="350" height="42"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppleSignLogo" translatesAutoresizingMaskIntoConstraints="NO" id="cPx-cO-rGb">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple.icon.sign" translatesAutoresizingMaskIntoConstraints="NO" id="cPx-cO-rGb">
                                                                 <rect key="frame" x="32" y="10" width="38" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="38" id="onl-DK-LOM"/>
@@ -2120,7 +2120,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIw-br-6Wv" customClass="BorderedView" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="32" y="190" width="350" height="42"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoogleSign" translatesAutoresizingMaskIntoConstraints="NO" id="jmD-Ka-HL9">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="google.icon.sign" translatesAutoresizingMaskIntoConstraints="NO" id="jmD-Ka-HL9">
                                                                 <rect key="frame" x="32" y="12" width="38" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="38" id="ul0-JO-T0C"/>
@@ -2161,7 +2161,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fov-CL-4Pj" customClass="BorderedView" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="32" y="244" width="350" height="42"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FacebookSognLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Vwd-eU-1T5">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook.icon.sign" translatesAutoresizingMaskIntoConstraints="NO" id="Vwd-eU-1T5">
                                                                 <rect key="frame" x="32" y="10" width="38" height="22"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="38" id="gPA-30-hM1"/>
@@ -2745,7 +2745,7 @@
                                     <action selector="tapBack:" destination="wHK-9Z-j3w" eventType="touchUpInside" id="prx-6H-zAo"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="vol-73-NNo" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.image.default" translatesAutoresizingMaskIntoConstraints="NO" id="vol-73-NNo" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
                                 <rect key="frame" x="64" y="138" width="286" height="286"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vol-73-NNo" secondAttribute="height" multiplier="1:1" id="VRJ-9C-8cW"/>
@@ -3163,29 +3163,30 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fnc-XW-6Bv"/>
-        <segue reference="JU7-we-xcG"/>
-        <segue reference="oIz-d0-JjT"/>
+        <segue reference="qR0-h3-joD"/>
+        <segue reference="ZG6-Wg-h0e"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="7D170C57-2A05-4F0E-8F6D-511DFF7A4BBB" width="3024" height="4032"/>
-        <image name="AppleSignLogo" width="770" height="770"/>
-        <image name="DefaultProfileImage" width="251" height="250"/>
-        <image name="FacebookSognLogo" width="512" height="512"/>
-        <image name="GoogleSign" width="225" height="225"/>
+        <image name="apple.icon.sign" width="770" height="770"/>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="ellipses.bubble.fill" catalog="system" width="128" height="110"/>
         <image name="ellipsis.bubble.fill" catalog="system" width="128" height="110"/>
         <image name="ellipsis.rectangle" catalog="system" width="128" height="81"/>
+        <image name="facebook.icon.sign" width="512" height="512"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="gibby" width="3024" height="4032"/>
+        <image name="google.icon.sign" width="225" height="225"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="info" catalog="system" width="93" height="128"/>
         <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
-        <image name="logo (14)" width="2000" height="1857"/>
+        <image name="logo.primary" width="2000" height="1857"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="mail.stack.fill" catalog="system" width="128" height="122"/>
         <image name="minus" catalog="system" width="128" height="24"/>
@@ -3195,7 +3196,8 @@
         <image name="person.crop.circle.badge.plus" catalog="system" width="128" height="113"/>
         <image name="person.crop.circle.fill" catalog="system" width="128" height="121"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
-        <image name="plus.rectangle.on.rectangle.fill" catalog="system" width="128" height="96"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="profile.image.default" width="251" height="250"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">

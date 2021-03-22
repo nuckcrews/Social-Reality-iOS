@@ -109,6 +109,11 @@
 		A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */; };
 		A0CBAFCB26015EC3001953C8 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */; };
 		A0D95BB52607BAFE00DA5A07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0D95BB42607BAFE00DA5A07 /* GoogleService-Info.plist */; };
+		A0D95BB926081B2E00DA5A07 /* LocalDownloadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BB826081B2E00DA5A07 /* LocalDownloadMethods.swift */; };
+		A0D95BBB26081B4B00DA5A07 /* LocalUploadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BBA26081B4B00DA5A07 /* LocalUploadMethods.swift */; };
+		A0D95BBD26081B6300DA5A07 /* LocalRemoveMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BBC26081B6300DA5A07 /* LocalRemoveMethods.swift */; };
+		A0D95BBF26081B6D00DA5A07 /* LocalListMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BBE26081B6D00DA5A07 /* LocalListMethods.swift */; };
+		A0D95BC22608433200DA5A07 /* AssetNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BC12608433200DA5A07 /* AssetNames.swift */; };
 		A0DCF1EC25EC4ADC00F699E9 /* AuthenticationMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1EB25EC4ADC00F699E9 /* AuthenticationMethods.swift */; };
 		A0DCF1F425EC7CFC00F699E9 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */; };
 		A0DCF1F925EC7E3C00F699E9 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DCF1F825EC7E3C00F699E9 /* UIView.swift */; };
@@ -247,6 +252,11 @@
 		A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserViewController.swift; sourceTree = "<group>"; };
 		A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		A0D95BB42607BAFE00DA5A07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Social Distance/Social Distance/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A0D95BB826081B2E00DA5A07 /* LocalDownloadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDownloadMethods.swift; sourceTree = "<group>"; };
+		A0D95BBA26081B4B00DA5A07 /* LocalUploadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUploadMethods.swift; sourceTree = "<group>"; };
+		A0D95BBC26081B6300DA5A07 /* LocalRemoveMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRemoveMethods.swift; sourceTree = "<group>"; };
+		A0D95BBE26081B6D00DA5A07 /* LocalListMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalListMethods.swift; sourceTree = "<group>"; };
+		A0D95BC12608433200DA5A07 /* AssetNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetNames.swift; sourceTree = "<group>"; };
 		A0DCF1EB25EC4ADC00F699E9 /* AuthenticationMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationMethods.swift; sourceTree = "<group>"; };
 		A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
 		A0DCF1F825EC7E3C00F699E9 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -477,9 +487,9 @@
 				A023980A25EC27C500F13F72 /* Protocols */,
 				A03870C025E944FC003989CE /* Extensions */,
 				A03870A925E9446A003989CE /* Views */,
+				A0D95BC02608431100DA5A07 /* Assets */,
 				A038703025E93D9D003989CE /* Experience.rcproject */,
 				A038703225E93D9D003989CE /* Main.storyboard */,
-				A038703525E93D9E003989CE /* Assets.xcassets */,
 				A038703725E93D9E003989CE /* LaunchScreen.storyboard */,
 				A0D95BB42607BAFE00DA5A07 /* GoogleService-Info.plist */,
 				A038703A25E93D9E003989CE /* Info.plist */,
@@ -592,10 +602,8 @@
 			isa = PBXGroup;
 			children = (
 				A040AB3B25F681BB0064978A /* Storage.swift */,
-				A040AB4125F682C80064978A /* UploadMethods.swift */,
-				A040AB4925F682D10064978A /* DownloadMethods.swift */,
-				A040AB4E25F682E40064978A /* RemoveMethods.swift */,
-				A040AB5325F682EE0064978A /* ListMethods.swift */,
+				A0D95BB726081AF500DA5A07 /* Local */,
+				A0D95BB626081AF000DA5A07 /* Remote */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -691,6 +699,37 @@
 				A038702E25E93D9D003989CE /* CreateViewController.swift */,
 			);
 			path = Creation;
+			sourceTree = "<group>";
+		};
+		A0D95BB626081AF000DA5A07 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				A040AB4925F682D10064978A /* DownloadMethods.swift */,
+				A040AB4125F682C80064978A /* UploadMethods.swift */,
+				A040AB4E25F682E40064978A /* RemoveMethods.swift */,
+				A040AB5325F682EE0064978A /* ListMethods.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		A0D95BB726081AF500DA5A07 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				A0D95BB826081B2E00DA5A07 /* LocalDownloadMethods.swift */,
+				A0D95BBA26081B4B00DA5A07 /* LocalUploadMethods.swift */,
+				A0D95BBC26081B6300DA5A07 /* LocalRemoveMethods.swift */,
+				A0D95BBE26081B6D00DA5A07 /* LocalListMethods.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		A0D95BC02608431100DA5A07 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A038703525E93D9E003989CE /* Assets.xcassets */,
+				A0D95BC12608433200DA5A07 /* AssetNames.swift */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		F796CD064E1BF7CD31367252 /* Pods */ = {
@@ -992,6 +1031,7 @@
 				A03A968D2603F8D400274793 /* FirebaseCodable.swift in Sources */,
 				A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */,
 				A00DD4182603D43C00E6C818 /* ResultType.swift in Sources */,
+				A0D95BBF26081B6D00DA5A07 /* LocalListMethods.swift in Sources */,
 				A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */,
 				A06B63BB25E9554D00AE746D /* User.swift in Sources */,
 				A03870B625E944AB003989CE /* NavigationController.swift in Sources */,
@@ -1018,6 +1058,7 @@
 				A040AB4225F682C80064978A /* UploadMethods.swift in Sources */,
 				A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */,
 				A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */,
+				A0D95BB926081B2E00DA5A07 /* LocalDownloadMethods.swift in Sources */,
 				A00DD4222603D57100E6C818 /* CommentModel.swift in Sources */,
 				A00DD4132603C26000E6C818 /* CreationAVPlayer.swift in Sources */,
 				A0DCF1FE25EC90CE00F699E9 /* CreatePasswordViewController.swift in Sources */,
@@ -1043,11 +1084,14 @@
 				A06B641125E97F5F00AE746D /* CustomButtons.swift in Sources */,
 				A06B63E625E964A200AE746D /* InboxViewController.swift in Sources */,
 				A06E965325F15770009B92E5 /* ExploreMapHeaderView.swift in Sources */,
+				A0D95BC22608433200DA5A07 /* AssetNames.swift in Sources */,
 				A040AB3C25F681BB0064978A /* Storage.swift in Sources */,
 				A063EA9A260674E700B3C2ED /* Date.swift in Sources */,
+				A0D95BBB26081B4B00DA5A07 /* LocalUploadMethods.swift in Sources */,
 				A06B63E125E9646900AE746D /* ExploreViewController.swift in Sources */,
 				A03870AB25E9447C003989CE /* CustomTabBarController.swift in Sources */,
 				A006C01D260002AE003613C0 /* Providers.swift in Sources */,
+				A0D95BBD26081B6300DA5A07 /* LocalRemoveMethods.swift in Sources */,
 				A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */,
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
 				A040AB1025F676ED0064978A /* CreateAvatarViewController.swift in Sources */,

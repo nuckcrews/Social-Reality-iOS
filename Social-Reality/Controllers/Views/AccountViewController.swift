@@ -66,6 +66,7 @@ class AccountViewController: UIViewController {
     }
     
     func populateViews() {
+        
         reloadDataSource()
         
         guard let model = user?.model else { return }

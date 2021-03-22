@@ -34,7 +34,6 @@ class ExploreViewController: UIViewController {
         case creation(CreationView)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,8 +44,6 @@ class ExploreViewController: UIViewController {
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
         collectionView.register(ExploreMapHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreMapHeaderView.rawValue)
         collectionView.register(ExploreCreationHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreCreationHeaderView.rawValue)
-        
-//        collectionView.register(creationViewCell.self, forCellWithReuseIdentifier: Cells.creationViewCell.rawValue)
         
         configureDatasource()
         setupLocationManager()

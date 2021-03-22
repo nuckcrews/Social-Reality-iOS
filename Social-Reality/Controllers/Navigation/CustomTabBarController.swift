@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 import TransitionableTab
 
-
 class CustomerTabBarController: UITabBarController, TransitionableTab {
     
     @IBOutlet weak var buttonBarView: UITabBar!
@@ -30,19 +29,14 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         self.buttonBarView.layer.shadowOpacity = 0.2
         self.buttonBarView.layer.masksToBounds = false
         
-//        for i in 0 ..< self.tabBar.items!.count {
-//            switch i {
-//            case 2:
-//                let createTab = self.tabBar.items![i] as UITabBarItem
-//                let img = UIImage(systemName: "plus.rectangle.on.rectangle.fill")!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-//                createTab.image = img
-//                createTab.selectedImage = img
-//                createTab.imageInsets = UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 0)
-//                createTab.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: 0)
-//            default:
-//                break
-//            }
-//        }
+        if let createTab = self.tabBar.items?[2], let img = UIImage(named: Images.plusTabSmall.rawValue)?
+            .withRenderingMode(.alwaysOriginal) {
+            createTab.image = img.withTintColor(.primary)
+            createTab.selectedImage = img
+            createTab.imageInsets = UIEdgeInsets(top: 18, left: 8, bottom: 2, right: 8)
+            createTab.title = nil
+            
+        }
         
         let firstItemView = tabBar.subviews.first!
         firstTabBarItemImageView = firstItemView.subviews.first as? UIImageView
@@ -52,15 +46,15 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         self.secondTabBarItemImageView = secondItemView.subviews.first as? UIImageView
         self.secondTabBarItemImageView.contentMode = .center
         
-        let thirdItemView = tabBar.subviews[2]
-        thirdTabBarItemImageView = thirdItemView.subviews.first as? UIImageView
-        thirdTabBarItemImageView.contentMode = .center
+//        let thirdItemView = tabBar.subviews[2]
+//        thirdTabBarItemImageView = thirdItemView.subviews.first as? UIImageView
+//        thirdTabBarItemImageView.contentMode = .center
 
-        let fourthItemView = self.tabBar.subviews[3]
+        let fourthItemView = self.tabBar.subviews[2]
         self.fourthTabBarItemImageView = fourthItemView.subviews.first as? UIImageView
         self.fourthTabBarItemImageView.contentMode = .center
         
-        let fifthItemView = tabBar.subviews.last!
+        let fifthItemView = tabBar.subviews[3]
         fifthTabBarItemImageView = fifthItemView.subviews.first as? UIImageView
         fifthTabBarItemImageView.contentMode = .center
         
@@ -82,7 +76,6 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
                     print("Presented Creation")
                 }
             }
-//            animate(thirdTabBarItemImageView)
         case .fourthViewController:
             animate(fourthTabBarItemImageView)
         case .fifthViewController:
@@ -103,9 +96,7 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
 
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        
-        
-        
+
         return viewController != tabBarController.viewControllers?[2] && animateTransition(tabBarController, shouldSelect: viewController)
     }
     

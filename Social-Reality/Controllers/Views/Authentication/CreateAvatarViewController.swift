@@ -37,7 +37,6 @@ class CreateAvatarViewController: UIViewController {
             }
         })
 
-        
     }
     
     func startLoading() {
@@ -79,7 +78,6 @@ class CreateAvatarViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    
 }
 
 extension CreateAvatarViewController: ImagePickerDelegate {
@@ -94,18 +92,13 @@ extension CreateAvatarViewController: ImagePickerDelegate {
         guard let uid = Auth0.uid else { return }
         startLoading()
         
-        Storage0.upload.image(key: uid, image: image) { res in
+        Storage0.remote.upload.image(key: uid, image: image) { res in
             guard let res = res else { return }
             self.imageURL = res
             self.stopLoading()
         }
         
-        
     }
-    
-    
-
-    
     
 }
 

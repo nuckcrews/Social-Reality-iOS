@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import AVKit
 import Firebase
 import FirebaseStorage
 
@@ -19,16 +21,22 @@ struct UploadMethods {
                     completion(nil)
                 } else {
                     ref.downloadURL { (url, error) in
-                        guard url != nil else {
-                            completion(nil)
-                            return
-                        }
                         completion(url?.absoluteString)
                     }
                 }
             }
         }
         
+    }
+    
+    func video(key: String, video: Data, completion: @escaping(_ result: String?) -> Void) {
+        let ref = Storage.storage().reference().child(key)
+        ref.putData(video, metadata: nil) { (metadata, error) in
+            guard error == nil else { completion(nil); return }
+            ref.downloadURL { (url, error) in
+                completion(url?.absoluteString)
+            }
+        }
     }
     
 }

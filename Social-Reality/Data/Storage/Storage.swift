@@ -8,9 +8,20 @@
 import Foundation
 
 struct Storage0 {
-    static var upload = UploadMethods()
-    static var download = DownloadMethods()
-    static var remove = RemoveMethods()
-    static var list = ListMethods()
+    static var local = LocalStorage()
+    static var remote = RemoteStorage()
 }
 
+struct LocalStorage {
+    var upload = LocalUploadMethods()
+    var download = LocalDownloadMethods()
+    var remove = LocalRemoveMethods()
+    var list = LocalListMethods()
+}
+
+struct RemoteStorage {
+    var upload = UploadMethods()
+    var download = DownloadMethods()
+    var remove = RemoveMethods()
+    var list = ListMethods()
+}
