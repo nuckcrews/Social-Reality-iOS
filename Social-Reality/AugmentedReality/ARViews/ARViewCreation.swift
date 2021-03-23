@@ -12,7 +12,6 @@ import Vision
 import PencilKit
 import ARKit
 
-
 class ARViewCreation: ARView {
     
     let coachingOverlay = ARCoachingOverlayView()
@@ -23,10 +22,19 @@ class ARViewCreation: ARView {
         config.planeDetection = .horizontal
         self.session.run(config, options: [])
         
+        
     }
     
     func startCoaching() {
         addCoaching()
+    }
+    
+    func startRecording() {
+        
+    }
+    
+    func stopRecording() {
+        
     }
     
 }

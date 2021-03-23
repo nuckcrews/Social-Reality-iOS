@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class CoverViewController: UIViewController {
     
@@ -24,7 +25,7 @@ class CoverViewController: UIViewController {
         
         if !Auth0.loggedIn && !opened {
             toSignIn()
-        } else {
+        } else if !opened {
             checkuserData()
         }
         
