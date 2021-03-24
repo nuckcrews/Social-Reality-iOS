@@ -67,7 +67,7 @@ class RecordButton: UIView {
         animation.toValue = 1
 
         // Do a linear animation (i.e. the speed of the animation stays the same)
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: .linear)
 
         // Set the circleLayer's strokeEnd property to 1.0 now so that it's the
         // right value when the animation ends.
