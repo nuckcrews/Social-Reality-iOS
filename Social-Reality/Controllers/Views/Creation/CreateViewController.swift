@@ -7,6 +7,7 @@
 
 import UIKit
 import RealityKit
+import ARKit
 import PencilKit
 import Vision
 
@@ -21,7 +22,7 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var tutorialScrollView: UIScrollView!
     @IBOutlet weak var tutorialPageControl: UIPageControl!
     
-    @IBOutlet weak var recordButtonView: UIView!
+    @IBOutlet weak var recordButtonView: RecordButton!
     @IBOutlet weak var leftBottomButton: UIButton!
     @IBOutlet weak var rightBottomButton: UIButton!
     @IBOutlet weak var toolkitView: UIView!
@@ -77,10 +78,11 @@ class CreateViewController: UIViewController {
         view.sendSubviewToBack(arView)
         bottomContentConstraint.constant = bottomConstraintDefault
         backView.backgroundColor = UIColor(white: 0.0, alpha: 0.7)
-           
+        
     }
     
     func changeShape() {
+        
         self.changingShape = true
         bottomContentConstraint.constant = bottomConstraintTop
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
@@ -133,6 +135,20 @@ class CreateViewController: UIViewController {
         closeChange()
     }
     
+    @IBAction func holdRecord(_ gestureRecognizer: UILongPressGestureRecognizer) {
+       if gestureRecognizer.state == .began {
+        Buzz.medium()
+        recordButtonView.animateCircle(duration: 30)
+       } else if gestureRecognizer.state == .ended {
+        Buzz.medium()
+        recordButtonView.stopAnimating()
+       }
+    }
+    
+    @IBAction func tapRecord(_ sender: UIButton) {
+//        recordButtonView.animateCircle(duration: 10)
+    }
+    
     @IBAction func tapBack(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -153,7 +169,7 @@ extension CreateViewController: CustomSegmentedControlDelegate {
 extension CreateViewController {
     
     func initializeReality() {
-        
+
         self.arView.startCoaching()
         
         let box = CustomBox(color: .red)

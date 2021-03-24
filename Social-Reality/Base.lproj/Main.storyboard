@@ -1776,9 +1776,10 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="16"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hle-kW-kav" customClass="BorderedView" customModule="Social_Reality" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hle-kW-kav" customClass="RecordButton" customModule="Social_Reality" customModuleProvider="target">
                                 <rect key="frame" x="167" y="709" width="80" height="80"/>
                                 <color key="backgroundColor" name="Tinted"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="6qs-Hn-bBr"/>
                                     <constraint firstAttribute="height" constant="80" id="aaf-cI-fVX"/>
@@ -1794,6 +1795,9 @@
                                         <real key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="twx-oh-OTh" appends="YES" id="7Jd-AT-bja"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYp-Ph-d0g" customClass="RoundViewVertical" customModule="Social_Reality" customModuleProvider="target">
                                 <rect key="frame" x="364" y="100" width="34" height="122"/>
@@ -2028,6 +2032,11 @@
                         <action selector="bottomContentPanGesture:" destination="JtY-3D-zHh" id="GgJ-D4-5l8"/>
                     </connections>
                 </panGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="twx-oh-OTh">
+                    <connections>
+                        <action selector="holdRecord:" destination="JtY-3D-zHh" id="hrb-bj-ltg"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="863.768115942029" y="255.80357142857142"/>
         </scene>
@@ -3412,7 +3421,7 @@
             <color red="0.83499997854232788" green="0.83499997854232788" blue="0.83499997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Tinted">
-            <color red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

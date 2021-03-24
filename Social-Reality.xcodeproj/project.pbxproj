@@ -102,6 +102,8 @@
 		A06E965C25F16CB5009B92E5 /* EventCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */; };
 		A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5625ED335E00D59382 /* TestViewController.swift */; };
 		A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */; };
+		A09A2AAB260AF3730023CABA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAA260AF3730023CABA /* Device.swift */; };
+		A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAD260AF6FE0023CABA /* RecordButton.swift */; };
 		A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE0E825EA2FED0007438B /* settingsCell.swift */; };
 		A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB58EE260042C900523005 /* CLLocationManager.swift */; };
 		A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2FBAE26025C8D005D773A /* CustomBox.swift */; };
@@ -245,6 +247,8 @@
 		A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionView.swift; sourceTree = "<group>"; };
 		A072FC5625ED335E00D59382 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		A09A2AAA260AF3730023CABA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		A09A2AAD260AF6FE0023CABA /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		A09DE0E825EA2FED0007438B /* settingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCell.swift; sourceTree = "<group>"; };
 		A0BB58EE260042C900523005 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		A0C2FBAE26025C8D005D773A /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
@@ -435,6 +439,7 @@
 			children = (
 				A023980825EC262B00F13F72 /* Environment.swift */,
 				A006C01825FFF62C003613C0 /* Utility.swift */,
+				A09A2AAA260AF3730023CABA /* Device.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 		A03870A925E9446A003989CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A09A2AAC260AF6E90023CABA /* Animations */,
 				A03870BA25E944CC003989CE /* CustomTabBar.swift */,
 				A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */,
 				A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */,
@@ -663,6 +669,14 @@
 				A072FC5625ED335E00D59382 /* TestViewController.swift */,
 			);
 			path = Testing;
+			sourceTree = "<group>";
+		};
+		A09A2AAC260AF6E90023CABA /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				A09A2AAD260AF6FE0023CABA /* RecordButton.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		A09DE0DC25EA2F980007438B /* Cells */ = {
@@ -1029,6 +1043,7 @@
 				A06B640725E97A8300AE746D /* String.swift in Sources */,
 				A06B63C325E9561B00AE746D /* Creation.swift in Sources */,
 				A03A968D2603F8D400274793 /* FirebaseCodable.swift in Sources */,
+				A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */,
 				A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */,
 				A00DD4182603D43C00E6C818 /* ResultType.swift in Sources */,
 				A0D95BBF26081B6D00DA5A07 /* LocalListMethods.swift in Sources */,
@@ -1091,6 +1106,7 @@
 				A06B63E125E9646900AE746D /* ExploreViewController.swift in Sources */,
 				A03870AB25E9447C003989CE /* CustomTabBarController.swift in Sources */,
 				A006C01D260002AE003613C0 /* Providers.swift in Sources */,
+				A09A2AAB260AF3730023CABA /* Device.swift in Sources */,
 				A0D95BBD26081B6300DA5A07 /* LocalRemoveMethods.swift in Sources */,
 				A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */,
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
