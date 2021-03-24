@@ -25,3 +25,8 @@ struct RemoteStorage {
     var remove = RemoveMethods()
     var list = ListMethods()
 }
+
+enum StorageChildren: String {
+    case images
+    case videos
+}

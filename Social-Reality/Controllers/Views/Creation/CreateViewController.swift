@@ -7,6 +7,7 @@
 
 import UIKit
 import RealityKit
+import ARKit
 import PencilKit
 import Vision
 
@@ -15,50 +16,160 @@ import Vision
 class CreateViewController: UIViewController {
     
     @IBOutlet weak var arView: ARViewCreation!
+    
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var tutorialView: UIView!
     @IBOutlet weak var tutorialScrollView: UIScrollView!
     @IBOutlet weak var tutorialPageControl: UIPageControl!
+    
+    @IBOutlet weak var recordButtonView: RecordButton!
+    @IBOutlet weak var leftBottomButton: UIButton!
+    @IBOutlet weak var rightBottomButton: UIButton!
+    @IBOutlet weak var toolkitView: UIView!
+    @IBOutlet weak var toolkitButton1: UIButton!
+    
     @IBOutlet weak var bottomContentView: UIView!
     @IBOutlet weak var bottomContentConstraint: NSLayoutConstraint!
+    @IBOutlet weak var toolsSegment: CustomSegmentedControl! {
+        didSet {
+            toolsSegment.setButtonTitles(buttonTitles: [
+                ("", UIImage(systemName: "square.grid.3x3.fill")),
+                ("", UIImage(named: Images.pinDrop.rawValue)),
+                ("", UIImage(systemName: "heart.fill"))
+            ])
+            toolsSegment.selectorViewColor = .mainText
+            toolsSegment.selectorTextColor = .mainText
+            toolsSegment.textColor = .lightGray
+            toolsSegment.delegate = self
+            toolsSegment.backgroundColor = .clear
+        }
+    }
     
-    var bottomConstraintDefault: CGFloat = -92
+    private var bottomConstraintDefault: CGFloat = 120
+    private var bottomConstraintTop: CGFloat = 0
     
+    private var changingShape = false
+    private var animating = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bottomConstraintTop = -view.frame.height * 0.8
+        
         tabBarItem.tag = TabBarItemTag.thirdViewController.rawValue
         
         tutorialScrollView.delegate = self
-        view.sendSubviewToBack(arView)
-        bottomContentConstraint.constant = 200
-        backView.backgroundColor = UIColor(white: 0.0, alpha: 0.7)
+
+        setupView()
         
         arView.setupView()
         
     }
     
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    func setupView() {
         
+        toolkitView.alpha = 0
+        recordButtonView.alpha = 0
+        leftBottomButton.alpha = 0
+        rightBottomButton.alpha = 0
+        
+        toolkitButton1.tintColor = .white
+        
+        view.sendSubviewToBack(arView)
+        bottomContentConstraint.constant = bottomConstraintDefault
+        backView.backgroundColor = UIColor(white: 0.0, alpha: 0.7)
         
     }
+    
+    func changeShape() {
+        
+        self.changingShape = true
+        bottomContentConstraint.constant = bottomConstraintTop
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+        }
+    }
+    
+    func closeChange() {
+        self.changingShape = false
+        bottomContentConstraint.constant = bottomConstraintDefault
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+        }
 
+    }
+    
+    func startVideoMode() {
+        bottomContentConstraint.constant = 200
+        UIView.animate(withDuration: 0.4) {
+            self.recordButtonView.alpha = 1
+            self.toolkitView.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+        }
+    }
+    
+    func endVideoMode() {
+        bottomContentConstraint.constant = bottomConstraintDefault
+        UIView.animate(withDuration: 0.4) {
+            self.recordButtonView.alpha = 0
+            self.toolkitView.alpha = 1
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+        }
+    }
+    
+    @IBAction func tapShapeIcon(_ sender: UIButton) {
+        sender.jump()
+        changingShape ? closeChange() : changeShape()
+    }
+    
+    @IBAction func tapShapeDone(_ sender: UIButton) {
+        sender.jump()
+        closeChange()
+    }
+    
+    @IBAction func holdRecord(_ gestureRecognizer: UILongPressGestureRecognizer) {
+       if gestureRecognizer.state == .began {
+        Buzz.medium()
+        recordButtonView.animateCircle(duration: 30)
+       } else if gestureRecognizer.state == .ended {
+        Buzz.medium()
+        recordButtonView.stopAnimating()
+       }
+    }
+    
+    @IBAction func tapRecord(_ sender: UIButton) {
+//        recordButtonView.animateCircle(duration: 10)
+    }
     
     @IBAction func tapBack(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+}
 
+extension CreateViewController: CustomSegmentedControlDelegate {
+    
+    func change(to index: Int) {
+        
+    }
     
 }
 
 // MARK: Augmented Reality Functionality
 
 extension CreateViewController {
- 
+    
     func initializeReality() {
-        
+
         self.arView.startCoaching()
         
         let box = CustomBox(color: .red)
@@ -66,25 +177,24 @@ extension CreateViewController {
         arView.installGestures(.all, for: box) // Can change what gestures to use
         box.generateCollisionShapes(recursive: true)
         
-        arView.scene.anchors.append(box)
+        arView.scene.anchors.append(box) 
         
         
         let mesh = MeshResource.generateText(
-                    "RealityKit",
-                    extrusionDepth: 0.1,
-                    font: .systemFont(ofSize: 2),
-                    containerFrame: .zero,
-                    alignment: .left,
-                    lineBreakMode: .byTruncatingTail)
-                
-                let material = SimpleMaterial(color: .white, isMetallic: false)
-                let entity = ModelEntity(mesh: mesh, materials: [material])
-                entity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
-                
-                box.addChild(entity)
-                
-                entity.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: box)
+            "RealityKit",
+            extrusionDepth: 0.1,
+            font: .systemFont(ofSize: 2),
+            containerFrame: .zero,
+            alignment: .left,
+            lineBreakMode: .byTruncatingTail)
         
+        let material = SimpleMaterial(color: .white, isMetallic: false)
+        let entity = ModelEntity(mesh: mesh, materials: [material])
+        entity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
+        
+        box.addChild(entity)
+        
+        entity.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: box)
         
     }
     
@@ -98,15 +208,18 @@ extension CreateViewController {
     
     @IBAction func tapGetStarted(_ sender: UIButton) {
         sender.pulsate()
-        bottomContentConstraint.constant = bottomConstraintDefault
         UIView.animate(withDuration: 0.4) {
             self.backView.alpha = 0
             self.tutorialView.alpha = 0
+            self.toolkitView.alpha = 1
+            self.recordButtonView.alpha = 1
+            self.leftBottomButton.alpha = 1
+            self.rightBottomButton.alpha = 1
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.initializeReality()
         }
-
+        
     }
     
     @IBAction func changePager(_ sender: UIPageControl) {
@@ -136,7 +249,8 @@ extension CreateViewController {
             if gestureView.frame.minY + translation.y >= view.frame.height * 0.2 {
                 bottomContentConstraint.constant = bottomContentConstraint.constant + translation.y
             } else {
-                bottomContentConstraint.constant = bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
+                bottomContentConstraint.constant = bottomConstraintTop
+                    //bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
             }
         } else if translation.y > 0 {
             if bottomContentConstraint.constant + translation.y <= bottomConstraintDefault {
@@ -150,15 +264,17 @@ extension CreateViewController {
             gesture.setTranslation(.zero, in: view)
             return
         }
-
+        
         let velocity = gesture.velocity(in: view)
         
         if velocity.y > 100 {
             bottomContentConstraint.constant = bottomConstraintDefault
         } else if velocity.y < -100 {
-            bottomContentConstraint.constant = bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
+            bottomContentConstraint.constant = bottomConstraintTop
+                //bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
-            bottomContentConstraint.constant = bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
+            bottomContentConstraint.constant = bottomConstraintTop
+                //bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
         } else {
             bottomContentConstraint.constant = bottomConstraintDefault
         }

@@ -8,6 +8,8 @@ target 'Social-Reality' do
 
   # Pods for Social-Reality
   
+  # AR Pods
+  
   # GCP Pods
   pod 'Firebase'
   pod 'Firebase/Database'
