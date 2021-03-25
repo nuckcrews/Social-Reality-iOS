@@ -137,11 +137,33 @@ extension SearchUsersView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        isSearching ?
-            selectedUsers.append(usersFiltered[indexPath.row]) :
-            selectedUsers.append(users[indexPath.row])
+        guard let cell = tableView.cellForRow(at: indexPath) as? searchUserCell else {
+            return
+        }
+        
+        if isSearching {
+            if isSelected(model: usersFiltered[indexPath.row]) {
+                selectedUsers = selectedUsers.filter({ model in
+                    return model.id != usersFiltered[indexPath.row].id
+                })
+            } else {
+                selectedUsers.append(usersFiltered[indexPath.row])
+            }
+        } else {
+            if isSelected(model: users[indexPath.row]) {
+                selectedUsers = selectedUsers.filter({ model in
+                    return model.id != users[indexPath.row].id
+                })
+            } else {
+                selectedUsers.append(users[indexPath.row])
+            }
+        }
+        
         delegate?.selectUsers(models: selectedUsers)
-        userCells[indexPath.row].tapSelect()
+        
+            cell.tapSelect()
+        
+//        userCells[indexPath.row].tapSelect()
     }
     
 }
