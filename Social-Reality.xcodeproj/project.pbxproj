@@ -102,6 +102,8 @@
 		A06E965C25F16CB5009B92E5 /* EventCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */; };
 		A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5625ED335E00D59382 /* TestViewController.swift */; };
 		A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */; };
+		A0911DA9260C3E6E00D05642 /* SearchUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */; };
+		A0911DAC260C3FF700D05642 /* searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0911DAB260C3FF700D05642 /* searchUserCell.swift */; };
 		A09A2AAB260AF3730023CABA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAA260AF3730023CABA /* Device.swift */; };
 		A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAD260AF6FE0023CABA /* RecordButton.swift */; };
 		A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE0E825EA2FED0007438B /* settingsCell.swift */; };
@@ -247,6 +249,8 @@
 		A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionView.swift; sourceTree = "<group>"; };
 		A072FC5625ED335E00D59382 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersView.swift; sourceTree = "<group>"; };
+		A0911DAB260C3FF700D05642 /* searchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserCell.swift; sourceTree = "<group>"; };
 		A09A2AAA260AF3730023CABA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		A09A2AAD260AF6FE0023CABA /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		A09DE0E825EA2FED0007438B /* settingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCell.swift; sourceTree = "<group>"; };
@@ -379,6 +383,7 @@
 				A09DE0E825EA2FED0007438B /* settingsCell.swift */,
 				A006461525EB0D1300A3E1F3 /* promoCell.swift */,
 				A006461025EB0C8E00A3E1F3 /* inboxCell.swift */,
+				A0911DAB260C3FF700D05642 /* searchUserCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -580,6 +585,7 @@
 		A03870CC25E94575003989CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A0911DA6260C3E3400D05642 /* Utility */,
 				A0CBAFCC26017D05001953C8 /* Creation */,
 				A023980325EC1CF200F13F72 /* Covers */,
 				A02397FB25EC195400F13F72 /* Authentication */,
@@ -669,6 +675,14 @@
 				A072FC5625ED335E00D59382 /* TestViewController.swift */,
 			);
 			path = Testing;
+			sourceTree = "<group>";
+		};
+		A0911DA6260C3E3400D05642 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		A09A2AAC260AF6E90023CABA /* Animations */ = {
@@ -1044,6 +1058,7 @@
 				A06B63C325E9561B00AE746D /* Creation.swift in Sources */,
 				A03A968D2603F8D400274793 /* FirebaseCodable.swift in Sources */,
 				A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */,
+				A0911DA9260C3E6E00D05642 /* SearchUsersView.swift in Sources */,
 				A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */,
 				A00DD4182603D43C00E6C818 /* ResultType.swift in Sources */,
 				A0D95BBF26081B6D00DA5A07 /* LocalListMethods.swift in Sources */,
@@ -1112,6 +1127,7 @@
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
 				A040AB1025F676ED0064978A /* CreateAvatarViewController.swift in Sources */,
 				A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */,
+				A0911DAC260C3FF700D05642 /* searchUserCell.swift in Sources */,
 				A023980625EC242600F13F72 /* CustomShadows.swift in Sources */,
 				A00DD4102603964B00E6C818 /* CreationDetailViewController.swift in Sources */,
 				A06B633525E9512400AE746D /* Query.swift in Sources */,

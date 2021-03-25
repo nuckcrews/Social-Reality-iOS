@@ -5,7 +5,6 @@
 //  Created by Nick Crews on 3/24/21.
 //
 
-import Foundation
 import UIKit
 
 class RecordButton: UIView {
