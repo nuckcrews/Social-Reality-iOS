@@ -2019,7 +2019,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
                                         <subviews>
                                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Tag Your Friends" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AlY-bv-54N">
-                                                <rect key="frame" x="12" y="25" width="390" height="51"/>
+                                                <rect key="frame" x="12" y="21" width="390" height="51"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </searchBar>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3H4-bQ-Kam">
@@ -2030,7 +2030,7 @@
                                                 </state>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ra-Ip-ubs">
-                                                <rect key="frame" x="0.0" y="76" width="414" height="222"/>
+                                                <rect key="frame" x="0.0" y="72" width="414" height="226"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="134" id="jc3-Tr-qQS" customClass="searchUserCell" customModule="Social_Reality" customModuleProvider="target">
@@ -2132,7 +2132,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="8iA-Ks-d82" secondAttribute="trailing" constant="32" id="3vJ-zQ-muH"/>
                                             <constraint firstItem="3H4-bQ-Kam" firstAttribute="centerX" secondItem="7lj-ap-Yj0" secondAttribute="centerX" id="67n-dn-bzc"/>
-                                            <constraint firstItem="AlY-bv-54N" firstAttribute="top" secondItem="3H4-bQ-Kam" secondAttribute="bottom" id="9uw-x6-EzS"/>
+                                            <constraint firstItem="AlY-bv-54N" firstAttribute="top" secondItem="3H4-bQ-Kam" secondAttribute="bottom" constant="-4" id="9uw-x6-EzS"/>
                                             <constraint firstItem="AlY-bv-54N" firstAttribute="leading" secondItem="7lj-ap-Yj0" secondAttribute="leading" constant="12" id="BoL-vJ-NK9"/>
                                             <constraint firstItem="3H4-bQ-Kam" firstAttribute="top" secondItem="7lj-ap-Yj0" secondAttribute="top" id="HVu-zy-1q7"/>
                                             <constraint firstItem="8iA-Ks-d82" firstAttribute="top" secondItem="9Ra-Ip-ubs" secondAttribute="bottom" constant="2" id="M0G-q4-hcQ"/>
