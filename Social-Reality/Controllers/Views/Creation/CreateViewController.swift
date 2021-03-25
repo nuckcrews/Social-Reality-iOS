@@ -28,6 +28,10 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var toolkitView: UIView!
     @IBOutlet weak var toolkitButton1: UIButton!
     
+    @IBOutlet weak var searchUserContentView: UIView!
+    @IBOutlet weak var searchUserView: SearchUsersView!
+    @IBOutlet weak var bottomSearchUserConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var bottomContentView: UIView!
     @IBOutlet weak var bottomContentConstraint: NSLayoutConstraint!
     @IBOutlet weak var toolsSegment: CustomSegmentedControl! {
@@ -50,11 +54,14 @@ class CreateViewController: UIViewController {
     
     private var changingShape = false
     private var animating = false
+    private var selectedColor: UIColor = .primary
+    private var selectedUsers = [UserModel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bottomConstraintTop = -view.frame.height * 0.8
+        bottomConstraintTop = -view.frame.height * 0.7
         
         tabBarItem.tag = TabBarItemTag.thirdViewController.rawValue
         
@@ -68,6 +75,8 @@ class CreateViewController: UIViewController {
     
     func setupView() {
         
+        searchUserView.delegate = self
+        
         toolkitView.alpha = 0
         recordButtonView.alpha = 0
         leftBottomButton.alpha = 0
@@ -77,6 +86,7 @@ class CreateViewController: UIViewController {
         
         view.sendSubviewToBack(arView)
         bottomContentConstraint.constant = bottomConstraintDefault
+        bottomSearchUserConstraint.constant = bottomConstraintDefault
         backView.backgroundColor = UIColor(white: 0.0, alpha: 0.7)
         
     }
@@ -125,6 +135,32 @@ class CreateViewController: UIViewController {
         }
     }
     
+    func presentColorSelector() {
+        let picker = UIColorPickerViewController()
+        picker.selectedColor = selectedColor
+        picker.delegate = self
+
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    func presentSearchUser() {
+        bottomSearchUserConstraint.constant = bottomConstraintTop
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.searchUserView.presented()
+        }
+    }
+    
+    func hideSearchUser() {
+        bottomSearchUserConstraint.constant = bottomConstraintDefault
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+        }
+    }
+    
     @IBAction func tapShapeIcon(_ sender: UIButton) {
         sender.jump()
         changingShape ? closeChange() : changeShape()
@@ -145,6 +181,15 @@ class CreateViewController: UIViewController {
        }
     }
     
+    @IBAction func tapSetColor(_ sender: UIButton) {
+        presentColorSelector()
+    }
+    
+    @IBAction func tapTagUser(_ sender: UIButton) {
+        presentSearchUser()
+    }
+    
+    
     @IBAction func tapRecord(_ sender: UIButton) {
 //        recordButtonView.animateCircle(duration: 10)
     }
@@ -153,6 +198,31 @@ class CreateViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+}
+
+extension CreateViewController: SearchUserDelegate {
+ 
+    func selectUsers(models: [UserModel]) {
+        selectedUsers = models
+    }
+    func dismissSearchView() {
+        hideSearchUser()
+    }
+
+}
+
+extension CreateViewController: UIColorPickerViewControllerDelegate {
+    
+    func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+        rightBottomButton.tintColor = viewController.selectedColor
+        selectedColor = viewController.selectedColor
+    }
+    
+    func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
+        rightBottomButton.tintColor = viewController.selectedColor
+        selectedColor = viewController.selectedColor
+    }
     
 }
 
@@ -250,7 +320,6 @@ extension CreateViewController {
                 bottomContentConstraint.constant = bottomContentConstraint.constant + translation.y
             } else {
                 bottomContentConstraint.constant = bottomConstraintTop
-                    //bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
             }
         } else if translation.y > 0 {
             if bottomContentConstraint.constant + translation.y <= bottomConstraintDefault {
@@ -271,12 +340,55 @@ extension CreateViewController {
             bottomContentConstraint.constant = bottomConstraintDefault
         } else if velocity.y < -100 {
             bottomContentConstraint.constant = bottomConstraintTop
-                //bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
             bottomContentConstraint.constant = bottomConstraintTop
-                //bottomContentConstraint.constant + ((view.frame.height * 0.2) - gestureView.frame.minY)
         } else {
             bottomContentConstraint.constant = bottomConstraintDefault
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        gesture.setTranslation(.zero, in: view)
+        
+    }
+    
+    @IBAction func bottomSearchUserPanGesture(_ gesture: UIPanGestureRecognizer) {
+        
+        let translation = gesture.translation(in: view)
+        guard let gestureView = gesture.view else { return }
+        
+        
+        if translation.y < 0 {
+            if gestureView.frame.minY + translation.y >= view.frame.height * 0.2 {
+                bottomSearchUserConstraint.constant = bottomSearchUserConstraint.constant + translation.y
+            } else {
+                bottomSearchUserConstraint.constant = bottomConstraintTop
+            }
+        } else if translation.y > 0 {
+            if bottomSearchUserConstraint.constant + translation.y <= bottomConstraintDefault {
+                bottomSearchUserConstraint.constant = bottomSearchUserConstraint.constant + translation.y
+            } else {
+                bottomSearchUserConstraint.constant = bottomConstraintDefault
+            }
+        }
+        
+        guard gesture.state == .ended else {
+            gesture.setTranslation(.zero, in: view)
+            return
+        }
+        
+        let velocity = gesture.velocity(in: view)
+        
+        if velocity.y > 100 {
+            bottomSearchUserConstraint.constant = bottomConstraintDefault
+        } else if velocity.y < -100 {
+            bottomSearchUserConstraint.constant = bottomConstraintTop
+        } else if gestureView.frame.minY < view.frame.height * 0.5 {
+            bottomSearchUserConstraint.constant = bottomConstraintTop
+        } else {
+            bottomSearchUserConstraint.constant = bottomConstraintDefault
         }
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {

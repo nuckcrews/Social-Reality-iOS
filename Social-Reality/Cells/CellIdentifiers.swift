@@ -27,5 +27,6 @@ enum Cells: String {
     case inboxCell
     case promoCell
     case settingsCell
+    case searchUserCell
     
 }
