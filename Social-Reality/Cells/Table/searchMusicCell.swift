@@ -1,43 +1,37 @@
 //
-//  searchUserCell.swift
+//  searchMusicCell.swift
 //  Social-Reality
 //
-//  Created by Nick Crews on 3/24/21.
+//  Created by Nick Crews on 3/26/21.
 //
 
 import UIKit
 
-class searchUserCell: UITableViewCell {
-    
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userFirstLastLabel: UILabel!
-    @IBOutlet weak var radioButton: UIButton!
+class searchMusicCell: UITableViewCell {
 
-    private var selectedUser = false
+    @IBOutlet weak var musicImageView: UIImageView!
+    @IBOutlet weak var musicNameLabel: UILabel!
+    @IBOutlet weak var musicArtistLabel: UILabel!
+    @IBOutlet weak var radioButton: UIButton!
+    
+    private var selectedMusic = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
+
+    func configureCell(music: String, selectedCell: Bool) {
         
-        userImageView.image = UIImage(named: Images.profileImageDefault.rawValue)
         
-    }
-    
-    func configureCell(user: UserModel, selectedCell: Bool) {
-        userImageView.setImageFromURL(user.image)
-        usernameLabel.text = "@" + user.username
-        userFirstLastLabel.text = user.first + " " + user.last
+        selectedMusic = selectedCell
         
-        selectedUser = selectedCell
         if selectedCell {
             radioButton.tintColor = .primary
             radioButton.setImage(UIImage(systemName: "dot.square.fill"), for: .normal)
@@ -45,19 +39,18 @@ class searchUserCell: UITableViewCell {
             radioButton.tintColor = .grayText
             radioButton.setImage(UIImage(systemName: "square"), for: .normal)
         }
-            
+        
     }
     
     func tapSelect() {
-        if !selectedUser {
-            selectedUser = true
+        if !selectedMusic {
+            selectedMusic = true
             radioButton.tintColor = .primary
             radioButton.setImage(UIImage(systemName: "dot.square.fill"), for: .normal)
         } else {
-            selectedUser = false
+            selectedMusic = false
             radioButton.tintColor = .grayText
             radioButton.setImage(UIImage(systemName: "square"), for: .normal)
         }
     }
-
 }

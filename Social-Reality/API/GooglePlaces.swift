@@ -14,15 +14,11 @@ struct Places {
     
     var placesClient = GMSPlacesClient()
     
-    func autoComplete(searchText: String, completion: @escaping(_ result: [SearchLocation]?) -> Void) {
+    func autoComplete(searchText: String, filter: GMSAutocompleteFilter?, completion: @escaping(_ result: [SearchLocation]?) -> Void) {
         
         let token = GMSAutocompleteSessionToken.init()
-        
-        // Create a type filter.
-        let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
-        
-        placesClient.findAutocompletePredictions(fromQuery: searchText, filter: nil, sessionToken: token)
+
+        placesClient.findAutocompletePredictions(fromQuery: searchText, filter: filter, sessionToken: token)
         { results, error in
             if let error = error {
                 print("Autocomplete error: \(error)")
@@ -45,6 +41,42 @@ struct Places {
                 completion(nil)
             }
         }
+        
+    }
+    
+    func nearbyLocations(completion: @escaping(_ result: [SearchLocation]?) -> Void) {
+        
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+                                                    UInt(GMSPlaceField.placeID.rawValue) |
+                                                    UInt(GMSPlaceField.types.rawValue) |
+                                                    UInt(GMSPlaceField.formattedAddress.rawValue))
+        
+        placesClient.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: fields, callback: {
+          (placeLikelihoodList: Array<GMSPlaceLikelihood>?, error: Error?) in
+          if let error = error {
+            print("An error occurred: \(error.localizedDescription)")
+            completion(nil)
+            return
+          }
+
+          if let placeLikelihoodList = placeLikelihoodList {
+            var locations = [SearchLocation]()
+            for likelihood in placeLikelihoodList {
+              let place = likelihood.place
+              print("Current Place name \(String(describing: place.name)) at likelihood \(likelihood.likelihood)")
+              print("Current PlaceID \(String(describing: place.placeID))")
+                let loc = SearchLocation(name: place.name,
+                                         id: place.placeID,
+                                         topAddress: place.name,
+                                         bottomAddress: place.formattedAddress,
+                                         types: place.types)
+                locations.append(loc)
+            }
+            completion(locations)
+          } else {
+            completion(nil)
+          }
+        })
         
     }
     

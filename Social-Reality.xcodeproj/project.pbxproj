@@ -67,6 +67,10 @@
 		A040AB4A25F682D10064978A /* DownloadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040AB4925F682D10064978A /* DownloadMethods.swift */; };
 		A040AB4F25F682E40064978A /* RemoveMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040AB4E25F682E40064978A /* RemoveMethods.swift */; };
 		A040AB5425F682EE0064978A /* ListMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040AB5325F682EE0064978A /* ListMethods.swift */; };
+		A0579ED7260E3A8F009D512F /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0579ED6260E3A8F009D512F /* PushNotificationManager.swift */; };
+		A0579ED9260E3AD9009D512F /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0579ED8260E3AD9009D512F /* PushNotificationSender.swift */; };
+		A0579EDB260E4066009D512F /* SearchMusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0579EDA260E4066009D512F /* SearchMusicView.swift */; };
+		A0579EDD260E41A4009D512F /* searchMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0579EDC260E41A4009D512F /* searchMusicCell.swift */; };
 		A05AB2E725EAEEEC00748B04 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */; };
 		A063EA9A260674E700B3C2ED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A063EA99260674E700B3C2ED /* Date.swift */; };
 		A06B633525E9512400AE746D /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B633425E9512400AE746D /* Query.swift */; };
@@ -217,6 +221,10 @@
 		A040AB4925F682D10064978A /* DownloadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadMethods.swift; sourceTree = "<group>"; };
 		A040AB4E25F682E40064978A /* RemoveMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveMethods.swift; sourceTree = "<group>"; };
 		A040AB5325F682EE0064978A /* ListMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMethods.swift; sourceTree = "<group>"; };
+		A0579ED6260E3A8F009D512F /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		A0579ED8260E3AD9009D512F /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
+		A0579EDA260E4066009D512F /* SearchMusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicView.swift; sourceTree = "<group>"; };
+		A0579EDC260E41A4009D512F /* searchMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchMusicCell.swift; sourceTree = "<group>"; };
 		A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A063EA99260674E700B3C2ED /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A06B633425E9512400AE746D /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
@@ -391,6 +399,7 @@
 				A006461025EB0C8E00A3E1F3 /* inboxCell.swift */,
 				A0911DAB260C3FF700D05642 /* searchUserCell.swift */,
 				A0EAE5B5260D5F9800F40EEC /* searchLocationCell.swift */,
+				A0579EDC260E41A4009D512F /* searchMusicCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -690,6 +699,7 @@
 			children = (
 				A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */,
 				A0EAE5B3260D5E1600F40EEC /* SearchLocationView.swift */,
+				A0579EDA260E4066009D512F /* SearchMusicView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -773,6 +783,8 @@
 			isa = PBXGroup;
 			children = (
 				A0EAE5B8260D6DB400F40EEC /* GooglePlaces.swift */,
+				A0579ED6260E3A8F009D512F /* PushNotificationManager.swift */,
+				A0579ED8260E3AD9009D512F /* PushNotificationSender.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -1074,6 +1086,7 @@
 				A06B640725E97A8300AE746D /* String.swift in Sources */,
 				A0EAE5B6260D5F9800F40EEC /* searchLocationCell.swift in Sources */,
 				A06B63C325E9561B00AE746D /* Creation.swift in Sources */,
+				A0579ED7260E3A8F009D512F /* PushNotificationManager.swift in Sources */,
 				A03A968D2603F8D400274793 /* FirebaseCodable.swift in Sources */,
 				A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */,
 				A0911DA9260C3E6E00D05642 /* SearchUsersView.swift in Sources */,
@@ -1123,6 +1136,7 @@
 				A06B63B525E954D000AE746D /* SubscribeMethods.swift in Sources */,
 				A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */,
 				A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */,
+				A0579ED9260E3AD9009D512F /* PushNotificationSender.swift in Sources */,
 				A006461625EB0D1300A3E1F3 /* promoCell.swift in Sources */,
 				A06B63F825E9783A00AE746D /* CustomSegmentControl.swift in Sources */,
 				A03FAC8425EEDCDB000BFC02 /* creationViewCell.swift in Sources */,
@@ -1138,6 +1152,7 @@
 				A063EA9A260674E700B3C2ED /* Date.swift in Sources */,
 				A0D95BBB26081B4B00DA5A07 /* LocalUploadMethods.swift in Sources */,
 				A06B63E125E9646900AE746D /* ExploreViewController.swift in Sources */,
+				A0579EDB260E4066009D512F /* SearchMusicView.swift in Sources */,
 				A03870AB25E9447C003989CE /* CustomTabBarController.swift in Sources */,
 				A006C01D260002AE003613C0 /* Providers.swift in Sources */,
 				A09A2AAB260AF3730023CABA /* Device.swift in Sources */,
@@ -1150,6 +1165,7 @@
 				A023980625EC242600F13F72 /* CustomShadows.swift in Sources */,
 				A00DD4102603964B00E6C818 /* CreationDetailViewController.swift in Sources */,
 				A06B633525E9512400AE746D /* Query.swift in Sources */,
+				A0579EDD260E41A4009D512F /* searchMusicCell.swift in Sources */,
 				A03FAC8625EEDD09000BFC02 /* CreationView.swift in Sources */,
 				A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */,
 				A05AB2E725EAEEEC00748B04 /* SettingsViewController.swift in Sources */,
