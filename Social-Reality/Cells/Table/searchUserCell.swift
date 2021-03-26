@@ -28,6 +28,8 @@ class searchUserCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        userImageView.image = UIImage(named: Images.profileImageDefault.rawValue)
+        
     }
     
     func configureCell(user: UserModel, selectedCell: Bool) {

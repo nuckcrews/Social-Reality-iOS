@@ -309,8 +309,6 @@ extension CreateViewController {
         
     }
     
-    
-    
 }
 
 // MARK: Tutorial Functionality
@@ -378,12 +376,16 @@ extension CreateViewController {
         let velocity = gesture.velocity(in: view)
         
         if velocity.y > 100 {
+            self.resignFirstResponder()
+            self.view.endEditing(true)
             bottomContentConstraint.constant = bottomConstraintDefault
         } else if velocity.y < -100 {
             bottomContentConstraint.constant = bottomConstraintTop
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
             bottomContentConstraint.constant = bottomConstraintTop
         } else {
+            self.resignFirstResponder()
+            self.view.endEditing(true)
             bottomContentConstraint.constant = bottomConstraintDefault
         }
         
@@ -423,12 +425,20 @@ extension CreateViewController {
         let velocity = gesture.velocity(in: view)
         
         if velocity.y > 100 {
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            searchUserView.searchBar.resignFirstResponder()
+            searchUserView.endEditing(true)
             bottomSearchUserConstraint.constant = bottomConstraintDefault
         } else if velocity.y < -100 {
             bottomSearchUserConstraint.constant = bottomConstraintTop
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
             bottomSearchUserConstraint.constant = bottomConstraintTop
         } else {
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            searchUserView.searchBar.resignFirstResponder()
+            searchUserView.endEditing(true)
             bottomSearchUserConstraint.constant = bottomConstraintDefault
         }
         
@@ -469,11 +479,19 @@ extension CreateViewController {
         
         if velocity.y > 100 {
             bottomSearchLocationConstraint.constant = bottomConstraintDefault
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            searchLocationView.searchBar.resignFirstResponder()
+            searchLocationView.endEditing(true)
         } else if velocity.y < -100 {
             bottomSearchLocationConstraint.constant = bottomConstraintTop
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
             bottomSearchLocationConstraint.constant = bottomConstraintTop
         } else {
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            searchLocationView.searchBar.resignFirstResponder()
+            searchLocationView.endEditing(true)
             bottomSearchLocationConstraint.constant = bottomConstraintDefault
         }
         

@@ -117,7 +117,23 @@ extension SearchUsersView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching ? usersFiltered.count : users.count
+        
+        if isSearching {
+            if usersFiltered.count > 0 {
+                tableView.alpha = 1
+            } else {
+                tableView.alpha = 0
+            }
+            return usersFiltered.count
+        } else {
+            if users.count > 0 {
+                tableView.alpha = 1
+            } else {
+                tableView.alpha = 0
+            }
+            return users.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

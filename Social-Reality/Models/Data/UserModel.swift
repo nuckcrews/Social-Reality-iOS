@@ -20,5 +20,6 @@ struct UserModel: Codable {
     public var email: String
     public var image: String
     public var access: ProfileAccessibility
+    public var fcmToken: String
     
 }

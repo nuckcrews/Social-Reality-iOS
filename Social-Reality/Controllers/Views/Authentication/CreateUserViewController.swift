@@ -105,7 +105,8 @@ class CreateUserViewController: UIViewController {
                              lastActive: Date().rawDateString,
                              email: email,
                              image: "",
-                             access: .public)
+                             access: .public,
+                             fcmToken: "")
         
         Query.write.user(user) { result in
             self.stopLoading()

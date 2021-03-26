@@ -27,6 +27,9 @@ class CoverViewController: UIViewController {
             toSignIn()
         } else if !opened {
             checkuserData()
+        } else {
+            let notificationManager = PushNotificationManager()
+            notificationManager.registerForPushNotifications()
         }
         
         opened = true
@@ -51,6 +54,9 @@ class CoverViewController: UIViewController {
         Auth0.userDataExists(id: id) { res in
             if !res {
                 self.toCreateUser()
+            } else {
+                let notificationManager = PushNotificationManager()
+                notificationManager.registerForPushNotifications()
             }
         }
     }

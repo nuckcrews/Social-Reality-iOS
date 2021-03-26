@@ -21,12 +21,28 @@ class SearchLocationView: UIView {
     var isSearching = false
     var displaying = false
     
+    private let locationManager: CLLocationManager = CLLocationManager()
+    
     weak var delegate: SearchLocationDelegate?
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         setupView()
+        
+        setupLocationManager()
+        
+    }
+    
+    func getNearbyLocations() {
+        
+        guard let _ = locationManager.location else { return }
+    
+        Places().nearbyLocations { locs in
+            guard let locs = locs else { return }
+            self.locations = locs
+            self.tableView.reloadData()
+        }
         
     }
     
@@ -66,12 +82,12 @@ extension SearchLocationView: UISearchBarDelegate {
         isSearching = searchText.count > 0
         
         print("text:", searchText)
-        Places().autoComplete(searchText: searchText) { locs in
-            guard let locs = locs else {
-                print("error")
-                return }
-            print(locs)
-            self.locations = locs
+        let filter = GMSAutocompleteFilter()
+        filter.type = .establishment
+            
+        Places().autoComplete(searchText: searchText, filter: filter) { locs in
+            guard let locs = locs else { print("error"); return }
+            self.locationsFiltered = locs
         }
         
         tableView.reloadData()
@@ -108,13 +124,33 @@ extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        
+        if isSearching {
+            if locationsFiltered.count > 0 {
+                tableView.alpha = 1
+            } else {
+                tableView.alpha = 0
+            }
+            return locationsFiltered.count
+        } else {
+            if locations.count > 0 {
+                tableView.alpha = 1
+            } else {
+                tableView.alpha = 0
+            }
+            return locations.count
+        }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.searchLocationCell.rawValue, for: indexPath) as? searchLocationCell {
-            cell.configureCell(location: locations[indexPath.row],
-                               selectedCell: isSelected(model: locations[indexPath.row]))
+            isSearching ?
+                cell.configureCell(location: locationsFiltered[indexPath.row],
+                                   selectedCell: isSelected(model: locationsFiltered[indexPath.row])) :
+                cell.configureCell(location: locations[indexPath.row],
+                                   selectedCell: isSelected(model: locations[indexPath.row]))
+            
             return cell
         } else {
             return searchLocationCell()
@@ -127,12 +163,20 @@ extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        
-        if isSelected(model: locations[indexPath.row]) {
-            selectedLocation = nil
+        if isSearching {
+            if isSelected(model: locationsFiltered[indexPath.row]) {
+                selectedLocation = nil
+            } else {
+                selectedLocation = locationsFiltered[indexPath.row]
+            }
         } else {
-            selectedLocation = locations[indexPath.row]
+            if isSelected(model: locations[indexPath.row]) {
+                selectedLocation = nil
+            } else {
+                selectedLocation = locations[indexPath.row]
+            }
         }
+        
         
         delegate?.selectLocation(location: selectedLocation)
         
@@ -142,8 +186,36 @@ extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+extension SearchLocationView: CLLocationManagerDelegate {
+    
+    private func setupLocationManager() {
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
+        
+        getNearbyLocations()
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted, .denied, .notDetermined:
+            break
+        case .authorizedWhenInUse, .authorizedAlways:
+            break
+        @unknown default:
+            print("Unknown Authorization Case")
+        }
+    }
+    
+}
+
 
 protocol SearchLocationDelegate: AnyObject {
     func selectLocation(location: SearchLocation?)
     func dismissSearchLocationView()
 }
+
