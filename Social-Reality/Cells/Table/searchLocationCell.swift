@@ -1,41 +1,39 @@
 //
-//  searchUserCell.swift
+//  searchLocationCell.swift
 //  Social-Reality
 //
-//  Created by Nick Crews on 3/24/21.
+//  Created by Nick Crews on 3/25/21.
 //
 
 import UIKit
 
-class searchUserCell: UITableViewCell {
+class searchLocationCell: UITableViewCell {
     
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userFirstLastLabel: UILabel!
+    @IBOutlet weak var locationImageView: UIImageView!
+    @IBOutlet weak var locationNameTopLabel: UILabel!
+    @IBOutlet weak var locationNameBottomLabel: UILabel!
     @IBOutlet weak var radioButton: UIButton!
 
-    private var selectedUser = false
+    
+    private var selectedLocation = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    func configureCell(location: SearchLocation, selectedCell: Bool) {
         
-    }
-    
-    func configureCell(user: UserModel, selectedCell: Bool) {
-        userImageView.setImageFromURL(user.image)
-        usernameLabel.text = "@" + user.username
-        userFirstLastLabel.text = user.first + " " + user.last
+        locationNameTopLabel.text = location.topAddress
+        locationNameBottomLabel.text = location.bottomAddress
         
-        selectedUser = selectedCell
+        selectedLocation = selectedCell
         if selectedCell {
             radioButton.tintColor = .primary
             radioButton.setImage(UIImage(systemName: "dot.square.fill"), for: .normal)
@@ -43,16 +41,16 @@ class searchUserCell: UITableViewCell {
             radioButton.tintColor = .grayText
             radioButton.setImage(UIImage(systemName: "square"), for: .normal)
         }
-            
+        
     }
     
     func tapSelect() {
-        if !selectedUser {
-            selectedUser = true
+        if !selectedLocation {
+            selectedLocation = true
             radioButton.tintColor = .primary
             radioButton.setImage(UIImage(systemName: "dot.square.fill"), for: .normal)
         } else {
-            selectedUser = false
+            selectedLocation = false
             radioButton.tintColor = .grayText
             radioButton.setImage(UIImage(systemName: "square"), for: .normal)
         }

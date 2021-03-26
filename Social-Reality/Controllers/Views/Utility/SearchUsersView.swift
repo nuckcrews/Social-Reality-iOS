@@ -15,7 +15,6 @@ class SearchUsersView: UIView {
     var selectedUsers = [UserModel]()
     var users = [UserModel]()
     var usersFiltered = [UserModel]()
-    var userCells = [searchUserCell]()
     var isSearching = false
     var displaying = false
     
@@ -40,13 +39,12 @@ class SearchUsersView: UIView {
         searchBar.searchTextField.leftView?.tintColor = .primary
         
     }
-
+    
     func getUsers() {
         Query.get.users { res in
             guard let res = res else { return }
             self.users.removeAll()
             self.users = res
-            self.userCells.removeAll()
             self.tableView.reloadData()
         }
     }
@@ -79,13 +77,12 @@ extension SearchUsersView: UISearchBarDelegate {
         
         let res = users.filter { user in
             return user.username.lowercased().contains(searchText.lowercased()) ||
-            user.first.lowercased().contains(searchText.lowercased()) ||
-            user.last.lowercased().contains(searchText.lowercased())
+                user.first.lowercased().contains(searchText.lowercased()) ||
+                user.last.lowercased().contains(searchText.lowercased())
         }
         
         usersFiltered = res
         
-        userCells.removeAll()
         tableView.reloadData()
         
     }
@@ -128,7 +125,6 @@ extension SearchUsersView: UITableViewDelegate, UITableViewDataSource {
             isSearching ?
                 cell.configureCell(user: usersFiltered[indexPath.row], selectedCell: isSelected(model: usersFiltered[indexPath.row])) :
                 cell.configureCell(user: users[indexPath.row], selectedCell: isSelected(model: users[indexPath.row]))
-            userCells.append(cell)
             return cell
         } else {
             return searchUserCell()
@@ -161,9 +157,8 @@ extension SearchUsersView: UITableViewDelegate, UITableViewDataSource {
         
         delegate?.selectUsers(models: selectedUsers)
         
-            cell.tapSelect()
+        cell.tapSelect()
         
-//        userCells[indexPath.row].tapSelect()
     }
     
 }

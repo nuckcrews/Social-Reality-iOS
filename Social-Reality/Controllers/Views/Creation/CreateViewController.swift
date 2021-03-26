@@ -32,6 +32,10 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var searchUserView: SearchUsersView!
     @IBOutlet weak var bottomSearchUserConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var searchLocationContentView: UIView!
+    @IBOutlet weak var searchLocationView: SearchLocationView!
+    @IBOutlet weak var bottomSearchLocationConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var bottomContentView: UIView!
     @IBOutlet weak var bottomContentConstraint: NSLayoutConstraint!
     @IBOutlet weak var toolsSegment: CustomSegmentedControl! {
@@ -66,7 +70,7 @@ class CreateViewController: UIViewController {
         tabBarItem.tag = TabBarItemTag.thirdViewController.rawValue
         
         tutorialScrollView.delegate = self
-
+        
         setupView()
         
         arView.setupView()
@@ -76,6 +80,7 @@ class CreateViewController: UIViewController {
     func setupView() {
         
         searchUserView.delegate = self
+        searchLocationView.delegate = self
         
         toolkitView.alpha = 0
         recordButtonView.alpha = 0
@@ -87,6 +92,7 @@ class CreateViewController: UIViewController {
         view.sendSubviewToBack(arView)
         bottomContentConstraint.constant = bottomConstraintDefault
         bottomSearchUserConstraint.constant = bottomConstraintDefault
+        bottomSearchLocationConstraint.constant = bottomConstraintDefault
         backView.backgroundColor = UIColor(white: 0.0, alpha: 0.7)
         
     }
@@ -110,7 +116,7 @@ class CreateViewController: UIViewController {
         } completion: { _ in
             
         }
-
+        
     }
     
     func startVideoMode() {
@@ -139,7 +145,7 @@ class CreateViewController: UIViewController {
         let picker = UIColorPickerViewController()
         picker.selectedColor = selectedColor
         picker.delegate = self
-
+        
         self.present(picker, animated: true, completion: nil)
     }
     
@@ -161,6 +167,25 @@ class CreateViewController: UIViewController {
         }
     }
     
+    func presentSearchLocation() {
+        bottomSearchLocationConstraint.constant = bottomConstraintTop
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.searchLocationView.presented()
+        }
+    }
+    
+    func hideSearchLocation() {
+        bottomSearchLocationConstraint.constant = bottomConstraintDefault
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+        }
+    }
+    
+    
     @IBAction func tapShapeIcon(_ sender: UIButton) {
         sender.jump()
         changingShape ? closeChange() : changeShape()
@@ -172,13 +197,13 @@ class CreateViewController: UIViewController {
     }
     
     @IBAction func holdRecord(_ gestureRecognizer: UILongPressGestureRecognizer) {
-       if gestureRecognizer.state == .began {
-        Buzz.medium()
-        recordButtonView.animateCircle(duration: 30)
-       } else if gestureRecognizer.state == .ended {
-        Buzz.medium()
-        recordButtonView.stopAnimating()
-       }
+        if gestureRecognizer.state == .began {
+            Buzz.medium()
+            recordButtonView.animateCircle(duration: 30)
+        } else if gestureRecognizer.state == .ended {
+            Buzz.medium()
+            recordButtonView.stopAnimating()
+        }
     }
     
     @IBAction func tapSetColor(_ sender: UIButton) {
@@ -189,9 +214,13 @@ class CreateViewController: UIViewController {
         presentSearchUser()
     }
     
+    @IBAction func tapPinLocation(_ sender: UIButton) {
+        presentSearchLocation()
+    }
+    
     
     @IBAction func tapRecord(_ sender: UIButton) {
-//        recordButtonView.animateCircle(duration: 10)
+        //        recordButtonView.animateCircle(duration: 10)
     }
     
     @IBAction func tapBack(_ sender: UIButton) {
@@ -202,14 +231,26 @@ class CreateViewController: UIViewController {
 }
 
 extension CreateViewController: SearchUserDelegate {
- 
+    
     func selectUsers(models: [UserModel]) {
         selectedUsers = models
     }
     func dismissSearchView() {
         hideSearchUser()
     }
+    
+}
 
+extension CreateViewController: SearchLocationDelegate {
+    
+    func selectLocation(location: SearchLocation?) {
+        
+    }
+    
+    func dismissSearchLocationView() {
+        hideSearchLocation()
+    }
+    
 }
 
 extension CreateViewController: UIColorPickerViewControllerDelegate {
@@ -239,7 +280,7 @@ extension CreateViewController: CustomSegmentedControlDelegate {
 extension CreateViewController {
     
     func initializeReality() {
-
+        
         self.arView.startCoaching()
         
         let box = CustomBox(color: .red)
@@ -399,6 +440,51 @@ extension CreateViewController {
         
     }
     
+    @IBAction func bottomSearchLocationPanGesture(_ gesture: UIPanGestureRecognizer) {
+        
+        let translation = gesture.translation(in: view)
+        guard let gestureView = gesture.view else { return }
+        
+        
+        if translation.y < 0 {
+            if gestureView.frame.minY + translation.y >= view.frame.height * 0.2 {
+                bottomSearchLocationConstraint.constant = bottomSearchLocationConstraint.constant + translation.y
+            } else {
+                bottomSearchLocationConstraint.constant = bottomConstraintTop
+            }
+        } else if translation.y > 0 {
+            if bottomSearchLocationConstraint.constant + translation.y <= bottomConstraintDefault {
+                bottomSearchLocationConstraint.constant = bottomSearchLocationConstraint.constant + translation.y
+            } else {
+                bottomSearchLocationConstraint.constant = bottomConstraintDefault
+            }
+        }
+        
+        guard gesture.state == .ended else {
+            gesture.setTranslation(.zero, in: view)
+            return
+        }
+        
+        let velocity = gesture.velocity(in: view)
+        
+        if velocity.y > 100 {
+            bottomSearchLocationConstraint.constant = bottomConstraintDefault
+        } else if velocity.y < -100 {
+            bottomSearchLocationConstraint.constant = bottomConstraintTop
+        } else if gestureView.frame.minY < view.frame.height * 0.5 {
+            bottomSearchLocationConstraint.constant = bottomConstraintTop
+        } else {
+            bottomSearchLocationConstraint.constant = bottomConstraintDefault
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        gesture.setTranslation(.zero, in: view)
+        
+    }
+    
 }
 
 extension CreateViewController: UIScrollViewDelegate {
@@ -412,12 +498,14 @@ extension CreateViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x == 0 {
-            tutorialPageControl.currentPage = 0
-        } else if scrollView.contentOffset.x == view.frame.width {
-            tutorialPageControl.currentPage = 1
-        } else if scrollView.contentOffset.x == view.frame.width * 2 {
-            tutorialPageControl.currentPage = 2
+        if scrollView == tutorialScrollView {
+            if scrollView.contentOffset.x == 0 {
+                tutorialPageControl.currentPage = 0
+            } else if scrollView.contentOffset.x == view.frame.width {
+                tutorialPageControl.currentPage = 1
+            } else if scrollView.contentOffset.x == view.frame.width * 2 {
+                tutorialPageControl.currentPage = 2
+            }
         }
     }
     
