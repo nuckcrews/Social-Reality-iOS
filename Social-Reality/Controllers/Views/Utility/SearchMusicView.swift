@@ -1,53 +1,35 @@
 //
-//  SearchLocationView.swift
+//  SearchMusicView.swift
 //  Social-Reality
 //
-//  Created by Nick Crews on 3/25/21.
+//  Created by Nick Crews on 3/26/21.
 //
 
 import UIKit
-import GoogleMaps
-import GooglePlaces
 
-class SearchLocationView: UIView {
+class SearchMusicView: UIView {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var doneButtonBottomConstraint: NSLayoutConstraint!
     
-    var locations = [SearchLocation]()
-    var locationsFiltered = [SearchLocation]()
+    var music = [String]()
+    var musicFiltered = [String]()
     
-    var selectedLocation: SearchLocation?
+    var selectedMusic: String?
     var isSearching = false
     var displaying = false
     private var addNotifications = false
     
     private var defaultBottomConstraint: CGFloat = 44
     
-    private let locationManager: CLLocationManager = CLLocationManager()
-    
-    weak var delegate: SearchLocationDelegate?
+    weak var delegate: SearchMusicDelegate?
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         setupView()
-        
-        setupLocationManager()
-        
-    }
-    
-    func getNearbyLocations() {
-        
-        guard let _ = locationManager.location else { return }
-    
-        Places().nearbyLocations { locs in
-            guard let locs = locs else { return }
-            self.locations = locs
-            self.tableView.reloadData()
-        }
         
     }
     
@@ -92,33 +74,24 @@ class SearchLocationView: UIView {
         searchBar.becomeFirstResponder()
     }
     
-    func isSelected(model: SearchLocation) -> Bool {
-        return model.id == selectedLocation?.id
+    func isSelected(model: String) -> Bool {
+        return model == selectedMusic
     }
     
     @IBAction func tapDone(_ sender: UIButton) {
         sender.pulsate()
         self.endEditing(true)
         searchBar.resignFirstResponder()
-        delegate?.dismissSearchLocationView()
+        delegate?.dismissSearchMusicView()
     }
     
 }
 
-extension SearchLocationView: UISearchBarDelegate {
+extension SearchMusicView: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         isSearching = searchText.count > 0
-        
-        print("text:", searchText)
-        let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
-            
-        Places().autoComplete(searchText: searchText, filter: filter) { locs in
-            guard let locs = locs else { print("error"); return }
-            self.locationsFiltered = locs
-        }
         
         tableView.reloadData()
     }
@@ -126,18 +99,18 @@ extension SearchLocationView: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.endEditing(true)
         searchBar.resignFirstResponder()
-        delegate?.dismissSearchLocationView()
+        delegate?.dismissSearchMusicView()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.endEditing(true)
         searchBar.resignFirstResponder()
-        delegate?.dismissSearchLocationView()
+        delegate?.dismissSearchMusicView()
     }
     
 }
 
-extension SearchLocationView: UIScrollViewDelegate {
+extension SearchMusicView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.endEditing(true)
@@ -146,7 +119,7 @@ extension SearchLocationView: UIScrollViewDelegate {
     
 }
 
-extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
+extension SearchMusicView: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -156,90 +129,61 @@ extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if isSearching {
-            if locationsFiltered.count > 0 {
+            if musicFiltered.count > 0 {
                 tableView.alpha = 1
             } else {
                 tableView.alpha = 0
             }
-            return locationsFiltered.count
+            return musicFiltered.count
         } else {
-            if locations.count > 0 {
+            if music.count > 0 {
                 tableView.alpha = 1
             } else {
                 tableView.alpha = 0
             }
-            return locations.count
+            return music.count
         }
 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.searchLocationCell.rawValue, for: indexPath) as? searchLocationCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.searchMusicCell.rawValue, for: indexPath) as? searchMusicCell {
             isSearching ?
-                cell.configureCell(location: locationsFiltered[indexPath.row],
-                                   selectedCell: isSelected(model: locationsFiltered[indexPath.row])) :
-                cell.configureCell(location: locations[indexPath.row],
-                                   selectedCell: isSelected(model: locations[indexPath.row]))
-            
+                cell.configureCell(music: musicFiltered[indexPath.row],
+                                   selectedCell: isSelected(model: musicFiltered[indexPath.row])) :
+                cell.configureCell(music: music[indexPath.row],
+                                   selectedCell: isSelected(model: music[indexPath.row]))
             return cell
         } else {
-            return searchLocationCell()
+            return searchMusicCell()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let cell = tableView.cellForRow(at: indexPath) as? searchLocationCell else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? searchMusicCell else {
             return
         }
         
         if isSearching {
-            if isSelected(model: locationsFiltered[indexPath.row]) {
-                selectedLocation = nil
+            if isSelected(model: musicFiltered[indexPath.row]) {
+                selectedMusic = nil
             } else {
-                selectedLocation = locationsFiltered[indexPath.row]
+                selectedMusic = musicFiltered[indexPath.row]
             }
         } else {
-            if isSelected(model: locations[indexPath.row]) {
-                selectedLocation = nil
+            if isSelected(model: music[indexPath.row]) {
+                selectedMusic = nil
             } else {
-                selectedLocation = locations[indexPath.row]
+                selectedMusic = music[indexPath.row]
             }
         }
         
         
-        delegate?.selectLocation(location: selectedLocation)
+        delegate?.selectMusic()
         
         cell.tapSelect()
         
     }
     
 }
-
-extension SearchLocationView: CLLocationManagerDelegate {
-    
-    private func setupLocationManager() {
-        
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.startUpdatingLocation()
-        
-        getNearbyLocations()
-        
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .restricted, .denied, .notDetermined:
-            break
-        case .authorizedWhenInUse, .authorizedAlways:
-            break
-        @unknown default:
-            print("Unknown Authorization Case")
-        }
-    }
-    
-}
-

@@ -12,11 +12,16 @@ class SearchUsersView: UIView {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var doneButtonBottomConstraint: NSLayoutConstraint!
+    
     var selectedUsers = [UserModel]()
     var users = [UserModel]()
     var usersFiltered = [UserModel]()
     var isSearching = false
     var displaying = false
+    private var addNotifications = false
+    
+    private var defaultBottomConstraint: CGFloat = 44
     
     weak var delegate: SearchUserDelegate?
     
@@ -38,6 +43,31 @@ class SearchUsersView: UIView {
         
         searchBar.searchTextField.leftView?.tintColor = .primary
         
+        if !addNotifications {
+            doneButtonBottomConstraint.priority = .defaultLow
+            doneButtonBottomConstraint.constant = defaultBottomConstraint
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+            addNotifications = true
+        }
+        
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            doneButtonBottomConstraint.constant = keyboardSize.height + 8
+            UIView.animate(withDuration: 0.2) {
+                self.layoutIfNeeded()
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        print("keyboard hiding", doneButtonBottomConstraint.constant)
+        doneButtonBottomConstraint.constant = defaultBottomConstraint
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
     }
     
     func getUsers() {
@@ -177,9 +207,4 @@ extension SearchUsersView: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-}
-
-protocol SearchUserDelegate: AnyObject {
-    func selectUsers(models: [UserModel])
-    func dismissSearchView()
 }

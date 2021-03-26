@@ -36,6 +36,10 @@ class CreateViewController: UIViewController {
     @IBOutlet weak var searchLocationView: SearchLocationView!
     @IBOutlet weak var bottomSearchLocationConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var searchMusicContentView: UIView!
+    @IBOutlet weak var searchMusicView: SearchMusicView!
+    @IBOutlet weak var bottomSearchMusicConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var bottomContentView: UIView!
     @IBOutlet weak var bottomContentConstraint: NSLayoutConstraint!
     @IBOutlet weak var toolsSegment: CustomSegmentedControl! {
@@ -61,6 +65,7 @@ class CreateViewController: UIViewController {
     private var selectedColor: UIColor = .primary
     private var selectedUsers = [UserModel]()
     
+    var blackView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +86,7 @@ class CreateViewController: UIViewController {
         
         searchUserView.delegate = self
         searchLocationView.delegate = self
+        searchMusicView.delegate = self
         
         toolkitView.alpha = 0
         recordButtonView.alpha = 0
@@ -93,8 +99,26 @@ class CreateViewController: UIViewController {
         bottomContentConstraint.constant = bottomConstraintDefault
         bottomSearchUserConstraint.constant = bottomConstraintDefault
         bottomSearchLocationConstraint.constant = bottomConstraintDefault
+        bottomSearchMusicConstraint.constant = bottomConstraintDefault
         backView.backgroundColor = UIColor(white: 0.0, alpha: 0.7)
         
+        blackView.alpha = 0
+        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        blackView.frame = view.frame
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissViews)))
+        view.addSubview(blackView)
+        view.bringSubviewToFront(bottomContentView)
+        view.bringSubviewToFront(searchUserContentView)
+        view.bringSubviewToFront(searchLocationContentView)
+        view.bringSubviewToFront(searchMusicContentView)
+        
+    }
+    
+    @objc func dismissViews() {
+        hideSearchMusic()
+        hideSearchUser()
+        hideSearchLocation()
+        closeChange()
     }
     
     func changeShape() {
@@ -102,6 +126,7 @@ class CreateViewController: UIViewController {
         self.changingShape = true
         bottomContentConstraint.constant = bottomConstraintTop
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 1
             self.view.layoutIfNeeded()
         } completion: { _ in
             
@@ -111,7 +136,10 @@ class CreateViewController: UIViewController {
     func closeChange() {
         self.changingShape = false
         bottomContentConstraint.constant = bottomConstraintDefault
+        self.resignFirstResponder()
+        self.view.endEditing(true)
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             
@@ -152,6 +180,7 @@ class CreateViewController: UIViewController {
     func presentSearchUser() {
         bottomSearchUserConstraint.constant = bottomConstraintTop
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 1
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.searchUserView.presented()
@@ -160,7 +189,12 @@ class CreateViewController: UIViewController {
     
     func hideSearchUser() {
         bottomSearchUserConstraint.constant = bottomConstraintDefault
+        self.resignFirstResponder()
+        self.view.endEditing(true)
+        searchUserView.searchBar.resignFirstResponder()
+        searchUserView.endEditing(true)
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             
@@ -170,6 +204,7 @@ class CreateViewController: UIViewController {
     func presentSearchLocation() {
         bottomSearchLocationConstraint.constant = bottomConstraintTop
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 1
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.searchLocationView.presented()
@@ -178,7 +213,36 @@ class CreateViewController: UIViewController {
     
     func hideSearchLocation() {
         bottomSearchLocationConstraint.constant = bottomConstraintDefault
+        self.resignFirstResponder()
+        self.view.endEditing(true)
+        searchLocationView.searchBar.resignFirstResponder()
+        searchLocationView.endEditing(true)
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 0
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+        }
+    }
+    
+    func presentSearchMusic() {
+        bottomSearchMusicConstraint.constant = bottomConstraintTop
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 1
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.searchMusicView.presented()
+        }
+    }
+    
+    func hideSearchMusic() {
+        bottomSearchMusicConstraint.constant = bottomConstraintDefault
+        self.resignFirstResponder()
+        self.view.endEditing(true)
+        searchMusicView.searchBar.resignFirstResponder()
+        searchMusicView.endEditing(true)
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             
@@ -218,6 +282,10 @@ class CreateViewController: UIViewController {
         presentSearchLocation()
     }
     
+    @IBAction func tapSelectMusic(_ sender: UIButton) {
+        presentSearchMusic()
+    }
+    
     
     @IBAction func tapRecord(_ sender: UIButton) {
         //        recordButtonView.animateCircle(duration: 10)
@@ -249,6 +317,18 @@ extension CreateViewController: SearchLocationDelegate {
     
     func dismissSearchLocationView() {
         hideSearchLocation()
+    }
+    
+}
+
+extension CreateViewController: SearchMusicDelegate {
+    
+    func selectMusic() {
+        
+    }
+    
+    func dismissSearchMusicView() {
+        hideSearchMusic()
     }
     
 }
@@ -375,9 +455,12 @@ extension CreateViewController {
         
         let velocity = gesture.velocity(in: view)
         
+        var blackAlpha: CGFloat = 1
+        
         if velocity.y > 100 {
             self.resignFirstResponder()
             self.view.endEditing(true)
+            blackAlpha = 0
             bottomContentConstraint.constant = bottomConstraintDefault
         } else if velocity.y < -100 {
             bottomContentConstraint.constant = bottomConstraintTop
@@ -386,10 +469,12 @@ extension CreateViewController {
         } else {
             self.resignFirstResponder()
             self.view.endEditing(true)
+            blackAlpha = 0
             bottomContentConstraint.constant = bottomConstraintDefault
         }
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.blackView.alpha = blackAlpha
             self.view.layoutIfNeeded()
         })
         
@@ -411,6 +496,10 @@ extension CreateViewController {
             }
         } else if translation.y > 0 {
             if bottomSearchUserConstraint.constant + translation.y <= bottomConstraintDefault {
+                self.resignFirstResponder()
+                self.view.endEditing(true)
+                searchUserView.searchBar.resignFirstResponder()
+                searchUserView.endEditing(true)
                 bottomSearchUserConstraint.constant = bottomSearchUserConstraint.constant + translation.y
             } else {
                 bottomSearchUserConstraint.constant = bottomConstraintDefault
@@ -424,12 +513,15 @@ extension CreateViewController {
         
         let velocity = gesture.velocity(in: view)
         
+        var blackAlpha: CGFloat = 1
+        
         if velocity.y > 100 {
             self.resignFirstResponder()
             self.view.endEditing(true)
             searchUserView.searchBar.resignFirstResponder()
             searchUserView.endEditing(true)
             bottomSearchUserConstraint.constant = bottomConstraintDefault
+            blackAlpha = 0
         } else if velocity.y < -100 {
             bottomSearchUserConstraint.constant = bottomConstraintTop
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
@@ -439,10 +531,12 @@ extension CreateViewController {
             self.view.endEditing(true)
             searchUserView.searchBar.resignFirstResponder()
             searchUserView.endEditing(true)
+            blackAlpha = 0
             bottomSearchUserConstraint.constant = bottomConstraintDefault
         }
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.blackView.alpha = blackAlpha
             self.view.layoutIfNeeded()
         })
         
@@ -464,6 +558,10 @@ extension CreateViewController {
             }
         } else if translation.y > 0 {
             if bottomSearchLocationConstraint.constant + translation.y <= bottomConstraintDefault {
+                self.resignFirstResponder()
+                self.view.endEditing(true)
+                searchLocationView.searchBar.resignFirstResponder()
+                searchLocationView.endEditing(true)
                 bottomSearchLocationConstraint.constant = bottomSearchLocationConstraint.constant + translation.y
             } else {
                 bottomSearchLocationConstraint.constant = bottomConstraintDefault
@@ -477,12 +575,15 @@ extension CreateViewController {
         
         let velocity = gesture.velocity(in: view)
         
+        var blackAlpha: CGFloat = 1
+        
         if velocity.y > 100 {
             bottomSearchLocationConstraint.constant = bottomConstraintDefault
             self.resignFirstResponder()
             self.view.endEditing(true)
             searchLocationView.searchBar.resignFirstResponder()
             searchLocationView.endEditing(true)
+            blackAlpha = 0
         } else if velocity.y < -100 {
             bottomSearchLocationConstraint.constant = bottomConstraintTop
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
@@ -492,10 +593,74 @@ extension CreateViewController {
             self.view.endEditing(true)
             searchLocationView.searchBar.resignFirstResponder()
             searchLocationView.endEditing(true)
+            blackAlpha = 0
             bottomSearchLocationConstraint.constant = bottomConstraintDefault
         }
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.blackView.alpha = blackAlpha
+            self.view.layoutIfNeeded()
+        })
+        
+        gesture.setTranslation(.zero, in: view)
+        
+    }
+    
+    @IBAction func bottomSearchMusicPanGesture(_ gesture: UIPanGestureRecognizer) {
+        
+        let translation = gesture.translation(in: view)
+        guard let gestureView = gesture.view else { return }
+        
+        
+        if translation.y < 0 {
+            if gestureView.frame.minY + translation.y >= view.frame.height * 0.2 {
+                bottomSearchMusicConstraint.constant = bottomSearchMusicConstraint.constant + translation.y
+            } else {
+                bottomSearchMusicConstraint.constant = bottomConstraintTop
+            }
+        } else if translation.y > 0 {
+            if bottomSearchMusicConstraint.constant + translation.y <= bottomConstraintDefault {
+                self.resignFirstResponder()
+                self.view.endEditing(true)
+                searchMusicView.searchBar.resignFirstResponder()
+                searchMusicView.endEditing(true)
+                bottomSearchMusicConstraint.constant = bottomSearchMusicConstraint.constant + translation.y
+            } else {
+                bottomSearchMusicConstraint.constant = bottomConstraintDefault
+            }
+        }
+        
+        guard gesture.state == .ended else {
+            gesture.setTranslation(.zero, in: view)
+            return
+        }
+        
+        let velocity = gesture.velocity(in: view)
+        
+        var blackAlpha: CGFloat = 1
+        
+        if velocity.y > 100 {
+            bottomSearchMusicConstraint.constant = bottomConstraintDefault
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            searchMusicView.searchBar.resignFirstResponder()
+            searchMusicView.endEditing(true)
+            blackAlpha = 0
+        } else if velocity.y < -100 {
+            bottomSearchMusicConstraint.constant = bottomConstraintTop
+        } else if gestureView.frame.minY < view.frame.height * 0.5 {
+            bottomSearchMusicConstraint.constant = bottomConstraintTop
+        } else {
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            searchMusicView.searchBar.resignFirstResponder()
+            searchMusicView.endEditing(true)
+            blackAlpha = 0
+            bottomSearchMusicConstraint.constant = bottomConstraintDefault
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.blackView.alpha = blackAlpha
             self.view.layoutIfNeeded()
         })
         

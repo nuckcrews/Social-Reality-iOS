@@ -7,7 +7,21 @@
 
 import Foundation
 
-protocol CoverToMainProtocolDelegate : NSObjectProtocol {
+protocol CoverToMainProtocolDelegate : AnyObject {
     func readyForSession()
 }
 
+protocol SearchUserDelegate: AnyObject {
+    func selectUsers(models: [UserModel])
+    func dismissSearchView()
+}
+
+protocol SearchLocationDelegate: AnyObject {
+    func selectLocation(location: SearchLocation?)
+    func dismissSearchLocationView()
+}
+
+protocol SearchMusicDelegate: AnyObject {
+    func selectMusic()
+    func dismissSearchMusicView()
+}
