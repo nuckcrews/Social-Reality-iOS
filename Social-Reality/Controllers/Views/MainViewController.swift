@@ -99,14 +99,18 @@ class MainViewController: UIViewController {
     
     @IBAction func tapLike(_ sender: UIButton) {
         sender.jump()
+        Buzz.light()
     }
     
     @IBAction func tapComment(_ sender: UIButton) {
         sender.jump()
+        Buzz.light()
+        MainToCoverDelegate?.tappedComments()
     }
     
     @IBAction func tapShare(_ sender: UIButton) {
         sender.jump()
+        Buzz.light()
     }
     
 }
@@ -125,4 +129,10 @@ extension MainViewController: CoverToMainProtocolDelegate {
         readyForReality = true
         setupARView()
     }
+}
+
+extension MainViewController {
+    
+    
+    
 }

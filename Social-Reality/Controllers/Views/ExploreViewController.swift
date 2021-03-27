@@ -113,17 +113,28 @@ extension ExploreViewController: CLLocationManagerDelegate {
     }
     
 }
+
+extension ExploreViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+        searchTextField.resignFirstResponder()
+    }
+    
+}
+
 extension ExploreViewController: GMSMapViewDelegate {
     
 }
 extension ExploreViewController: MapCellDelegate {
+    
     func tappedMap() {
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) {
             self.searchView.alpha = 0
             self.topMapView.alpha = 0
         } completion: { _ in }
-        
     }
+    
 }
 extension ExploreViewController {
     

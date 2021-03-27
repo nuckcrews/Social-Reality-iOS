@@ -104,6 +104,8 @@
 		A06E965625F15D5E009B92E5 /* MapHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E965525F15D5E009B92E5 /* MapHeaderData.swift */; };
 		A06E965A25F166FE009B92E5 /* mapViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E965925F166FE009B92E5 /* mapViewCell.swift */; };
 		A06E965C25F16CB5009B92E5 /* EventCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */; };
+		A06E9A26260E9ED900B85CE9 /* CreationCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E9A25260E9ED900B85CE9 /* CreationCommentsView.swift */; };
+		A06E9A28260EA21E00B85CE9 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E9A27260EA21E00B85CE9 /* commentCell.swift */; };
 		A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5625ED335E00D59382 /* TestViewController.swift */; };
 		A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */; };
 		A0911DA9260C3E6E00D05642 /* SearchUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */; };
@@ -258,6 +260,8 @@
 		A06E965525F15D5E009B92E5 /* MapHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapHeaderData.swift; sourceTree = "<group>"; };
 		A06E965925F166FE009B92E5 /* mapViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewCell.swift; sourceTree = "<group>"; };
 		A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionView.swift; sourceTree = "<group>"; };
+		A06E9A25260E9ED900B85CE9 /* CreationCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationCommentsView.swift; sourceTree = "<group>"; };
+		A06E9A27260EA21E00B85CE9 /* commentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
 		A072FC5625ED335E00D59382 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
 		A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersView.swift; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				A0911DAB260C3FF700D05642 /* searchUserCell.swift */,
 				A0EAE5B5260D5F9800F40EEC /* searchLocationCell.swift */,
 				A0579EDC260E41A4009D512F /* searchMusicCell.swift */,
+				A06E9A27260EA21E00B85CE9 /* commentCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -700,6 +705,7 @@
 				A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */,
 				A0EAE5B3260D5E1600F40EEC /* SearchLocationView.swift */,
 				A0579EDA260E4066009D512F /* SearchMusicView.swift */,
+				A06E9A25260E9ED900B85CE9 /* CreationCommentsView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1117,6 +1123,7 @@
 				A006461125EB0C8E00A3E1F3 /* inboxCell.swift in Sources */,
 				A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */,
 				A03A968B2603EFA100274793 /* ProfileAccessibility.swift in Sources */,
+				A06E9A26260E9ED900B85CE9 /* CreationCommentsView.swift in Sources */,
 				A040AB4225F682C80064978A /* UploadMethods.swift in Sources */,
 				A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */,
 				A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */,
@@ -1186,6 +1193,7 @@
 				A06B63CD25E956C000AE746D /* Like.swift in Sources */,
 				A023980925EC262B00F13F72 /* Environment.swift in Sources */,
 				A03872C925E9497E003989CE /* MainViewController.swift in Sources */,
+				A06E9A28260EA21E00B85CE9 /* commentCell.swift in Sources */,
 				A02397FF25EC1C6200F13F72 /* CoverNavigationController.swift in Sources */,
 				A023980125EC1CD500F13F72 /* CoverViewController.swift in Sources */,
 				A06B63EB25E964C500AE746D /* AccountViewController.swift in Sources */,

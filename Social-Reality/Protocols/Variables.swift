@@ -8,3 +8,5 @@
 import Foundation
 
 var CoverToMainDelegate: CoverToMainProtocolDelegate?
+
+var MainToCoverDelegate: MainToCoverProtocolDelegate?

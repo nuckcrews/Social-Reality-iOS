@@ -11,6 +11,10 @@ protocol CoverToMainProtocolDelegate : AnyObject {
     func readyForSession()
 }
 
+protocol MainToCoverProtocolDelegate: AnyObject {
+    func tappedComments()
+}
+
 protocol SearchUserDelegate: AnyObject {
     func selectUsers(models: [UserModel])
     func dismissSearchView()
@@ -24,4 +28,8 @@ protocol SearchLocationDelegate: AnyObject {
 protocol SearchMusicDelegate: AnyObject {
     func selectMusic()
     func dismissSearchMusicView()
+}
+
+protocol CreationCommentDelegate: AnyObject {
+    func dismissCommentView()
 }
