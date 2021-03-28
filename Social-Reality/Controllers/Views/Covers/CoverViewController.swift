@@ -22,11 +22,13 @@ class CoverViewController: UIViewController {
     private var bottomConstraintDefault: CGFloat = 120
     private var bottomConstraintTop: CGFloat = 0
     
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MainToCoverDelegate = self
-
+        
         
     }
     
@@ -52,13 +54,22 @@ class CoverViewController: UIViewController {
     }
     
     func setupView() {
-     
+        
         commentsView.delegate = self
         
         bottomCommentsConstraint.constant = bottomConstraintDefault
         view.bringSubviewToFront(commentsView)
         
         
+    }
+    
+    func getUser() {
+        guard let uid = Auth0.uid else { return }
+        user = User(id: uid)
+        user?.subscribeModel(completion: { model in
+            print(model)
+            self.commentsView.user = self.user
+        })
     }
     
     func openCover() {
@@ -81,6 +92,7 @@ class CoverViewController: UIViewController {
             } else {
                 let notificationManager = PushNotificationManager()
                 notificationManager.registerForPushNotifications()
+                self.getUser()
             }
         }
     }
@@ -197,7 +209,9 @@ extension CoverViewController {
 
 extension CoverViewController: MainToCoverProtocolDelegate {
     
-    func tappedComments() {
+    func tappedComments(creation: CreationModel?) {
+        commentsView.creation = creation
+        commentsView.startLoading()
         presentComments()
     }
     

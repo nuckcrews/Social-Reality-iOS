@@ -14,7 +14,15 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var arView: ARView!
     
+    @IBOutlet weak var creatorAvatarImage: UIImageView!
+    @IBOutlet weak var creationTitleLabel: UILabel!
+    @IBOutlet weak var creationDescriptionLabel: UILabel!
+    @IBOutlet weak var creationTechniqueLabel: UILabel!
+    @IBOutlet weak var creationTimeLabel: UILabel!
+    
     private var readyForReality = true
+    
+    var creation: Creation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +31,8 @@ class MainViewController: UIViewController {
         CoverToMainDelegate? = self
         
 //        arView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:))))
+        
+        getCreation()
         
     }
     
@@ -46,8 +56,23 @@ class MainViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
         if readyForReality {
-            pauseARView()
+//            pauseARView()
         }
+    }
+    
+    func getCreation() {
+        
+        creation = Testing.defaultCreation
+        
+        guard let creation = creation else { return }
+        
+        creatorAvatarImage.setImageFromURL(creation.model?.userImage ?? "")
+        creationTitleLabel.text = creation.model?.title
+        creationDescriptionLabel.text = creation.model?.description
+        let date = creation.model?.date?.rawDate
+        creationTimeLabel.text = date?.currentDistance(to: Date())
+        
+        
     }
     
     // MARK: Setup Methods
@@ -105,7 +130,7 @@ class MainViewController: UIViewController {
     @IBAction func tapComment(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
-        MainToCoverDelegate?.tappedComments()
+        MainToCoverDelegate?.tappedComments(creation: creation?.model)
     }
     
     @IBAction func tapShare(_ sender: UIButton) {

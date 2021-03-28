@@ -17,6 +17,7 @@ class InboxViewController: UIViewController {
         tabBarItem.tag = TabBarItemTag.fourthViewController.rawValue
         
         setupView()
+        
             
     }
     

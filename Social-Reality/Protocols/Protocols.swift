@@ -12,7 +12,7 @@ protocol CoverToMainProtocolDelegate : AnyObject {
 }
 
 protocol MainToCoverProtocolDelegate: AnyObject {
-    func tappedComments()
+    func tappedComments(creation: CreationModel?)
 }
 
 protocol SearchUserDelegate: AnyObject {

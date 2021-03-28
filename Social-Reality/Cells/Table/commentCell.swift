@@ -14,6 +14,7 @@ class commentCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likesCountLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     private var liked = false
     
@@ -33,6 +34,7 @@ class commentCell: UITableViewCell {
         userImageView.setImageFromURL(comment.userImage ?? "")
         userNameLabel.text = comment.userName
         commentLabel.text = comment.content
+        dateLabel.text = comment.date?.rawDate?.currentDistance(to: Date())
         
     }
     
