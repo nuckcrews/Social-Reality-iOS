@@ -22,7 +22,7 @@ class SearchLocationView: UIView {
     var selectedLocation: SearchLocation?
     var isSearching = false
     var displaying = false
-    private var addNotifications = false
+    private var setup = false
     
     private var defaultBottomConstraint: CGFloat = 44
     
@@ -33,16 +33,18 @@ class SearchLocationView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        setupView()
-        
-        setupLocationManager()
+        if !setup {
+            setupLocationManager()
+            setupView()
+            setup = true
+        }
         
     }
     
     func getNearbyLocations() {
         
         guard let _ = locationManager.location else { return }
-    
+        
         Places().nearbyLocations { locs in
             guard let locs = locs else { return }
             self.locations = locs
@@ -61,13 +63,10 @@ class SearchLocationView: UIView {
         
         searchBar.searchTextField.leftView?.tintColor = .primary
         
-        if !addNotifications {
-            doneButtonBottomConstraint.priority = .defaultLow
-            doneButtonBottomConstraint.constant = defaultBottomConstraint
+        doneButtonBottomConstraint.priority = .defaultLow
+        doneButtonBottomConstraint.constant = defaultBottomConstraint
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-            addNotifications = true
-        }
         
     }
     
@@ -79,7 +78,7 @@ class SearchLocationView: UIView {
             }
         }
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         print("keyboard hiding", doneButtonBottomConstraint.constant)
         doneButtonBottomConstraint.constant = defaultBottomConstraint
@@ -114,7 +113,7 @@ extension SearchLocationView: UISearchBarDelegate {
         print("text:", searchText)
         let filter = GMSAutocompleteFilter()
         filter.type = .establishment
-            
+        
         Places().autoComplete(searchText: searchText, filter: filter) { locs in
             guard let locs = locs else { print("error"); return }
             self.locationsFiltered = locs
@@ -170,7 +169,7 @@ extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
             }
             return locations.count
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

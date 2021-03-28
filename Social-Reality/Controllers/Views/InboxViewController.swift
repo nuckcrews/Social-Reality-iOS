@@ -16,16 +16,41 @@ class InboxViewController: UIViewController {
         super.viewDidLoad()
         tabBarItem.tag = TabBarItemTag.fourthViewController.rawValue
         
-        tableView.delegate = self
-        tableView.dataSource = self
         setupView()
+        
             
     }
     
     func setupView() {
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
+        
         searchBar.searchTextField.leftView?.tintColor = .primary
         
+    }
+    
+}
+
+extension InboxViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+        searchBar.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+}
+
+extension InboxViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        view.endEditing(true)
     }
     
 }

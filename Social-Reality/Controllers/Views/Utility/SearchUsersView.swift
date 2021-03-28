@@ -19,7 +19,7 @@ class SearchUsersView: UIView {
     var usersFiltered = [UserModel]()
     var isSearching = false
     var displaying = false
-    private var addNotifications = false
+    private var setup = false
     
     private var defaultBottomConstraint: CGFloat = 44
     
@@ -28,8 +28,11 @@ class SearchUsersView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        setupView()
-        getUsers()
+        if !setup {
+            setupView()
+            getUsers()
+            setup = true
+        }
         
     }
     
@@ -43,13 +46,10 @@ class SearchUsersView: UIView {
         
         searchBar.searchTextField.leftView?.tintColor = .primary
         
-        if !addNotifications {
-            doneButtonBottomConstraint.priority = .defaultLow
-            doneButtonBottomConstraint.constant = defaultBottomConstraint
+        doneButtonBottomConstraint.priority = .defaultLow
+        doneButtonBottomConstraint.constant = defaultBottomConstraint
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-            addNotifications = true
-        }
         
     }
     
@@ -61,7 +61,7 @@ class SearchUsersView: UIView {
             }
         }
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         print("keyboard hiding", doneButtonBottomConstraint.constant)
         doneButtonBottomConstraint.constant = defaultBottomConstraint

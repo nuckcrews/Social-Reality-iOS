@@ -18,5 +18,6 @@ struct CommentModel: Codable {
     public var userID: String?
     public var userImage: String?
     public var userName: String?
+    public var date: String?
     
 }

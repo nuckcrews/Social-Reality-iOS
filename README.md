@@ -27,8 +27,8 @@ pod install
 
 ### TODO
 
-- [ ] User Finger Tracing
-- [ ] Remote Scene Storage
+- [ ] User Finger Tracing for 3D Drawing
+- [ ] Remote AR Session Storage
 - [ ] More...
 
 ---
