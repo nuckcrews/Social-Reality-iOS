@@ -7,12 +7,15 @@
 
 import UIKit
 import RealityKit
+import CoreLocation
 import ARKit
 import Firebase
 
 class MainViewController: UIViewController {
 
     @IBOutlet weak var arView: ARView!
+    
+    @IBOutlet weak var welcomeLabel: UILabel!
     
     @IBOutlet weak var creatorAvatarImage: UIImageView!
     @IBOutlet weak var creationTitleLabel: UILabel!
@@ -22,6 +25,8 @@ class MainViewController: UIViewController {
     
     private var readyForReality = true
     
+    private let locationManager: CLLocationManager = CLLocationManager()
+    
     var creation: Creation?
     
     override func viewDidLoad() {
@@ -29,6 +34,10 @@ class MainViewController: UIViewController {
         tabBarItem.tag = TabBarItemTag.firstViewController.rawValue
         
         CoverToMainDelegate? = self
+        
+        if Auth0.loggedIn {
+            setupLocationManager()
+        }
         
 //        arView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:))))
         
@@ -125,6 +134,15 @@ class MainViewController: UIViewController {
     @IBAction func tapLike(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
+        
+        if sender.tintColor == .primary {
+            sender.tintColor = .white
+            sender.backgroundColor = UIColor(white: 0, alpha: 0.10)
+        } else {
+            sender.tintColor = .primary
+            sender.backgroundColor = .background
+        }
+        
     }
     
     @IBAction func tapComment(_ sender: UIButton) {
@@ -136,6 +154,9 @@ class MainViewController: UIViewController {
     @IBAction func tapShare(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
+        
+        MainToCoverDelegate?.tappedSendCreation(creation: creation?.model)
+        
     }
     
 }
@@ -159,5 +180,57 @@ extension MainViewController: CoverToMainProtocolDelegate {
 extension MainViewController {
     
     
+    
+}
+
+extension MainViewController: CLLocationManagerDelegate {
+    
+    private func setupLocationManager() {
+        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted, .denied, .notDetermined:
+            
+            break
+        case .authorizedWhenInUse, .authorizedAlways:
+            
+            break
+        @unknown default:
+            print("Unknown Authorization Case")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.first else { return }
+        
+        CLGeocoder().reverseGeocodeLocation(location) { [weak self] places, err in
+            if let err = err {
+                print(err)
+            } else {
+                if let city = places?.first?.locality,
+                   let state = places?.first?.administrativeArea {
+                    DispatchQueue.main.async {
+                        self?.welcomeLabel.text = "\(city), \(state)"
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.welcomeLabel.text = "Welcome"
+                    }
+                }
+                
+
+                
+            }
+        }
+        
+    }
     
 }

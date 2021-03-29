@@ -57,9 +57,9 @@ class AccountViewController: UIViewController {
         
         user = User(id: id)
         
-        user?.subscribeModel(completion: { res in
+        user?.subscribeModel(completion: { [weak self] res in
             if res != nil {
-                self.populateViews()
+                self?.populateViews()
             }
         })
         

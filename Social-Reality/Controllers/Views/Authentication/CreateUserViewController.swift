@@ -84,11 +84,11 @@ class CreateUserViewController: UIViewController {
         }
         
         startLoading()
-        Auth0.usernameExists(username: username) { result in
+        Auth0.usernameExists(username: username) { [weak self] result in
             if result {
-                self.usernameTakenLabel.alpha = 1
+                self?.usernameTakenLabel.alpha = 1
             } else {
-                self.createUser()
+                self?.createUser()
             }
         }
     }
@@ -108,12 +108,12 @@ class CreateUserViewController: UIViewController {
                              access: .public,
                              fcmToken: "")
         
-        Query.write.user(user) { result in
-            self.stopLoading()
+        Query.write.user(user) { [weak self] result in
+            self?.stopLoading()
             if result == .success {
-                self.toAvatar()
+                self?.toAvatar()
             } else {
-                self.presentAlert(title: AlertError.title,
+                self?.presentAlert(title: AlertError.title,
                                   message: AlertError.message,
                                   button: AlertError.button)
             }

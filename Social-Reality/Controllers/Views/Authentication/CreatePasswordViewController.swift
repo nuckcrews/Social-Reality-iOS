@@ -79,13 +79,13 @@ class CreatePasswordViewController: UIViewController {
             return
         }
         self.startLoading()
-        Auth0.signUp(email: email, password: password) { result in
+        Auth0.signUp(email: email, password: password) { [weak self] result in
             if result != nil {
-                self.stopLoading()
-                self.toCreateUser()
+                self?.stopLoading()
+                self?.toCreateUser()
             } else {
-                self.stopLoading()
-                self.presentAlert(title: AlertError.title,
+                self?.stopLoading()
+                self?.presentAlert(title: AlertError.title,
                                   message: AlertError.message,
                                   button: AlertError.button)
             }

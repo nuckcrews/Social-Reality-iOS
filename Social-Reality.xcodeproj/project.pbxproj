@@ -25,6 +25,8 @@
 		A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD41F2603D55D00E6C818 /* CreationModel.swift */; };
 		A00DD4222603D57100E6C818 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD4212603D57100E6C818 /* CommentModel.swift */; };
 		A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD4232603D57900E6C818 /* LikeModel.swift */; };
+		A0137172261106CE00AE4BA6 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0137171261106CE00AE4BA6 /* UITableView.swift */; };
+		A0137174261116C300AE4BA6 /* SearchUsersSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0137173261116C300AE4BA6 /* SearchUsersSendView.swift */; };
 		A016E05B25FAC03600D6D5D9 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = A016E05A25FAC03600D6D5D9 /* Segues.swift */; };
 		A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02397D125EB1B5A00F13F72 /* CustomViews.swift */; };
 		A02397D425EB291B00F13F72 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02397D325EB291B00F13F72 /* CustomScrollView.swift */; };
@@ -175,6 +177,8 @@
 		A00DD41F2603D55D00E6C818 /* CreationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationModel.swift; sourceTree = "<group>"; };
 		A00DD4212603D57100E6C818 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		A00DD4232603D57900E6C818 /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
+		A0137171261106CE00AE4BA6 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		A0137173261116C300AE4BA6 /* SearchUsersSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersSendView.swift; sourceTree = "<group>"; };
 		A016E05A25FAC03600D6D5D9 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		A02397D125EB1B5A00F13F72 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		A02397D325EB291B00F13F72 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
@@ -579,6 +583,7 @@
 				A03A969026040EA100274793 /* Crypto.swift */,
 				A0BB58EE260042C900523005 /* CLLocationManager.swift */,
 				A063EA99260674E700B3C2ED /* Date.swift */,
+				A0137171261106CE00AE4BA6 /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 				A0EAE5B3260D5E1600F40EEC /* SearchLocationView.swift */,
 				A0579EDA260E4066009D512F /* SearchMusicView.swift */,
 				A06E9A25260E9ED900B85CE9 /* CreationCommentsView.swift */,
+				A0137173261116C300AE4BA6 /* SearchUsersSendView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1101,6 +1107,7 @@
 				A0D95BBF26081B6D00DA5A07 /* LocalListMethods.swift in Sources */,
 				A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */,
 				A06B63BB25E9554D00AE746D /* User.swift in Sources */,
+				A0137172261106CE00AE4BA6 /* UITableView.swift in Sources */,
 				A03870B625E944AB003989CE /* NavigationController.swift in Sources */,
 				A06B63F025E968EE00AE746D /* UIColor.swift in Sources */,
 				A006C01925FFF62C003613C0 /* Utility.swift in Sources */,
@@ -1163,6 +1170,7 @@
 				A03870AB25E9447C003989CE /* CustomTabBarController.swift in Sources */,
 				A006C01D260002AE003613C0 /* Providers.swift in Sources */,
 				A09A2AAB260AF3730023CABA /* Device.swift in Sources */,
+				A0137174261116C300AE4BA6 /* SearchUsersSendView.swift in Sources */,
 				A0D95BBD26081B6300DA5A07 /* LocalRemoveMethods.swift in Sources */,
 				A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */,
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,

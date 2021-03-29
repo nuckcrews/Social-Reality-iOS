@@ -62,9 +62,9 @@ class SettingsViewController: UIViewController {
     
     
     func signOut() {
-        Auth0.signOut { res in
+        Auth0.signOut { [weak self] res in
             if res == .success {
-                self.backToHome()
+                self?.backToHome()
             }
         }
     }

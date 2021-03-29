@@ -41,7 +41,9 @@ struct Testing {
                                   date: Date().rawDateString,
                                   userID: "",
                                   userName: "ncrews35",
-                                  userImage: "")
+                                  userImage: "",
+                                  videoURL: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2FIMG_5025.mp4?alt=media&token=4b9b3195-5748-4cdc-81c0-01d83332f752")
+        
         
         let creation = Creation(model: model)
         
@@ -51,7 +53,7 @@ struct Testing {
     static func postDefaultCreation() {
     
         
-        let model = CreationModel(id: "abcdefg", title: "The Default Creation", description: "The first testing creation used everywhere #soreel", lastViewed: "", accessibility: .public, status: "ACTIVE", date: Date().rawDateString, userID: "", userName: "ncrews35", userImage: "", videoURL: "")
+        let model = CreationModel(id: "abcdefg", title: "The Default Creation", description: "The first testing creation used everywhere #soreel", lastViewed: "", accessibility: .public, status: "ACTIVE", date: Date().rawDateString, userID: "", userName: "ncrews35", userImage: "", videoURL: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2FIMG_5025.mp4?alt=media&token=4b9b3195-5748-4cdc-81c0-01d83332f752")
         
         Query.write.creation(model) { res in
             print(res)

@@ -31,29 +31,21 @@ extension Date {
         var result = ""
         if mins < 0 {
             result = "Upcoming"
-        } else if mins == 1 {
-            result = "\(mins) min"
         } else if mins == 0 {
              result = "now"
         } else if mins < 60 {
-            result = "\(mins) mins"
+            result = "\(mins)m"
         } else if mins > 60 && mins < 1440 {
             let h = round(m / 60)
             let hrs = Int(h)
-            if hrs == 1 {
-                result = "\(hrs) hr"
-            } else {
-                result = "\(hrs) hrs"
-            }
+            result = "\(hrs)h"
         } else {
             let d = round(m / 1440)
             let days = Int(d)
             if days < 1 {
-                result = "Past Due"
-            } else if days == 1 {
-                result = "\(days) day"
+                result = "Upcoming"
             } else {
-                result = "\(days) days"
+                result = "\(days)d"
             }
         }
         

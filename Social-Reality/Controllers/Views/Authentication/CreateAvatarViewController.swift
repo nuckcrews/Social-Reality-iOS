@@ -55,8 +55,8 @@ class CreateAvatarViewController: UIViewController {
     }
     
     func saveImage() {
-        user?.updateModel(data: ["image": imageURL], completion: { res in
-            self.toHome()
+        user?.updateModel(data: ["image": imageURL], completion: { [weak self] res in
+            self?.toHome()
         })
     }
     
@@ -92,10 +92,10 @@ extension CreateAvatarViewController: ImagePickerDelegate {
         guard let uid = Auth0.uid else { return }
         startLoading()
         
-        Storage0.remote.upload.image(key: uid, image: image) { res in
+        Storage0.remote.upload.image(key: uid, image: image) { [weak self] res in
             guard let res = res else { return }
-            self.imageURL = res
-            self.stopLoading()
+            self?.imageURL = res
+            self?.stopLoading()
         }
         
     }

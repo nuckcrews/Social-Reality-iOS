@@ -33,18 +33,18 @@ class User {
 extension User {
     
     public func getModel(completion: @escaping(_ result: UserModel?) -> Void) {
-        Query.get.user(id: id) { res in
+        Query.get.user(id: id) { [weak self] res in
             guard let res = res else { completion(nil); return }
-            self._model = res
+            self?._model = res
             completion(res)
         }
     }
     
     public func subscribeModel(completion: @escaping(_ result: UserModel?) -> Void) {
-        Query.subscribe.user(id: id) { res, lstn in
+        Query.subscribe.user(id: id) { [weak self] res, lstn in
             if res != nil {
-                self._model = res
-                self.userListener = lstn
+                self?._model = res
+                self?.userListener = lstn
                 completion(res)
             } else {
                 completion(nil)
@@ -68,27 +68,27 @@ extension User {
     }
     
     public func getCreations(completion: @escaping(_ result: [CreationModel]?) -> Void) {
-        Query.get.creationsWithPredicate(field: "userID", value: id) { result in
+        Query.get.creationsWithPredicate(field: "userID", value: id) { [weak self] result in
             if result != nil {
-                self.creations = result
+                self?.creations = result
             }
             completion(result)
         }
     }
     
     public func getComments(completion: @escaping(_ result: [CommentModel]?) -> Void) {
-        Query.get.commentsWithPredicate(field: "userID", value: id) { result in
+        Query.get.commentsWithPredicate(field: "userID", value: id) { [weak self] result in
             if result != nil {
-                self.comments = result
+                self?.comments = result
             }
             completion(result)
         }
     }
     
     public func getLikes(completion: @escaping(_ result: [LikeModel]?) -> Void) {
-        Query.get.likesWithPredicate(field: "userID", value: id) { result in
+        Query.get.likesWithPredicate(field: "userID", value: id) { [weak self] result in
             if result != nil {
-                self.likes = result
+                self?.likes = result
             }
             completion(result)
         }
