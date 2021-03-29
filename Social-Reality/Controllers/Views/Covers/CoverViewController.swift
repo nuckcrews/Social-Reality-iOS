@@ -21,6 +21,8 @@ class CoverViewController: UIViewController {
     @IBOutlet weak var searchUsersView: SearchUsersSendView!
     @IBOutlet weak var bottomSearchUsersConstraint: NSLayoutConstraint!
     
+    var blackView = UIView()
+    
     private var opened = false
     
     private var bottomConstraintDefault: CGFloat = 120
@@ -32,6 +34,13 @@ class CoverViewController: UIViewController {
         super.viewDidLoad()
         
         MainToCoverDelegate = self
+        
+        blackView.alpha = 0
+        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        blackView.frame = view.bounds
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissViews)))
+        
+        view.addSubview(blackView)
         
         
     }
@@ -64,10 +73,16 @@ class CoverViewController: UIViewController {
         
         bottomSearchUsersConstraint.constant = bottomConstraintDefault
         bottomCommentsConstraint.constant = bottomConstraintDefault
-        view.bringSubviewToFront(searchUsersView)
-        view.bringSubviewToFront(commentsView)
+        
+        view.bringSubviewToFront(searchUsersContentView)
+        view.bringSubviewToFront(commentsContentView)
         
         
+    }
+    
+    @objc func dismissViews() {
+        hideComments()
+        hideSearchUsers()
     }
     
     func getUser() {
@@ -130,6 +145,7 @@ extension CoverViewController: CreationCommentDelegate {
     func presentComments() {
         bottomCommentsConstraint.constant = bottomConstraintTop
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 1
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.commentsView.presented()
@@ -143,6 +159,7 @@ extension CoverViewController: CreationCommentDelegate {
         commentsView.textField.resignFirstResponder()
         commentsView.endEditing(true)
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             
@@ -164,6 +181,7 @@ extension CoverViewController: SearchUserSendDelegate {
     func presentSearchUser() {
         bottomSearchUsersConstraint.constant = bottomConstraintTop
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 1
             self.view.layoutIfNeeded()
         } completion: { _ in
             self.searchUsersView.presented()
@@ -177,6 +195,7 @@ extension CoverViewController: SearchUserSendDelegate {
         searchUsersView.resignFirstResponder()
         searchUsersView.endEditing(true)
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.blackView.alpha = 0
             self.view.layoutIfNeeded()
         } completion: { _ in
             
@@ -218,6 +237,7 @@ extension CoverViewController {
         
         let velocity = gesture.velocity(in: view)
         
+        var blackAlpha: CGFloat = 0
         
         if velocity.y > 100 {
             bottomCommentsConstraint.constant = bottomConstraintDefault
@@ -225,19 +245,24 @@ extension CoverViewController {
             self.view.endEditing(true)
             commentsView.textField.resignFirstResponder()
             commentsView.endEditing(true)
+            blackAlpha = 0
         } else if velocity.y < -100 {
             bottomCommentsConstraint.constant = bottomConstraintTop
+            blackAlpha = 1
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
             bottomCommentsConstraint.constant = bottomConstraintTop
+            blackAlpha = 1
         } else {
             self.resignFirstResponder()
             self.view.endEditing(true)
             commentsView.textField.resignFirstResponder()
             commentsView.endEditing(true)
+            blackAlpha = 0
             bottomCommentsConstraint.constant = bottomConstraintDefault
         }
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.blackView.alpha = blackAlpha
             self.view.layoutIfNeeded()
         })
         
@@ -276,6 +301,7 @@ extension CoverViewController {
         
         let velocity = gesture.velocity(in: view)
         
+        var blackAlpha: CGFloat = 0
         
         if velocity.y > 100 {
             bottomSearchUsersConstraint.constant = bottomConstraintDefault
@@ -283,19 +309,24 @@ extension CoverViewController {
             self.view.endEditing(true)
             searchUsersView.resignFirstResponder()
             searchUsersView.endEditing(true)
+            blackAlpha = 0
         } else if velocity.y < -100 {
             bottomSearchUsersConstraint.constant = bottomConstraintTop
+            blackAlpha = 1
         } else if gestureView.frame.minY < view.frame.height * 0.5 {
             bottomSearchUsersConstraint.constant = bottomConstraintTop
+            blackAlpha = 1
         } else {
             self.resignFirstResponder()
             self.view.endEditing(true)
             searchUsersView.resignFirstResponder()
             searchUsersView.endEditing(true)
             bottomSearchUsersConstraint.constant = bottomConstraintDefault
+            blackAlpha = 0
         }
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.blackView.alpha = blackAlpha
             self.view.layoutIfNeeded()
         })
         

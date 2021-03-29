@@ -73,6 +73,43 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UsX-ya-iab" secondAttribute="trailing" constant="92" id="zrA-k0-mTV"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Tn-vb-CbQ" customClass="RoundViewVertical" customModule="Social_Reality" customModuleProvider="target">
+                                <rect key="frame" x="364" y="56" width="34" height="74"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iid-nC-vVY" customClass="CircleButton" customModule="Social_Reality" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="34" id="AOb-kw-P0L"/>
+                                            <constraint firstAttribute="height" constant="34" id="lxs-F0-spH"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="line.horizontal.3.decrease" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="16"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKm-wn-Dff" customClass="CircleButton" customModule="Social_Reality" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="40" width="34" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="QCF-jV-FLk"/>
+                                            <constraint firstAttribute="width" constant="34" id="asl-he-vMD"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="speaker.wave.2" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="14"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="Tinted"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Iid-nC-vVY" secondAttribute="trailing" id="2qf-0P-sgi"/>
+                                    <constraint firstAttribute="bottom" secondItem="mKm-wn-Dff" secondAttribute="bottom" id="DJS-hq-lwj"/>
+                                    <constraint firstItem="mKm-wn-Dff" firstAttribute="leading" secondItem="0Tn-vb-CbQ" secondAttribute="leading" id="dfn-EG-G17"/>
+                                    <constraint firstItem="mKm-wn-Dff" firstAttribute="top" secondItem="Iid-nC-vVY" secondAttribute="bottom" constant="6" id="lX4-uc-d4u"/>
+                                    <constraint firstAttribute="trailing" secondItem="mKm-wn-Dff" secondAttribute="trailing" id="pv2-Vb-M2a"/>
+                                    <constraint firstItem="Iid-nC-vVY" firstAttribute="top" secondItem="0Tn-vb-CbQ" secondAttribute="top" id="roP-iU-dLn"/>
+                                    <constraint firstItem="Iid-nC-vVY" firstAttribute="leading" secondItem="0Tn-vb-CbQ" secondAttribute="leading" id="zaV-Y6-W3z"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EbS-Og-EPe">
                                 <rect key="frame" x="346" y="583" width="68" height="230"/>
                                 <subviews>
@@ -141,13 +178,6 @@
                                     <constraint firstAttribute="trailing" secondItem="DpO-YF-0TJ" secondAttribute="trailing" constant="4" id="tA1-ua-pLc"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC0-Fb-roa">
-                                <rect key="frame" x="377" y="53.5" width="25" height="22"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="line.horizontal.3.decrease" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" weight="medium"/>
-                                </state>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7u7-73-hVN">
                                 <rect key="frame" x="158.5" y="44" width="97.5" height="40.5"/>
                                 <subviews>
@@ -175,13 +205,13 @@
                             <constraint firstItem="EbS-Og-EPe" firstAttribute="trailing" secondItem="Dpq-48-r6V" secondAttribute="trailing" id="5Lp-gp-RI6"/>
                             <constraint firstItem="XpU-du-Mwd" firstAttribute="top" secondItem="PvV-sx-0a6" secondAttribute="top" id="6sp-NV-abp"/>
                             <constraint firstAttribute="trailing" secondItem="9eJ-9I-HcU" secondAttribute="trailing" id="8pX-U8-Trw"/>
-                            <constraint firstItem="iC0-Fb-roa" firstAttribute="centerY" secondItem="7u7-73-hVN" secondAttribute="centerY" id="9S7-xt-3nD"/>
-                            <constraint firstItem="Dpq-48-r6V" firstAttribute="trailing" secondItem="iC0-Fb-roa" secondAttribute="trailing" constant="12" id="E9k-fS-Z4V"/>
                             <constraint firstItem="XpU-du-Mwd" firstAttribute="trailing" secondItem="Dpq-48-r6V" secondAttribute="trailing" id="JBr-ux-8s4"/>
                             <constraint firstItem="7u7-73-hVN" firstAttribute="centerX" secondItem="PvV-sx-0a6" secondAttribute="centerX" id="Ne5-Al-Fzv"/>
                             <constraint firstItem="9eJ-9I-HcU" firstAttribute="leading" secondItem="Dpq-48-r6V" secondAttribute="leading" id="PNL-k2-jvg"/>
+                            <constraint firstItem="Dpq-48-r6V" firstAttribute="trailing" secondItem="0Tn-vb-CbQ" secondAttribute="trailing" constant="16" id="QER-X8-gFw"/>
                             <constraint firstItem="9eJ-9I-HcU" firstAttribute="bottom" secondItem="Dpq-48-r6V" secondAttribute="bottom" id="VWn-ag-ViJ"/>
                             <constraint firstItem="7u7-73-hVN" firstAttribute="top" secondItem="Dpq-48-r6V" secondAttribute="top" id="bEx-Vw-aHz"/>
+                            <constraint firstItem="0Tn-vb-CbQ" firstAttribute="top" secondItem="Dpq-48-r6V" secondAttribute="top" constant="12" id="u3j-kb-qXK"/>
                             <constraint firstItem="EbS-Og-EPe" firstAttribute="bottom" secondItem="Dpq-48-r6V" secondAttribute="bottom" id="vxz-yN-VDp"/>
                         </constraints>
                     </view>
@@ -193,6 +223,7 @@
                         <outlet property="creationTimeLabel" destination="UsX-ya-iab" id="Tkd-ko-c1z"/>
                         <outlet property="creationTitleLabel" destination="E8J-Wl-ruN" id="FqI-Fa-oSh"/>
                         <outlet property="creatorAvatarImage" destination="5OV-FX-fCS" id="1Zk-Nn-sQP"/>
+                        <outlet property="welcomeLabel" destination="7MM-gn-dRT" id="Khd-ez-aQM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqi-xe-evC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -748,11 +779,11 @@
                                                 <color key="color" name="GrayText"/>
                                             </activityIndicatorView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqq-By-MpN" customClass="CircleButton" customModule="Social_Reality" customModuleProvider="target">
-                                                <rect key="frame" x="366" y="64" width="32" height="32"/>
+                                                <rect key="frame" x="364" y="64" width="34" height="34"/>
                                                 <color key="backgroundColor" name="Tinted"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="32" id="83E-bh-4o3"/>
-                                                    <constraint firstAttribute="width" constant="32" id="vKZ-En-net"/>
+                                                    <constraint firstAttribute="height" constant="34" id="83E-bh-4o3"/>
+                                                    <constraint firstAttribute="width" constant="34" id="vKZ-En-net"/>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="speaker.slash" catalog="system">
@@ -904,11 +935,11 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e9j-uF-MbF" customClass="CircleButton" customModule="Social_Reality" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="64" width="32" height="32"/>
+                                        <rect key="frame" x="16" y="64" width="34" height="34"/>
                                         <color key="backgroundColor" name="Tinted"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="32" id="9D5-US-8IR"/>
-                                            <constraint firstAttribute="height" constant="32" id="Ftj-14-FAS"/>
+                                            <constraint firstAttribute="width" constant="34" id="9D5-US-8IR"/>
+                                            <constraint firstAttribute="height" constant="34" id="Ftj-14-FAS"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="chevron.left" catalog="system">
@@ -2075,11 +2106,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NP8-R9-GaQ" customClass="CircleButton" customModule="Social_Reality" customModuleProvider="target">
-                                <rect key="frame" x="366" y="56" width="32" height="32"/>
+                                <rect key="frame" x="364" y="56" width="34" height="34"/>
                                 <color key="backgroundColor" name="Tinted"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="6UK-XA-jGd"/>
-                                    <constraint firstAttribute="height" constant="32" id="Y4C-z1-bCg"/>
+                                    <constraint firstAttribute="width" constant="34" id="6UK-XA-jGd"/>
+                                    <constraint firstAttribute="height" constant="34" id="Y4C-z1-bCg"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="info" catalog="system">
@@ -2110,7 +2141,7 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYp-Ph-d0g" customClass="RoundViewVertical" customModule="Social_Reality" customModuleProvider="target">
-                                <rect key="frame" x="364" y="100" width="34" height="122"/>
+                                <rect key="frame" x="364" y="102" width="34" height="122"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNn-b7-W8p" customClass="CircleButton" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="2" width="34" height="34"/>
@@ -2168,11 +2199,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHW-oI-GFm" customClass="CircleButton" customModule="Social_Reality" customModuleProvider="target">
-                                <rect key="frame" x="16" y="56" width="32" height="32"/>
+                                <rect key="frame" x="16" y="56" width="34" height="34"/>
                                 <color key="backgroundColor" name="Tinted"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="DmV-6j-cCH"/>
-                                    <constraint firstAttribute="height" constant="32" id="m8J-IC-vk0"/>
+                                    <constraint firstAttribute="width" constant="34" id="DmV-6j-cCH"/>
+                                    <constraint firstAttribute="height" constant="34" id="m8J-IC-vk0"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="xmark" catalog="system">
@@ -4708,6 +4739,7 @@
         <image name="profile.image.default" width="251" height="250"/>
         <image name="scribble.variable" catalog="system" width="128" height="118"/>
         <image name="speaker.slash" catalog="system" width="124" height="128"/>
+        <image name="speaker.wave.2" catalog="system" width="128" height="90"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
