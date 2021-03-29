@@ -99,19 +99,19 @@ class SignInViewController: UIViewController {
     
     func checkUser(text: String) {
         self.startLoading()
-        Auth0.userExists(email: text, completion: { result in
+        Auth0.userExists(email: text, completion: { [weak self] result in
             if let result = result {
-                self.stopLoading()
-                result ? self.toEmailPassword() : self.toCreatePassword()
+                self?.stopLoading()
+                result ? self?.toEmailPassword() : self?.toCreatePassword()
             }
         })
     }
     
     
     func checkUserData(id: String) {
-        Auth0.userDataExists(id: id) { result in
-            self.stopLoading()
-            result ? self.toHome() : self.toNewUser()
+        Auth0.userDataExists(id: id) { [weak self] result in
+            self?.stopLoading()
+            result ? self?.toHome() : self?.toNewUser()
         }
     }
     
@@ -195,13 +195,13 @@ extension SignInViewController {
     
     func signInWithProvider(credential: AuthCredential) {
         self.startLoading()
-        Auth0.signInWithProvider(credential: credential) { result in
+        Auth0.signInWithProvider(credential: credential) { [weak self] result in
             if result == nil {
-                self.stopLoading()
-                self.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
+                self?.stopLoading()
+                self?.presentAlert(title: AlertError.title, message: AlertError.message, button: AlertError.button)
             } else {
-                self.email = result?.user.email
-                self.checkUserData(id: result!.user.uid)
+                self?.email = result?.user.email
+                self?.checkUserData(id: result!.user.uid)
             }
         }
     }

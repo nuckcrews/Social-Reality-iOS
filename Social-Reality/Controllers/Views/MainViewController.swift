@@ -125,6 +125,13 @@ class MainViewController: UIViewController {
     @IBAction func tapLike(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
+        
+        if sender.tintColor == .primary {
+            sender.tintColor = .white
+        } else {
+            sender.tintColor = .primary
+        }
+        
     }
     
     @IBAction func tapComment(_ sender: UIButton) {
@@ -136,6 +143,9 @@ class MainViewController: UIViewController {
     @IBAction func tapShare(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
+        
+        MainToCoverDelegate?.tappedSendCreation(creation: creation?.model)
+        
     }
     
 }

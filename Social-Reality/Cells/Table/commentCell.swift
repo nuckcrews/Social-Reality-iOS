@@ -31,6 +31,7 @@ class commentCell: UITableViewCell {
 
     func configureCell(comment: CommentModel, liked: Bool?) {
         
+        likesCountLabel.text = ""
         userImageView.setImageFromURL(comment.userImage ?? "")
         userNameLabel.text = comment.userName
         commentLabel.text = comment.content
@@ -48,7 +49,7 @@ class commentCell: UITableViewCell {
         } else {
             liked = true
             Buzz.light()
-            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         
     }

@@ -13,11 +13,17 @@ protocol CoverToMainProtocolDelegate : AnyObject {
 
 protocol MainToCoverProtocolDelegate: AnyObject {
     func tappedComments(creation: CreationModel?)
+    func tappedSendCreation(creation: CreationModel?)
 }
 
 protocol SearchUserDelegate: AnyObject {
     func selectUsers(models: [UserModel])
     func dismissSearchView()
+}
+
+protocol SearchUserSendDelegate: AnyObject {
+    func selectUsers(models: [UserModel])
+    func dismissSearchUserSendView()
 }
 
 protocol SearchLocationDelegate: AnyObject {

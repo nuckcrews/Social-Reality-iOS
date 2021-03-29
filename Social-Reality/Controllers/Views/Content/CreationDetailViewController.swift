@@ -10,21 +10,28 @@ import AVKit
 
 class CreationDetailViewController: UIViewController {
 
-    @IBOutlet weak var creationAVPlayerView: UIView!
+    @IBOutlet weak var creationAVPlayerView: CreationAVPlayerView!
     @IBOutlet weak var creatorAvatarImage: UIImageView!
     @IBOutlet weak var creationTitleLabel: UILabel!
     @IBOutlet weak var creationDescriptionLabel: UILabel!
     @IBOutlet weak var creationTechniqueLabel: UILabel!
     @IBOutlet weak var creationTimeLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
     
     var user: User?
     var creation: Creation?
-//    var player = CreationAVPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getCreation()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        creationAVPlayerView.playCreation()
         
     }
     
@@ -38,8 +45,6 @@ class CreationDetailViewController: UIViewController {
     
     func setupView() {
         
-//        creationAVPlayerView.addSubview(player)
-        
         guard let creation = creation else { return }
         
         creatorAvatarImage.setImageFromURL(creation.model?.userImage ?? "")
@@ -48,11 +53,23 @@ class CreationDetailViewController: UIViewController {
         let date = creation.model?.date?.rawDate
         creationTimeLabel.text = date?.currentDistance(to: Date())
         
+        creationAVPlayerView.delegate = self
+        creationAVPlayerView.setupVideo(url: creation.model?.videoURL)
+        
     }
     
     @IBAction func tapLike(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
+        
+        if sender.tintColor == .primary {
+            sender.tintColor = .white
+            sender.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        } else {
+            sender.tintColor = .primary
+            sender.backgroundColor = .background
+        }
+        
     }
     
     @IBAction func tapComment(_ sender: UIButton) {
@@ -67,6 +84,16 @@ class CreationDetailViewController: UIViewController {
         sender.jump()
         Buzz.light()
         
+        MainToCoverDelegate?.tappedSendCreation(creation: creation?.model)
+        
+    }
+    
+    @IBAction func tapPausePlay(_ sender: UIButton) {
+        
+        creationAVPlayerView.playing ?
+            creationAVPlayerView.pauseCreation() :
+            creationAVPlayerView.playCreation()
+        
     }
     
     @IBAction func tapBack(_ sender: UIButton) {
@@ -74,4 +101,13 @@ class CreationDetailViewController: UIViewController {
         
     }
 
+}
+
+extension CreationDetailViewController: CreationAVPlayerDelegate {
+    
+    func doubleTappedVideo() {
+        likeButton.tintColor = .primary
+        likeButton.backgroundColor = .background
+    }
+    
 }

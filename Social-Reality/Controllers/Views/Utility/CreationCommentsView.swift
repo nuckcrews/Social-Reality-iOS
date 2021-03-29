@@ -151,6 +151,7 @@ class CreationCommentsView: UIView {
                 self.textField.text = ""
                 self.textField.resignFirstResponder()
                 self.endEditing(true)
+                self.tableView.scrollToBottom()
             } else {
                 print("error")
             }
@@ -184,8 +185,6 @@ extension CreationCommentsView: UITextFieldDelegate {
         self.endEditing(true)
         return true
     }
-    
-    
     
 }
 

@@ -17,6 +17,10 @@ class CoverViewController: UIViewController {
     @IBOutlet weak var commentsView: CreationCommentsView!
     @IBOutlet weak var bottomCommentsConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var searchUsersContentView: UIView!
+    @IBOutlet weak var searchUsersView: SearchUsersSendView!
+    @IBOutlet weak var bottomSearchUsersConstraint: NSLayoutConstraint!
+    
     private var opened = false
     
     private var bottomConstraintDefault: CGFloat = 120
@@ -56,8 +60,11 @@ class CoverViewController: UIViewController {
     func setupView() {
         
         commentsView.delegate = self
+        searchUsersView.delegate = self
         
+        bottomSearchUsersConstraint.constant = bottomConstraintDefault
         bottomCommentsConstraint.constant = bottomConstraintDefault
+        view.bringSubviewToFront(searchUsersView)
         view.bringSubviewToFront(commentsView)
         
         
@@ -66,9 +73,8 @@ class CoverViewController: UIViewController {
     func getUser() {
         guard let uid = Auth0.uid else { return }
         user = User(id: uid)
-        user?.subscribeModel(completion: { model in
-            print(model)
-            self.commentsView.user = self.user
+        user?.subscribeModel(completion: { [weak self] _ in
+            self?.commentsView.user = self?.user
         })
     }
     
@@ -86,13 +92,13 @@ class CoverViewController: UIViewController {
     
     func checkuserData() {
         guard let id = Auth0.uid else { self.toSignIn(); return }
-        Auth0.userDataExists(id: id) { res in
+        Auth0.userDataExists(id: id) { [weak self] res in
             if !res {
-                self.toCreateUser()
+                self?.toCreateUser()
             } else {
                 let notificationManager = PushNotificationManager()
                 notificationManager.registerForPushNotifications()
-                self.getUser()
+                self?.getUser()
             }
         }
     }
@@ -136,6 +142,40 @@ extension CoverViewController: CreationCommentDelegate {
         self.view.endEditing(true)
         commentsView.textField.resignFirstResponder()
         commentsView.endEditing(true)
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            
+        }
+    }
+    
+}
+
+extension CoverViewController: SearchUserSendDelegate {
+    
+    func selectUsers(models: [UserModel]) {
+        
+    }
+    
+    func dismissSearchUserSendView() {
+        hideSearchUsers()
+    }
+    
+    func presentSearchUser() {
+        bottomSearchUsersConstraint.constant = bottomConstraintTop
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.searchUsersView.presented()
+        }
+    }
+    
+    func hideSearchUsers() {
+        bottomSearchUsersConstraint.constant = bottomConstraintDefault
+        self.resignFirstResponder()
+        self.view.endEditing(true)
+        searchUsersView.resignFirstResponder()
+        searchUsersView.endEditing(true)
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.view.layoutIfNeeded()
         } completion: { _ in
@@ -205,6 +245,64 @@ extension CoverViewController {
         
     }
     
+    @IBAction func bottomSearchUserPanGesture(_ gesture: UIPanGestureRecognizer) {
+        
+        let translation = gesture.translation(in: view)
+        guard let gestureView = gesture.view else { return }
+        
+        
+        if translation.y < 0 {
+            if gestureView.frame.minY + translation.y >= view.frame.height * 0.2 {
+                bottomSearchUsersConstraint.constant = bottomSearchUsersConstraint.constant + translation.y
+            } else {
+                bottomSearchUsersConstraint.constant = bottomConstraintTop
+            }
+        } else if translation.y > 0 {
+            if bottomSearchUsersConstraint.constant + translation.y <= bottomConstraintDefault {
+                self.resignFirstResponder()
+                self.view.endEditing(true)
+                searchUsersView.resignFirstResponder()
+                searchUsersView.endEditing(true)
+                bottomSearchUsersConstraint.constant = bottomSearchUsersConstraint.constant + translation.y
+            } else {
+                bottomSearchUsersConstraint.constant = bottomConstraintDefault
+            }
+        }
+        
+        guard gesture.state == .ended else {
+            gesture.setTranslation(.zero, in: view)
+            return
+        }
+        
+        let velocity = gesture.velocity(in: view)
+        
+        
+        if velocity.y > 100 {
+            bottomSearchUsersConstraint.constant = bottomConstraintDefault
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            searchUsersView.resignFirstResponder()
+            searchUsersView.endEditing(true)
+        } else if velocity.y < -100 {
+            bottomSearchUsersConstraint.constant = bottomConstraintTop
+        } else if gestureView.frame.minY < view.frame.height * 0.5 {
+            bottomSearchUsersConstraint.constant = bottomConstraintTop
+        } else {
+            self.resignFirstResponder()
+            self.view.endEditing(true)
+            searchUsersView.resignFirstResponder()
+            searchUsersView.endEditing(true)
+            bottomSearchUsersConstraint.constant = bottomConstraintDefault
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
+        gesture.setTranslation(.zero, in: view)
+        
+    }
+    
 }
 
 extension CoverViewController: MainToCoverProtocolDelegate {
@@ -213,6 +311,11 @@ extension CoverViewController: MainToCoverProtocolDelegate {
         commentsView.creation = creation
         commentsView.startLoading()
         presentComments()
+    }
+    
+    func tappedSendCreation(creation: CreationModel?) {
+        searchUsersView.creation = creation
+        presentSearchUser()
     }
     
 }

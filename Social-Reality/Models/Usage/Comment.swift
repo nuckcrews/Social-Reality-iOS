@@ -33,9 +33,9 @@ class Comment {
     }
     
     private func getModel(completion: @escaping(_ result: CommentModel?) -> Void) {
-        Query.get.comment(id: id) { result in
+        Query.get.comment(id: id) { [weak self] result in
             if result != nil {
-                self._model = result
+                self?._model = result
             }
             completion(result)
         }

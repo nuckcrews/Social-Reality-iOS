@@ -67,19 +67,19 @@ class PasswordViewController: UIViewController {
     func signInUser() {
         guard let email = email, let password = passwordTextField.text else { return }
         self.startLoading()
-        Auth0.signIn(email: email, password: password) { result in
+        Auth0.signIn(email: email, password: password) { [weak self] result in
             if result != nil {
                 guard let id = Auth0.uid else {
-                    self.stopLoading()
-                    self.presentAlert(title: AlertError.title,
+                    self?.stopLoading()
+                    self?.presentAlert(title: AlertError.title,
                                       message: AlertError.message,
                                       button: AlertError.button)
                     return
                 }
-                self.checkUserData(id: id)
+                self?.checkUserData(id: id)
             } else {
-                self.stopLoading()
-                self.presentAlert(title: AlertError.title,
+                self?.stopLoading()
+                self?.presentAlert(title: AlertError.title,
                                   message: AlertError.message,
                                   button: AlertError.button)
             }
@@ -88,9 +88,9 @@ class PasswordViewController: UIViewController {
     }
     
     func checkUserData(id: String) {
-        Auth0.userDataExists(id: id) { res in
-            self.stopLoading()
-            res ? self.toHome() : self.toCreateUser()
+        Auth0.userDataExists(id: id) { [weak self] res in
+            self?.stopLoading()
+            res ? self?.toHome() : self?.toCreateUser()
         }
     }
     

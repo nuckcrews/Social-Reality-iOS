@@ -32,9 +32,9 @@ class Like {
     }
     
     private func getModel(completion: @escaping(_ result: LikeModel?) -> Void) {
-        Query.get.like(id: id) { result in
+        Query.get.like(id: id) { [weak self] result in
             if result != nil {
-                self._model = result
+                self?._model = result
             }
             completion(result)
         }
