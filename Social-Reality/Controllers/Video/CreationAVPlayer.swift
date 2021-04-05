@@ -34,7 +34,7 @@ class CreationAVPlayerView: UIView {
     func setupVideo(url: String?) {
 
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, options: [])
+            try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
         } catch {
             print("no audio ")
         }
@@ -85,7 +85,7 @@ class CreationAVPlayerView: UIView {
         
         bringSubviewToFront(centerIndicator)
         bringSubviewToFront(volumeIndicatorButton)
-        bringSubviewToFront(loadingIndicator)
+//        bringSubviewToFront(loadingIndicator)
         
     }
     
@@ -120,15 +120,30 @@ class CreationAVPlayerView: UIView {
     
    
     func playCreation() {
-        loadingIndicator.alpha = 0
-        loadingIndicator.stopAnimating()
+//        loadingIndicator.alpha = 0
+//        loadingIndicator.stopAnimating()
         player?.play()
         playing = true
+        print("playing")
     }
+    
+    func restartCreation() {
+//        loadingIndicator.alpha = 0
+//        loadingIndicator.stopAnimating()
+        player?.seek(to: .zero) { [weak self] _ in
+            self?.player?.pause()
+            self?.player?.rate = 1
+        }
+        playing = false
+        
+        print("restarted")
+    }
+    
     
     func pauseCreation() {
         player?.pause()
         playing = false
+        print("pausing")
     }
     
     @IBAction func tapVolume(_ sender: UIButton) {

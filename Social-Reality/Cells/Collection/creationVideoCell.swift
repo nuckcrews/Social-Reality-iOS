@@ -1,15 +1,14 @@
 //
-//  CreationDetailViewController.swift
+//  creationVideoCell.swift
 //  Social-Reality
 //
-//  Created by Nick Crews on 3/18/21.
+//  Created by Nick Crews on 3/29/21.
 //
 
 import UIKit
-import AVKit
 
-class CreationDetailViewController: UIViewController {
-
+class creationVideoCell: UICollectionViewCell {
+    
     @IBOutlet weak var creationAVPlayerView: CreationAVPlayerView!
     @IBOutlet weak var creatorAvatarImage: UIImageView!
     @IBOutlet weak var creationTitleLabel: UILabel!
@@ -18,44 +17,47 @@ class CreationDetailViewController: UIViewController {
     @IBOutlet weak var creationTimeLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
-    var user: User?
-    var creation: Creation?
+    var user: UserModel?
+    var creation: CreationModel?
+    var presenting = false
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func configureCell(_ creationModel: CreationModel?, _ userModel: UserModel?) {
         
-        getCreation()
+        creation = creationModel
+        user = userModel
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-        creationAVPlayerView.playCreation()
-        
-    }
-    
-    func getCreation() {
-        
-        creation = Testing.defaultCreation
-        
-        setupView()
-        
-    }
-    
-    func setupView() {
-        
-        guard let creation = creation else { return }
-        
-        creatorAvatarImage.setImageFromURL(creation.model?.userImage ?? "")
-        creationTitleLabel.text = creation.model?.title
-        creationDescriptionLabel.text = creation.model?.description
-        let date = creation.model?.date?.rawDate
+        creatorAvatarImage.setImageFromURL(creation?.userImage ?? "")
+        creationTitleLabel.text = creation?.title
+        creationDescriptionLabel.text = creation?.description
+        let date = creation?.date?.rawDate
         creationTimeLabel.text = date?.currentDistance(to: Date())
         
         creationAVPlayerView.delegate = self
-        creationAVPlayerView.setupVideo(url: creation.model?.videoURL)
+        creationAVPlayerView.setupVideo(url: creation?.videoURL)
         
+        creationAVPlayerView.frame = bounds
+        
+    }
+    
+    func presented() {
+        
+        creationAVPlayerView.playCreation()
+        creationAVPlayerView.frame = bounds
+        
+        presenting = true
+    }
+    
+    func dismissed() {
+        
+//        guard presenting else { return }
+        
+        creationAVPlayerView.pauseCreation()
+        presenting = false
+//        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { [weak self] _ in
+//            if !(self?.presenting ?? true) {
+//                self?.creationAVPlayerView.restartCreation()
+//            }
+//        }
     }
     
     @IBAction func tapLike(_ sender: UIButton) {
@@ -76,17 +78,15 @@ class CreationDetailViewController: UIViewController {
         sender.jump()
         
         Buzz.light()
-        MainToCoverDelegate?.tappedComments(creation: creation?.model)
+        MainToCoverDelegate?.tappedComments(creation: creation)
         
     }
-    
-    
     
     @IBAction func tapShare(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
         
-        MainToCoverDelegate?.tappedSendCreation(creation: creation?.model)
+        MainToCoverDelegate?.tappedSendCreation(creation: creation)
     }
     
     @IBAction func tapPausePlay(_ sender: UIButton) {
@@ -97,14 +97,9 @@ class CreationDetailViewController: UIViewController {
         
     }
     
-    @IBAction func tapBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-        
-    }
-
 }
 
-extension CreationDetailViewController: CreationAVPlayerDelegate {
+extension creationVideoCell: CreationAVPlayerDelegate {
     
     func doubleTappedVideo() {
         likeButton.tintColor = .primary

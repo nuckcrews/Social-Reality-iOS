@@ -83,6 +83,8 @@ class CreationCommentsView: UIView {
         tableView.dataSource = self
         textField.delegate = self
         
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 48, right: 0)
+        
         bottomConstraint.priority = .defaultLow
         bottomConstraint.constant = defaultBottomConstraint
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

@@ -29,5 +29,6 @@ enum Segue: String {
     case toHomeFromSettings
     case toCreationDetailFromAccount
     case toCreateUserFromCover
+    case toCreationCollectionFromAccount
     
 }

@@ -173,7 +173,7 @@ extension MainViewController: ARSessionDelegate {
 extension MainViewController: CoverToMainProtocolDelegate {
     func readyForSession() {
         readyForReality = true
-        setupARView()
+        //setupARView()
     }
 }
 
