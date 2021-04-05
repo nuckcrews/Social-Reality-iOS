@@ -93,6 +93,12 @@ class AccountViewController: UIViewController {
         }
     }
     
+    func toContentCollection() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toCreationCollectionFromAccount.rawValue, sender: nil)
+        }
+    }
+    
     @IBAction func tapSettings(_ sender: UIButton) {
         
         sender.jump()
@@ -133,7 +139,12 @@ extension AccountViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.toContentDetail()
+        switch indexPath.section {
+        case 1:
+            self.toContentCollection()
+        default:
+            print("tapped cell")
+        }
     }
     
     private func configureDatasource() {

@@ -20,6 +20,7 @@ enum Cells: String {
     case creationViewCell
     case profileHeaderCell
     case mapViewCell
+    case creationVideoCell
     
     // Table Headers
     
