@@ -210,7 +210,6 @@ extension SignInViewController {
 
 extension SignInViewController: UITextFieldDelegate {
     
-    
     @objc func textFieldDidChange(_ textField: UITextField) {
         textField.text = textField.text!.trimmingCharacters(in: .whitespaces)
         

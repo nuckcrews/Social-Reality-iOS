@@ -14,6 +14,7 @@ struct MessageModel: Codable {
     var senderID: String
     var recipientID: String
     var content: String
+    var date: String
     var type: MessageTypes
     
 }
