@@ -15,6 +15,8 @@ enum Collections: String {
     case creations
     case comments
     case likes
+    case messages
+    case conversations
     
 }
 

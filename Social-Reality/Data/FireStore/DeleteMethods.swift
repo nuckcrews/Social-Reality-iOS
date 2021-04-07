@@ -30,4 +30,13 @@ struct DeleteMethods {
         db.collection(Collections.likes.rawValue).document(id).delete()
     }
     
+    func message(conversationID: String, id: String, completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.conversations.rawValue).document(conversationID)
+            .collection(Collections.likes.rawValue).document(id).delete()
+    }
+    
+    func conversation(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.conversations.rawValue).document(id).delete()
+    }
+    
 }

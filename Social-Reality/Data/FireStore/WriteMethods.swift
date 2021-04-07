@@ -87,4 +87,45 @@ struct WriteMethods {
         }
     }
     
+    func message(_ message: MessageModel, completion: @escaping(_ result: ResultType) -> Void) {
+        guard message.id.count > 0 else { completion(.error); return }
+        do {
+            let docData = try FirestoreEncoder().encode(message)
+            db.collection(Collections.conversations.rawValue)
+                .document(message.conversationID)
+                .collection(Collections.messages.rawValue)
+                .document(message.id).setData(docData, merge: true, completion: { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                    completion(.error)
+                } else {
+                    print("Document successfully written!")
+                    completion(.success)
+                }
+            })
+        } catch {
+            completion(.error)
+        }
+    }
+    
+    func conversation(_ conversation: ConversationModel, completion: @escaping(_ result: ResultType) -> Void) {
+        guard conversation.id.count > 0 else { completion(.error); return }
+        do {
+            let docData = try FirestoreEncoder().encode(conversation)
+            db.collection(Collections.conversations.rawValue)
+                .document(conversation.id)
+                .setData(docData, merge: true, completion: { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                    completion(.error)
+                } else {
+                    print("Document successfully written!")
+                    completion(.success)
+                }
+            })
+        } catch {
+            completion(.error)
+        }
+    }
+    
 }

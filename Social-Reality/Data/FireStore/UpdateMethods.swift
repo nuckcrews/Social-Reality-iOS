@@ -22,7 +22,6 @@ struct UpdateMethods {
                 completion(.success)
             }
         }
-        
     }
     
     func creation(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
@@ -33,7 +32,6 @@ struct UpdateMethods {
                 completion(.success)
             }
         }
-
     }
     
     func comment(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
@@ -44,7 +42,6 @@ struct UpdateMethods {
                 completion(.success)
             }
         }
-
     }
     
     func like(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
@@ -55,7 +52,29 @@ struct UpdateMethods {
                 completion(.success)
             }
         }
-
+    }
+    
+    func message(conversationID: String, id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.conversations.rawValue)
+            .document(conversationID).collection(Collections.messages.rawValue)
+            .document(id).setData(data, merge: true) { error in
+            if error != nil {
+                completion(.error)
+            } else {
+                completion(.success)
+            }
+        }
+    }
+    
+    func conversation(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        db.collection(Collections.conversations.rawValue)
+            .document(id).setData(data, merge: true) { error in
+            if error != nil {
+                completion(.error)
+            } else {
+                completion(.success)
+            }
+        }
     }
     
 }

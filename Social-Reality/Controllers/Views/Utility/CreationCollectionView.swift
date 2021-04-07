@@ -49,9 +49,16 @@ class CreationCollectionView: UIView {
     func reloadCollection() {
         setupView()
         collectionView.reloadData()
-//        if let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? creationVideoCell {
-//            cell.presented()
-//        }
+    }
+    
+    func findWord(sentence: String, word: String) -> Int {
+        
+        let r = sentence.range(of: word)
+        
+        guard let lower = r?.lowerBound else { return 0 }
+        
+        return sentence.distance(from: sentence.startIndex, to: lower)
+        
     }
     
     func changedIndex(_ index: Int) {

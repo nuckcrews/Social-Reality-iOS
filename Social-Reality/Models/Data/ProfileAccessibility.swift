@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import Firebase
-import CodableFirebase
 
 public enum ProfileAccessibility: String {
     

@@ -2027,21 +2027,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="406" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SoReal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeA-2q-UfA">
-                                                    <rect key="frame" x="72" y="12" width="250" height="20"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="vpF-0p-jAk"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                    <color key="textColor" name="MainText"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the subtitle of the text that was last sent." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nt2-Vx-BAx">
-                                                    <rect key="frame" x="72" y="32" width="252" height="47"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" name="GrayText"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail.stack.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="J3f-uC-EXF">
                                                     <rect key="frame" x="24" y="11.5" width="36" height="37"/>
                                                     <color key="tintColor" name="Primary"/>
@@ -2066,26 +2051,46 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CYi-71-lMz">
+                                                    <rect key="frame" x="72" y="11" width="254" height="80"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SoReel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja4-9f-Pas">
+                                                            <rect key="frame" x="0.0" y="0.0" width="254" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="bzk-Z1-l0A"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                            <color key="textColor" name="MainText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the subtitle of the text that was last sent." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGr-YW-MKe">
+                                                            <rect key="frame" x="0.0" y="20" width="254" height="60"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" name="GrayText"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="lGr-YW-MKe" firstAttribute="top" secondItem="Ja4-9f-Pas" secondAttribute="bottom" id="Q9Y-iW-DUz"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="HeA-2q-UfA" firstAttribute="top" secondItem="zgR-oP-qS2" secondAttribute="top" constant="12" id="EnS-FP-q0t"/>
+                                                <constraint firstItem="CYi-71-lMz" firstAttribute="top" secondItem="zgR-oP-qS2" secondAttribute="topMargin" id="CL1-6q-uxn"/>
+                                                <constraint firstItem="h7R-3S-6FW" firstAttribute="leading" secondItem="CYi-71-lMz" secondAttribute="trailing" constant="8" id="DnS-63-enu"/>
                                                 <constraint firstAttribute="trailing" secondItem="h7R-3S-6FW" secondAttribute="trailing" constant="12" id="HhN-Ea-Uf5"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="nt2-Vx-BAx" secondAttribute="bottom" constant="12" id="M4T-3Y-dEe"/>
-                                                <constraint firstItem="nt2-Vx-BAx" firstAttribute="top" secondItem="HeA-2q-UfA" secondAttribute="bottom" id="NIQ-3X-cy4"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="HeA-2q-UfA" secondAttribute="trailing" constant="64" id="PDV-K7-CkV"/>
-                                                <constraint firstItem="nt2-Vx-BAx" firstAttribute="leading" secondItem="J3f-uC-EXF" secondAttribute="trailing" constant="12" id="aRx-rU-tzV"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="CYi-71-lMz" secondAttribute="bottom" id="IrU-rP-Irb"/>
                                                 <constraint firstItem="J3f-uC-EXF" firstAttribute="leading" secondItem="zgR-oP-qS2" secondAttribute="leading" constant="24" id="dc3-S3-08m"/>
+                                                <constraint firstItem="CYi-71-lMz" firstAttribute="leading" secondItem="J3f-uC-EXF" secondAttribute="trailing" constant="12" id="hEy-Mv-MLA"/>
                                                 <constraint firstItem="J3f-uC-EXF" firstAttribute="top" secondItem="zgR-oP-qS2" secondAttribute="top" constant="12" id="hm6-eD-aEk"/>
-                                                <constraint firstItem="h7R-3S-6FW" firstAttribute="leading" secondItem="nt2-Vx-BAx" secondAttribute="trailing" constant="10" id="lT2-wY-CPk"/>
                                                 <constraint firstItem="h7R-3S-6FW" firstAttribute="centerY" secondItem="zgR-oP-qS2" secondAttribute="centerY" id="wzI-rT-AUR"/>
-                                                <constraint firstItem="HeA-2q-UfA" firstAttribute="leading" secondItem="J3f-uC-EXF" secondAttribute="trailing" constant="12" id="zqw-rp-f5T"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="Background"/>
                                         <connections>
-                                            <outlet property="descriptionLabel" destination="nt2-Vx-BAx" id="fB3-UE-arf"/>
+                                            <outlet property="descriptionLabel" destination="lGr-YW-MKe" id="67n-WR-Sgn"/>
                                             <outlet property="titleImageView" destination="J3f-uC-EXF" id="rjz-fk-2Mg"/>
-                                            <outlet property="titleLabel" destination="HeA-2q-UfA" id="Nzl-9d-E8S"/>
+                                            <outlet property="titleLabel" destination="Ja4-9f-Pas" id="IeL-Dw-jZ5"/>
                                             <outlet property="viewButton" destination="h7R-3S-6FW" id="Ftd-vv-UCG"/>
                                         </connections>
                                     </tableViewCell>

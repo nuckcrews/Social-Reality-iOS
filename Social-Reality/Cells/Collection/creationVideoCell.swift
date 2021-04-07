@@ -41,6 +41,7 @@ class creationVideoCell: UICollectionViewCell {
     
     func presented() {
         
+        creationAVPlayerView.translatesAutoresizingMaskIntoConstraints = false
         creationAVPlayerView.playCreation()
         creationAVPlayerView.frame = bounds
         
@@ -49,15 +50,9 @@ class creationVideoCell: UICollectionViewCell {
     
     func dismissed() {
         
-//        guard presenting else { return }
-        
         creationAVPlayerView.pauseCreation()
         presenting = false
-//        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false) { [weak self] _ in
-//            if !(self?.presenting ?? true) {
-//                self?.creationAVPlayerView.restartCreation()
-//            }
-//        }
+        
     }
     
     @IBAction func tapLike(_ sender: UIButton) {

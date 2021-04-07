@@ -99,6 +99,51 @@ struct ReadMethods {
         }
     }
     
+    func message(conversationID: String, id: String, completion: @escaping(_ result: MessageModel?) -> Void) {
+        db.collection(Collections.conversations.rawValue)
+            .document(conversationID)
+            .collection(Collections.messages.rawValue)
+            .document(id).getDocument { snapshot, error in
+            if error != nil || snapshot == nil {
+                completion(nil)
+            } else {
+                if let data = snapshot?.data() {
+                    do {
+                        let model = try FirestoreDecoder().decode(MessageModel.self, from: data)
+                        print("Model: \(model)")
+                        completion(model)
+                    } catch {
+                        completion(nil)
+                    }
+                } else {
+                    print("Document does not exist")
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
+    func conversation(id: String, completion: @escaping(_ result: ConversationModel?) -> Void) {
+        db.collection(Collections.conversations.rawValue).document(id).getDocument { snapshot, error in
+            if error != nil || snapshot == nil {
+                completion(nil)
+            } else {
+                if let data = snapshot?.data() {
+                    do {
+                        let model = try FirestoreDecoder().decode(ConversationModel.self, from: data)
+                        print("Model: \(model)")
+                        completion(model)
+                    } catch {
+                        completion(nil)
+                    }
+                } else {
+                    print("Document does not exist")
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
     func users(completion: @escaping(_ result: [UserModel]?) -> Void) {
         db.collection(Collections.users.rawValue).getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
@@ -282,6 +327,32 @@ struct ReadMethods {
                         var models = [LikeModel]()
                         try docs.forEach { doc in
                             let model = try FirestoreDecoder().decode(LikeModel.self, from: doc.data())
+                            models.append(model)
+                        }
+                        completion(models)
+                    } catch {
+                        completion(nil)
+                    }
+                } else {
+                    print("Does not exist")
+                    completion(nil)
+                }
+            }
+        }
+    }
+    
+    func messages(conversationID: String, completion: @escaping(_ result: [MessageModel]?) -> Void) {
+        db.collection(Collections.conversations.rawValue)
+            .document(conversationID)
+            .collection(Collections.likes.rawValue).getDocuments { snapshot, error in
+            if error != nil || snapshot == nil {
+                completion(nil)
+            } else {
+                if let docs = snapshot?.documents {
+                    do {
+                        var models = [MessageModel]()
+                        try docs.forEach { doc in
+                            let model = try FirestoreDecoder().decode(MessageModel.self, from: doc.data())
                             models.append(model)
                         }
                         completion(models)
