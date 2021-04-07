@@ -18,6 +18,7 @@ class MessageViewController: UIViewController {
     @IBOutlet weak var bottomTextConstraint: NSLayoutConstraint!
     
     var conversation: ConversationModel?
+    var conversationID: String?
     var recipient: UserModel?
     var recipientID: String?
     var messages = [MessageModel]()
@@ -26,15 +27,45 @@ class MessageViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-        getRecipient()
-        getMessages()
         
+        guard let uid = Auth0.uid, let recipientID = recipientID else { return }
+        
+        if conversationID == nil {
+            var ids = [uid, recipientID]
+            
+            ids.sort()
+            let id = ids.joined()
+            print(id)
+            
+            conversationID = id
+        }
+
+        checkForConversation()
+        getRecipient()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        textField.becomeFirstResponder()
+        
+        tableView.scrollToBottom()
+
     }
     
     func setupView() {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        
         textField.delegate = self
         
         textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -48,7 +79,7 @@ class MessageViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            bottomTextConstraint.constant = keyboardSize.height - 26
+            bottomTextConstraint.constant = keyboardSize.height - Environment.bottomSafeAreaHeight
             UIView.animate(withDuration: 0.2) {
                 self.view.layoutIfNeeded()
             }
@@ -64,10 +95,20 @@ class MessageViewController: UIViewController {
     
     func getRecipient() {
         
-        guard let recipientID = recipientID else { return }
+        guard let recipientID = recipientID else {
+            recipient = Testing.defaultUser.model
+            userImageView.setImageFromURL(recipient?.image ?? "")
+            userNameLabel.text = recipient?.username
+            return
+        }
         
         Query.get.user(id: recipientID) { [weak self] model in
-            guard let model = model else { return }
+            guard let model = model else {
+                self?.recipient = Testing.defaultUser.model
+                self?.userImageView.setImageFromURL(self?.recipient?.image ?? "")
+                self?.userNameLabel.text = self?.recipient?.username
+                return
+            }
             self?.recipient = model
             self?.userImageView.setImageFromURL(model.image)
             self?.userNameLabel.text = model.username
@@ -89,9 +130,64 @@ class MessageViewController: UIViewController {
     
     func sortMessages() {
         
-        messages.sort(by: { $0.date.rawDate ?? Date() > $1.date.rawDate ?? Date() } )
+        messages.sort(by: { $0.date.rawDate ?? Date() < $1.date.rawDate ?? Date() } )
         
         tableView.reloadData()
+        
+        tableView.scrollToBottom()
+        
+        
+    }
+    
+    func postMessage() {
+        
+        guard let conversationID = conversationID,
+              let uid = Auth0.uid,
+              let recipientID = recipientID,
+              let text = textField.text
+        else { return }
+        
+        let message = MessageModel(id: UUID().uuidString,
+                                   conversationID: conversationID,
+                                   senderID: uid,
+                                   recipientID: recipientID,
+                                   content: text,
+                                   date: Date().rawDateString,
+                                   type: .message)
+        
+        if conversation == nil {
+            let conversation = ConversationModel(id: conversationID,
+                                                 userIDs: [uid, recipientID],
+                                                 lastMessage: text,
+                                                 lastMessageDate: Date().rawDateString,
+                                                 image: "")
+            
+            Query.write.conversation(conversation) { [weak self] res in
+                Query.write.message(message) { [weak self] result in
+                    print(result)
+                    self?.textField.text = ""
+                    self?.sendButton.backgroundColor = .grayText
+                }
+            }
+        } else {
+            Query.write.message(message) { [weak self] result in
+                print(result)
+                self?.textField.text = ""
+                self?.sendButton.backgroundColor = .grayText
+            }
+        }
+        
+        
+        
+    }
+    
+    func checkForConversation() {
+        guard let conversationID = conversationID else { return }
+        
+        Query.get.conversation(id: conversationID) { [weak self] model in
+            self?.conversation = model
+            self?.getMessages()
+        }
         
     }
     
@@ -101,12 +197,12 @@ class MessageViewController: UIViewController {
         
         guard let text = textField.text, text.count > 0 else { return }
         
-        // POST MESSAGE
+        postMessage()
         
     }
     
     @IBAction func tapBack(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
 }
@@ -114,8 +210,7 @@ class MessageViewController: UIViewController {
 extension MessageViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        textField.resignFirstResponder()
-        view.endEditing(true)
+
     }
     
 }
@@ -127,11 +222,22 @@ extension MessageViewController: UITextFieldDelegate {
         guard let text = textField.text else { return }
         
         if text.count > 0 {
-            sendButton.backgroundColor = .grayText
-        } else {
             sendButton.backgroundColor = .primary
+        } else {
+            sendButton.backgroundColor = .grayText
             
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        Buzz.light()
+        
+        guard let text = textField.text, text.count > 0 else { return false }
+        
+        postMessage()
+        
+        return true
+
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

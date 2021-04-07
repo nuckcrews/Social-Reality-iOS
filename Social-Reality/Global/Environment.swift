@@ -6,11 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
 struct Environment {
     
     static var env = Environments.dev.rawValue
     static var dbs = Databases.dbs.rawValue
+    
+    static var topSafeAreaHeight: CGFloat {
+        let window = UIApplication.shared.windows[0]
+        let safeFrame = window.safeAreaLayoutGuide.layoutFrame
+        return safeFrame.minY
+    }
+    
+    static var bottomSafeAreaHeight: CGFloat {
+        let window = UIApplication.shared.windows[0]
+        let safeFrame = window.safeAreaLayoutGuide.layoutFrame
+        return window.frame.maxY - safeFrame.maxY
+    }
 
     enum Databases: String {
         case dbs
@@ -29,6 +42,15 @@ struct ProfileImage {
 }
 
 struct Testing {
+    
+    static var defaultUser: User {
+        
+        let model = UserModel(id: "testuser", username: "testuser", status: "ACTIVE", first: "Test", last: "User", lastActive: "", email: "tester@user.com", image: "", access: .public, fcmToken: "")
+        
+        let user = User(model: model)
+        
+        return user
+    }
     
     static var defaultCreation: Creation {
         

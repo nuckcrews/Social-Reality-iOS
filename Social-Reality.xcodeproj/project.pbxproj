@@ -142,6 +142,7 @@
 		A0EAE5B4260D5E1600F40EEC /* SearchLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EAE5B3260D5E1600F40EEC /* SearchLocationView.swift */; };
 		A0EAE5B6260D5F9800F40EEC /* searchLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EAE5B5260D5F9800F40EEC /* searchLocationCell.swift */; };
 		A0EAE5B9260D6DB400F40EEC /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EAE5B8260D6DB400F40EEC /* GooglePlaces.swift */; };
+		A0ED2210261E0D56006BCBC7 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0ED220F261E0D56006BCBC7 /* CustomTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,6 +309,7 @@
 		A0EAE5B3260D5E1600F40EEC /* SearchLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationView.swift; sourceTree = "<group>"; };
 		A0EAE5B5260D5F9800F40EEC /* searchLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchLocationCell.swift; sourceTree = "<group>"; };
 		A0EAE5B8260D6DB400F40EEC /* GooglePlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
+		A0ED220F261E0D56006BCBC7 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		A278DA0B460B680393E5D636 /* Pods_Social_Reality_Social_RealityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_Reality_Social_RealityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F22873282F63C6FCB8C8858B /* Pods-Social-Reality-Social-RealityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Social-Reality-Social-RealityUITests.release.xcconfig"; path = "Target Support Files/Pods-Social-Reality-Social-RealityUITests/Pods-Social-Reality-Social-RealityUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -594,6 +596,7 @@
 				A06B640B25E97CA000AE746D /* CustomImageViews.swift */,
 				A06B641025E97F5F00AE746D /* CustomButtons.swift */,
 				A02397D125EB1B5A00F13F72 /* CustomViews.swift */,
+				A0ED220F261E0D56006BCBC7 /* CustomTableView.swift */,
 				A02397D325EB291B00F13F72 /* CustomScrollView.swift */,
 				A023980525EC242600F13F72 /* CustomShadows.swift */,
 				A03A968E26040D7400274793 /* Buzz.swift */,
@@ -1134,6 +1137,7 @@
 				A06B63C325E9561B00AE746D /* Creation.swift in Sources */,
 				A0579ED7260E3A8F009D512F /* PushNotificationManager.swift in Sources */,
 				A03A968D2603F8D400274793 /* FirebaseCodable.swift in Sources */,
+				A0ED2210261E0D56006BCBC7 /* CustomTableView.swift in Sources */,
 				A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */,
 				A0911DA9260C3E6E00D05642 /* SearchUsersView.swift in Sources */,
 				A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */,

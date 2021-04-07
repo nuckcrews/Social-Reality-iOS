@@ -30,6 +30,8 @@ class CoverViewController: UIViewController {
     
     var user: User?
     
+    var messageData: (String, String?) = ("", nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,6 +133,10 @@ class CoverViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = Auth.auth().currentUser?.email
+        }
+        if let dest = segue.destination as? MessageViewController {
+            dest.recipientID = messageData.0
+            dest.conversationID = messageData.1
         }
     }
     
@@ -347,6 +353,11 @@ extension CoverViewController: MainToCoverProtocolDelegate {
     func tappedSendCreation(creation: CreationModel?) {
         searchUsersView.creation = creation
         presentSearchUser()
+    }
+    
+    func segueToMessage(recipientID: String, conversationID: String?) {
+        messageData = (recipientID, conversationID)
+        performSegue(withIdentifier: Segue.toMessageFromCover.rawValue, sender: nil)
     }
     
 }
