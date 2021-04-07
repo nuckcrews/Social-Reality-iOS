@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import Firebase
-import CodableFirebase
 
 struct CreationModel: Codable {
     

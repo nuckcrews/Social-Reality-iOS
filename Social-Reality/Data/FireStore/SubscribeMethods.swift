@@ -183,6 +183,29 @@ struct SubscribeMethods {
             })
     }
     
+    func messages(conversationID: String, completion: @escaping(_ result: [MessageModel]?, _ listener: ListenerRegistration?) -> Void) {
+        var lstn: ListenerRegistration?
+        lstn = db.collection(Collections.conversations.rawValue)
+            .document(conversationID)
+            .collection(Collections.messages.rawValue)
+            .addSnapshotListener(includeMetadataChanges: false, listener: { snapshot, error in
+                guard let snapshot = snapshot, error == nil else {
+                    completion(nil, nil)
+                    return
+                }
+                var models = [MessageModel]()
+                snapshot.documents.forEach({ doc in
+                    do {
+                        let model = try FirestoreDecoder().decode(MessageModel.self, from: doc.data())
+                        models.append(model)
+                    } catch {
+                        print("doc error")
+                    }
+                })
+                completion(models, lstn)
+            })
+    }
+    
     func usersWithPredicate(field: String, value: String, completion: @escaping(_ result: [UserModel]?, _ listener: ListenerRegistration?) -> Void) {
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.users.rawValue)
@@ -270,4 +293,27 @@ struct SubscribeMethods {
                 completion(models, lstn)
             })
     }
+    
+    func conversationsWithPredicate(field: String, value: String, completion: @escaping(_ result: [ConversationModel]?, _ listener: ListenerRegistration?) -> Void) {
+        var lstn: ListenerRegistration?
+        lstn = db.collection(Collections.conversations.rawValue)
+            .whereField(field, arrayContains: value)
+            .addSnapshotListener(includeMetadataChanges: false, listener: { snapshot, error in
+                guard let snapshot = snapshot, error == nil else {
+                    completion(nil, nil)
+                    return
+                }
+                var models = [ConversationModel]()
+                snapshot.documents.forEach({ doc in
+                    do {
+                        let model = try FirestoreDecoder().decode(ConversationModel.self, from: doc.data())
+                        models.append(model)
+                    } catch {
+                        print("doc error")
+                    }
+                })
+                completion(models, lstn)
+            })
+    }
+    
 }

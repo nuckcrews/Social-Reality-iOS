@@ -31,6 +31,10 @@ class InboxViewController: UIViewController {
         
     }
     
+    @IBAction func tapNewMessage(_ sender: UIButton) {
+        
+    }
+    
 }
 
 extension InboxViewController: UIScrollViewDelegate {
@@ -110,6 +114,10 @@ extension InboxViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 42
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: Segue.toMessageFromInbox.rawValue, sender: nil)
     }
     
 }
