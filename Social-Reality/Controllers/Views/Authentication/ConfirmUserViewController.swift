@@ -47,21 +47,11 @@ class ConfirmUserViewController: UIViewController {
         }
     }
     
-    func confirmUser() {
-     
-        guard let email = email, let text = confirmationTextField.text, let password = password else {
-            return
-        }
-        
-
-        
-    }
-    
     @IBAction func tapContinue(_ sender: UIButton) {
         if confirmationTextField.text?.count ?? 0 == 6 {
             sender.pulsate()
             
-            confirmUser()
+//            confirmUser()
             
         } else {
             sender.shake()

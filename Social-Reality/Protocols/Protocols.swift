@@ -14,6 +14,7 @@ protocol CoverToMainProtocolDelegate : AnyObject {
 protocol MainToCoverProtocolDelegate: AnyObject {
     func tappedComments(creation: CreationModel?)
     func tappedSendCreation(creation: CreationModel?)
+    func segueToMessage(recipientID: String, conversationID: String?)
 }
 
 protocol SearchUserDelegate: AnyObject {

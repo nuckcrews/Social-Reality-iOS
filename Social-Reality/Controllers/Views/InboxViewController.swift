@@ -117,7 +117,7 @@ extension InboxViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: Segue.toMessageFromInbox.rawValue, sender: nil)
+        MainToCoverDelegate?.segueToMessage(recipientID: Testing.defaultUser.model!.id, conversationID: nil)
     }
     
 }
