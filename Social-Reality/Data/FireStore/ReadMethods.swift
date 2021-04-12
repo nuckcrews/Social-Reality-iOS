@@ -16,6 +16,7 @@ struct ReadMethods {
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
     func user(id: String, completion: @escaping(_ result: UserModel?) -> Void) {
+        guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.users.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
@@ -37,6 +38,7 @@ struct ReadMethods {
     }
     
     func creation(id: String, completion: @escaping(_ result: CreationModel?) -> Void) {
+        guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.creations.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
@@ -58,6 +60,7 @@ struct ReadMethods {
     }
     
     func comment(id: String, completion: @escaping(_ result: CommentModel?) -> Void) {
+        guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.comments.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
@@ -79,6 +82,7 @@ struct ReadMethods {
     }
     
     func like(id: String, completion: @escaping(_ result: LikeModel?) -> Void) {
+        guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.likes.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
@@ -100,6 +104,7 @@ struct ReadMethods {
     }
     
     func message(conversationID: String, id: String, completion: @escaping(_ result: MessageModel?) -> Void) {
+        guard conversationID.count > 0, id.count > 0 else { completion(nil); return }
         db.collection(Collections.conversations.rawValue)
             .document(conversationID)
             .collection(Collections.messages.rawValue)
@@ -124,6 +129,7 @@ struct ReadMethods {
     }
     
     func conversation(id: String, completion: @escaping(_ result: ConversationModel?) -> Void) {
+        guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.conversations.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
@@ -169,6 +175,7 @@ struct ReadMethods {
     }
     
     func usersWithPredicate(field: String, value: String, completion: @escaping(_ result: [UserModel]?) -> Void) {
+        guard field.count > 0, value.count > 0 else { completion(nil); return }
         db.collection(Collections.users.rawValue)
             .whereField(field, isEqualTo: value).getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
@@ -218,6 +225,7 @@ struct ReadMethods {
     }
     
     func creationsWithPredicate(field: String, value: String, completion: @escaping(_ result: [CreationModel]?) -> Void) {
+        guard field.count > 0, value.count > 0 else { completion(nil); return }
         db.collection(Collections.creations.rawValue)
             .whereField(field, isEqualTo: value).getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
@@ -268,6 +276,7 @@ struct ReadMethods {
     }
     
     func commentsWithPredicate(field: String, value: String, completion: @escaping(_ result: [CommentModel]?) -> Void) {
+        guard field.count > 0, value.count > 0 else { completion(nil); return }
         db.collection(Collections.comments.rawValue)
             .whereField(field, isEqualTo: value).getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
@@ -317,6 +326,7 @@ struct ReadMethods {
     }
     
     func likesWithPredicate(field: String, value: String, completion: @escaping(_ result: [LikeModel]?) -> Void) {
+        guard field.count > 0, value.count > 0 else { completion(nil); return }
         db.collection(Collections.likes.rawValue)
             .whereField(field, isEqualTo: value).getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
@@ -342,6 +352,7 @@ struct ReadMethods {
     }
     
     func messages(conversationID: String, completion: @escaping(_ result: [MessageModel]?) -> Void) {
+        guard conversationID.count > 0 else { completion(nil); return }
         db.collection(Collections.conversations.rawValue)
             .document(conversationID)
             .collection(Collections.likes.rawValue).getDocuments { snapshot, error in

@@ -11,13 +11,14 @@ import AVKit
 class CreationAVPlayerView: UIView {
     
     @IBOutlet weak var centerIndicator: UIImageView!
-    @IBOutlet weak var volumeIndicatorButton: UIButton!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     private var urlString: String?
     private var player: AVQueuePlayer?
     private var playerLooper: AVPlayerLooper?
     private var playerLayer: AVPlayerLayer?
+    
+    var adjustedFrame: CGRect?
     
     var playing = false
     private var muted = false
@@ -27,7 +28,8 @@ class CreationAVPlayerView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
+        frame = adjustedFrame != nil ? adjustedFrame! : frame
+
     }
     
     
@@ -38,8 +40,6 @@ class CreationAVPlayerView: UIView {
         } catch {
             print("no audio ")
         }
-        
-        volumeIndicatorButton.setImage(UIImage(systemName: "speaker.wave.2"), for: .normal)
         
         centerIndicator.alpha = 0
         
@@ -67,6 +67,7 @@ class CreationAVPlayerView: UIView {
         let asset = AVAsset(url: url)
         let playerItem = AVPlayerItem(asset: asset)
         player = AVQueuePlayer(playerItem: playerItem)
+        player?.isMuted = Device.isMuted
         
         guard let player = player else { return }
         
@@ -84,8 +85,10 @@ class CreationAVPlayerView: UIView {
         loadingIndicator.startAnimating()
         
         bringSubviewToFront(centerIndicator)
-        bringSubviewToFront(volumeIndicatorButton)
 //        bringSubviewToFront(loadingIndicator)
+        
+        print("adjusted", adjustedFrame)
+        frame = adjustedFrame != nil ? adjustedFrame! : frame
         
     }
     
@@ -122,6 +125,9 @@ class CreationAVPlayerView: UIView {
     func playCreation() {
 //        loadingIndicator.alpha = 0
 //        loadingIndicator.stopAnimating()
+        
+        mainVolumeDelegate = self
+        
         player?.play()
         playing = true
         print("playing")
@@ -130,6 +136,8 @@ class CreationAVPlayerView: UIView {
     func restartCreation() {
 //        loadingIndicator.alpha = 0
 //        loadingIndicator.stopAnimating()
+        mainVolumeDelegate = self
+        
         player?.seek(to: .zero) { [weak self] _ in
             self?.player?.pause()
             self?.player?.rate = 1
@@ -146,19 +154,14 @@ class CreationAVPlayerView: UIView {
         print("pausing")
     }
     
-    @IBAction func tapVolume(_ sender: UIButton) {
-        
-        sender.jump()
-        
-        guard let player = player else { return }
-        
-        player.isMuted = !player.isMuted
-        
-        player.isMuted ?
-            volumeIndicatorButton.setImage(UIImage(systemName: "speaker.slash"), for: .normal) :
-            volumeIndicatorButton.setImage(UIImage(systemName: "speaker.wave.2"), for: .normal)
-        
-        
+
+    
+}
+
+extension CreationAVPlayerView: MainVolumeDelegate {
+    
+    func changeVolume() {
+        player?.isMuted = Device.isMuted
     }
     
 }

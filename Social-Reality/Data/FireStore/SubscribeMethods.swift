@@ -16,6 +16,7 @@ struct SubscribeMethods {
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
     func user(id: String, completion: @escaping(_ result: UserModel?, _ listener: ListenerRegistration?) -> Void) {
+        guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.users.rawValue).document(id)
             .addSnapshotListener(includeMetadataChanges: true, listener: { snapshot, error in
@@ -37,6 +38,7 @@ struct SubscribeMethods {
     }
     
     func creation(id: String, completion: @escaping(_ result: CreationModel?, _ listener: ListenerRegistration?) -> Void) {
+        guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.creations.rawValue).document(id)
             .addSnapshotListener(includeMetadataChanges: true, listener: { snapshot, error in
@@ -58,6 +60,7 @@ struct SubscribeMethods {
     }
     
     func comment(id: String, completion: @escaping(_ result: CommentModel?, _ listener: ListenerRegistration?) -> Void) {
+        guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.comments.rawValue).document(id)
             .addSnapshotListener(includeMetadataChanges: true, listener: { snapshot, error in
@@ -79,6 +82,7 @@ struct SubscribeMethods {
     }
     
     func like(id: String, completion: @escaping(_ result: LikeModel?, _ listener: ListenerRegistration?) -> Void) {
+        guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.likes.rawValue).document(id)
             .addSnapshotListener(includeMetadataChanges: true, listener: { snapshot, error in
@@ -184,6 +188,7 @@ struct SubscribeMethods {
     }
     
     func messages(conversationID: String, completion: @escaping(_ result: [MessageModel]?, _ listener: ListenerRegistration?) -> Void) {
+        guard conversationID.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.conversations.rawValue)
             .document(conversationID)

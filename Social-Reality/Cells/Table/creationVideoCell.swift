@@ -7,7 +7,7 @@
 
 import UIKit
 
-class creationVideoCell: UICollectionViewCell {
+class creationVideoCell: UITableViewCell {
     
     @IBOutlet weak var creationAVPlayerView: CreationAVPlayerView!
     @IBOutlet weak var creatorAvatarImage: UIImageView!
@@ -21,7 +21,24 @@ class creationVideoCell: UICollectionViewCell {
     var creation: CreationModel?
     var presenting = false
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        creationAVPlayerView.frame = bounds
+        
+        
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
     func configureCell(_ creationModel: CreationModel?, _ userModel: UserModel?) {
+        
+        creationAVPlayerView.translatesAutoresizingMaskIntoConstraints = false
         
         creation = creationModel
         user = userModel
@@ -33,9 +50,13 @@ class creationVideoCell: UICollectionViewCell {
         creationTimeLabel.text = date?.currentDistance(to: Date())
         
         creationAVPlayerView.delegate = self
+        
+        creationAVPlayerView.adjustedFrame = bounds
+        creationAVPlayerView.frame = bounds
+        
         creationAVPlayerView.setupVideo(url: creation?.videoURL)
         
-        creationAVPlayerView.frame = bounds
+        
         
     }
     
@@ -44,6 +65,8 @@ class creationVideoCell: UICollectionViewCell {
         creationAVPlayerView.translatesAutoresizingMaskIntoConstraints = false
         creationAVPlayerView.playCreation()
         creationAVPlayerView.frame = bounds
+        
+        creationAVPlayerView.adjustedFrame = bounds
         
         presenting = true
     }

@@ -7,6 +7,8 @@
 
 import Foundation
 
-var CoverToMainDelegate: CoverToMainProtocolDelegate?
+weak var CoverToMainDelegate: CoverToMainProtocolDelegate?
 
-var MainToCoverDelegate: MainToCoverProtocolDelegate?
+weak var MainToCoverDelegate: MainToCoverProtocolDelegate?
+
+weak var mainVolumeDelegate: MainVolumeDelegate?

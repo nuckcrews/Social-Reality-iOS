@@ -40,3 +40,7 @@ protocol SearchMusicDelegate: AnyObject {
 protocol CreationCommentDelegate: AnyObject {
     func dismissCommentView()
 }
+
+protocol MainVolumeDelegate: AnyObject {
+    func changeVolume()
+}

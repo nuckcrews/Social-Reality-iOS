@@ -97,6 +97,13 @@ class CreationDetailViewController: UIViewController {
         
     }
     
+    @IBAction func tapVolume(_ sender: UIButton) {
+        sender.jump()
+        
+        
+        
+    }
+    
     @IBAction func tapBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
         
