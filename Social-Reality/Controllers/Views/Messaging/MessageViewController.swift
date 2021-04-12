@@ -79,7 +79,7 @@ class MessageViewController: UIViewController {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            bottomTextConstraint.constant = keyboardSize.height - Environment.bottomSafeAreaHeight
+            bottomTextConstraint.constant = keyboardSize.height - Device.bottomSafeAreaHeight
             UIView.animate(withDuration: 0.2) {
                 self.view.layoutIfNeeded()
             }

@@ -31,7 +31,7 @@ class ExploreViewController: UIViewController {
     
     enum Item: Hashable {
         case map(MapHeaderData)
-        case creation(CreationView)
+        case creation(CreationThumbNailView)
     }
     
     override func viewDidLoad() {
@@ -178,8 +178,8 @@ extension ExploreViewController {
         let initialLocation = locationManager.authorizationStatus ? locationManager.location : CLLocation(latitude: 21.282778, longitude: -157.829444)
         snapshot.appendSections([.map, .creations])
         snapshot.appendItems([.map(MapHeaderData(location: initialLocation ?? CLLocation(latitude: 21.282778, longitude: -157.829444)))], toSection: .map)
-        snapshot.appendItems(CreationView.demoPhotos.map({ Item.creation($0) }), toSection: .creations)
-        snapshot.appendItems(CreationView.demoPhotos2.map({ Item.creation($0) }), toSection: .creations)
+        snapshot.appendItems(CreationThumbNailView.demoPhotos.map({ Item.creation($0) }), toSection: .creations)
+        snapshot.appendItems(CreationThumbNailView.demoPhotos2.map({ Item.creation($0) }), toSection: .creations)
         
         return snapshot
     }

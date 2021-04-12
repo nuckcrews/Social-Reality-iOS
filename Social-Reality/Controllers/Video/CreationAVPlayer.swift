@@ -22,6 +22,7 @@ class CreationAVPlayerView: UIView {
     
     var playing = false
     private var muted = false
+    private var setup = false
     
     weak var delegate: CreationAVPlayerDelegate?
     
@@ -34,6 +35,8 @@ class CreationAVPlayerView: UIView {
     
     
     func setupVideo(url: String?) {
+        
+//        guard setup == false else { return }
 
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
@@ -55,9 +58,10 @@ class CreationAVPlayerView: UIView {
         addGestureRecognizer(tap)
         addGestureRecognizer(doubleTap)
         
-        playerLayer?.removeFromSuperlayer()
-        player = nil
-        playerLayer = nil
+            playerLayer?.removeFromSuperlayer()
+            player = nil
+            playerLayer = nil
+        
         urlString = url
         
         guard let url = URL(string: url ?? "") else { return }
@@ -89,6 +93,7 @@ class CreationAVPlayerView: UIView {
         
         print("adjusted", adjustedFrame)
         frame = adjustedFrame != nil ? adjustedFrame! : frame
+        setup = true
         
     }
     

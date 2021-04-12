@@ -27,6 +27,22 @@ class CreationTableView: UIView {
         
     }
     
+    func setIndex(_ index: Int) {
+        
+        tableView.alpha = 1
+        
+        tableView.contentInsetAdjustmentBehavior = .never
+        
+//        tableView.contentOffset.y = (frame.height * CGFloat(index)) // - Device.topSafeAreaHeight
+        
+        tableView.scrollToRow(at: IndexPath(item: index, section: 0), at: .top, animated: false)
+        
+//        if let cell = tableView.cellForRow(at: IndexPath(item: index, section: 0)) as? creationVideoCell {
+//            cell.presented()
+//        }
+    
+    }
+    
     func setupView() {
         
         tableView.delegate = self

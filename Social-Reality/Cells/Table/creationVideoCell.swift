@@ -21,6 +21,14 @@ class creationVideoCell: UITableViewCell {
     var creation: CreationModel?
     var presenting = false
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        likeButton.tintColor = .white
+        likeButton.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -53,6 +61,7 @@ class creationVideoCell: UITableViewCell {
         
         creationAVPlayerView.adjustedFrame = bounds
         creationAVPlayerView.frame = bounds
+        
         
         creationAVPlayerView.setupVideo(url: creation?.videoURL)
         
