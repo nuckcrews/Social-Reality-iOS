@@ -15,4 +15,12 @@ struct Device {
         return ARGeoTrackingConfiguration.isSupported
     }()
     
+    static var isMuted: Bool = false {
+        didSet {
+            
+            mainVolumeDelegate?.changeVolume()
+            
+        }
+    }
+    
 }

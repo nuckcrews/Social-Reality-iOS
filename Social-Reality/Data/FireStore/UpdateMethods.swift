@@ -15,6 +15,7 @@ struct UpdateMethods {
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
     func user(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.users.rawValue).document(id).setData(data, merge: true) { error in
             if error != nil {
                 completion(.error)
@@ -25,6 +26,7 @@ struct UpdateMethods {
     }
     
     func creation(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.creations.rawValue).document(id).setData(data, merge: true) { error in
             if error != nil {
                 completion(.error)
@@ -35,6 +37,7 @@ struct UpdateMethods {
     }
     
     func comment(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.comments.rawValue).document(id).setData(data, merge: true) { error in
             if error != nil {
                 completion(.error)
@@ -45,6 +48,7 @@ struct UpdateMethods {
     }
     
     func like(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.likes.rawValue).document(id).setData(data, merge: true) { error in
             if error != nil {
                 completion(.error)
@@ -55,6 +59,7 @@ struct UpdateMethods {
     }
     
     func message(conversationID: String, id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        guard conversationID.count > 0, id.count > 0 else { completion(.error); return }
         db.collection(Collections.conversations.rawValue)
             .document(conversationID).collection(Collections.messages.rawValue)
             .document(id).setData(data, merge: true) { error in
@@ -67,6 +72,7 @@ struct UpdateMethods {
     }
     
     func conversation(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.conversations.rawValue)
             .document(id).setData(data, merge: true) { error in
             if error != nil {

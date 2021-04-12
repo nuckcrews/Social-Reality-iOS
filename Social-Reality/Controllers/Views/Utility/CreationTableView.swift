@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CreationCollectionView: UIView {
+class CreationTableView: UIView {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     var creations = [CreationModel]()
     var user: UserModel?
@@ -29,26 +29,30 @@ class CreationCollectionView: UIView {
     
     func setupView() {
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.contentInsetAdjustmentBehavior = .never
         
         let cellSize = CGSize(width: frame.width, height: frame.height)
         
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical //.horizontal
-        layout.itemSize = cellSize
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 0.0
-        layout.minimumInteritemSpacing = 0.0
-        collectionView.contentInsetAdjustmentBehavior = .never
-        collectionView.setCollectionViewLayout(layout, animated: false)
-        print("adjusted")
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical //.horizontal
+//        layout.itemSize = cellSize
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        layout.minimumLineSpacing = 0.0
+//        layout.minimumInteritemSpacing = 0.0
+//        collectionView.contentInsetAdjustmentBehavior = .never
+//        collectionView.setCollectionViewLayout(layout, animated: false)
+//        print("adjusted")
+        
+        tableView.reloadData()
         
     }
     
     func reloadCollection() {
         setupView()
-        collectionView.reloadData()
+        
     }
     
     func findWord(sentence: String, word: String) -> Int {
@@ -64,7 +68,7 @@ class CreationCollectionView: UIView {
     func changedIndex(_ index: Int) {
         
         for i in 0..<creations.count {
-            if let cell = collectionView.cellForItem(at: IndexPath(item: i, section: 0)) as? creationVideoCell {
+            if let cell = tableView.cellForRow(at: IndexPath(item: i, section: 0)) as? creationVideoCell {
                 i != index ? cell.dismissed() : cell.presented()
             }
         }
@@ -73,7 +77,7 @@ class CreationCollectionView: UIView {
     
 }
 
-extension CreationCollectionView: UIScrollViewDelegate {
+extension CreationTableView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -88,18 +92,18 @@ extension CreationCollectionView: UIScrollViewDelegate {
     
 }
 
-extension CreationCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CreationTableView: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return creations.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationVideoCell.rawValue, for: indexPath) as? creationVideoCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.creationVideoCell.rawValue, for: indexPath) as? creationVideoCell {
             cell.configureCell(creations[indexPath.row], user)
             if indexPath.row == currentIndex {
                 cell.presented()
@@ -109,5 +113,10 @@ extension CreationCollectionView: UICollectionViewDelegate, UICollectionViewData
             return creationVideoCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.frame.height
+    }
+    
     
 }

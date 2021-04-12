@@ -125,9 +125,9 @@
 		A0C2FBB2260268B4005D773A /* PencilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2FBB1260268B4005D773A /* PencilView.swift */; };
 		A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */; };
 		A0CBAFCB26015EC3001953C8 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */; };
-		A0D37B652612D79F00261567 /* CreationCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B642612D79F00261567 /* CreationCollectionView.swift */; };
+		A0D37B652612D79F00261567 /* CreationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B642612D79F00261567 /* CreationTableView.swift */; };
 		A0D37B672612D94A00261567 /* creationVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B662612D94A00261567 /* creationVideoCell.swift */; };
-		A0D37B692612E33800261567 /* CreationCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B682612E33800261567 /* CreationCollectionViewController.swift */; };
+		A0D37B692612E33800261567 /* CreationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B682612E33800261567 /* CreationTableViewController.swift */; };
 		A0D95BB52607BAFE00DA5A07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0D95BB42607BAFE00DA5A07 /* GoogleService-Info.plist */; };
 		A0D95BB926081B2E00DA5A07 /* LocalDownloadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BB826081B2E00DA5A07 /* LocalDownloadMethods.swift */; };
 		A0D95BBB26081B4B00DA5A07 /* LocalUploadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BBA26081B4B00DA5A07 /* LocalUploadMethods.swift */; };
@@ -292,9 +292,9 @@
 		A0C2FBB1260268B4005D773A /* PencilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilView.swift; sourceTree = "<group>"; };
 		A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserViewController.swift; sourceTree = "<group>"; };
 		A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		A0D37B642612D79F00261567 /* CreationCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationCollectionView.swift; sourceTree = "<group>"; };
+		A0D37B642612D79F00261567 /* CreationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationTableView.swift; sourceTree = "<group>"; };
 		A0D37B662612D94A00261567 /* creationVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = creationVideoCell.swift; sourceTree = "<group>"; };
-		A0D37B682612E33800261567 /* CreationCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationCollectionViewController.swift; sourceTree = "<group>"; };
+		A0D37B682612E33800261567 /* CreationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationTableViewController.swift; sourceTree = "<group>"; };
 		A0D95BB42607BAFE00DA5A07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Social Distance/Social Distance/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0D95BB826081B2E00DA5A07 /* LocalDownloadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDownloadMethods.swift; sourceTree = "<group>"; };
 		A0D95BBA26081B4B00DA5A07 /* LocalUploadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUploadMethods.swift; sourceTree = "<group>"; };
@@ -364,7 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				A00DD40F2603964B00E6C818 /* CreationDetailViewController.swift */,
-				A0D37B682612E33800261567 /* CreationCollectionViewController.swift */,
+				A0D37B682612E33800261567 /* CreationTableViewController.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -440,6 +440,7 @@
 				A0579EDC260E41A4009D512F /* searchMusicCell.swift */,
 				A06E9A27260EA21E00B85CE9 /* commentCell.swift */,
 				A0006916261D5F500020F307 /* messageCell.swift */,
+				A0D37B662612D94A00261567 /* creationVideoCell.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -450,7 +451,6 @@
 				A03FAC7725EEB780000BFC02 /* profileHeaderCell.swift */,
 				A03FAC8325EEDCDB000BFC02 /* creationViewCell.swift */,
 				A06E965925F166FE009B92E5 /* mapViewCell.swift */,
-				A0D37B662612D94A00261567 /* creationVideoCell.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -746,7 +746,7 @@
 				A0579EDA260E4066009D512F /* SearchMusicView.swift */,
 				A06E9A25260E9ED900B85CE9 /* CreationCommentsView.swift */,
 				A0137173261116C300AE4BA6 /* SearchUsersSendView.swift */,
-				A0D37B642612D79F00261567 /* CreationCollectionView.swift */,
+				A0D37B642612D79F00261567 /* CreationTableView.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1172,7 +1172,7 @@
 				A06E9A26260E9ED900B85CE9 /* CreationCommentsView.swift in Sources */,
 				A040AB4225F682C80064978A /* UploadMethods.swift in Sources */,
 				A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */,
-				A0D37B652612D79F00261567 /* CreationCollectionView.swift in Sources */,
+				A0D37B652612D79F00261567 /* CreationTableView.swift in Sources */,
 				A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */,
 				A0D95BB926081B2E00DA5A07 /* LocalDownloadMethods.swift in Sources */,
 				A0006919261D5FBD0020F307 /* MessageModel.swift in Sources */,
@@ -1240,7 +1240,7 @@
 				A006462825EB17F900A3E1F3 /* Config.swift in Sources */,
 				A03A968F26040D7400274793 /* Buzz.swift in Sources */,
 				A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */,
-				A0D37B692612E33800261567 /* CreationCollectionViewController.swift in Sources */,
+				A0D37B692612E33800261567 /* CreationTableViewController.swift in Sources */,
 				A016E05B25FAC03600D6D5D9 /* Segues.swift in Sources */,
 				A06B63CD25E956C000AE746D /* Like.swift in Sources */,
 				A023980925EC262B00F13F72 /* Environment.swift in Sources */,
