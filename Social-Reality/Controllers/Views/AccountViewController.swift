@@ -226,7 +226,6 @@ extension AccountViewController: UICollectionViewDelegate {
             collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 54, right: 0)
         }
         
-        
         snapshot.appendItems(thumbnails.map({ Item.creation($0) }), toSection: .creations)
         
         return snapshot
