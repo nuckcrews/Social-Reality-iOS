@@ -9,7 +9,7 @@ import UIKit
 
 class CreationTableViewController: UIViewController {
 
-    @IBOutlet weak var creationCollectionView: CreationTableView!
+    @IBOutlet weak var creationTableView: CreationTableView!
     @IBOutlet weak var volumeIndicatorButton: UIButton!
     
     var user: User?
@@ -31,7 +31,7 @@ class CreationTableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if !indexSet {
-            creationCollectionView.tableView.alpha = 0
+            creationTableView.tableView.alpha = 0
             getCreations()
         }
     }
@@ -41,9 +41,18 @@ class CreationTableViewController: UIViewController {
         
 //        getCreations()
         if !indexSet {
-            creationCollectionView.setIndex(startIndex)
+            creationTableView.setIndex(startIndex)
             indexSet = true
+        } else {
+            creationTableView.playCreation()
         }
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        creationTableView.pauseCreation()
         
     }
     
@@ -60,8 +69,8 @@ class CreationTableViewController: UIViewController {
     
     func getCreations() {
         
-        creationCollectionView.creations = Testing.defaultCreations
-        creationCollectionView.reloadCollection()
+        creationTableView.creations = Testing.defaultCreations
+        creationTableView.reloadCollection()
         
         
     }

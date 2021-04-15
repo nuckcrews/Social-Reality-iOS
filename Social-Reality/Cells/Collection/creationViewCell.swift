@@ -17,9 +17,7 @@ class creationViewCell: UICollectionViewCell {
     }
     
     func configureCell(creation: CreationThumbNailView) {
-        
-        imageView.setImageFromURL(creation.model?.thumbnail ?? "")
-//        imageView.image = imaimage?.fixOrientation()
+        imageView.setImageFromURL(creation.model?.thumbnail)
     }
 
 }

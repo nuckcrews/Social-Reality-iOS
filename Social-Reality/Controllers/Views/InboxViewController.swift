@@ -18,6 +18,23 @@ class InboxViewController: UIViewController {
         
         setupView()
        
+       //  Storage0.remote.download.video()
+        
+//        for i in Testing.defaultCreations {
+//            VideoModel.getThumbnailImage(forUrl: i.videoURL) { [weak self] img in
+//                if let image = img {
+//                    Storage0.remote.upload.thumbnailImage(key: i.id, image: image) { res in
+//                        if let res = res {
+//                            Query.update.creation(id: i.id, data: ["thumbnail": res]) { result in
+//                                print(result)
+//                            }
+//                        }
+//                        print(res)
+//                    }
+//                }
+//            }
+//        }
+        
     }
     
     func setupView() {

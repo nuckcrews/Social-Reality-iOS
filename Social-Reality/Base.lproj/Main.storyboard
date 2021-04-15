@@ -1076,10 +1076,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruZ-NW-IRD" customClass="CreationTableView" customModule="Social_Reality" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zHa-ay-mUx">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="creationVideoCell" rowHeight="726" id="c5o-PH-l5r" customClass="creationVideoCell" customModule="Social_Reality" customModuleProvider="target">
@@ -1332,7 +1332,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="k7q-Ir-KXn"/>
                     <connections>
-                        <outlet property="creationCollectionView" destination="ruZ-NW-IRD" id="IGi-dh-820"/>
+                        <outlet property="creationTableView" destination="ruZ-NW-IRD" id="w3s-4d-c1k"/>
                         <outlet property="volumeIndicatorButton" destination="YXq-zd-Kr8" id="omv-zI-rw9"/>
                     </connections>
                 </viewController>
@@ -5496,7 +5496,7 @@
         <segue reference="fnc-XW-6Bv"/>
         <segue reference="JU7-we-xcG"/>
         <segue reference="67m-qx-B5J"/>
-        <segue reference="8rY-CP-78d"/>
+        <segue reference="Hke-j2-F5O"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple.icon.sign" width="770" height="770"/>

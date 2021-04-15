@@ -33,13 +33,8 @@ class CreationTableView: UIView {
         
         tableView.contentInsetAdjustmentBehavior = .never
         
-//        tableView.contentOffset.y = (frame.height * CGFloat(index)) // - Device.topSafeAreaHeight
-        
         tableView.scrollToRow(at: IndexPath(item: index, section: 0), at: .top, animated: false)
-        
-//        if let cell = tableView.cellForRow(at: IndexPath(item: index, section: 0)) as? creationVideoCell {
-//            cell.presented()
-//        }
+    
     
     }
     
@@ -51,17 +46,7 @@ class CreationTableView: UIView {
         tableView.contentInsetAdjustmentBehavior = .never
         
         let cellSize = CGSize(width: frame.width, height: frame.height)
-        
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical //.horizontal
-//        layout.itemSize = cellSize
-//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        layout.minimumLineSpacing = 0.0
-//        layout.minimumInteritemSpacing = 0.0
-//        collectionView.contentInsetAdjustmentBehavior = .never
-//        collectionView.setCollectionViewLayout(layout, animated: false)
-//        print("adjusted")
-        
+    
         tableView.reloadData()
         
     }
@@ -79,6 +64,18 @@ class CreationTableView: UIView {
         
         return sentence.distance(from: sentence.startIndex, to: lower)
         
+    }
+    
+    func playCreation() {
+        if let cell = tableView.cellForRow(at: IndexPath(item: currentIndex, section: 0)) as? creationVideoCell {
+            cell.creationAVPlayerView.playCreation()
+        }
+    }
+    
+    func pauseCreation() {
+        if let cell = tableView.cellForRow(at: IndexPath(item: currentIndex, section: 0)) as? creationVideoCell {
+            cell.creationAVPlayerView.pauseCreation()
+        }
     }
     
     func changedIndex(_ index: Int) {

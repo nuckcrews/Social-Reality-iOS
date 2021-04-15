@@ -179,7 +179,7 @@ extension AccountViewController: UICollectionViewDelegate {
         datasource = Datasource(collectionView: collectionView, cellProvider: cell(collectionView:indexPath:item:))
         datasource.apply(snapshot(), animatingDifferences: false)
         datasource.supplementaryViewProvider = supplementary(collectionView:kind:indexPath:)
-        
+
         configured = true
         
     }
@@ -209,8 +209,23 @@ extension AccountViewController: UICollectionViewDelegate {
         var thumbnails = [CreationThumbNailView]()
         for i in Testing.defaultCreations {
             thumbnails.append(CreationThumbNailView(model: i))
-
         }
+        
+        if thumbnails.count == 0 {
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height - 54, right: 0)
+        } else if thumbnails.count <= 3 {
+            let w = view.frame.width * 5 / 12
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height - 54 - w, right: 0)
+        } else if thumbnails.count <= 6 {
+            let w = view.frame.width * 5 / 12 * 2
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height - 54 - w, right: 0)
+        } else if thumbnails.count <= 9 {
+            let w = view.frame.width * 5 / 12 * 3
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height - 54 - w, right: 0)
+        } else {
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 54, right: 0)
+        }
+        
         
         snapshot.appendItems(thumbnails.map({ Item.creation($0) }), toSection: .creations)
         
@@ -254,7 +269,7 @@ extension AccountViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1/3))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(5/12))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
         
         let section = NSCollectionLayoutSection(group: group)

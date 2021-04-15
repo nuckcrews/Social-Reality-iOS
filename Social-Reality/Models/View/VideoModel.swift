@@ -17,9 +17,11 @@ struct VideoModel {
         
         let asset: AVAsset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
 
         do {
             let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60) , actualTime: nil)
+            
             completion(UIImage(cgImage: thumbnailImage))
             return
         } catch let error {
