@@ -18,7 +18,6 @@ class InboxViewController: UIViewController {
         
         setupView()
        
-       //  Storage0.remote.download.video()
     }
     
     func setupView() {

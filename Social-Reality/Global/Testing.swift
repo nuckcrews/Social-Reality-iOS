@@ -53,12 +53,22 @@ struct Testing {
         
         var creates = [CreationModel]()
         
-        var model = CreationModel(id: "abcdefg", title: "The Default Creation", description: "The first testing creation used everywhere #soreel", lastViewed: "", accessibility: .public, status: "ACTIVE", date: Date().rawDateString, userID: "", userName: "ncrews35", userImage: "", videoURL: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2FIMG_1387.mp4?alt=media&token=64054925-f210-45e1-9cfc-b92a76bd283d")
+        var model1 = CreationModel(id: "model1", title: "Walk in Crested Butte", description: "A beautiful walk through a pristine forest #soreel", lastViewed: "", accessibility: .public, status: "ACTIVE", date: Date().rawDateString, userID: Auth0.uid, userName: "emvalencia", userImage: "", videoURL: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2FIMG_1387.mp4?alt=media&token=64054925-f210-45e1-9cfc-b92a76bd283d",
+                                   thumbnail: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/images%2Fthumbnails%2Fmodel1?alt=media&token=e97834c7-9fc8-46a5-afc3-e5aabbca5215")
         
-        for i in 0..<5 {
-            model.videoURL = videos[i]
-            creates.append(model)
-        }
+        var model2 = CreationModel(id: "model2", title: "Backflip in Mykonos", description: "Keating doing a backflip during a sunset in the Greek Islands #soreel", lastViewed: "", accessibility: .public, status: "", date: Date().rawDateString, userID: Testing.defaultUser.id, userName: "keating", userImage: "", videoURL: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2Fglipmovie.mp4?alt=media&token=1782b57f-d750-41e9-b11b-5179131d1613", thumbnail: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/images%2Fthumbnails%2Fmodel2?alt=media&token=f72601ff-ff5e-4414-a770-5ee2b7a9fb92")
+        
+        var model3 = CreationModel(id: "model3", title: "ARTECHOUSE", description: "Super cool light show in the Chelsea Market #NYC #soreel", lastViewed: "", accessibility: .public, status: "", date: Date().rawDateString, userID: Testing.defaultUser.id, userName: "emvalencia", userImage: "", videoURL: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2FIMG_5025.mp4?alt=media&token=4b9b3195-5748-4cdc-81c0-01d83332f752", thumbnail: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/images%2Fthumbnails%2Fmodel3?alt=media&token=6790cfc7-8df6-45d4-b0ca-2074d770fb77")
+        
+        var model4 = CreationModel(id: "model4", title: "Bryce National Park", description: "Ancient walkway in a National Park #soreel", lastViewed: "", accessibility: .public, status: "", date: Date().rawDateString, userID: Testing.defaultUser.id, userName: "traveler", userImage: "", videoURL: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2FIMG_1776.mp4?alt=media&token=c465cbf9-0037-48f6-be4d-7b473f9e859b", thumbnail: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/images%2Fthumbnails%2Fmodel4?alt=media&token=d1fd111a-0de9-42fc-88b1-d8c997cf9922")
+        
+        var model5 = CreationModel(id: "model5", title: "Wake Boarding in NH", description: "Shreddddd It brooooo! #soreel", lastViewed: "", accessibility: .public, status: "", date: Date().rawDateString, userID: Auth0.uid, userName: "nickcrews", userImage: "", videoURL: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2FIMG_2742.mp4?alt=media&token=fba574a4-9297-485f-8e7a-794f1d639401", thumbnail: "https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/images%2Fthumbnails%2Fmodel5?alt=media&token=81a9aa54-892c-4c70-a299-306fa5fa0dc2")
+        
+        creates.append(model1)
+        creates.append(model2)
+        creates.append(model3)
+        creates.append(model4)
+        creates.append(model5)
         
        return creates
     }()

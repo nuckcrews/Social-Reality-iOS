@@ -11,21 +11,24 @@ import AVFoundation
 
 struct VideoModel {
     
-    static func getThumbnailImage(forUrl str: String?) -> UIImage? {
-        
-        guard let url = URL(string: str ?? "") else { return nil }
+    static func getThumbnailImage(forUrl str: String?, completion: @escaping(_ result: UIImage?) -> Void){
+        DispatchQueue.global().async {
+        guard let url = URL(string: str ?? "") else { completion(nil); return }
         
         let asset: AVAsset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
 
         do {
             let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60) , actualTime: nil)
-            return UIImage(cgImage: thumbnailImage)
+            completion(UIImage(cgImage: thumbnailImage))
+            return
         } catch let error {
             print(error)
+            completion(nil)
         }
 
-        return nil
+        completion(nil)
+        }
     }
     
 }

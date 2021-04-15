@@ -28,7 +28,7 @@ class AccountViewController: UIViewController {
     }
     
     enum Item: Hashable {
-        case header(ProfileHeaderData) 
+        case header(ProfileHeaderData)
         case creation(CreationThumbNailView)
     }
     
@@ -155,7 +155,7 @@ extension AccountViewController: UICollectionViewDelegate {
             }
         case .creation(let data):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
-                cell.configure(with: data.image)
+                cell.configureCell(creation: data)
                 return cell
             } else {
                 return creationViewCell()
@@ -206,14 +206,13 @@ extension AccountViewController: UICollectionViewDelegate {
         snapshot.appendItems([.header(profileData)], toSection: .header)
         
         
-        
         var thumbnails = [CreationThumbNailView]()
         for i in Testing.defaultCreations {
-            thumbnails.append(CreationThumbNailView(model: i, image: VideoModel.getThumbnailImage(forUrl: i.videoURL)))
+            thumbnails.append(CreationThumbNailView(model: i))
+
         }
         
         snapshot.appendItems(thumbnails.map({ Item.creation($0) }), toSection: .creations)
-        
         
         return snapshot
         

@@ -52,7 +52,7 @@ class creationVideoCell: UITableViewCell {
         user = userModel
         
         creatorAvatarImage.setImageFromURL(creation?.userImage ?? "")
-        creationTitleLabel.text = creation?.title
+        creationTitleLabel.text = "@" + (creation?.userName ?? "username")
         creationDescriptionLabel.text = creation?.description
         let date = creation?.date?.rawDate
         creationTimeLabel.text = date?.currentDistance(to: Date())

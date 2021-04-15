@@ -32,5 +32,6 @@ enum Segue: String {
     case toCreationCollectionFromAccount
     case toMessageFromInbox
     case toMessageFromCover
+    case toCreationTableFromProfile
     
 }

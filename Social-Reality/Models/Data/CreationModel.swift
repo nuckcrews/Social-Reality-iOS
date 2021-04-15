@@ -20,5 +20,6 @@ struct CreationModel: Codable {
     public var userName: String?
     public var userImage: String?
     public var videoURL: String?
+    public var thumbnail: String?
     
 }
