@@ -29,4 +29,5 @@ struct RemoteStorage {
 enum StorageChildren: String {
     case images
     case videos
+    case thumbnails
 }

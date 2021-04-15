@@ -22,6 +22,7 @@ class CreationAVPlayerView: UIView {
     
     var playing = false
     private var muted = false
+    private var setup = false
     
     weak var delegate: CreationAVPlayerDelegate?
     
@@ -29,12 +30,17 @@ class CreationAVPlayerView: UIView {
         super.layoutSubviews()
         
         frame = adjustedFrame != nil ? adjustedFrame! : frame
-
+        
     }
     
     
     func setupVideo(url: String?) {
-
+        
+        if player != nil && urlString == url {
+            self.restartCreation()
+            return
+        }
+        
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
         } catch {
@@ -58,6 +64,7 @@ class CreationAVPlayerView: UIView {
         playerLayer?.removeFromSuperlayer()
         player = nil
         playerLayer = nil
+        
         urlString = url
         
         guard let url = URL(string: url ?? "") else { return }
@@ -76,7 +83,7 @@ class CreationAVPlayerView: UIView {
         playerLayer = AVPlayerLayer(player: player)
         playerLayer?.frame = bounds
         playerLayer?.videoGravity = .resizeAspectFill
-   
+        
         guard let playerLayer = playerLayer else { return }
         
         layer.addSublayer(playerLayer)
@@ -85,10 +92,9 @@ class CreationAVPlayerView: UIView {
         loadingIndicator.startAnimating()
         
         bringSubviewToFront(centerIndicator)
-//        bringSubviewToFront(loadingIndicator)
-        
-        print("adjusted", adjustedFrame)
+
         frame = adjustedFrame != nil ? adjustedFrame! : frame
+        setup = true
         
     }
     
@@ -99,7 +105,7 @@ class CreationAVPlayerView: UIView {
         } else {
             playCreation(); animateCenter(image: "play.fill")
         }
-            
+        
     }
     
     @objc func doubleTapped() {
@@ -118,15 +124,13 @@ class CreationAVPlayerView: UIView {
                 self.centerIndicator.alpha = 0
             } completion: { _ in }
         }
-
+        
     }
     
-   
+    
     func playCreation() {
-//        loadingIndicator.alpha = 0
-//        loadingIndicator.stopAnimating()
-        
         mainVolumeDelegate = self
+        player?.isMuted = Device.isMuted
         
         player?.play()
         playing = true
@@ -134,14 +138,16 @@ class CreationAVPlayerView: UIView {
     }
     
     func restartCreation() {
-//        loadingIndicator.alpha = 0
-//        loadingIndicator.stopAnimating()
+        
         mainVolumeDelegate = self
+        player?.isMuted = Device.isMuted
         
         player?.seek(to: .zero) { [weak self] _ in
-            self?.player?.pause()
+            self?.player?.play()
             self?.player?.rate = 1
+            self?.player?.isMuted = Device.isMuted
         }
+        
         playing = false
         
         print("restarted")
@@ -154,7 +160,7 @@ class CreationAVPlayerView: UIView {
         print("pausing")
     }
     
-
+    
     
 }
 

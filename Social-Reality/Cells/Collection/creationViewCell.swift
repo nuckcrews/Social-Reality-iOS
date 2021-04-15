@@ -12,8 +12,12 @@ class creationViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
     
-    func configure(with image: UIImage) {
-        imageView.image = image
+    func configure(with image: UIImage?) {
+        imageView.image = image?.fixOrientation()
+    }
+    
+    func configureCell(creation: CreationThumbNailView) {
+        imageView.setImageFromURL(creation.model?.thumbnail)
     }
 
 }

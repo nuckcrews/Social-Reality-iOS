@@ -17,6 +17,7 @@ class AccountViewController: UIViewController {
     var likes = [String]()
     
     private var datasource: Datasource!
+    var configured = false
     
     typealias Datasource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
@@ -27,11 +28,12 @@ class AccountViewController: UIViewController {
     }
     
     enum Item: Hashable {
-        case header(ProfileHeaderData) 
-        case creation(CreationView)
+        case header(ProfileHeaderData)
+        case creation(CreationThumbNailView)
     }
     
     var user: User?
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +44,27 @@ class AccountViewController: UIViewController {
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
         collectionView.register(ProfileCreationsHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ProfileCreationsHeaderView.rawValue)
         
+        
         configureDatasource()
         
         getUser()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        
+//        configureDatasource()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        
+        
+        
         
     }
     
@@ -113,6 +133,12 @@ class AccountViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CreationTableViewController {
+            dest.startIndex = selectedIndex
+        }
+    }
+    
 }
 
 extension AccountViewController: UICollectionViewDelegate {
@@ -129,7 +155,7 @@ extension AccountViewController: UICollectionViewDelegate {
             }
         case .creation(let data):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
-                cell.configure(with: data.image)
+                cell.configureCell(creation: data)
                 return cell
             } else {
                 return creationViewCell()
@@ -141,7 +167,8 @@ extension AccountViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 1:
-            self.toContentCollection()
+            selectedIndex = indexPath.row
+            toContentCollection()
         default:
             print("tapped cell")
         }
@@ -152,6 +179,8 @@ extension AccountViewController: UICollectionViewDelegate {
         datasource = Datasource(collectionView: collectionView, cellProvider: cell(collectionView:indexPath:item:))
         datasource.apply(snapshot(), animatingDifferences: false)
         datasource.supplementaryViewProvider = supplementary(collectionView:kind:indexPath:)
+
+        configured = true
         
     }
     
@@ -175,8 +204,29 @@ extension AccountViewController: UICollectionViewDelegate {
         
         snapshot.appendSections([.header, .creations])
         snapshot.appendItems([.header(profileData)], toSection: .header)
-        snapshot.appendItems(CreationView.demoPhotos.map({ Item.creation($0) }), toSection: .creations)
-        snapshot.appendItems(CreationView.demoPhotos2.map({ Item.creation($0) }), toSection: .creations)
+        
+        
+        var thumbnails = [CreationThumbNailView]()
+        for i in Testing.defaultCreations {
+            thumbnails.append(CreationThumbNailView(model: i))
+        }
+        
+        if thumbnails.count == 0 {
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height - 54, right: 0)
+        } else if thumbnails.count <= 3 {
+            let w = view.frame.width * 5 / 12
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height - 54 - w, right: 0)
+        } else if thumbnails.count <= 6 {
+            let w = view.frame.width * 5 / 12 * 2
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height - 54 - w, right: 0)
+        } else if thumbnails.count <= 9 {
+            let w = view.frame.width * 5 / 12 * 3
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.height - 54 - w, right: 0)
+        } else {
+            collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 54, right: 0)
+        }
+        
+        snapshot.appendItems(thumbnails.map({ Item.creation($0) }), toSection: .creations)
         
         return snapshot
         
@@ -218,7 +268,7 @@ extension AccountViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1/3))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(5/12))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
         
         let section = NSCollectionLayoutSection(group: group)
