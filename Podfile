@@ -37,7 +37,7 @@ target 'Social-Reality' do
   
   # Design Pods
   pod 'TransitionableTab', '~> 0.2.0'
-  pod 'SJSegmentedScrollView', '1.3.8'
+  pod 'XLPagerTabStrip', '~> 9.0'
   
   target 'Social-RealityTests' do
     inherit! :search_paths

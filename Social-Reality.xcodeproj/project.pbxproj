@@ -115,6 +115,12 @@
 		A06E965C25F16CB5009B92E5 /* EventCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */; };
 		A06E9A26260E9ED900B85CE9 /* CreationCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E9A25260E9ED900B85CE9 /* CreationCommentsView.swift */; };
 		A06E9A28260EA21E00B85CE9 /* commentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E9A27260EA21E00B85CE9 /* commentCell.swift */; };
+		A06F56A92628C8B700576EDA /* ProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56A82628C8B700576EDA /* ProfileProtocols.swift */; };
+		A06F56AB2628C98E00576EDA /* ProfilePanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56AA2628C98E00576EDA /* ProfilePanViewController.swift */; };
+		A06F56AD2628CA5E00576EDA /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56AC2628CA5E00576EDA /* UIScrollView.swift */; };
+		A06F56AF2628CACE00576EDA /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56AE2628CACE00576EDA /* UIViewController.swift */; };
+		A06F56B12628D13B00576EDA /* ProfileScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */; };
+		A06F56B52628D9C500576EDA /* XLPagerTabStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */; };
 		A071B4C726240A790057BE35 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071B4C626240A790057BE35 /* Testing.swift */; };
 		A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5625ED335E00D59382 /* TestViewController.swift */; };
 		A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */; };
@@ -288,6 +294,12 @@
 		A06E965B25F16CB5009B92E5 /* EventCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionView.swift; sourceTree = "<group>"; };
 		A06E9A25260E9ED900B85CE9 /* CreationCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationCommentsView.swift; sourceTree = "<group>"; };
 		A06E9A27260EA21E00B85CE9 /* commentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentCell.swift; sourceTree = "<group>"; };
+		A06F56A82628C8B700576EDA /* ProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocols.swift; sourceTree = "<group>"; };
+		A06F56AA2628C98E00576EDA /* ProfilePanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePanViewController.swift; sourceTree = "<group>"; };
+		A06F56AC2628CA5E00576EDA /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		A06F56AE2628CACE00576EDA /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScrollViewController.swift; sourceTree = "<group>"; };
+		A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLPagerTabStripViewController.swift; sourceTree = "<group>"; };
 		A071B4C626240A790057BE35 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		A072FC5625ED335E00D59382 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
@@ -377,6 +389,7 @@
 			children = (
 				A00DD40F2603964B00E6C818 /* CreationDetailViewController.swift */,
 				A0D37B682612E33800261567 /* CreationTableViewController.swift */,
+				A0D37B642612D79F00261567 /* CreationTableView.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -632,6 +645,8 @@
 				A0BB58EE260042C900523005 /* CLLocationManager.swift */,
 				A063EA99260674E700B3C2ED /* Date.swift */,
 				A0137171261106CE00AE4BA6 /* UITableView.swift */,
+				A06F56AC2628CA5E00576EDA /* UIScrollView.swift */,
+				A06F56AE2628CACE00576EDA /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -668,6 +683,7 @@
 				A02397FB25EC195400F13F72 /* Authentication */,
 				A023980225EC1CDB00F13F72 /* Tabs */,
 				A00DD40E2603961C00E6C818 /* Content */,
+				A08B17C32628F773004426D0 /* Profile */,
 				A023980425EC1D0400F13F72 /* Settings */,
 				A072FC5525ED334100D59382 /* Testing */,
 			);
@@ -754,6 +770,19 @@
 			path = Testing;
 			sourceTree = "<group>";
 		};
+		A08B17C32628F773004426D0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A06F56AA2628C98E00576EDA /* ProfilePanViewController.swift */,
+				A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */,
+				A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */,
+				A0FD5C3A2627C73A00AF2A07 /* MyProfileHeaderViewController.swift */,
+				A0FD5C3C2627C77E00AF2A07 /* CreationCollectionViewController.swift */,
+				A06F56A82628C8B700576EDA /* ProfileProtocols.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		A0911DA6260C3E3400D05642 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,9 +791,6 @@
 				A0579EDA260E4066009D512F /* SearchMusicView.swift */,
 				A06E9A25260E9ED900B85CE9 /* CreationCommentsView.swift */,
 				A0137173261116C300AE4BA6 /* SearchUsersSendView.swift */,
-				A0D37B642612D79F00261567 /* CreationTableView.swift */,
-				A0FD5C3A2627C73A00AF2A07 /* MyProfileHeaderViewController.swift */,
-				A0FD5C3C2627C77E00AF2A07 /* CreationCollectionViewController.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1161,6 +1187,7 @@
 				A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */,
 				A00DD4182603D43C00E6C818 /* ResultType.swift in Sources */,
 				A0D95BBF26081B6D00DA5A07 /* LocalListMethods.swift in Sources */,
+				A06F56AF2628CACE00576EDA /* UIViewController.swift in Sources */,
 				A0FD5C362627C26300AF2A07 /* ViewControllers.swift in Sources */,
 				A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */,
 				A06B63BB25E9554D00AE746D /* User.swift in Sources */,
@@ -1191,6 +1218,7 @@
 				A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */,
 				A05775E92624931800DDE78E /* VideoModel.swift in Sources */,
 				A03A968B2603EFA100274793 /* ProfileAccessibility.swift in Sources */,
+				A06F56AB2628C98E00576EDA /* ProfilePanViewController.swift in Sources */,
 				A06E9A26260E9ED900B85CE9 /* CreationCommentsView.swift in Sources */,
 				A040AB4225F682C80064978A /* UploadMethods.swift in Sources */,
 				A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */,
@@ -1230,6 +1258,7 @@
 				A063EA9A260674E700B3C2ED /* Date.swift in Sources */,
 				A0D95BBB26081B4B00DA5A07 /* LocalUploadMethods.swift in Sources */,
 				A06B63E125E9646900AE746D /* ExploreViewController.swift in Sources */,
+				A06F56AD2628CA5E00576EDA /* UIScrollView.swift in Sources */,
 				A0579EDB260E4066009D512F /* SearchMusicView.swift in Sources */,
 				A03870AB25E9447C003989CE /* CustomTabBarController.swift in Sources */,
 				A006C01D260002AE003613C0 /* Providers.swift in Sources */,
@@ -1239,6 +1268,7 @@
 				A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */,
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
 				A040AB1025F676ED0064978A /* CreateAvatarViewController.swift in Sources */,
+				A06F56B52628D9C500576EDA /* XLPagerTabStripViewController.swift in Sources */,
 				A071B4C726240A790057BE35 /* Testing.swift in Sources */,
 				A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */,
 				A0911DAC260C3FF700D05642 /* searchUserCell.swift in Sources */,
@@ -1256,10 +1286,12 @@
 				A023980E25EC27E900F13F72 /* Variables.swift in Sources */,
 				A02397D425EB291B00F13F72 /* CustomScrollView.swift in Sources */,
 				A06B640C25E97CA000AE746D /* CustomImageViews.swift in Sources */,
+				A06F56B12628D13B00576EDA /* ProfileScrollViewController.swift in Sources */,
 				A03870C225E94508003989CE /* UIImage.swift in Sources */,
 				A03FAC8025EEDC71000BFC02 /* ProfileHeaderData.swift in Sources */,
 				A000691B261D61120020F307 /* MessageTypes.swift in Sources */,
 				A0EAE5B9260D6DB400F40EEC /* GooglePlaces.swift in Sources */,
+				A06F56A92628C8B700576EDA /* ProfileProtocols.swift in Sources */,
 				A06B642125E9A18E00AE746D /* UIButton.swift in Sources */,
 				A006462825EB17F900A3E1F3 /* Config.swift in Sources */,
 				A03A968F26040D7400274793 /* Buzz.swift in Sources */,

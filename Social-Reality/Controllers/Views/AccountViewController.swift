@@ -247,7 +247,10 @@ extension AccountViewController {
         let headerItem = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         let headerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(300)), subitems: [headerItem])
         
-        return NSCollectionLayoutSection(group: headerGroup)
+        let section = NSCollectionLayoutSection(group: headerGroup)
+        
+        
+        return section
         
     }
     
@@ -268,10 +271,21 @@ extension AccountViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(5/12))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(5/12))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
         
-        let section = NSCollectionLayoutSection(group: group)
+        let coverGroupSize1 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+        let coverGroup1 = NSCollectionLayoutGroup.vertical(layoutSize: coverGroupSize1, subitems: [group])
+        
+        let group2 = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        let coverGroupSize2 = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+        let coverGroup2 = NSCollectionLayoutGroup.vertical(layoutSize: coverGroupSize2, subitems: [group2])
+        
+        let coverGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(2.0), heightDimension: .fractionalWidth(1))
+        let coverGroup = NSCollectionLayoutGroup.horizontal(layoutSize: coverGroupSize, subitems: [coverGroup1, coverGroup2])
+        
+        let section = NSCollectionLayoutSection(group: coverGroup)
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
         
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
@@ -279,6 +293,7 @@ extension AccountViewController {
         header.pinToVisibleBounds = true
         
         section.boundarySupplementaryItems = [header]
+        section.orthogonalScrollingBehavior = .groupPaging
         
         return section
         

@@ -19,6 +19,12 @@ class MyProfileHeaderViewController: UIViewController {
     var userID: String?
     var user: UserModel?
     
+    var titleInitialCenterY: CGFloat!
+    var covernitialCenterY: CGFloat!
+    var covernitialHeight: CGFloat!
+    var lastProgress: CGFloat = .zero
+    var lastMinHeaderHeight: CGFloat = .zero
+    
     struct FollowData {
         static var followers = 0
         static var following = 0
@@ -33,6 +39,8 @@ class MyProfileHeaderViewController: UIViewController {
     }
     
     func getUser() {
+        
+        print("getting the user")
         
         guard let userID = userID else { return }
         
@@ -54,6 +62,19 @@ class MyProfileHeaderViewController: UIViewController {
         numberOfLikesLabel.text = String(FollowData.likes)
         
     }
+    
+    func update(with progress: CGFloat, minHeaderHeight: CGFloat){
+            lastProgress = progress
+            lastMinHeaderHeight = minHeaderHeight
+            
+            let y = progress * (view.frame.height - minHeaderHeight)
+            
+            guard covernitialHeight != nil else {
+                return
+            }
+            
+            
+        }
     
 
 }
