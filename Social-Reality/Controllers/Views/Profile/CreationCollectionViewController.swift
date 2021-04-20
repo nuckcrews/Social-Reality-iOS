@@ -29,14 +29,6 @@ class CreationCollectionViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-//        setLayout()
-//        collectionView.reloadData()
-        
-    }
-    
     func setLayout() {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.minimumInteritemSpacing = 0
@@ -48,9 +40,7 @@ class CreationCollectionViewController: UIViewController {
     }
     
     func setupView() {
-        
-        print("index", pageIndex)
-        
+
         setLayout()
         
         for i in Testing.defaultCreations {
@@ -89,7 +79,6 @@ extension CreationCollectionViewController: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
-//            cell.configureCell(creation: creations[indexPath.row], imageFrame: ((view.frame.width / 3) - 2, (view.frame.width * 5 / 12) - 2))
             cell.configureCell(creation: creations[indexPath.row])
             return cell
         } else {

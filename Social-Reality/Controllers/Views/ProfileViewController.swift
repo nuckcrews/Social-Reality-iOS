@@ -38,4 +38,30 @@ class ProfileViewController: UIViewController {
         
     }
     
+    func toSettings() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
+        }
+    }
+    
+    func toContentDetail() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toCreationDetailFromAccount.rawValue, sender: nil)
+        }
+    }
+    
+    func toContentCollection() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toCreationCollectionFromAccount.rawValue, sender: nil)
+        }
+    }
+    
+    @IBAction func tapSettings(_ sender: UIButton) {
+        
+        sender.jump()
+        toSettings()
+        
+    }
+    
+    
 }

@@ -76,5 +76,19 @@ class MyProfileHeaderViewController: UIViewController {
             
         }
     
+    
+    func toEditProfile() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
+        }
+    }
+    
+    @IBAction func tapEditProfile(_ sender: UIButton) {
+        
+        sender.jump()
+        toEditProfile()
+        
+    }
+    
 
 }

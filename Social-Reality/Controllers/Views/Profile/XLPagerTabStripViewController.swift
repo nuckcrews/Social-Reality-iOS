@@ -18,7 +18,7 @@ class XLPagerTabStripViewController: ButtonBarPagerTabStripViewController, Pager
     }
     
     var pagerTabHeight: CGFloat?{
-        return 54
+        return 60
     }
 
     //MARK: Properties
@@ -54,10 +54,10 @@ class XLPagerTabStripViewController: ButtonBarPagerTabStripViewController, Pager
         vc.segmentImage = UIImage(systemName: "square.grid.3x3.fill")
         let child_1 = vc
         
-        let vc1 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewControllers.CreationCollection.rawValue) as! CreationCollectionViewController
+        let vc1 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewControllers.ProfileMap.rawValue) as! ProfileMapViewController
         vc1.pageIndex = 1
         vc1.pageTitle = "Locs"
-        vc1.segmentImage = UIImage(systemName: "mappin.circle.fill")
+        vc1.segmentImage = UIImage(named: Images.pinDrop.rawValue)
         let child_2 = vc1
         
         let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewControllers.CreationCollection.rawValue) as! CreationCollectionViewController

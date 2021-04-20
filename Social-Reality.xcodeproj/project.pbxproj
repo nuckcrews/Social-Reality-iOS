@@ -130,6 +130,7 @@
 		A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAD260AF6FE0023CABA /* RecordButton.swift */; };
 		A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE0E825EA2FED0007438B /* settingsCell.swift */; };
 		A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB58EE260042C900523005 /* CLLocationManager.swift */; };
+		A0BEDC7A262F2E1C003312E3 /* messageCreationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BEDC79262F2E1C003312E3 /* messageCreationCell.swift */; };
 		A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2FBAE26025C8D005D773A /* CustomBox.swift */; };
 		A0C2FBB2260268B4005D773A /* PencilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2FBB1260268B4005D773A /* PencilView.swift */; };
 		A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */; };
@@ -137,6 +138,7 @@
 		A0D37B652612D79F00261567 /* CreationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B642612D79F00261567 /* CreationTableView.swift */; };
 		A0D37B672612D94A00261567 /* creationVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B662612D94A00261567 /* creationVideoCell.swift */; };
 		A0D37B692612E33800261567 /* CreationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B682612E33800261567 /* CreationTableViewController.swift */; };
+		A0D87F92262A79820050540A /* ProfileMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D87F91262A79820050540A /* ProfileMapViewController.swift */; };
 		A0D95BB52607BAFE00DA5A07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0D95BB42607BAFE00DA5A07 /* GoogleService-Info.plist */; };
 		A0D95BB926081B2E00DA5A07 /* LocalDownloadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BB826081B2E00DA5A07 /* LocalDownloadMethods.swift */; };
 		A0D95BBB26081B4B00DA5A07 /* LocalUploadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D95BBA26081B4B00DA5A07 /* LocalUploadMethods.swift */; };
@@ -309,6 +311,7 @@
 		A09A2AAD260AF6FE0023CABA /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		A09DE0E825EA2FED0007438B /* settingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCell.swift; sourceTree = "<group>"; };
 		A0BB58EE260042C900523005 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
+		A0BEDC79262F2E1C003312E3 /* messageCreationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageCreationCell.swift; sourceTree = "<group>"; };
 		A0C2FBAE26025C8D005D773A /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
 		A0C2FBB1260268B4005D773A /* PencilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilView.swift; sourceTree = "<group>"; };
 		A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +319,7 @@
 		A0D37B642612D79F00261567 /* CreationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationTableView.swift; sourceTree = "<group>"; };
 		A0D37B662612D94A00261567 /* creationVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = creationVideoCell.swift; sourceTree = "<group>"; };
 		A0D37B682612E33800261567 /* CreationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationTableViewController.swift; sourceTree = "<group>"; };
+		A0D87F91262A79820050540A /* ProfileMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMapViewController.swift; sourceTree = "<group>"; };
 		A0D95BB42607BAFE00DA5A07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Social Distance/Social Distance/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0D95BB826081B2E00DA5A07 /* LocalDownloadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDownloadMethods.swift; sourceTree = "<group>"; };
 		A0D95BBA26081B4B00DA5A07 /* LocalUploadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUploadMethods.swift; sourceTree = "<group>"; };
@@ -466,6 +470,7 @@
 				A0579EDC260E41A4009D512F /* searchMusicCell.swift */,
 				A06E9A27260EA21E00B85CE9 /* commentCell.swift */,
 				A0006916261D5F500020F307 /* messageCell.swift */,
+				A0BEDC79262F2E1C003312E3 /* messageCreationCell.swift */,
 				A0D37B662612D94A00261567 /* creationVideoCell.swift */,
 			);
 			path = Table;
@@ -676,7 +681,6 @@
 		A03870CC25E94575003989CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A0006913261D57B50020F307 /* Messaging */,
 				A0911DA6260C3E3400D05642 /* Utility */,
 				A0CBAFCC26017D05001953C8 /* Creation */,
 				A023980325EC1CF200F13F72 /* Covers */,
@@ -684,6 +688,7 @@
 				A023980225EC1CDB00F13F72 /* Tabs */,
 				A00DD40E2603961C00E6C818 /* Content */,
 				A08B17C32628F773004426D0 /* Profile */,
+				A0006913261D57B50020F307 /* Messaging */,
 				A023980425EC1D0400F13F72 /* Settings */,
 				A072FC5525ED334100D59382 /* Testing */,
 			);
@@ -778,6 +783,7 @@
 				A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */,
 				A0FD5C3A2627C73A00AF2A07 /* MyProfileHeaderViewController.swift */,
 				A0FD5C3C2627C77E00AF2A07 /* CreationCollectionViewController.swift */,
+				A0D87F91262A79820050540A /* ProfileMapViewController.swift */,
 				A06F56A82628C8B700576EDA /* ProfileProtocols.swift */,
 			);
 			path = Profile;
@@ -1173,6 +1179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D87F92262A79820050540A /* ProfileMapViewController.swift in Sources */,
 				A03FAC7D25EEC4FE000BFC02 /* ProfileCreationsHeaderView.swift in Sources */,
 				A0006917261D5F500020F307 /* messageCell.swift in Sources */,
 				A0006915261D57E50020F307 /* MessageViewController.swift in Sources */,
@@ -1218,6 +1225,7 @@
 				A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */,
 				A05775E92624931800DDE78E /* VideoModel.swift in Sources */,
 				A03A968B2603EFA100274793 /* ProfileAccessibility.swift in Sources */,
+				A0BEDC7A262F2E1C003312E3 /* messageCreationCell.swift in Sources */,
 				A06F56AB2628C98E00576EDA /* ProfilePanViewController.swift in Sources */,
 				A06E9A26260E9ED900B85CE9 /* CreationCommentsView.swift in Sources */,
 				A040AB4225F682C80064978A /* UploadMethods.swift in Sources */,

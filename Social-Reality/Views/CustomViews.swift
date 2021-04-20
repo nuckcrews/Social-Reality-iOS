@@ -362,3 +362,28 @@ class CircleView: UIView {
     }
     
 }
+
+class BlackFadeTop: UIView {
+    
+    @IBInspectable var cornerRadius: CGFloat = 0
+
+    private lazy var gradientLayer: CAGradientLayer = {
+        let l = CAGradientLayer()
+        l.startPoint = CGPoint(x: 0.5, y: 0)
+        l.endPoint = CGPoint(x: 0.5, y: 1)
+        let baseColor = UIColor.black
+        l.colors = [
+            baseColor.withAlphaComponent(1),
+            baseColor.withAlphaComponent(0),
+        ].map{$0.cgColor}
+        layer.addSublayer(l)
+        return l
+    }()
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = cornerRadius
+        layer.addSublayer(gradientLayer)
+    }
+    
+}

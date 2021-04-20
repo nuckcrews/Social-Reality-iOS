@@ -258,11 +258,22 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.messageCell.rawValue, for: indexPath) as? messageCell {
-            cell.configureCell(message: messages[indexPath.row])
-            return cell
-        } else {
-            return messageCell()
+        switch messages[indexPath.row].type {
+        case .creation:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.messageCreationCell.rawValue, for: indexPath) as? messageCreationCell {
+                cell.configureCell(message: messages[indexPath.row])
+                return cell
+            } else {
+                return messageCreationCell()
+            }
+        default:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.messageCell.rawValue, for: indexPath) as? messageCell {
+                cell.configureCell(message: messages[indexPath.row])
+                return cell
+            } else {
+                return messageCell()
+            }
         }
+        
     }
 }

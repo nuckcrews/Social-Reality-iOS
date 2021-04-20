@@ -17,3 +17,16 @@ class CircleImageView: UIImageView {
         self.contentMode = .scaleAspectFill
     }
 }
+
+class CorneredImageView: UIImageView {
+    
+    @IBInspectable var cornerRadius: CGFloat = 0
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        layer.cornerRadius = cornerRadius
+        
+    }
+    
+}

@@ -25,6 +25,14 @@ class messageCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        rightMessageView.alpha = 0
+        leftMessageView.alpha = 0
+        
+    }
+    
     func configureCell(message: MessageModel) {
         
         if message.senderID == Auth0.uid {
