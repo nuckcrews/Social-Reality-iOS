@@ -96,6 +96,77 @@ class SearchUsersSendView: UIView {
     
     func sendCreation() {
         
+        guard let uid = Auth0.uid, selectedUsers.count > 0 else { return }
+        
+        var ids = [String]()
+        
+        var message = MessageModel(id: UUID().uuidString, conversationID: uid, senderID: uid, recipientID: "", content: "", date: Date().rawDateString, type: .creation, creationID: creation?.id, creationImage: creation?.thumbnail, creationUserName: creation?.userName, creationUserImage: creation?.userImage, creationCaption: creation?.description)
+        
+        var followMessage: MessageModel?
+        
+        if textField.text?.count ?? 0 > 0 {
+            followMessage = MessageModel(id: UUID().uuidString, conversationID: uid, senderID: uid, recipientID: "", content: textField.text ?? "", date: Date(timeIntervalSinceNow: 1).rawDateString, type: .message)
+        }
+        
+        for user in selectedUsers {
+            let id = [uid, user.id]
+            let joined = id.sorted().joined()
+            ids.append(joined)
+            message.conversationID = joined
+            message.recipientID = user.id
+            if followMessage != nil {
+                followMessage?.conversationID = joined
+                followMessage?.recipientID = user.id
+            }
+            
+            checkForConversation(ids: id, message: message, followMessage: followMessage)
+        }
+        
+    }
+    
+    func checkForConversation(ids: [String], message: MessageModel, followMessage: MessageModel? = nil) {
+        
+        Query.get.conversation(id: message.conversationID) { [weak self] model in
+            if model != nil {
+                Query.write.message(message) { [weak self] result in
+                    print(result)
+                    if let followMessage = followMessage {
+                        Query.write.message(followMessage) { [weak self] res in
+                            self?.textField.text = ""
+                            self?.sendButton.backgroundColor = .grayText
+                            self?.delegate?.dismissSearchUserSendView()
+                        }
+                    } else {
+                        self?.textField.text = ""
+                        self?.sendButton.backgroundColor = .grayText
+                        self?.delegate?.dismissSearchUserSendView()
+                    }
+                }
+            } else {
+                let conversation = ConversationModel(id: message.conversationID,
+                                                     userIDs: ids,
+                                                     lastMessage: message.content,
+                                                     lastMessageDate: Date().rawDateString,
+                                                     image: "")
+                Query.write.conversation(conversation) { [weak self] res in
+                    Query.write.message(message) { [weak self] result in
+                        print(result)
+                        if let followMessage = followMessage {
+                            Query.write.message(followMessage) { [weak self] res in
+                                self?.textField.text = ""
+                                self?.sendButton.backgroundColor = .grayText
+                                self?.delegate?.dismissSearchUserSendView()
+                            }
+                        } else {
+                            self?.textField.text = ""
+                            self?.sendButton.backgroundColor = .grayText
+                            self?.delegate?.dismissSearchUserSendView()
+                        }
+                    }
+                }
+            }
+        }
+        
     }
     
     @IBAction func tapSend(_ sender: UIButton) {

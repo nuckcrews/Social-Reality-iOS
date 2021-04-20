@@ -11,5 +11,9 @@ enum ViewControllers: String {
     
     case MyProfileHeader
     case CreationCollection
+    case BottomPageViewController
+    case XLPagerTabStripViewController
+    case ProfileScrollViewController
+    case ProfileMap
     
 }

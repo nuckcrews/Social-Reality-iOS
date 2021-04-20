@@ -17,4 +17,10 @@ struct MessageModel: Codable {
     var date: String
     var type: MessageTypes
     
+    var creationID: String?
+    var creationImage: String?
+    var creationUserName: String?
+    var creationUserImage: String?
+    var creationCaption: String?
+    
 }

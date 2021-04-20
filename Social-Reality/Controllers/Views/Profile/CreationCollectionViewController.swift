@@ -6,18 +6,22 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 class CreationCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var creations = [CreationModel]()
+    var creations = [CreationThumbNailView]()
     
     var selectedIndex = 0
+    var pageIndex: Int = 0
+    var pageTitle: String?
+    var segmentImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -25,23 +29,27 @@ class CreationCollectionViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-//        setupView()
-        
+    func setLayout() {
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .vertical
+        layout.estimatedItemSize = .zero
+        layout.itemSize = CGSize(width: view.frame.width / 3, height: view.frame.width * 5 / 12)
+        collectionView.collectionViewLayout = layout
     }
     
     func setupView() {
+
+        setLayout()
         
-        for i in 0..<48 {
-            creations.append(Testing.defaultCreations[i % 5])
+        for i in Testing.defaultCreations {
+            creations.append(CreationThumbNailView(model: i))
         }
         
-//        creations = Testing.defaultCreations
         
         collectionView.reloadData()
-           
+        
     }
     
     func toContentCollection() {
@@ -55,8 +63,8 @@ class CreationCollectionViewController: UIViewController {
             dest.startIndex = selectedIndex
         }
     }
-
-
+    
+    
 }
 
 extension CreationCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -71,7 +79,7 @@ extension CreationCollectionViewController: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
-//            cell.configureCell(creation: creations[indexPath.row])
+            cell.configureCell(creation: creations[indexPath.row])
             return cell
         } else {
             return creationViewCell()
@@ -82,26 +90,12 @@ extension CreationCollectionViewController: UICollectionViewDelegate, UICollecti
         selectedIndex = indexPath.row
         toContentCollection()
     }
-
+    
 }
 
-extension CreationCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
-        func collectionView(_ collectionView: UICollectionView,
-                            layout collectionViewLayout: UICollectionViewLayout,
-                            sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: view.frame.width / 3, height: 120)
-        }
 
-        func collectionView(_ collectionView: UICollectionView,
-                            layout collectionViewLayout: UICollectionViewLayout,
-                            minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            return 0.0
-        }
-
-        func collectionView(_ collectionView: UICollectionView, layout
-            collectionViewLayout: UICollectionViewLayout,
-                            minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 0.0
-        }
+extension CreationCollectionViewController: IndicatorInfoProvider{
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(image: segmentImage?.withTintColor(.grayText), highlightedImage: segmentImage?.withTintColor(.mainText), userInfo: nil)
     }
+}

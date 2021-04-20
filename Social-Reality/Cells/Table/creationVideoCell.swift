@@ -63,7 +63,7 @@ class creationVideoCell: UITableViewCell {
         creationAVPlayerView.frame = bounds
         
         
-        creationAVPlayerView.setupVideo(url: creation?.videoURL)
+        creationAVPlayerView.setupVideo(url: creation?.videoURL, starterURL: creation?.thumbnail)
         
         
         

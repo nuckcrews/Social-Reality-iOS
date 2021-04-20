@@ -33,5 +33,6 @@ enum Cells: String {
     case searchMusicCell
     case commentCell
     case messageCell
+    case messageCreationCell
     
 }
