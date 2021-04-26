@@ -123,7 +123,7 @@ class CreateViewController: UIViewController {
     
     func changeShape() {
         
-        self.changingShape = true
+        changingShape = true
         bottomContentConstraint.constant = bottomConstraintTop
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.blackView.alpha = 1
@@ -134,10 +134,10 @@ class CreateViewController: UIViewController {
     }
     
     func closeChange() {
-        self.changingShape = false
+        changingShape = false
         bottomContentConstraint.constant = bottomConstraintDefault
-        self.resignFirstResponder()
-        self.view.endEditing(true)
+        resignFirstResponder()
+        view.endEditing(true)
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut) {
             self.blackView.alpha = 0
             self.view.layoutIfNeeded()
