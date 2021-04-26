@@ -124,7 +124,6 @@
 		A071B4C726240A790057BE35 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071B4C626240A790057BE35 /* Testing.swift */; };
 		A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5625ED335E00D59382 /* TestViewController.swift */; };
 		A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */; };
-		A0808313263662BF0071608F /* ARObjectSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0808312263662BF0071608F /* ARObjectSelectorView.swift */; };
 		A0911DA9260C3E6E00D05642 /* SearchUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */; };
 		A0911DAC260C3FF700D05642 /* searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0911DAB260C3FF700D05642 /* searchUserCell.swift */; };
 		A09A2AAB260AF3730023CABA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAA260AF3730023CABA /* Device.swift */; };
@@ -306,7 +305,6 @@
 		A071B4C626240A790057BE35 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		A072FC5625ED335E00D59382 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
-		A0808312263662BF0071608F /* ARObjectSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectSelectorView.swift; sourceTree = "<group>"; };
 		A0911DA7260C3E6E00D05642 /* SearchUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersView.swift; sourceTree = "<group>"; };
 		A0911DAB260C3FF700D05642 /* searchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserCell.swift; sourceTree = "<group>"; };
 		A09A2AAA260AF3730023CABA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -843,7 +841,6 @@
 			isa = PBXGroup;
 			children = (
 				A038702E25E93D9D003989CE /* CreateViewController.swift */,
-				A0808312263662BF0071608F /* ARObjectSelectorView.swift */,
 			);
 			path = Creation;
 			sourceTree = "<group>";
@@ -1286,7 +1283,6 @@
 				A023980625EC242600F13F72 /* CustomShadows.swift in Sources */,
 				A00DD4102603964B00E6C818 /* CreationDetailViewController.swift in Sources */,
 				A06B633525E9512400AE746D /* Query.swift in Sources */,
-				A0808313263662BF0071608F /* ARObjectSelectorView.swift in Sources */,
 				A0579EDD260E41A4009D512F /* searchMusicCell.swift in Sources */,
 				A03FAC8625EEDD09000BFC02 /* CreationThumbNailView.swift in Sources */,
 				A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */,
