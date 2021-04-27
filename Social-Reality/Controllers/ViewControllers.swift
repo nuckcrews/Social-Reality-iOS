@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - View Controller Identifiers
+
 enum ViewControllers: String {
     
     case MyProfileHeader

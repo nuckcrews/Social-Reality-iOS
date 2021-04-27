@@ -7,7 +7,11 @@
 
 import UIKit
 
+// MARK: - Creation Comments Utility View
+
 class CreationCommentsView: UIView {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField!
@@ -15,6 +19,8 @@ class CreationCommentsView: UIView {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Variables
     
     private var defaultBottomConstraint: CGFloat = 44
     private var setup = false
@@ -24,10 +30,10 @@ class CreationCommentsView: UIView {
     
     weak var delegate: CreationCommentDelegate?
     
+    // MARK: - View Lifecycle
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        
         
         if !setup {
             setupView()
@@ -55,25 +61,13 @@ class CreationCommentsView: UIView {
         tableView.reloadData()
     }
     
-    func getComments() {
+    func presented() {
         
-        guard let creation = creation else {
-            defaultComments()
-            return
-        }
-        
-        Query.get.commentsWithPredicate(field: "creationID", value: creation.id) { models in
-            guard let models = models else { return }
-            
-            self.comments = models
-            
-            self.comments.sort { $0.date?.rawDate ?? Date() < $1.date?.rawDate ?? Date() }
-            
-            self.tableView.reloadData()
-            self.stopLoading()
-        }
+        getComments()
         
     }
+    
+    // MARK: - View Setup
     
     func setupView() {
         
@@ -96,6 +90,28 @@ class CreationCommentsView: UIView {
         
     }
     
+    // MARK: - Comment Fetching
+    
+    func getComments() {
+        
+        guard let creation = creation else {
+            defaultComments()
+            return
+        }
+        
+        Query.get.commentsWithPredicate(field: "creationID", value: creation.id) { models in
+            guard let models = models else { return }
+            
+            self.comments = models
+            
+            self.comments.sort { $0.date?.rawDate ?? Date() < $1.date?.rawDate ?? Date() }
+            
+            self.tableView.reloadData()
+            self.stopLoading()
+        }
+        
+    }
+    
     func startLoading() {
         tableView.alpha = 0
         bringSubviewToFront(activityIndicator)
@@ -110,10 +126,7 @@ class CreationCommentsView: UIView {
         
     }
     
-    func presented() {
-        
-        getComments()
-    }
+    // MARK: - Keyboard Observers
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -125,12 +138,13 @@ class CreationCommentsView: UIView {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        print("keyboard hiding", bottomConstraint.constant)
         bottomConstraint.constant = defaultBottomConstraint
         UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()
         }
     }
+    
+    // MARK: - Comment Posting
     
     func postComment() {
         guard let creation = creation, let uid = Auth0.uid else {
@@ -162,6 +176,8 @@ class CreationCommentsView: UIView {
         
     }
     
+    // MARK: - Action Outlets
+    
     @IBAction func tapPost(_ sender: UIButton) {
         guard let text = textField.text, text.count > 0 else {
             return
@@ -181,6 +197,8 @@ class CreationCommentsView: UIView {
     
 }
 
+// MARK: - TextField Delegate
+
 extension CreationCommentsView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -190,6 +208,8 @@ extension CreationCommentsView: UITextFieldDelegate {
     
 }
 
+// MARK: - ScrollView Delegate
+
 extension CreationCommentsView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -198,6 +218,8 @@ extension CreationCommentsView: UIScrollViewDelegate {
     }
     
 }
+
+// MARK: - TableView Delegate
 
 extension CreationCommentsView: UITableViewDelegate, UITableViewDataSource {
     

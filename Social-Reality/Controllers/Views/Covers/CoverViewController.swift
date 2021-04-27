@@ -9,7 +9,11 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+// MARK: - Cover View Controller
+
 class CoverViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var coverView: UIView!
     
@@ -21,6 +25,8 @@ class CoverViewController: UIViewController {
     @IBOutlet weak var searchUsersView: SearchUsersSendView!
     @IBOutlet weak var bottomSearchUsersConstraint: NSLayoutConstraint!
     
+    // MARK: - Variables
+    
     var blackView = UIView()
     
     private var opened = false
@@ -31,6 +37,8 @@ class CoverViewController: UIViewController {
     var user: User?
     
     var messageData: (String, String?) = ("", nil)
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +76,8 @@ class CoverViewController: UIViewController {
         
     }
     
+    // MARK: - View Setup
+    
     func setupView() {
         
         commentsView.delegate = self
@@ -82,10 +92,7 @@ class CoverViewController: UIViewController {
         
     }
     
-    @objc func dismissViews() {
-        hideComments()
-        hideSearchUsers()
-    }
+    // MARK: - User Fetching
     
     func getUser() {
         guard let uid = Auth0.uid else { return }
@@ -93,18 +100,6 @@ class CoverViewController: UIViewController {
         user?.subscribeModel(completion: { [weak self] _ in
             self?.commentsView.user = self?.user
         })
-    }
-    
-    func openCover() {
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
-            UIView.animate(withDuration: 0.4) {
-                self.coverView.alpha = 0
-            }
-        }
-    }
-    
-    func readyForReality() {
-        CoverToMainDelegate?.readyForSession()
     }
     
     func checkuserData() {
@@ -119,6 +114,29 @@ class CoverViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Utility View Presenters
+    
+    @objc func dismissViews() {
+        hideComments()
+        hideSearchUsers()
+    }
+    
+    // MARK: - Cover Opening
+    
+    func openCover() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { (_) in
+            UIView.animate(withDuration: 0.4) {
+                self.coverView.alpha = 0
+            }
+        }
+    }
+    
+    func readyForReality() {
+        CoverToMainDelegate?.readyForSession()
+    }
+    
+    // MARK: - Segues
     
     func toCreateUser() {
         DispatchQueue.main.async {
@@ -141,6 +159,8 @@ class CoverViewController: UIViewController {
     }
     
 }
+
+// MARK: - Creation Comment Delegate
 
 extension CoverViewController: CreationCommentDelegate {
     
@@ -173,6 +193,8 @@ extension CoverViewController: CreationCommentDelegate {
     }
     
 }
+
+// MARK: - Search User Send Delegate
 
 extension CoverViewController: SearchUserSendDelegate {
     
@@ -209,6 +231,8 @@ extension CoverViewController: SearchUserSendDelegate {
     }
     
 }
+
+// MARK: - Pan Gesture Action Outlets
 
 extension CoverViewController {
     
@@ -341,6 +365,8 @@ extension CoverViewController {
     }
     
 }
+
+// MARK: - Main to Cover Delegate
 
 extension CoverViewController: MainToCoverProtocolDelegate {
     

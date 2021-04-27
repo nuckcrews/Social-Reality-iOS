@@ -15,6 +15,8 @@ import Vision
 
 class CreateViewController: UIViewController {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var arView: ARViewCreation!
     
     @IBOutlet weak var backView: UIView!
@@ -57,6 +59,8 @@ class CreateViewController: UIViewController {
         }
     }
     
+    // MARK: - Variables
+    
     private var bottomConstraintDefault: CGFloat = 120
     private var bottomConstraintTop: CGFloat = 0
     
@@ -65,7 +69,9 @@ class CreateViewController: UIViewController {
     private var selectedColor: UIColor = .primary
     private var selectedUsers = [UserModel]()
     
-    var blackView = UIView()
+    private var blackView = UIView()
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +87,8 @@ class CreateViewController: UIViewController {
         arView.setupView()
         
     }
+    
+    // MARK: - View Setup
     
     func setupView() {
         
@@ -114,14 +122,16 @@ class CreateViewController: UIViewController {
         
     }
     
+    // MARK: - Utility View Presenters
+    
     @objc func dismissViews() {
         hideSearchMusic()
         hideSearchUser()
         hideSearchLocation()
-        closeChange()
+        hideObjectSelector()
     }
     
-    func changeShape() {
+    func presentObjectSelector() {
         
         changingShape = true
         bottomContentConstraint.constant = bottomConstraintTop
@@ -133,7 +143,7 @@ class CreateViewController: UIViewController {
         }
     }
     
-    func closeChange() {
+    func hideObjectSelector() {
         changingShape = false
         bottomContentConstraint.constant = bottomConstraintDefault
         resignFirstResponder()
@@ -249,15 +259,18 @@ class CreateViewController: UIViewController {
         }
     }
     
+    // MARK: - Action Outlets
     
     @IBAction func tapShapeIcon(_ sender: UIButton) {
         sender.jump()
-        changingShape ? closeChange() : changeShape()
+        changingShape ?
+            hideObjectSelector() :
+            presentObjectSelector()
     }
     
     @IBAction func tapShapeDone(_ sender: UIButton) {
         sender.jump()
-        closeChange()
+        hideObjectSelector()
     }
     
     @IBAction func holdRecord(_ gestureRecognizer: UILongPressGestureRecognizer) {
@@ -286,7 +299,6 @@ class CreateViewController: UIViewController {
         presentSearchMusic()
     }
     
-    
     @IBAction func tapRecord(_ sender: UIButton) {
         //        recordButtonView.animateCircle(duration: 10)
     }
@@ -295,8 +307,9 @@ class CreateViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
 }
+
+// MARK: - Search User Delegate
 
 extension CreateViewController: SearchUserDelegate {
     
@@ -308,6 +321,8 @@ extension CreateViewController: SearchUserDelegate {
     }
     
 }
+
+// MARK: - Search Location Delegate
 
 extension CreateViewController: SearchLocationDelegate {
     
@@ -321,6 +336,8 @@ extension CreateViewController: SearchLocationDelegate {
     
 }
 
+// MARK: - Search Music Delegate
+
 extension CreateViewController: SearchMusicDelegate {
     
     func selectMusic() {
@@ -332,6 +349,8 @@ extension CreateViewController: SearchMusicDelegate {
     }
     
 }
+
+// MARK: - UIColorPicker Delegate
 
 extension CreateViewController: UIColorPickerViewControllerDelegate {
     
@@ -346,6 +365,8 @@ extension CreateViewController: UIColorPickerViewControllerDelegate {
     }
     
 }
+
+// MARK: - Segmented Control Delegate
 
 extension CreateViewController: CustomSegmentedControlDelegate {
     
@@ -425,6 +446,8 @@ extension CreateViewController {
     }
     
 }
+
+// MARK: - Pan Gesture Action Outlets
 
 extension CreateViewController {
     
@@ -669,6 +692,8 @@ extension CreateViewController {
     }
     
 }
+
+// MARK: - ScrollView Delegegate
 
 extension CreateViewController: UIScrollViewDelegate {
     

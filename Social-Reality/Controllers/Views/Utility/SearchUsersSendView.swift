@@ -7,7 +7,11 @@
 
 import UIKit
 
+// MARK: - Search Users Send Utility View
+
 class SearchUsersSendView: UIView {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -15,6 +19,8 @@ class SearchUsersSendView: UIView {
     @IBOutlet weak var sendButton: UIButton!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Variables
     
     var selectedUsers = [UserModel]()
     var users = [UserModel]()
@@ -29,6 +35,8 @@ class SearchUsersSendView: UIView {
     
     weak var delegate: SearchUserSendDelegate?
     
+    // MARK: - View Lifecycle
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -39,6 +47,12 @@ class SearchUsersSendView: UIView {
         }
         
     }
+    
+    func presented() {
+        searchBar.becomeFirstResponder()
+    }
+    
+    // MARK: - View Setup
     
     func setupView() {
         
@@ -58,6 +72,8 @@ class SearchUsersSendView: UIView {
         
     }
     
+    // MARK: - Keyboard Observers
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             bottomConstraint.constant = keyboardSize.height
@@ -74,6 +90,8 @@ class SearchUsersSendView: UIView {
         }
     }
     
+    // MARK: - User Fetching
+    
     func getUsers() {
         Query.get.users { res in
             guard let res = res else { return }
@@ -83,16 +101,14 @@ class SearchUsersSendView: UIView {
         }
     }
     
-    func presented() {
-        searchBar.becomeFirstResponder()
-    }
-    
     func isSelected(model: UserModel) -> Bool {
         let res = selectedUsers.filter { mod in
             return mod.id == model.id
         }
         return res.count > 0
     }
+    
+    // MARK: - Creation Sending
     
     func sendCreation() {
         
@@ -124,24 +140,13 @@ class SearchUsersSendView: UIView {
         
     }
     
+    // MARK: - Existing Conversation Check
+    
     func checkForConversation(ids: [String], message: MessageModel, followMessage: MessageModel? = nil) {
         
         Query.get.conversation(id: message.conversationID) { [weak self] model in
             if model != nil {
-                Query.write.message(message) { [weak self] result in
-                    print(result)
-                    if let followMessage = followMessage {
-                        Query.write.message(followMessage) { [weak self] res in
-                            self?.textField.text = ""
-                            self?.sendButton.backgroundColor = .grayText
-                            self?.delegate?.dismissSearchUserSendView()
-                        }
-                    } else {
-                        self?.textField.text = ""
-                        self?.sendButton.backgroundColor = .grayText
-                        self?.delegate?.dismissSearchUserSendView()
-                    }
-                }
+                self?.writeMessage(message, follow: followMessage)
             } else {
                 let conversation = ConversationModel(id: message.conversationID,
                                                      userIDs: ids,
@@ -149,25 +154,34 @@ class SearchUsersSendView: UIView {
                                                      lastMessageDate: Date().rawDateString,
                                                      image: "")
                 Query.write.conversation(conversation) { [weak self] res in
-                    Query.write.message(message) { [weak self] result in
-                        print(result)
-                        if let followMessage = followMessage {
-                            Query.write.message(followMessage) { [weak self] res in
-                                self?.textField.text = ""
-                                self?.sendButton.backgroundColor = .grayText
-                                self?.delegate?.dismissSearchUserSendView()
-                            }
-                        } else {
-                            self?.textField.text = ""
-                            self?.sendButton.backgroundColor = .grayText
-                            self?.delegate?.dismissSearchUserSendView()
-                        }
-                    }
+                    self?.writeMessage(message, follow: followMessage)
                 }
             }
         }
-        
+    
     }
+    
+    // MARK: - Write Message
+    
+    func writeMessage(_ message: MessageModel, follow: MessageModel?) {
+        Query.write.message(message) { [weak self] result in
+            print(result)
+            if let followMessage = follow {
+                Query.write.message(followMessage) { [weak self] res in
+                    self?.textField.text = ""
+                    self?.sendButton.backgroundColor = .grayText
+                    self?.delegate?.dismissSearchUserSendView()
+                }
+            } else {
+                self?.textField.text = ""
+                self?.sendButton.backgroundColor = .grayText
+                self?.delegate?.dismissSearchUserSendView()
+            }
+        }
+
+    }
+
+    // MARK: - Action Outlets
     
     @IBAction func tapSend(_ sender: UIButton) {
         guard let _ = textField.text else {
@@ -181,6 +195,8 @@ class SearchUsersSendView: UIView {
     }
     
 }
+
+// MARK: - Search Bar Delegate
 
 extension SearchUsersSendView: UISearchBarDelegate {
     
@@ -213,6 +229,8 @@ extension SearchUsersSendView: UISearchBarDelegate {
     
 }
 
+// MARK: - ScrollView Delegate
+
 extension SearchUsersSendView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -222,6 +240,8 @@ extension SearchUsersSendView: UIScrollViewDelegate {
     
 }
 
+// MARK: - TextField Delegate
+
 extension SearchUsersSendView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -230,6 +250,8 @@ extension SearchUsersSendView: UITextFieldDelegate {
     }
     
 }
+
+// MARK: - TableView Delegate
 
 extension SearchUsersSendView: UITableViewDelegate, UITableViewDataSource {
     

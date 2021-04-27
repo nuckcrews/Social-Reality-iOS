@@ -9,12 +9,18 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
+// MARK: - Search Location Utility View
+
 class SearchLocationView: UIView {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var doneButtonBottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Variables
     
     var locations = [SearchLocation]()
     var locationsFiltered = [SearchLocation]()
@@ -30,6 +36,8 @@ class SearchLocationView: UIView {
     
     weak var delegate: SearchLocationDelegate?
     
+    // MARK: - View LifeCycle
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -41,17 +49,11 @@ class SearchLocationView: UIView {
         
     }
     
-    func getNearbyLocations() {
-        
-        guard let _ = locationManager.location else { return }
-        
-        Places().nearbyLocations { locs in
-            guard let locs = locs else { return }
-            self.locations = locs
-            self.tableView.reloadData()
-        }
-        
+    func presented() {
+        searchBar.becomeFirstResponder()
     }
+    
+    // MARK: - View Setup
     
     func setupView() {
         
@@ -70,6 +72,26 @@ class SearchLocationView: UIView {
         
     }
     
+    // MARK: - Location Fetching
+    
+    func getNearbyLocations() {
+        
+        guard let _ = locationManager.location else { return }
+        
+        Places().nearbyLocations { locs in
+            guard let locs = locs else { return }
+            self.locations = locs
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+    func isSelected(model: SearchLocation) -> Bool {
+        return model.id == selectedLocation?.id
+    }
+    
+    // MARK: - Keyboard Observers
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             doneButtonBottomConstraint.constant = keyboardSize.height + 8
@@ -80,20 +102,13 @@ class SearchLocationView: UIView {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        print("keyboard hiding", doneButtonBottomConstraint.constant)
         doneButtonBottomConstraint.constant = defaultBottomConstraint
         UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()
         }
     }
     
-    func presented() {
-        searchBar.becomeFirstResponder()
-    }
-    
-    func isSelected(model: SearchLocation) -> Bool {
-        return model.id == selectedLocation?.id
-    }
+    // MARK: - Action Outlets
     
     @IBAction func tapDone(_ sender: UIButton) {
         sender.pulsate()
@@ -104,13 +119,14 @@ class SearchLocationView: UIView {
     
 }
 
+// MARK: - Search Bar Delegate
+
 extension SearchLocationView: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         isSearching = searchText.count > 0
         
-        print("text:", searchText)
         let filter = GMSAutocompleteFilter()
         filter.type = .establishment
         
@@ -136,6 +152,8 @@ extension SearchLocationView: UISearchBarDelegate {
     
 }
 
+// MARK: - ScrollView Delegate
+
 extension SearchLocationView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -145,8 +163,9 @@ extension SearchLocationView: UIScrollViewDelegate {
     
 }
 
+// MARK: - TableViewDelegate
+
 extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -214,6 +233,8 @@ extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+// MARK: - Location Manager Delegate
 
 extension SearchLocationView: CLLocationManagerDelegate {
     
