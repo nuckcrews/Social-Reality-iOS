@@ -12,13 +12,18 @@ import FBSDKLoginKit
 import AuthenticationServices
 import CryptoKit
 
+// MARK: - Sign In View Controller
 
 class SignInViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailIndicatorButton: UIButton!
+    
+    // MARK: - Variables
     
     var email: String?
     
@@ -31,6 +36,8 @@ class SignInViewController: UIViewController {
         static var message = "There could have been a mistake on our end. Please try signing in again."
         static var button = "Ok"
     }
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +55,8 @@ class SignInViewController: UIViewController {
         
     }
     
+    // MARK: - Loading Animations
+    
     func startLoading() {
         DispatchQueue.main.async {
             self.view.bringSubviewToFront(self.loadingIndicator)
@@ -63,6 +72,7 @@ class SignInViewController: UIViewController {
         }
     }
     
+    // MARK: - Alert Presenter
     
     func presentAlert(title: String, message: String, button: String) {
         DispatchQueue.main.async {
@@ -82,6 +92,26 @@ class SignInViewController: UIViewController {
         }
     }
     
+    // MARK: - Check User Data
+    
+    func checkUser(text: String) {
+        self.startLoading()
+        Auth0.userExists(email: text, completion: { [weak self] result in
+            if let result = result {
+                self?.stopLoading()
+                result ? self?.toEmailPassword() : self?.toCreatePassword()
+            }
+        })
+    }
+    
+    func checkUserData(id: String) {
+        Auth0.userDataExists(id: id) { [weak self] result in
+            self?.stopLoading()
+            result ? self?.toHome() : self?.toNewUser()
+        }
+    }
+    
+    // MARK: - Action Outlets
     
     @IBAction func tapEmailContinue(_ sender: UIButton) {
         
@@ -96,25 +126,6 @@ class SignInViewController: UIViewController {
         checkUser(text: emailTextField.text!)
         
     }
-    
-    func checkUser(text: String) {
-        self.startLoading()
-        Auth0.userExists(email: text, completion: { [weak self] result in
-            if let result = result {
-                self?.stopLoading()
-                result ? self?.toEmailPassword() : self?.toCreatePassword()
-            }
-        })
-    }
-    
-    
-    func checkUserData(id: String) {
-        Auth0.userDataExists(id: id) { [weak self] result in
-            self?.stopLoading()
-            result ? self?.toHome() : self?.toNewUser()
-        }
-    }
-    
 
     @IBAction func tapGoogleSignIn(_ sender: UIButton) {
         Buzz.light()
@@ -134,42 +145,30 @@ class SignInViewController: UIViewController {
         appleSignIn()
     }
     
-    func appleSignIn() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        
-        // Generate nonce for validation after authentication successful
-        self.currentNonce = Crypto.randomNonceString()
-        // Set the SHA256 hashed nonce to ASAuthorizationAppleIDRequest
-        request.nonce = Crypto.sha256(currentNonce!) 
-        
-        // Present Apple authorization form
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
-    }
-    
     @IBAction func tapBack(_ sender: AnyObject) {
         navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: - Segues
     
     func toCreatePassword() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: Segue.toCreatePasswordFromSignIn.rawValue, sender: nil)
         }
     }
+    
     func toEmailPassword() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: Segue.toPasswordFromSign.rawValue, sender: nil)
         }
     }
+    
     func toNewUser() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: Segue.toNewUserFromSign.rawValue, sender: nil)
         }
     }
+    
     func toHome() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: Segue.toHomeFromSignIn.rawValue, sender: nil)
@@ -190,8 +189,9 @@ class SignInViewController: UIViewController {
     
 }
 
+// MARK: - Sign In Extension
+
 extension SignInViewController {
-    
     
     func signInWithProvider(credential: AuthCredential) {
         self.startLoading()
@@ -206,7 +206,26 @@ extension SignInViewController {
         }
     }
     
+    func appleSignIn() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        // Generate nonce for validation after authentication successful
+        self.currentNonce = Crypto.randomNonceString()
+        // Set the SHA256 hashed nonce to ASAuthorizationAppleIDRequest
+        request.nonce = Crypto.sha256(currentNonce!)
+        
+        // Present Apple authorization form
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
 }
+
+// MARK: - TextField Delegate
 
 extension SignInViewController: UITextFieldDelegate {
     
@@ -229,16 +248,19 @@ extension SignInViewController: UITextFieldDelegate {
             
         }
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3) {
             self.emailIndicatorButton.alpha = 1
         }
     }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         UIView.animate(withDuration: 0.3) {
             self.emailIndicatorButton.alpha = 0
         }
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if emailTextField.text!.isValidEmail() {
             return true
@@ -246,10 +268,13 @@ extension SignInViewController: UITextFieldDelegate {
             return false
         }
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 }
+
+// MARK: - GIDSignIn Delegate
 
 extension SignInViewController: GIDSignInDelegate {
     
@@ -264,6 +289,8 @@ extension SignInViewController: GIDSignInDelegate {
     }
     
 }
+
+// MARK: - FBSDK Delegate
 
 extension SignInViewController: LoginButtonDelegate {
     
@@ -284,11 +311,14 @@ extension SignInViewController: LoginButtonDelegate {
     
 }
 
+// MARK: - Apple SignIn
+
 extension SignInViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
     
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             // Do something with the credential...
