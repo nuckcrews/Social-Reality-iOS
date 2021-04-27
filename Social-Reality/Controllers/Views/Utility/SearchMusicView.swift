@@ -7,12 +7,18 @@
 
 import UIKit
 
+// MARK: - Search Music Utility View
+
 class SearchMusicView: UIView {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var doneButtonBottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Variables
     
     var music = [String]()
     var musicFiltered = [String]()
@@ -26,12 +32,20 @@ class SearchMusicView: UIView {
     
     weak var delegate: SearchMusicDelegate?
     
+    // MARK: - View Lifecycle
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         setupView()
         
     }
+    
+    func presented() {
+        searchBar.becomeFirstResponder()
+    }
+    
+    // MARK: - View Setup
     
     func setupView() {
         
@@ -53,6 +67,8 @@ class SearchMusicView: UIView {
         
     }
     
+    // MARK: - Keyboard Observers
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             doneButtonBottomConstraint.constant = keyboardSize.height + 8
@@ -63,20 +79,19 @@ class SearchMusicView: UIView {
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        print("keyboard hiding", doneButtonBottomConstraint.constant)
         doneButtonBottomConstraint.constant = defaultBottomConstraint
         UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()
         }
     }
     
-    func presented() {
-        searchBar.becomeFirstResponder()
-    }
+    // MARK: - Music Fetching
     
     func isSelected(model: String) -> Bool {
         return model == selectedMusic
     }
+    
+    // MARK: - Action Outlets
     
     @IBAction func tapDone(_ sender: UIButton) {
         sender.pulsate()
@@ -86,6 +101,8 @@ class SearchMusicView: UIView {
     }
     
 }
+
+// MARK: - Search Bar Delegate
 
 extension SearchMusicView: UISearchBarDelegate {
     
@@ -110,6 +127,8 @@ extension SearchMusicView: UISearchBarDelegate {
     
 }
 
+// MARK: - ScrollView Delegate
+
 extension SearchMusicView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -119,8 +138,9 @@ extension SearchMusicView: UIScrollViewDelegate {
     
 }
 
+// MARK: - TableView Delegate
+
 extension SearchMusicView: UITableViewDelegate, UITableViewDataSource {
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

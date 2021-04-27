@@ -7,12 +7,18 @@
 
 import UIKit
 
+// MARK: - Search Users Utility View
+
 class SearchUsersView: UIView {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var doneButtonBottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Variable
     
     var selectedUsers = [UserModel]()
     var users = [UserModel]()
@@ -25,6 +31,8 @@ class SearchUsersView: UIView {
     
     weak var delegate: SearchUserDelegate?
     
+    // MARK: - View Lifecycle
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -35,6 +43,12 @@ class SearchUsersView: UIView {
         }
         
     }
+    
+    func presented() {
+        searchBar.becomeFirstResponder()
+    }
+    
+    // MARK: - View Setup
     
     func setupView() {
         
@@ -53,6 +67,8 @@ class SearchUsersView: UIView {
         
     }
     
+    // MARK: - Keyboard Observers
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             doneButtonBottomConstraint.constant = keyboardSize.height + 8
@@ -63,12 +79,13 @@ class SearchUsersView: UIView {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        print("keyboard hiding", doneButtonBottomConstraint.constant)
         doneButtonBottomConstraint.constant = defaultBottomConstraint
         UIView.animate(withDuration: 0.2) {
             self.layoutIfNeeded()
         }
     }
+    
+    // MARK: - User Fetching
     
     func getUsers() {
         Query.get.users { res in
@@ -79,16 +96,14 @@ class SearchUsersView: UIView {
         }
     }
     
-    func presented() {
-        searchBar.becomeFirstResponder()
-    }
-    
     func isSelected(model: UserModel) -> Bool {
         let res = selectedUsers.filter { mod in
             return mod.id == model.id
         }
         return res.count > 0
     }
+    
+    // MARK: - Action Outlets
     
     @IBAction func tapDone(_ sender: UIButton) {
         sender.pulsate()
@@ -98,6 +113,8 @@ class SearchUsersView: UIView {
     }
     
 }
+
+// MARK: - Search Bar Delegate
 
 extension SearchUsersView: UISearchBarDelegate {
     
@@ -131,6 +148,8 @@ extension SearchUsersView: UISearchBarDelegate {
     
 }
 
+// MARK: - Scrollview Delegate
+
 extension SearchUsersView: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -139,6 +158,8 @@ extension SearchUsersView: UIScrollViewDelegate {
     }
     
 }
+
+// MARK: - Tableview Delegate
 
 extension SearchUsersView: UITableViewDelegate, UITableViewDataSource {
     
