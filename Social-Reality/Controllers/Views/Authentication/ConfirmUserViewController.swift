@@ -7,10 +7,16 @@
 
 import UIKit
 
+// MARK: - Confirm User View Controller - DEPRECATED
+
 class ConfirmUserViewController: UIViewController {
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var confirmationTextField: UITextField!
     @IBOutlet weak var confirmationIndicator: UIButton!
+    
+    // MARK: - Variables
     
     var email: String?
     var password: String?
@@ -20,6 +26,8 @@ class ConfirmUserViewController: UIViewController {
         static var message = "Please try entering the code again."
         static var button = "Ok"
     }
+    
+    // MARK: - View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +55,8 @@ class ConfirmUserViewController: UIViewController {
         }
     }
     
+    // MARK: - Action Outlets
+    
     @IBAction func tapContinue(_ sender: UIButton) {
         if confirmationTextField.text?.count ?? 0 == 6 {
             sender.pulsate()
@@ -58,6 +68,8 @@ class ConfirmUserViewController: UIViewController {
         }
         
     }
+    
+    // MARK: - Segues
     
     func toCreateUser() {
         DispatchQueue.main.async {
@@ -72,6 +84,8 @@ class ConfirmUserViewController: UIViewController {
     }
 
 }
+
+// MARK: - TextField Delegate
 
 extension ConfirmUserViewController: UITextFieldDelegate {
     

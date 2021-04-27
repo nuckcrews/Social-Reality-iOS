@@ -7,7 +7,11 @@
 
 import UIKit
 
+// MARK: - Create User View Controller
+
 class CreateUserViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
@@ -21,6 +25,8 @@ class CreateUserViewController: UIViewController {
     
     @IBOutlet weak var usernameTakenLabel: UILabel!
     
+    // MARK: - Variables
+    
     var email: String?
     
     struct AlertError {
@@ -28,6 +34,8 @@ class CreateUserViewController: UIViewController {
         static var message = "Please try entering the code again."
         static var button = "Ok"
     }
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +52,8 @@ class CreateUserViewController: UIViewController {
         
     }
     
+    // MARK: - Loading Animations
+    
     func startLoading() {
         DispatchQueue.main.async {
             self.view.bringSubviewToFront(self.loadingIndicator)
@@ -59,6 +69,7 @@ class CreateUserViewController: UIViewController {
         }
     }
     
+    // MARK: - Alert Presenter
     
     func presentAlert(title: String, message: String, button: String) {
         DispatchQueue.main.async {
@@ -77,6 +88,8 @@ class CreateUserViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    // MARK: - User Creation
     
     func checkUserName() {
         guard let username = usernameTextField.text else {
@@ -119,8 +132,9 @@ class CreateUserViewController: UIViewController {
             }
         }
         
-        
     }
+    
+    // MARK: - Action Outlets
     
     @IBAction func tapContinue(_ sender: UIButton) {
         if usernameTextField.text != "" && firstNameTextField.text != "" {
@@ -134,6 +148,8 @@ class CreateUserViewController: UIViewController {
     @IBAction func tapBack(_ sender: AnyObject) {
         navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: - Segues
     
     func toAvatar() {
         DispatchQueue.main.async {
@@ -157,6 +173,8 @@ class CreateUserViewController: UIViewController {
     }
     
 }
+
+// MARK: - TextField Delegate
 
 extension CreateUserViewController: UITextFieldDelegate {
     
@@ -185,7 +203,6 @@ extension CreateUserViewController: UITextFieldDelegate {
         }
     }
     
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if usernameTextField.text != "" {
             return true
@@ -193,6 +210,7 @@ extension CreateUserViewController: UITextFieldDelegate {
             return false
         }
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }

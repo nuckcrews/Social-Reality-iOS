@@ -7,12 +7,18 @@
 
 import UIKit
 
+// MARK: - Password View Controller
+
 class PasswordViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordIndicator: UIButton!
+    
+    // MARK: - Variables
     
     var email: String?
     
@@ -22,6 +28,8 @@ class PasswordViewController: UIViewController {
         static var button = "Ok"
     }
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +37,8 @@ class PasswordViewController: UIViewController {
         passwordTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
     }
+    
+    // MARK: - Loading Animations
     
     func startLoading() {
         DispatchQueue.main.async {
@@ -45,6 +55,7 @@ class PasswordViewController: UIViewController {
         }
     }
     
+    // MARK: - Alert Presenter
     
     func presentAlert(title: String, message: String, button: String) {
         DispatchQueue.main.async {
@@ -63,6 +74,8 @@ class PasswordViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    // MARK: - Sign In User
     
     func signInUser() {
         guard let email = email, let password = passwordTextField.text else { return }
@@ -94,6 +107,23 @@ class PasswordViewController: UIViewController {
         }
     }
     
+    // MARK: - Action Outlets
+    
+    @IBAction func tapContinue(_ sender: UIButton) {
+        if passwordTextField.text != "" {
+            sender.pulsate()
+            signInUser()
+        } else {
+            sender.shake()
+        }
+    }
+    
+    @IBAction func tapBack(_ sender: AnyObject) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Segues
+    
     func toHome() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: Segue.toHomeFromPassword.rawValue, sender: nil)
@@ -112,19 +142,6 @@ class PasswordViewController: UIViewController {
         }
     }
     
-    @IBAction func tapContinue(_ sender: UIButton) {
-        if passwordTextField.text != "" {
-            sender.pulsate()
-            signInUser()
-        } else {
-            sender.shake()
-        }
-    }
-    
-    @IBAction func tapBack(_ sender: AnyObject) {
-        navigationController?.popViewController(animated: true)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email
@@ -136,6 +153,8 @@ class PasswordViewController: UIViewController {
     }
     
 }
+
+// MARK: - TextField Delegate
 
 extension PasswordViewController: UITextFieldDelegate {
     
