@@ -85,16 +85,16 @@ class PasswordViewController: UIViewController {
                 guard let id = Auth0.uid else {
                     self?.stopLoading()
                     self?.presentAlert(title: AlertError.title,
-                                      message: AlertError.message,
-                                      button: AlertError.button)
+                                       message: AlertError.message,
+                                       button: AlertError.button)
                     return
                 }
                 self?.checkUserData(id: id)
             } else {
                 self?.stopLoading()
                 self?.presentAlert(title: AlertError.title,
-                                  message: AlertError.message,
-                                  button: AlertError.button)
+                                   message: AlertError.message,
+                                   button: AlertError.button)
             }
         }
         

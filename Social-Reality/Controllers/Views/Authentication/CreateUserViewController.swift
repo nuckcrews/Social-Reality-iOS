@@ -127,8 +127,8 @@ class CreateUserViewController: UIViewController {
                 self?.toAvatar()
             } else {
                 self?.presentAlert(title: AlertError.title,
-                                  message: AlertError.message,
-                                  button: AlertError.button)
+                                   message: AlertError.message,
+                                   button: AlertError.button)
             }
         }
         

@@ -7,8 +7,12 @@
 
 import UIKit
 
-class MessageViewController: UIViewController {
+// MARK: - Message View Controller
 
+class MessageViewController: UIViewController {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -17,11 +21,15 @@ class MessageViewController: UIViewController {
     
     @IBOutlet weak var bottomTextConstraint: NSLayoutConstraint!
     
+    // MARK: - Variables
+    
     var conversation: ConversationModel?
     var conversationID: String?
     var recipient: UserModel?
     var recipientID: String?
     var messages = [MessageModel]()
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +47,7 @@ class MessageViewController: UIViewController {
             
             conversationID = id
         }
-
+        
         checkForConversation()
         getRecipient()
         
@@ -56,8 +64,10 @@ class MessageViewController: UIViewController {
         textField.becomeFirstResponder()
         
         tableView.scrollToBottom()
-
+        
     }
+    
+    // MARK: - View Setup
     
     func setupView() {
         
@@ -77,6 +87,8 @@ class MessageViewController: UIViewController {
         
     }
     
+    // MARK: - Keyboard Observers
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             bottomTextConstraint.constant = keyboardSize.height - Device.bottomSafeAreaHeight
@@ -92,6 +104,8 @@ class MessageViewController: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    // MARK: - Recipient Fetching
     
     func getRecipient() {
         
@@ -116,6 +130,8 @@ class MessageViewController: UIViewController {
         
     }
     
+    // MARK: - Message Fetching
+    
     func getMessages() {
         
         guard let conversation = conversation else { return }
@@ -138,6 +154,8 @@ class MessageViewController: UIViewController {
         
         
     }
+    
+    // MARK: - Post Message
     
     func postMessage() {
         
@@ -191,6 +209,8 @@ class MessageViewController: UIViewController {
         
     }
     
+    // MARK: - Action Outlets
+    
     @IBAction func tapSend(_ sender: UIButton) {
         Buzz.light()
         sender.pulsate()
@@ -207,13 +227,17 @@ class MessageViewController: UIViewController {
     
 }
 
+// MARK: - ScrollView Delegate
+
 extension MessageViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
+        
     }
     
 }
+
+// MARK: - TextField Delegate
 
 extension MessageViewController: UITextFieldDelegate {
     
@@ -237,7 +261,7 @@ extension MessageViewController: UITextFieldDelegate {
         postMessage()
         
         return true
-
+        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -250,6 +274,8 @@ extension MessageViewController: UITextFieldDelegate {
     }
     
 }
+
+// MARK: - TableView Delegate
 
 extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -276,4 +302,5 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
     }
+    
 }

@@ -8,11 +8,17 @@
 import UIKit
 import AVKit
 
+// MARK: - Creation AV PLayer View - Utility
+
 class CreationAVPlayerView: UIView {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var centerIndicator: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var starterImageView: UIImageView!
+    
+    // MARK: - Variables
     
     private var urlString: String?
     private var player: AVQueuePlayer?
@@ -29,12 +35,16 @@ class CreationAVPlayerView: UIView {
     
     weak var delegate: CreationAVPlayerDelegate?
     
+    // MARK: - View Lifecycle
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         frame = adjustedFrame != nil ? adjustedFrame! : frame
         
     }
+    
+    // MARK: - Video Setup
     
     func setupVideo(url: String?, starterURL: String? = nil) {
         
@@ -122,6 +132,8 @@ class CreationAVPlayerView: UIView {
         
     }
     
+    // MARK: - User Interactions
+    
     @objc func tapped() {
         
         if playing {
@@ -151,6 +163,7 @@ class CreationAVPlayerView: UIView {
         
     }
     
+    // MARK: - Video Methods
     
     func playCreation() {
         mainVolumeDelegate = self
@@ -184,9 +197,9 @@ class CreationAVPlayerView: UIView {
         print("pausing")
     }
     
-    
-    
 }
+
+// MARK: - Volume Delegate
 
 extension CreationAVPlayerView: MainVolumeDelegate {
     
@@ -194,8 +207,4 @@ extension CreationAVPlayerView: MainVolumeDelegate {
         player?.isMuted = Device.isMuted
     }
     
-}
-
-protocol CreationAVPlayerDelegate: AnyObject {
-    func doubleTappedVideo()
 }

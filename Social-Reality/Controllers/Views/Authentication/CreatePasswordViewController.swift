@@ -99,8 +99,8 @@ class CreatePasswordViewController: UIViewController {
             } else {
                 self?.stopLoading()
                 self?.presentAlert(title: AlertError.title,
-                                  message: AlertError.message,
-                                  button: AlertError.button)
+                                   message: AlertError.message,
+                                   button: AlertError.button)
             }
         }
         
@@ -139,7 +139,7 @@ class CreatePasswordViewController: UIViewController {
             self.performSegue(withIdentifier: Segue.toCreateUserFromPassword.rawValue, sender: nil)
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email

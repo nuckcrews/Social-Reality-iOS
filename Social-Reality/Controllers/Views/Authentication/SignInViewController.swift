@@ -126,7 +126,7 @@ class SignInViewController: UIViewController {
         checkUser(text: emailTextField.text!)
         
     }
-
+    
     @IBAction func tapGoogleSignIn(_ sender: UIButton) {
         Buzz.light()
         sender.pulsate()

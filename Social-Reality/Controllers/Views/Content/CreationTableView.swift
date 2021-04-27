@@ -7,15 +7,23 @@
 
 import UIKit
 
+// MARK: - Creation TableView Utility
+
 class CreationTableView: UIView {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Variables
     
     var creations = [CreationModel]()
     var user: UserModel?
     
     private var setup = false
     private var currentIndex = 0
+    
+    // MARK: - View Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -27,6 +35,8 @@ class CreationTableView: UIView {
         
     }
     
+    // MARK: - View Setup
+    
     func setIndex(_ index: Int) {
         
         tableView.alpha = 1
@@ -34,8 +44,8 @@ class CreationTableView: UIView {
         tableView.contentInsetAdjustmentBehavior = .never
         
         tableView.scrollToRow(at: IndexPath(item: index, section: 0), at: .top, animated: false)
-    
-    
+        
+        
     }
     
     func setupView() {
@@ -45,8 +55,6 @@ class CreationTableView: UIView {
         
         tableView.contentInsetAdjustmentBehavior = .never
         
-        let cellSize = CGSize(width: frame.width, height: frame.height)
-    
         tableView.reloadData()
         
     }
@@ -56,15 +64,7 @@ class CreationTableView: UIView {
         
     }
     
-    func findWord(sentence: String, word: String) -> Int {
-        
-        let r = sentence.range(of: word)
-        
-        guard let lower = r?.lowerBound else { return 0 }
-        
-        return sentence.distance(from: sentence.startIndex, to: lower)
-        
-    }
+    // MARK: - Creation Handling
     
     func playCreation() {
         if let cell = tableView.cellForRow(at: IndexPath(item: currentIndex, section: 0)) as? creationVideoCell {
@@ -78,6 +78,8 @@ class CreationTableView: UIView {
         }
     }
     
+    // MARK: - Index Handling
+    
     func changedIndex(_ index: Int) {
         
         for i in 0..<creations.count {
@@ -89,6 +91,8 @@ class CreationTableView: UIView {
     }
     
 }
+
+// MARK: - ScrollView Delegate
 
 extension CreationTableView: UIScrollViewDelegate {
     
@@ -104,6 +108,8 @@ extension CreationTableView: UIScrollViewDelegate {
     }
     
 }
+
+// MARK: - TableView Delegate
 
 extension CreationTableView: UITableViewDelegate, UITableViewDataSource {
     
@@ -130,6 +136,5 @@ extension CreationTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return self.frame.height
     }
-    
     
 }

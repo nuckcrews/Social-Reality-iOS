@@ -46,7 +46,7 @@ class CreateAvatarViewController: UIViewController {
                 print("no date")
             }
         })
-
+        
     }
     
     // MARK: - Loading Animations

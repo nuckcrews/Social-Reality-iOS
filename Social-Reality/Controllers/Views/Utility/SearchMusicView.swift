@@ -60,8 +60,8 @@ class SearchMusicView: UIView {
         if !addNotifications {
             doneButtonBottomConstraint.priority = .defaultLow
             doneButtonBottomConstraint.constant = defaultBottomConstraint
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
             addNotifications = true
         }
         
@@ -77,7 +77,7 @@ class SearchMusicView: UIView {
             }
         }
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         doneButtonBottomConstraint.constant = defaultBottomConstraint
         UIView.animate(withDuration: 0.2) {
@@ -163,7 +163,7 @@ extension SearchMusicView: UITableViewDelegate, UITableViewDataSource {
             }
             return music.count
         }
-
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -12,7 +12,7 @@ import UIKit
 class ConfirmUserViewController: UIViewController {
     
     // MARK: - Outlets
-
+    
     @IBOutlet weak var confirmationTextField: UITextField!
     @IBOutlet weak var confirmationIndicator: UIButton!
     
@@ -28,10 +28,10 @@ class ConfirmUserViewController: UIViewController {
     }
     
     // MARK: - View Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         confirmationTextField.delegate = self
         confirmationTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
@@ -61,7 +61,7 @@ class ConfirmUserViewController: UIViewController {
         if confirmationTextField.text?.count ?? 0 == 6 {
             sender.pulsate()
             
-//            confirmUser()
+            //            confirmUser()
             
         } else {
             sender.shake()
@@ -82,7 +82,7 @@ class ConfirmUserViewController: UIViewController {
             dest.email = email
         }
     }
-
+    
 }
 
 // MARK: - TextField Delegate
@@ -99,8 +99,8 @@ extension ConfirmUserViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text,
-            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-                return false
+              let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+            return false
         }
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count

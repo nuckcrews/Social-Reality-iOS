@@ -8,8 +8,12 @@
 import UIKit
 import AVKit
 
-class CreationDetailViewController: UIViewController {
+// MARK: - Creation Detail View Controller
 
+class CreationDetailViewController: UIViewController {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var creationAVPlayerView: CreationAVPlayerView!
     @IBOutlet weak var creatorAvatarImage: UIImageView!
     @IBOutlet weak var creationTitleLabel: UILabel!
@@ -18,8 +22,12 @@ class CreationDetailViewController: UIViewController {
     @IBOutlet weak var creationTimeLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
+    // MARK: - Variables
+    
     var user: User?
     var creation: Creation?
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +43,8 @@ class CreationDetailViewController: UIViewController {
         
     }
     
+    // MARK: - Creation Fetching
+    
     func getCreation() {
         
         creation = Testing.defaultCreation
@@ -42,6 +52,8 @@ class CreationDetailViewController: UIViewController {
         setupView()
         
     }
+    
+    // MARK: - View Setup
     
     func setupView() {
         
@@ -57,6 +69,8 @@ class CreationDetailViewController: UIViewController {
         creationAVPlayerView.setupVideo(url: creation.model?.videoURL)
         
     }
+    
+    // MARK: - Action Outlets
     
     @IBAction func tapLike(_ sender: UIButton) {
         sender.jump()
@@ -79,8 +93,6 @@ class CreationDetailViewController: UIViewController {
         MainToCoverDelegate?.tappedComments(creation: creation?.model)
         
     }
-    
-    
     
     @IBAction func tapShare(_ sender: UIButton) {
         sender.jump()
@@ -108,8 +120,10 @@ class CreationDetailViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
         
     }
-
+    
 }
+
+// MARK: - CreationAVPlayer Delegate
 
 extension CreationDetailViewController: CreationAVPlayerDelegate {
     
