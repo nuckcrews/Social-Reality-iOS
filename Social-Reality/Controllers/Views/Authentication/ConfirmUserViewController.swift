@@ -7,10 +7,16 @@
 
 import UIKit
 
-class ConfirmUserViewController: UIViewController {
+// MARK: - Confirm User View Controller - DEPRECATED
 
+class ConfirmUserViewController: UIViewController {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var confirmationTextField: UITextField!
     @IBOutlet weak var confirmationIndicator: UIButton!
+    
+    // MARK: - Variables
     
     var email: String?
     var password: String?
@@ -20,10 +26,12 @@ class ConfirmUserViewController: UIViewController {
         static var message = "Please try entering the code again."
         static var button = "Ok"
     }
-
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         confirmationTextField.delegate = self
         confirmationTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
@@ -47,17 +55,21 @@ class ConfirmUserViewController: UIViewController {
         }
     }
     
+    // MARK: - Action Outlets
+    
     @IBAction func tapContinue(_ sender: UIButton) {
         if confirmationTextField.text?.count ?? 0 == 6 {
             sender.pulsate()
             
-//            confirmUser()
+            //            confirmUser()
             
         } else {
             sender.shake()
         }
         
     }
+    
+    // MARK: - Segues
     
     func toCreateUser() {
         DispatchQueue.main.async {
@@ -70,8 +82,10 @@ class ConfirmUserViewController: UIViewController {
             dest.email = email
         }
     }
-
+    
 }
+
+// MARK: - TextField Delegate
 
 extension ConfirmUserViewController: UITextFieldDelegate {
     
@@ -85,8 +99,8 @@ extension ConfirmUserViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let textFieldText = textField.text,
-            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-                return false
+              let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+            return false
         }
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count

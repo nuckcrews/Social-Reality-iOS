@@ -44,3 +44,7 @@ protocol CreationCommentDelegate: AnyObject {
 protocol MainVolumeDelegate: AnyObject {
     func changeVolume()
 }
+
+protocol CreationAVPlayerDelegate: AnyObject {
+    func doubleTappedVideo()
+}

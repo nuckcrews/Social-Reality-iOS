@@ -7,20 +7,28 @@
 
 import UIKit
 
+// MARK: - Settings Cell
+
 class settingsCell: UITableViewCell {
     
+    // MARK: - Outlets
+    
     @IBOutlet weak var titleLabel: UILabel!
-
+    
+    // MARK: - Cell Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+    
+    // MARK: - Configure Methods
     
     func configureCell(title: String, index: Int) {
         titleLabel.text = title
@@ -28,5 +36,5 @@ class settingsCell: UITableViewCell {
             titleLabel.textColor = .red
         }
     }
-
+    
 }

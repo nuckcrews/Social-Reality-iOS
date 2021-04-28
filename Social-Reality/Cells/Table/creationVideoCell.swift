@@ -7,7 +7,11 @@
 
 import UIKit
 
+// MARK: - Creation Video Cell
+
 class creationVideoCell: UITableViewCell {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var creationAVPlayerView: CreationAVPlayerView!
     @IBOutlet weak var creatorAvatarImage: UIImageView!
@@ -17,9 +21,13 @@ class creationVideoCell: UITableViewCell {
     @IBOutlet weak var creationTimeLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
+    // MARK: - Variables
+    
     var user: UserModel?
     var creation: CreationModel?
     var presenting = false
+    
+    // MARK: - Cell Lifecycle
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -37,12 +45,14 @@ class creationVideoCell: UITableViewCell {
         
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
+    
+    // MARK: - Configure Methods
     
     func configureCell(_ creationModel: CreationModel?, _ userModel: UserModel?) {
         
@@ -87,6 +97,8 @@ class creationVideoCell: UITableViewCell {
         
     }
     
+    // MARK: - Action Outlets
+    
     @IBAction func tapLike(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
@@ -125,6 +137,8 @@ class creationVideoCell: UITableViewCell {
     }
     
 }
+
+// MARK: - Creation AV Player Delegate
 
 extension creationVideoCell: CreationAVPlayerDelegate {
     

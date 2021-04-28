@@ -7,19 +7,27 @@
 
 import UIKit
 
-class CreationTableViewController: UIViewController {
+// MARK: - Creation Table View Controller
 
+class CreationTableViewController: UIViewController {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var creationTableView: CreationTableView!
     @IBOutlet weak var volumeIndicatorButton: UIButton!
+    
+    // MARK: - Variables
     
     var user: User?
     var creations = [CreationModel]()
     var startIndex: Int = 0
     var indexSet = false
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         Device.isMuted ?
             volumeIndicatorButton.setImage(UIImage(systemName: "speaker.slash"), for: .normal) :
             volumeIndicatorButton.setImage(UIImage(systemName: "speaker.wave.2"), for: .normal)
@@ -39,7 +47,6 @@ class CreationTableViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-//        getCreations()
         if !indexSet {
             creationTableView.setIndex(startIndex)
             indexSet = true
@@ -56,16 +63,20 @@ class CreationTableViewController: UIViewController {
         
     }
     
+    // MARK: - User Fetching
+    
     func getUser() {
         
         guard let uid = Auth0.uid else { return }
-    
+        
         Query.get.user(id: uid) { [weak self] model in
             guard let model = model else { return }
             self?.user = User(model: model)
         }
         
     }
+    
+    // MARK: - Creation Fetching
     
     func getCreations() {
         
@@ -74,6 +85,8 @@ class CreationTableViewController: UIViewController {
         
         
     }
+    
+    // MARK: - Action Outlets
     
     @IBAction func tapVolume(_ sender: UIButton) {
         
@@ -91,6 +104,5 @@ class CreationTableViewController: UIViewController {
     @IBAction func tapBack(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
-
-
+    
 }

@@ -7,21 +7,27 @@
 
 import UIKit
 
-class messageCell: UITableViewCell {
+// MARK: - Message Cell
 
+class messageCell: UITableViewCell {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var leftMessageView: UIView!
     @IBOutlet weak var rightMessageView: UIView!
     @IBOutlet weak var leftContentLabel: UILabel!
     @IBOutlet weak var rightContentLabel: UILabel!
     
+    // MARK: - cell Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -32,6 +38,8 @@ class messageCell: UITableViewCell {
         leftMessageView.alpha = 0
         
     }
+    
+    // MARK: - Configure Methods
     
     func configureCell(message: MessageModel) {
         
@@ -48,5 +56,5 @@ class messageCell: UITableViewCell {
         }
         
     }
-
+    
 }

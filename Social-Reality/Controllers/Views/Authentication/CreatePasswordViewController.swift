@@ -7,7 +7,11 @@
 
 import UIKit
 
+// MARK: - Create Password View Controller
+
 class CreatePasswordViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
@@ -17,6 +21,8 @@ class CreatePasswordViewController: UIViewController {
     
     @IBOutlet weak var passwordIndicator: UIButton!
     @IBOutlet weak var reenterIndicator: UIButton!
+    
+    // MARK: - Variables
     
     var email: String?
     var username: String?
@@ -29,6 +35,8 @@ class CreatePasswordViewController: UIViewController {
         static var button = "Ok"
     }
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +47,8 @@ class CreatePasswordViewController: UIViewController {
         reenterTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
     }
+    
+    // MARK: - Loading Animations
     
     func startLoading() {
         DispatchQueue.main.async {
@@ -55,6 +65,7 @@ class CreatePasswordViewController: UIViewController {
         }
     }
     
+    // MARK: - Alert Presenter
     
     func presentAlert(title: String, message: String, button: String) {
         DispatchQueue.main.async {
@@ -74,6 +85,8 @@ class CreatePasswordViewController: UIViewController {
         }
     }
     
+    // MARK: - Sign Up Functionality
+    
     func signUpUser() {
         guard let password = passwordTextField.text, let email = email else {
             return
@@ -86,26 +99,14 @@ class CreatePasswordViewController: UIViewController {
             } else {
                 self?.stopLoading()
                 self?.presentAlert(title: AlertError.title,
-                                  message: AlertError.message,
-                                  button: AlertError.button)
+                                   message: AlertError.message,
+                                   button: AlertError.button)
             }
         }
         
     }
-
-
     
-    func toConfirmUser() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toConfirmUserFromCreatePassword.rawValue, sender: nil)
-        }
-    }
-    
-    func toCreateUser() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreateUserFromPassword.rawValue, sender: nil)
-        }
-    }
+    // MARK: - Action Outlets
     
     @IBAction func tapContinue(_ sender: UIButton) {
         guard passwordTextField.text != nil, passwordTextField.text!.isValidPassword() else {
@@ -125,6 +126,20 @@ class CreatePasswordViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Segues
+    
+    func toConfirmUser() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toConfirmUserFromCreatePassword.rawValue, sender: nil)
+        }
+    }
+    
+    func toCreateUser() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toCreateUserFromPassword.rawValue, sender: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreateUserViewController {
             dest.email = email
@@ -136,6 +151,8 @@ class CreatePasswordViewController: UIViewController {
     }
     
 }
+
+// MARK: - TextField Delegate
 
 extension CreatePasswordViewController: UITextFieldDelegate {
     
@@ -172,9 +189,8 @@ extension CreatePasswordViewController: UITextFieldDelegate {
             return true
         }
         
-        
-        
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }

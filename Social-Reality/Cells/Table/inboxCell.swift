@@ -7,26 +7,32 @@
 
 import UIKit
 
+// MARK: - Inbox Cell
+
 class inboxCell: UITableViewCell {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-
+    
+    // MARK: - Cell Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
-    func configureCell() {
-        
-    }
-
+    // MARK: - Configure Methods
+    
+    func configureCell() {}
+    
 }

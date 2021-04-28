@@ -7,7 +7,11 @@
 
 import UIKit
 
+// MARK: - Message Creation Cell
+
 class messageCreationCell: UITableViewCell {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var leftMessageView: UIView!
     @IBOutlet weak var rightMessageView: UIView!
@@ -19,6 +23,8 @@ class messageCreationCell: UITableViewCell {
     @IBOutlet weak var rightCreationUserLabel: UILabel!
     @IBOutlet weak var leftCreationUserImageView: UIImageView!
     @IBOutlet weak var rightCreationUserImageView: UIImageView!
+    
+    // MARK: - Lifecycle Methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +50,8 @@ class messageCreationCell: UITableViewCell {
         
     }
     
+    // MARK: - Configure Methods
+    
     func configureCell(message: MessageModel) {
         
         if message.creationID == nil {
@@ -63,7 +71,7 @@ class messageCreationCell: UITableViewCell {
         } else {
             
             if message.senderID == Auth0.uid {
-
+                
                 rightMessageView.alpha = 1
                 rightContentLabel.text = message.creationCaption
                 rightCreationImageView.setImageFromURL(message.creationImage)

@@ -7,14 +7,22 @@
 
 import UIKit
 
+// MARK: - Create Avatar View Controller
+
 class CreateAvatarViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
+    // MARK: - Variables
+    
     var user: User?
     var imagePicker: ImagePicker!
     var imageURL = ProfileImage.defaultURL
+    
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +32,8 @@ class CreateAvatarViewController: UIViewController {
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
     }
+    
+    // MARK: - User Fetching
     
     func getUser() {
         
@@ -36,8 +46,10 @@ class CreateAvatarViewController: UIViewController {
                 print("no date")
             }
         })
-
+        
     }
+    
+    // MARK: - Loading Animations
     
     func startLoading() {
         DispatchQueue.main.async {
@@ -54,17 +66,15 @@ class CreateAvatarViewController: UIViewController {
         }
     }
     
+    // MARK: - Save Image
+    
     func saveImage() {
         user?.updateModel(data: ["image": imageURL], completion: { [weak self] res in
             self?.toHome()
         })
     }
     
-    func toHome() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toHomeFromAvatar.rawValue, sender: nil)
-        }
-    }
+    // MARK: - Action Outlets
     
     @IBAction func tapEditAvatar(_ sender: UIButton) {
         self.imagePicker.present(from: sender)
@@ -78,7 +88,17 @@ class CreateAvatarViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Segues
+    
+    func toHome() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toHomeFromAvatar.rawValue, sender: nil)
+        }
+    }
+    
 }
+
+// MARK: - Image Picker Delegate
 
 extension CreateAvatarViewController: ImagePickerDelegate {
     
@@ -97,7 +117,6 @@ extension CreateAvatarViewController: ImagePickerDelegate {
             self?.imageURL = res
             self?.stopLoading()
         }
-        
     }
     
 }

@@ -158,7 +158,7 @@ class SearchUsersSendView: UIView {
                 }
             }
         }
-    
+        
     }
     
     // MARK: - Write Message
@@ -178,9 +178,9 @@ class SearchUsersSendView: UIView {
                 self?.delegate?.dismissSearchUserSendView()
             }
         }
-
+        
     }
-
+    
     // MARK: - Action Outlets
     
     @IBAction func tapSend(_ sender: UIButton) {

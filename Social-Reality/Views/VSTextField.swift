@@ -57,7 +57,7 @@ public class VSTextField: UITextField {
     public var formatting : TextFieldFormatting = .noFormatting {
         didSet {
             switch formatting {
-                
+            
             case .socialSecurityNumber:
                 self.formattingPattern = "***-**-****"
                 self.replacementChar = "*"
@@ -102,7 +102,7 @@ public class VSTextField: UITextField {
     override public var text: String! {
         set {
             super.text = newValue
-           // print("changedtext")
+            // print("changedtext")
             textDidChange() // format string properly even when it's set programatically
         }
         
@@ -112,7 +112,7 @@ public class VSTextField: UITextField {
             } else {
                 // Because the UIControl target action is called before NSNotificaion (from which we fire our custom formatting), we need to
                 // force update finalStringWithoutFormatting to get the latest text. Otherwise, the last character would be missing.
-             //   print("changedfinal")
+                //   print("changedfinal")
                 textDidChange()
                 return finalStringWithoutFormatting
             }
@@ -148,7 +148,7 @@ public class VSTextField: UITextField {
     fileprivate var _textWithoutSecureBullets = ""
     
     fileprivate func registerForNotifications() {
-     //   print("changednote")
+        //   print("changednote")
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(VSTextField.textDidChange),
                                                name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotification"),

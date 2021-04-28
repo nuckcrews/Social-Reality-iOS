@@ -7,14 +7,20 @@
 
 import UIKit
 
+// MARK: - Search User Cell
+
 class searchUserCell: UITableViewCell {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var userFirstLastLabel: UILabel!
     @IBOutlet weak var radioButton: UIButton!
-
+    
     private var selectedUser = false
+    
+    // MARK: - Cell Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +38,8 @@ class searchUserCell: UITableViewCell {
         
     }
     
+    // MARK: - Configure Methods
+    
     func configureCell(user: UserModel, selectedCell: Bool) {
         userImageView.setImageFromURL(user.image)
         usernameLabel.text = "@" + user.username
@@ -45,7 +53,7 @@ class searchUserCell: UITableViewCell {
             radioButton.tintColor = .grayText
             radioButton.setImage(UIImage(systemName: "square"), for: .normal)
         }
-            
+        
     }
     
     func tapSelect() {
@@ -59,5 +67,5 @@ class searchUserCell: UITableViewCell {
             radioButton.setImage(UIImage(systemName: "square"), for: .normal)
         }
     }
-
+    
 }

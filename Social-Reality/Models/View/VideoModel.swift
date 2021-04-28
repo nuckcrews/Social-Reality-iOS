@@ -13,23 +13,23 @@ struct VideoModel {
     
     static func getThumbnailImage(forUrl str: String?, completion: @escaping(_ result: UIImage?) -> Void){
         DispatchQueue.global().async {
-        guard let url = URL(string: str ?? "") else { completion(nil); return }
-        
-        let asset: AVAsset = AVAsset(url: url)
-        let imageGenerator = AVAssetImageGenerator(asset: asset)
-        imageGenerator.appliesPreferredTrackTransform = true
-
-        do {
-            let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60) , actualTime: nil)
+            guard let url = URL(string: str ?? "") else { completion(nil); return }
             
-            completion(UIImage(cgImage: thumbnailImage))
-            return
-        } catch let error {
-            print(error)
+            let asset: AVAsset = AVAsset(url: url)
+            let imageGenerator = AVAssetImageGenerator(asset: asset)
+            imageGenerator.appliesPreferredTrackTransform = true
+            
+            do {
+                let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60) , actualTime: nil)
+                
+                completion(UIImage(cgImage: thumbnailImage))
+                return
+            } catch let error {
+                print(error)
+                completion(nil)
+            }
+            
             completion(nil)
-        }
-
-        completion(nil)
         }
     }
     

@@ -11,7 +11,7 @@ import RealityKit
 import ARKit
 
 struct Device {
-
+    
     static var compatible: Bool = {
         return ARGeoTrackingConfiguration.isSupported
     }()
