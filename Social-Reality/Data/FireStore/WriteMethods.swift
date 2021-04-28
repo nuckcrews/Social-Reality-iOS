@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import CodableFirebase
 
-// MARK: Write Query Methods - Local
+// MARK: - Write Query Methods - Local
 
 struct WriteMethods {
     
@@ -68,7 +68,7 @@ struct WriteMethods {
             completion(.error)
         }
     }
-
+    
     func like( _ like: LikeModel, completion: @escaping (_ result: ResultType) -> Void) {
         guard like.id.count > 0  else { completion(.error); return }
         do {
@@ -95,14 +95,14 @@ struct WriteMethods {
                 .document(message.conversationID)
                 .collection(Collections.messages.rawValue)
                 .document(message.id).setData(docData, merge: true, completion: { error in
-                if let error = error {
-                    print("Error writing document: \(error)")
-                    completion(.error)
-                } else {
-                    print("Document successfully written!")
-                    completion(.success)
-                }
-            })
+                    if let error = error {
+                        print("Error writing document: \(error)")
+                        completion(.error)
+                    } else {
+                        print("Document successfully written!")
+                        completion(.success)
+                    }
+                })
         } catch {
             completion(.error)
         }
@@ -115,14 +115,14 @@ struct WriteMethods {
             db.collection(Collections.conversations.rawValue)
                 .document(conversation.id)
                 .setData(docData, merge: true, completion: { error in
-                if let error = error {
-                    print("Error writing document: \(error)")
-                    completion(.error)
-                } else {
-                    print("Document successfully written!")
-                    completion(.success)
-                }
-            })
+                    if let error = error {
+                        print("Error writing document: \(error)")
+                        completion(.error)
+                    } else {
+                        print("Document successfully written!")
+                        completion(.success)
+                    }
+                })
         } catch {
             completion(.error)
         }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: Cell Identifiers
+// MARK: - Cell Identifiers
 
 enum Cells: String {
     

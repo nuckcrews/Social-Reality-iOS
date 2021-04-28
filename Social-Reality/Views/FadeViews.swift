@@ -10,7 +10,7 @@ import UIKit
 
 
 class FadeHead: UIView {
-
+    
     private lazy var gradientLayer: CAGradientLayer = {
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
@@ -26,7 +26,7 @@ class FadeHead: UIView {
     
     func newGrad() {
         layer.sublayers?.removeAll()
-    
+        
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
         l.endPoint = CGPoint(x: 0.5, y: 1)
@@ -47,7 +47,7 @@ class FadeHead: UIView {
 }
 
 class FadeTail: UIView {
-
+    
     private lazy var gradientLayer: CAGradientLayer = {
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
@@ -60,9 +60,9 @@ class FadeTail: UIView {
         layer.addSublayer(l)
         return l
     }()
-
+    
     func newGrad() {
-         layer.sublayers?.removeAll()
+        layer.sublayers?.removeAll()
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
         l.endPoint = CGPoint(x: 0.5, y: 1)
@@ -79,5 +79,5 @@ class FadeTail: UIView {
         super.layoutSubviews()
         newGrad()
     }
-
+    
 }

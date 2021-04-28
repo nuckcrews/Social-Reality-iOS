@@ -96,8 +96,8 @@ class CreationAVPlayerView: UIView {
         player?.isMuted = Device.isMuted
         
         if let _ = URL(string: starterURL ?? "") {
-//            starterImageView.setImageFromURL(starterURL)
-//            starterImageView.alpha = 1
+            //            starterImageView.setImageFromURL(starterURL)
+            //            starterImageView.alpha = 1
         } else {
             starterImageView.image = nil
             starterImageView.alpha = 0
@@ -119,16 +119,16 @@ class CreationAVPlayerView: UIView {
         loadingIndicator.startAnimating()
         
         bringSubviewToFront(centerIndicator)
-
+        
         frame = adjustedFrame != nil ? adjustedFrame! : frame
         setup = true
         
         playerObserver = playerItem.observe(\.status, options:  [.new, .old], changeHandler: { [weak self] (playerItem, change) in
-                if playerItem.status == .readyToPlay {
-                    self?.starterImageView.alpha = 0
-                    self?.starterImageView.image = nil
-                }
-            })
+            if playerItem.status == .readyToPlay {
+                self?.starterImageView.alpha = 0
+                self?.starterImageView.image = nil
+            }
+        })
         
     }
     

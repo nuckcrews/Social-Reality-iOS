@@ -7,8 +7,12 @@
 
 import UIKit
 
-class commentCell: UITableViewCell {
+// MARK: - Comment Cell
 
+class commentCell: UITableViewCell {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
@@ -16,19 +20,25 @@ class commentCell: UITableViewCell {
     @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    // MARK: - Variables
+    
     private var liked = false
+    
+    // MARK: - Cell Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
+    // MARK: - Configure Methods
+    
     func configureCell(comment: CommentModel, liked: Bool?) {
         
         likesCountLabel.text = ""

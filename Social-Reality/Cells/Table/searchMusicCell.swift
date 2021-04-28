@@ -7,12 +7,18 @@
 
 import UIKit
 
+// MARK: - Search Music Cell
+
 class searchMusicCell: UITableViewCell {
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var musicImageView: UIImageView!
     @IBOutlet weak var musicNameLabel: UILabel!
     @IBOutlet weak var musicArtistLabel: UILabel!
     @IBOutlet weak var radioButton: UIButton!
+    
+    // MARK: - Variables
     
     private var selectedMusic = false
     
@@ -26,9 +32,10 @@ class searchMusicCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // MARK: - Configure Methods
 
     func configureCell(music: String, selectedCell: Bool) {
-        
         
         selectedMusic = selectedCell
         

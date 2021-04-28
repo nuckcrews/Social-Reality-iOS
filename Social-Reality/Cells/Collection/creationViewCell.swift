@@ -8,11 +8,17 @@
 import Foundation
 import UIKit
 
+// MARK: - Creation View Cell
+
 class creationViewCell: UICollectionViewCell {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
+    
+    // MARK: - Prepare for Reuse
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -21,14 +27,14 @@ class creationViewCell: UICollectionViewCell {
         
     }
     
+    // MARK: - Configure Methods
+    
     func configure(with image: UIImage?) {
         imageView.image = image?.fixOrientation()
     }
     
     func configureCell(creation: CreationThumbNailView) {
         imageView.setImageFromURL(creation.model?.thumbnail)
-//        imageViewHeight.isActive = false
-//        imageViewWidth.isActive = false
     }
     
     func configureCell(creation: CreationThumbNailView, imageFrame: (CGFloat, CGFloat)) {

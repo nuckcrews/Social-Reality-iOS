@@ -38,7 +38,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         Query.update.user(id: id, data: ["fcmToken": token]) { result in
             print(result)
         }
-    
+        
     }
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {

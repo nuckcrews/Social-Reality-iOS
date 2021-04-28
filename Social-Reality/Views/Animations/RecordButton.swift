@@ -54,27 +54,27 @@ class RecordButton: UIView {
             self.layer.borderColor = UIColor(named: "Tinted")?.cgColor
             self.layer.borderWidth = 6
         }
-
+        
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         
         // Set the animation duration appropriately
         animation.duration = duration
-
+        
         // Animate from 0 (no circle) to 1 (full circle)
         animation.fromValue = 0
         animation.toValue = 1
-
+        
         // Do a linear animation (i.e. the speed of the animation stays the same)
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
-
+        
         // Set the circleLayer's strokeEnd property to 1.0 now so that it's the
         // right value when the animation ends.
         circleLayer?.strokeEnd = 1.0
-
+        
         // Do the actual animation
         circleLayer?.add(animation, forKey: "animateCircle")
-    
+        
     }
     
     func stopAnimating() {
@@ -83,7 +83,7 @@ class RecordButton: UIView {
             self.layer.borderColor = UIColor.primary.cgColor
             self.layer.borderWidth = 3
         }
-
+        
         circleLayer?.removeFromSuperlayer()
         circleLayer?.removeAllAnimations()
     }

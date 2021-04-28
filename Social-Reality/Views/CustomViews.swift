@@ -44,7 +44,7 @@ class ShadowViewBox: UIView {
             
             layer.insertSublayer(shadowLayer, at: 0)
         }
-    
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -92,7 +92,7 @@ class ShadowViewCornered: UIView {
             
             layer.insertSublayer(shadowLayer, at: 0)
         }
-    
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -140,7 +140,7 @@ class ShadowViewCorneredSmall: UIView {
             
             layer.insertSublayer(shadowLayer, at: 0)
         }
-    
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -190,7 +190,7 @@ class ShadowViewRoundedVertical: UIView {
             
             layer.insertSublayer(shadowLayer, at: 0)
         }
-    
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -239,7 +239,7 @@ class ShadowViewRoundedHorizontal: UIView {
             
             layer.insertSublayer(shadowLayer, at: 0)
         }
-    
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -288,7 +288,7 @@ class ShadowViewCircle: UIView {
             
             layer.insertSublayer(shadowLayer, at: 0)
         }
-    
+        
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -366,7 +366,7 @@ class CircleView: UIView {
 class BlackFadeTop: UIView {
     
     @IBInspectable var cornerRadius: CGFloat = 0
-
+    
     private lazy var gradientLayer: CAGradientLayer = {
         let l = CAGradientLayer()
         l.startPoint = CGPoint(x: 0.5, y: 0)
@@ -379,7 +379,7 @@ class BlackFadeTop: UIView {
         layer.addSublayer(l)
         return l
     }()
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = cornerRadius
