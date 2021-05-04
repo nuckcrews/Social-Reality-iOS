@@ -10,6 +10,8 @@ import GoogleMaps
 import GooglePlaces
 import CoreLocation
 
+// MARK: - Explore View Controller -> Tab 2
+
 class ExploreViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!

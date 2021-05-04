@@ -11,6 +11,8 @@ import CoreLocation
 import ARKit
 import Firebase
 
+// MARK: - Main View Controller -> Tab 1
+
 class MainViewController: UIViewController {
 
     @IBOutlet weak var arView: ARView!

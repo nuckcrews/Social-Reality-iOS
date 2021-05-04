@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Inbox View Controller -> Archived
+
 class AccountViewController: UIViewController {
     
     @IBOutlet weak var usernameTitleButton: UIButton!
