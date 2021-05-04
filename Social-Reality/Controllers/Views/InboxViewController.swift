@@ -7,6 +7,8 @@
 
 import UIKit
 
+// MARK: - Inbox View Controller -> Tab 4
+
 class InboxViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
