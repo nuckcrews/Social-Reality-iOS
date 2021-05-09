@@ -8,16 +8,22 @@
 import UIKit
 import XLPagerTabStrip
 
+// MARK: - Creation Collection View Controller
+
 class CreationCollectionViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     var creations = [CreationThumbNailView]()
-    
+    var creationModels = [CreationModel]()
     var selectedIndex = 0
     var pageIndex: Int = 0
     var pageTitle: String?
     var segmentImage: UIImage?
+
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +34,8 @@ class CreationCollectionViewController: UIViewController {
         setupView()
         
     }
+    
+    // MARK: - View Setup
     
     func setLayout() {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -43,13 +51,54 @@ class CreationCollectionViewController: UIViewController {
 
         setLayout()
         
-        for i in Testing.defaultCreations {
-            creations.append(CreationThumbNailView(model: i))
+        fetchCreations()
+        
+    }
+    
+    // MARK: - Fetch Creations
+    
+    func fetchCreations() {
+        
+        guard let uid = Auth0.uid else {
+            collectionView.reloadData()
+            return
         }
         
+        Query.subscribe.creationsWithPredicate(field: Fields.creation.userID.rawValue, value: uid) { [weak self] models, lstn in
+            
+            guard let models = models else { return}
+            
+            self?.creations.removeAll()
+            self?.creationModels.removeAll()
+            
+            for model in models {
+                self?.creations.append(CreationThumbNailView(model: model))
+                self?.creationModels.append(model)
+            }
+            
+            self?.collectionView.reloadData()
+        }
         
-        collectionView.reloadData()
+    }
+    
+    // MARK: - Testing Methods
+    
+    var added = false
+    func addThumbnail(model: CreationModel) {
+        guard !added else {
+            return
+        }
         
+        Video0.getThumbnailImage(forUrl: model.videoURL) { img in
+            guard let img = img else { return }
+            Storage0.remote.upload.thumbnailImage(key: model.id, image: img) { res in
+                guard let res = res else { return }
+                Query.update.creation(id: model.id, data: [Fields.creation.thumbnail.rawValue: res]) { result in
+                    print(result)
+                }
+
+            }
+        }
     }
     
     func toContentCollection() {
@@ -60,6 +109,7 @@ class CreationCollectionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? CreationTableViewController {
+            dest.creations = creationModels
             dest.startIndex = selectedIndex
         }
     }

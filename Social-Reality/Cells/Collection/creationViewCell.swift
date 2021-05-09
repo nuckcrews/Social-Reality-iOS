@@ -30,14 +30,16 @@ class creationViewCell: UICollectionViewCell {
     // MARK: - Configure Methods
     
     func configure(with image: UIImage?) {
+        imageView.backgroundColor = .systemGray4
         imageView.image = image?.fixOrientation()
     }
     
     func configureCell(creation: CreationThumbNailView) {
+        imageView.backgroundColor = .systemGray4
         imageView.setImageFromURL(creation.model?.thumbnail)
     }
     
-    func configureCell(creation: CreationThumbNailView, imageFrame: (CGFloat, CGFloat)) {
+    func configureCell(creation: CreationThumbNailView, imageFrame: (CGFloat, CGFloat)) {imageView.backgroundColor = .systemGray4
         imageView.setImageFromURL(creation.model?.thumbnail)
         imageViewHeight.constant = imageFrame.1
         imageViewHeight.constant = imageFrame.0

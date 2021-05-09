@@ -80,9 +80,13 @@ class CreationTableViewController: UIViewController {
     
     func getCreations() {
         
-        creationTableView.creations = Testing.defaultCreations
+        if creations.isEmpty {
+            creationTableView.creations = Testing.defaultCreations
+        } else {
+            creationTableView.creations = creations
+        }
+
         creationTableView.reloadCollection()
-        
         
     }
     

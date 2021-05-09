@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import AVFoundation
 
-struct VideoModel {
+struct Video0 {
     
     static func getThumbnailImage(forUrl str: String?, completion: @escaping(_ result: UIImage?) -> Void){
         DispatchQueue.global().async {
