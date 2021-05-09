@@ -34,5 +34,6 @@ enum Segue: String {
     case toMessageFromCover
     case toCreationTableFromProfile
     case toCreationTableFromExplore
+    case toCreationTableFromMessage
     
 }

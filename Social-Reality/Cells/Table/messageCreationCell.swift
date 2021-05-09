@@ -24,6 +24,11 @@ class messageCreationCell: UITableViewCell {
     @IBOutlet weak var leftCreationUserImageView: UIImageView!
     @IBOutlet weak var rightCreationUserImageView: UIImageView!
     
+    // MARK: - Variables
+    
+    weak var delegate: MessageCellDelegate?
+    var cellMessage: MessageModel?
+    
     // MARK: - Lifecycle Methods
     
     override func awakeFromNib() {
@@ -52,7 +57,10 @@ class messageCreationCell: UITableViewCell {
     
     // MARK: - Configure Methods
     
-    func configureCell(message: MessageModel) {
+    func configureCell(message: MessageModel, del: MessageCellDelegate? = nil) {
+        
+        delegate = del
+        cellMessage = message
         
         if message.creationID == nil {
             
@@ -102,6 +110,14 @@ class messageCreationCell: UITableViewCell {
             
         }
         
+    }
+    
+    
+    @IBAction func tapCell(_ sender: UIButton) {
+        guard let id = cellMessage?.creationID, id.count > 0 else {
+            return
+        }
+        delegate?.selectedCreation(id: id)
     }
     
 }

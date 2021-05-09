@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,17 +18,28 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qZR-ta-Gi3">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured Creations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhJ-o3-dao">
-                            <rect key="frame" x="93" y="16" width="134.5" height="18"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                            <color key="textColor" name="GrayText"/>
+                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLl-5m-KjV">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="6"/>
+                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="6" id="ywY-gJ-pgV"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV4-AM-W9l">
+                            <rect key="frame" x="12" y="16" width="296" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <color key="textColor" name="Primary"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" name="Background"/>
                     <constraints>
-                        <constraint firstItem="YhJ-o3-dao" firstAttribute="centerX" secondItem="qZR-ta-Gi3" secondAttribute="centerX" id="2tz-5q-bjC"/>
-                        <constraint firstItem="YhJ-o3-dao" firstAttribute="centerY" secondItem="qZR-ta-Gi3" secondAttribute="centerY" id="nOD-rX-GHk"/>
+                        <constraint firstItem="DLl-5m-KjV" firstAttribute="top" secondItem="qZR-ta-Gi3" secondAttribute="top" id="7P4-sY-Jnr"/>
+                        <constraint firstItem="iV4-AM-W9l" firstAttribute="leading" secondItem="qZR-ta-Gi3" secondAttribute="leading" constant="12" id="Mrx-56-ujq"/>
+                        <constraint firstAttribute="trailing" secondItem="DLl-5m-KjV" secondAttribute="trailing" id="OeS-dE-kpy"/>
+                        <constraint firstItem="DLl-5m-KjV" firstAttribute="leading" secondItem="qZR-ta-Gi3" secondAttribute="leading" id="PvT-BU-oiY"/>
+                        <constraint firstItem="iV4-AM-W9l" firstAttribute="centerY" secondItem="qZR-ta-Gi3" secondAttribute="centerY" constant="3" id="UZL-Pf-i6c"/>
+                        <constraint firstAttribute="trailing" secondItem="iV4-AM-W9l" secondAttribute="trailing" constant="12" id="dVL-IQ-9ei"/>
                     </constraints>
                 </view>
             </subviews>
@@ -38,15 +50,18 @@
                 <constraint firstItem="qZR-ta-Gi3" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="OA1-vK-zaq"/>
                 <constraint firstAttribute="bottom" secondItem="qZR-ta-Gi3" secondAttribute="bottom" id="hoD-bN-zvM"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="132"/>
+            <point key="canvasLocation" x="131.8840579710145" y="131.91964285714286"/>
         </collectionReusableView>
     </objects>
     <resources>
         <namedColor name="Background">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="GrayText">
-            <color red="0.5690000057220459" green="0.5690000057220459" blue="0.5690000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Primary">
+            <color red="0.49399998784065247" green="0.4309999942779541" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

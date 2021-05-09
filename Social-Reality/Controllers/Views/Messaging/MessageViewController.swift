@@ -28,6 +28,9 @@ class MessageViewController: UIViewController {
     var recipient: UserModel?
     var recipientID: String?
     var messages = [MessageModel]()
+    var selectedMessage: MessageModel?
+    var creations = [CreationModel]()
+    var selectedIndex = 0
     
     // MARK: - View Lifecycle
     
@@ -144,6 +147,22 @@ class MessageViewController: UIViewController {
         
     }
     
+    func getCreations() {
+        for message in messages {
+            if message.type == .creation {
+                guard let id = message.creationID else {
+                    continue
+                }
+                creations.removeAll()
+                Query.get.creation(id: id) { [weak self] model in
+                    if let model = model {
+                        self?.creations.append(model)
+                    }
+                }
+            }
+        }
+    }
+    
     func sortMessages() {
         
         messages.sort(by: { $0.date.rawDate ?? Date() < $1.date.rawDate ?? Date() } )
@@ -151,6 +170,8 @@ class MessageViewController: UIViewController {
         tableView.reloadData()
         
         tableView.scrollToBottom()
+        
+        getCreations()
         
         
     }
@@ -225,6 +246,24 @@ class MessageViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // MARK: - Segues
+    
+    func toCreationTableView() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toCreationTableFromMessage.rawValue, sender: nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CreationTableViewController {
+            guard creations.count > 0 else {
+                return
+            }
+            dest.creations = creations
+            dest.startIndex = selectedIndex
+        }
+    }
+    
 }
 
 // MARK: - ScrollView Delegate
@@ -287,7 +326,7 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
         switch messages[indexPath.row].type {
         case .creation:
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.messageCreationCell.rawValue, for: indexPath) as? messageCreationCell {
-                cell.configureCell(message: messages[indexPath.row])
+                cell.configureCell(message: messages[indexPath.row], del: self)
                 return cell
             } else {
                 return messageCreationCell()
@@ -303,4 +342,26 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if messages[indexPath.row].type == .creation {
+            
+        }
+        
+    }
+    
+}
+
+extension MessageViewController: MessageCellDelegate {
+    func selectedCreation(id: String) {
+        for i in 0..<creations.count {
+            if id == creations[i].id {
+                selectedIndex = i
+            }
+        }
+        toCreationTableView()
+    }
+}
+
+protocol MessageCellDelegate: AnyObject {
+    func selectedCreation(id: String)
 }
