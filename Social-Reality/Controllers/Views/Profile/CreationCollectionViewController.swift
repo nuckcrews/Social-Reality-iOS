@@ -129,7 +129,7 @@ extension CreationCollectionViewController: UICollectionViewDelegate, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
-            cell.configureCell(creation: creations[indexPath.row])
+            cell.configureCell(at: indexPath.row, creation: creations[indexPath.row])
             return cell
         } else {
             return creationViewCell()

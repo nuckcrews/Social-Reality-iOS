@@ -157,7 +157,7 @@ extension AccountViewController: UICollectionViewDelegate {
             }
         case .creation(let data):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
-                cell.configureCell(creation: data)
+                cell.configureCell(at: indexPath.row, creation: data)
                 return cell
             } else {
                 return creationViewCell()
