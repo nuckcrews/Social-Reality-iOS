@@ -20,6 +20,10 @@ class ExploreViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var topMapView: UIView!
     
+    var creations = [CreationModel]()
+    var creationThumbNails = [CreationThumbNailView]()
+    var selectedIndex = 0
+    
     private var datasource: Datasource!
     private let locationManager: CLLocationManager = CLLocationManager()
     
@@ -42,13 +46,15 @@ class ExploreViewController: UIViewController {
         tabBarItem.tag = TabBarItemTag.secondViewController.rawValue
         
         searchTextField.delegate = self
-        
+        collectionView.delegate = self
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
         collectionView.register(ExploreMapHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreMapHeaderView.rawValue)
         collectionView.register(ExploreCreationHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreCreationHeaderView.rawValue)
         
         configureDatasource()
         setupLocationManager()
+        
+        fetchCreations()
         
     }
     
@@ -62,6 +68,36 @@ class ExploreViewController: UIViewController {
         mapView.camera = GMSCameraPosition(target: initialLocation?.coordinate ?? CLLocation(latitude: 21.282778, longitude: -157.829444).coordinate, zoom: 14)
         
         reloadDataSource()
+    }
+    
+    func fetchCreations() {
+        
+        Query.get.creations { [weak self] models in
+            guard let models = models else { return }
+            self?.creations.removeAll()
+            self?.creationThumbNails.removeAll()
+            for model in models {
+                self?.creations.append(model)
+                self?.creationThumbNails.append(CreationThumbNailView(model: model))
+            }
+            self?.reloadDataSource()
+        }
+        
+    }
+    
+    // MARK: - Segues
+    
+    func toCreationTableView() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toCreationTableFromExplore.rawValue, sender: nil)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? CreationTableViewController {
+            dest.creations = creations
+            dest.startIndex = selectedIndex
+        }
     }
     
     
@@ -151,7 +187,7 @@ extension ExploreViewController {
             }
         case .creation(let data):
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
-//                cell.configure(with: data.image)
+                cell.configureCell(at: indexPath.row, creation: data, del: self)
                 return cell
             } else {
                 return creationViewCell()
@@ -180,8 +216,7 @@ extension ExploreViewController {
         let initialLocation = locationManager.authorizationStatus ? locationManager.location : CLLocation(latitude: 21.282778, longitude: -157.829444)
         snapshot.appendSections([.map, .creations])
         snapshot.appendItems([.map(MapHeaderData(location: initialLocation ?? CLLocation(latitude: 21.282778, longitude: -157.829444)))], toSection: .map)
-//        snapshot.appendItems(CreationThumbNailView.demoPhotos.map({ Item.creation($0) }), toSection: .creations)
-//        snapshot.appendItems(CreationThumbNailView.demoPhotos2.map({ Item.creation($0) }), toSection: .creations)
+        snapshot.appendItems(creationThumbNails.map({ Item.creation($0) }), toSection: .creations)
         
         return snapshot
     }
@@ -226,7 +261,7 @@ extension ExploreViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1/3))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(3/8))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
@@ -249,6 +284,26 @@ extension ExploreViewController {
             return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreCreationHeaderView.rawValue, for: indexPath)
         }
         
+    }
+    
+}
+
+extension ExploreViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        toCreationTableView()
+        print("selecting")
+        selectedIndex = indexPath.row
+    }
+    
+}
+
+extension ExploreViewController: CreationViewDelegate {
+    
+    func tappedView(index: Int) {
+        toCreationTableView()
+        selectedIndex = index
     }
     
 }

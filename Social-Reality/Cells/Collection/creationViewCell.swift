@@ -18,6 +18,11 @@ class creationViewCell: UICollectionViewCell {
     @IBOutlet weak var imageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var imageViewWidth: NSLayoutConstraint!
     
+    // MARK: - Variables
+    
+    weak var delegate: CreationViewDelegate?
+    var index = 0
+    
     // MARK: - Prepare for Reuse
     
     override func prepareForReuse() {
@@ -30,18 +35,34 @@ class creationViewCell: UICollectionViewCell {
     // MARK: - Configure Methods
     
     func configure(with image: UIImage?) {
+        imageView.backgroundColor = .systemGray4
         imageView.image = image?.fixOrientation()
     }
     
-    func configureCell(creation: CreationThumbNailView) {
+    func configureCell(at row: Int, creation: CreationThumbNailView, del: CreationViewDelegate? = nil) {
+        imageView.backgroundColor = .systemGray4
         imageView.setImageFromURL(creation.model?.thumbnail)
+        delegate = del
+        index = row
     }
     
-    func configureCell(creation: CreationThumbNailView, imageFrame: (CGFloat, CGFloat)) {
+    func configureCell(at row: Int, creation: CreationThumbNailView, imageFrame: (CGFloat, CGFloat), del: CreationViewDelegate? = nil) {imageView.backgroundColor = .systemGray4
         imageView.setImageFromURL(creation.model?.thumbnail)
         imageViewHeight.constant = imageFrame.1
         imageViewHeight.constant = imageFrame.0
+        delegate = del
+        index = row
+    }
+    
+    @IBAction func tapView(_ sender: UIButton) {
+        
+        delegate?.tappedView(index: index)
+        
     }
 
+}
+
+protocol CreationViewDelegate: AnyObject {
+    func tappedView(index: Int)
 }
 
