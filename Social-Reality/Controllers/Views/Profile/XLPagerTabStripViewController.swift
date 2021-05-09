@@ -18,7 +18,7 @@ class XLPagerTabStripViewController: ButtonBarPagerTabStripViewController, Pager
     }
     
     var pagerTabHeight: CGFloat?{
-        return 60
+        return 160
     }
 
     //MARK: Properties

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18092"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,17 +18,34 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ve6-GA-jXA">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creations Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIL-sf-uvM">
-                            <rect key="frame" x="109" y="16" width="102" height="18"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                            <color key="textColor" name="GrayText"/>
+                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ptw-KC-TaD">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="6"/>
+                            <color key="backgroundColor" systemColor="systemGray6Color"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="6" id="osh-pY-OGQ"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeS-rH-lk1">
+                            <rect key="frame" x="12" y="16" width="80" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <color key="textColor" name="Primary"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1t-QZ-neO">
+                            <rect key="frame" x="283" y="14" width="21" height="22"/>
+                            <color key="tintColor" name="Primary"/>
+                            <state key="normal" image="gearshape" catalog="system"/>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="Background"/>
                     <constraints>
-                        <constraint firstItem="UIL-sf-uvM" firstAttribute="centerY" secondItem="Ve6-GA-jXA" secondAttribute="centerY" id="Djc-r6-8dx"/>
-                        <constraint firstItem="UIL-sf-uvM" firstAttribute="centerX" secondItem="Ve6-GA-jXA" secondAttribute="centerX" id="eFx-Qn-uYH"/>
+                        <constraint firstItem="Ptw-KC-TaD" firstAttribute="top" secondItem="Ve6-GA-jXA" secondAttribute="top" id="6jM-27-suk"/>
+                        <constraint firstAttribute="trailing" secondItem="l1t-QZ-neO" secondAttribute="trailing" constant="16" id="McT-s9-5Ea"/>
+                        <constraint firstItem="l1t-QZ-neO" firstAttribute="centerY" secondItem="Ve6-GA-jXA" secondAttribute="centerY" id="bvT-WC-buV"/>
+                        <constraint firstItem="DeS-rH-lk1" firstAttribute="centerY" secondItem="Ve6-GA-jXA" secondAttribute="centerY" constant="3" id="c7Y-8I-1zs"/>
+                        <constraint firstAttribute="trailing" secondItem="Ptw-KC-TaD" secondAttribute="trailing" id="lEL-TS-Tsq"/>
+                        <constraint firstItem="DeS-rH-lk1" firstAttribute="leading" secondItem="Ve6-GA-jXA" secondAttribute="leading" constant="12" id="tHs-DD-VUw"/>
+                        <constraint firstItem="Ptw-KC-TaD" firstAttribute="leading" secondItem="Ve6-GA-jXA" secondAttribute="leading" id="tlN-0s-dOu"/>
                     </constraints>
                 </view>
             </subviews>
@@ -42,11 +60,15 @@
         </collectionReusableView>
     </objects>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <namedColor name="Background">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
-        <namedColor name="GrayText">
-            <color red="0.5690000057220459" green="0.5690000057220459" blue="0.5690000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Primary">
+            <color red="0.49399998784065247" green="0.4309999942779541" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
