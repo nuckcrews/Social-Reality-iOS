@@ -26,25 +26,27 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeS-rH-lk1">
-                            <rect key="frame" x="12" y="16" width="80" height="24"/>
+                            <rect key="frame" x="16" y="16" width="80" height="24"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                             <color key="textColor" name="Primary"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1t-QZ-neO">
-                            <rect key="frame" x="283" y="14" width="21" height="22"/>
-                            <color key="tintColor" name="Primary"/>
-                            <state key="normal" image="gearshape" catalog="system"/>
+                            <rect key="frame" x="268" y="14" width="20" height="22"/>
+                            <color key="tintColor" name="GrayText"/>
+                            <state key="normal" image="gearshape" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="16"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" name="Background"/>
                     <constraints>
                         <constraint firstItem="Ptw-KC-TaD" firstAttribute="top" secondItem="Ve6-GA-jXA" secondAttribute="top" id="6jM-27-suk"/>
-                        <constraint firstAttribute="trailing" secondItem="l1t-QZ-neO" secondAttribute="trailing" constant="16" id="McT-s9-5Ea"/>
+                        <constraint firstAttribute="trailing" secondItem="l1t-QZ-neO" secondAttribute="trailing" constant="32" id="McT-s9-5Ea"/>
                         <constraint firstItem="l1t-QZ-neO" firstAttribute="centerY" secondItem="Ve6-GA-jXA" secondAttribute="centerY" id="bvT-WC-buV"/>
                         <constraint firstItem="DeS-rH-lk1" firstAttribute="centerY" secondItem="Ve6-GA-jXA" secondAttribute="centerY" constant="3" id="c7Y-8I-1zs"/>
                         <constraint firstAttribute="trailing" secondItem="Ptw-KC-TaD" secondAttribute="trailing" id="lEL-TS-Tsq"/>
-                        <constraint firstItem="DeS-rH-lk1" firstAttribute="leading" secondItem="Ve6-GA-jXA" secondAttribute="leading" constant="12" id="tHs-DD-VUw"/>
+                        <constraint firstItem="DeS-rH-lk1" firstAttribute="leading" secondItem="Ve6-GA-jXA" secondAttribute="leading" constant="16" id="tHs-DD-VUw"/>
                         <constraint firstItem="Ptw-KC-TaD" firstAttribute="leading" secondItem="Ve6-GA-jXA" secondAttribute="leading" id="tlN-0s-dOu"/>
                     </constraints>
                 </view>
@@ -63,6 +65,9 @@
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <namedColor name="Background">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="GrayText">
+            <color red="0.5690000057220459" green="0.5690000057220459" blue="0.5690000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Primary">
             <color red="0.49399998784065247" green="0.4309999942779541" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -26,7 +26,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV4-AM-W9l">
-                            <rect key="frame" x="12" y="16" width="296" height="24"/>
+                            <rect key="frame" x="16" y="16" width="288" height="24"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                             <color key="textColor" name="Primary"/>
                             <nil key="highlightedColor"/>
@@ -35,11 +35,11 @@
                     <color key="backgroundColor" name="Background"/>
                     <constraints>
                         <constraint firstItem="DLl-5m-KjV" firstAttribute="top" secondItem="qZR-ta-Gi3" secondAttribute="top" id="7P4-sY-Jnr"/>
-                        <constraint firstItem="iV4-AM-W9l" firstAttribute="leading" secondItem="qZR-ta-Gi3" secondAttribute="leading" constant="12" id="Mrx-56-ujq"/>
+                        <constraint firstItem="iV4-AM-W9l" firstAttribute="leading" secondItem="qZR-ta-Gi3" secondAttribute="leading" constant="16" id="Mrx-56-ujq"/>
                         <constraint firstAttribute="trailing" secondItem="DLl-5m-KjV" secondAttribute="trailing" id="OeS-dE-kpy"/>
                         <constraint firstItem="DLl-5m-KjV" firstAttribute="leading" secondItem="qZR-ta-Gi3" secondAttribute="leading" id="PvT-BU-oiY"/>
                         <constraint firstItem="iV4-AM-W9l" firstAttribute="centerY" secondItem="qZR-ta-Gi3" secondAttribute="centerY" constant="3" id="UZL-Pf-i6c"/>
-                        <constraint firstAttribute="trailing" secondItem="iV4-AM-W9l" secondAttribute="trailing" constant="12" id="dVL-IQ-9ei"/>
+                        <constraint firstAttribute="trailing" secondItem="iV4-AM-W9l" secondAttribute="trailing" constant="16" id="dVL-IQ-9ei"/>
                     </constraints>
                 </view>
             </subviews>

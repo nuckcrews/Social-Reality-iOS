@@ -13,8 +13,8 @@ class ShadowViewBox: UIView {
     private var shadowLayer: ShadowLayer!
     private var fillColor: UIColor = .white
     private var cornerRadius: CGFloat = 0.0
-    private var opacity: Float = 0.2
-    private var shadowRadius: CGFloat = 5
+    private var opacity: Float = 0.1
+    private var shadowRadius: CGFloat = 8
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -207,7 +207,7 @@ class ShadowViewRoundedHorizontal: UIView {
     private var fillColor: UIColor = .white
     private var cornerRadius: CGFloat = 0.0
     private var opacity: Float = 0.2
-    private var shadowRadius: CGFloat = 5
+    private var shadowRadius: CGFloat = 3
     
     override func layoutSubviews() {
         super.layoutSubviews()

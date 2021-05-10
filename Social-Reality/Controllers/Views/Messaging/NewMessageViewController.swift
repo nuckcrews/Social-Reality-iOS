@@ -32,6 +32,13 @@ class NewMessageViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        searchBar.becomeFirstResponder()
+        
+    }
+    
     // MARK: - View Setup
     
     func setupView() {

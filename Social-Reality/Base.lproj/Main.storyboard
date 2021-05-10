@@ -243,14 +243,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sOU-Ly-usj">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="124"/>
                                 <color key="backgroundColor" name="Background"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Nj-ia-icH" customClass="ShadowViewBox" customModule="Social_Reality" customModuleProvider="target">
-                                <rect key="frame" x="24" y="56" width="366" height="48"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Nj-ia-icH" customClass="ShadowViewRoundedHorizontal" customModule="Social_Reality" customModuleProvider="target">
+                                <rect key="frame" x="16" y="56" width="382" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQ7-DY-UwV">
-                                        <rect key="frame" x="8" y="13" width="22" height="22"/>
+                                        <rect key="frame" x="12" y="17" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="W7I-X2-rGV"/>
                                         </constraints>
@@ -260,14 +260,13 @@
                                         </state>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Find the coolest creations" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wno-6u-5NI">
-                                        <rect key="frame" x="34" y="2" width="294" height="44"/>
-                                        <color key="backgroundColor" name="Background"/>
+                                        <rect key="frame" x="38" y="2" width="298" height="52"/>
                                         <color key="textColor" name="MainText"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uz-Fk-eat">
-                                        <rect key="frame" x="336" y="13" width="22" height="22"/>
+                                        <rect key="frame" x="344" y="17" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="AlQ-DP-SyL"/>
                                         </constraints>
@@ -282,19 +281,27 @@
                                     <constraint firstItem="Wno-6u-5NI" firstAttribute="leading" secondItem="VQ7-DY-UwV" secondAttribute="trailing" constant="4" id="9pz-7P-XtR"/>
                                     <constraint firstItem="2Uz-Fk-eat" firstAttribute="centerY" secondItem="7Nj-ia-icH" secondAttribute="centerY" id="CSF-qo-ELn"/>
                                     <constraint firstItem="VQ7-DY-UwV" firstAttribute="centerY" secondItem="7Nj-ia-icH" secondAttribute="centerY" id="N4m-gE-hrG"/>
-                                    <constraint firstItem="VQ7-DY-UwV" firstAttribute="leading" secondItem="7Nj-ia-icH" secondAttribute="leading" constant="8" id="NGk-9N-21Q"/>
-                                    <constraint firstAttribute="trailing" secondItem="2Uz-Fk-eat" secondAttribute="trailing" constant="8" id="bgo-sy-ONp"/>
+                                    <constraint firstItem="VQ7-DY-UwV" firstAttribute="leading" secondItem="7Nj-ia-icH" secondAttribute="leading" constant="12" id="NGk-9N-21Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Uz-Fk-eat" secondAttribute="trailing" constant="16" id="bgo-sy-ONp"/>
                                     <constraint firstItem="2Uz-Fk-eat" firstAttribute="leading" secondItem="Wno-6u-5NI" secondAttribute="trailing" constant="8" id="eDH-2H-epI"/>
                                     <constraint firstItem="Wno-6u-5NI" firstAttribute="top" secondItem="7Nj-ia-icH" secondAttribute="top" constant="2" id="iUB-v7-ey3"/>
-                                    <constraint firstAttribute="height" constant="48" id="n63-r0-QdN"/>
+                                    <constraint firstAttribute="height" constant="56" id="n63-r0-QdN"/>
                                     <constraint firstAttribute="bottom" secondItem="Wno-6u-5NI" secondAttribute="bottom" constant="2" id="q4a-YK-3tc"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="Primary"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQP-eE-36v">
-                                <rect key="frame" x="0.0" y="116" width="414" height="697"/>
+                                <rect key="frame" x="0.0" y="124" width="414" height="689"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="D58-SI-yyf" customClass="EventCollectionView" customModule="Social_Reality" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8" width="414" height="689"/>
+                                        <rect key="frame" x="0.0" y="8" width="414" height="681"/>
                                         <color key="backgroundColor" name="Background"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pYr-sP-DrW">
                                             <size key="itemSize" width="412" height="261"/>
@@ -434,9 +441,9 @@
                             <constraint firstAttribute="bottom" secondItem="YwF-xS-i3X" secondAttribute="bottom" id="Dq3-xS-1BC"/>
                             <constraint firstAttribute="trailing" secondItem="YwF-xS-i3X" secondAttribute="trailing" id="ETE-Md-rtl"/>
                             <constraint firstItem="QQP-eE-36v" firstAttribute="top" secondItem="sOU-Ly-usj" secondAttribute="bottom" id="IqR-PL-13d"/>
-                            <constraint firstItem="Uzf-OL-mul" firstAttribute="trailing" secondItem="7Nj-ia-icH" secondAttribute="trailing" constant="24" id="JAm-Uh-1dg"/>
+                            <constraint firstItem="Uzf-OL-mul" firstAttribute="trailing" secondItem="7Nj-ia-icH" secondAttribute="trailing" constant="16" id="JAm-Uh-1dg"/>
                             <constraint firstItem="Uzf-OL-mul" firstAttribute="trailing" secondItem="QQP-eE-36v" secondAttribute="trailing" id="ONy-Gc-ins"/>
-                            <constraint firstItem="7Nj-ia-icH" firstAttribute="leading" secondItem="Uzf-OL-mul" secondAttribute="leading" constant="24" id="Oef-kc-xbd"/>
+                            <constraint firstItem="7Nj-ia-icH" firstAttribute="leading" secondItem="Uzf-OL-mul" secondAttribute="leading" constant="16" id="Oef-kc-xbd"/>
                             <constraint firstItem="sOU-Ly-usj" firstAttribute="top" secondItem="jHJ-sv-l2A" secondAttribute="top" id="QpN-0p-i6L"/>
                             <constraint firstItem="YwF-xS-i3X" firstAttribute="top" secondItem="jHJ-sv-l2A" secondAttribute="top" id="nvi-9s-bsL"/>
                             <constraint firstItem="YwF-xS-i3X" firstAttribute="leading" secondItem="Uzf-OL-mul" secondAttribute="leading" id="qxm-yJ-56W"/>
@@ -1120,10 +1127,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruZ-NW-IRD" customClass="CreationTableView" customModule="Social_Reality" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zHa-ay-mUx">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="creationVideoCell" rowHeight="726" id="c5o-PH-l5r" customClass="creationVideoCell" customModule="Social_Reality" customModuleProvider="target">
@@ -2081,7 +2088,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fAp-o7-44x">
-                                <rect key="frame" x="0.0" y="152.5" width="406" height="660.5"/>
+                                <rect key="frame" x="0.0" y="158.5" width="406" height="654.5"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="inboxCell" rowHeight="68" id="jtz-XU-C8H" customClass="inboxCell" customModule="Social_Reality" customModuleProvider="target">
@@ -2220,7 +2227,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QH-69-fyo">
-                                <rect key="frame" x="0.0" y="101.5" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="107.5" width="414" height="51"/>
                                 <subviews>
                                     <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Messages" translatesAutoresizingMaskIntoConstraints="NO" id="XlS-OD-qGi">
                                         <rect key="frame" x="12" y="0.0" width="390" height="51"/>
@@ -2256,7 +2263,7 @@
                             <constraint firstAttribute="trailing" secondItem="fAp-o7-44x" secondAttribute="trailing" constant="8" id="Kdd-RL-Prf"/>
                             <constraint firstItem="G8R-vr-iwn" firstAttribute="top" secondItem="xoi-oU-srV" secondAttribute="top" constant="24" id="Rpx-p4-nD2"/>
                             <constraint firstItem="rAn-SR-jBq" firstAttribute="centerY" secondItem="G8R-vr-iwn" secondAttribute="centerY" id="guk-yw-qPT"/>
-                            <constraint firstItem="9QH-69-fyo" firstAttribute="top" secondItem="G8R-vr-iwn" secondAttribute="bottom" constant="2" id="hNm-J3-ZuR"/>
+                            <constraint firstItem="9QH-69-fyo" firstAttribute="top" secondItem="G8R-vr-iwn" secondAttribute="bottom" constant="8" id="hNm-J3-ZuR"/>
                             <constraint firstItem="xoi-oU-srV" firstAttribute="trailing" secondItem="rAn-SR-jBq" secondAttribute="trailing" constant="24" id="mvx-IT-Z5G"/>
                             <constraint firstItem="fAp-o7-44x" firstAttribute="leading" secondItem="xoi-oU-srV" secondAttribute="leading" id="wsC-LB-oqz"/>
                             <constraint firstItem="9QH-69-fyo" firstAttribute="trailing" secondItem="xoi-oU-srV" secondAttribute="trailing" id="z19-r4-r0Z"/>
@@ -5914,7 +5921,7 @@
         <segue reference="fnc-XW-6Bv"/>
         <segue reference="JU7-we-xcG"/>
         <segue reference="67m-qx-B5J"/>
-        <segue reference="SFY-5N-ipL"/>
+        <segue reference="BHe-Zv-di3"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple.icon.sign" width="770" height="770"/>
