@@ -33,7 +33,7 @@ class InboxViewController: UIViewController {
     }
     
     @IBAction func tapNewMessage(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: Segue.toNewMessageFromInbox.rawValue, sender: nil)
     }
     
 }

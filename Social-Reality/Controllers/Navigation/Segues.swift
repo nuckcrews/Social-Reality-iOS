@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum Segue: String {
     
     case toSignInFromCover
@@ -35,5 +34,6 @@ enum Segue: String {
     case toCreationTableFromProfile
     case toCreationTableFromExplore
     case toCreationTableFromMessage
+    case toNewMessageFromInbox
     
 }

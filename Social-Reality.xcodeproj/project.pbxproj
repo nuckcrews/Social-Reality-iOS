@@ -68,6 +68,8 @@
 		A03FAC8425EEDCDB000BFC02 /* creationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03FAC8325EEDCDB000BFC02 /* creationViewCell.swift */; };
 		A03FAC8625EEDD09000BFC02 /* CreationThumbNailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03FAC8525EEDD09000BFC02 /* CreationThumbNailView.swift */; };
 		A040A557264767BB007008EC /* Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040A556264767BB007008EC /* Fields.swift */; };
+		A040A55A2648AE88007008EC /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040A5592648AE88007008EC /* NewMessageViewController.swift */; };
+		A040A55C2648B0D8007008EC /* searchUserMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040A55B2648B0D8007008EC /* searchUserMessageCell.swift */; };
 		A040AB1025F676ED0064978A /* CreateAvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040AB0F25F676ED0064978A /* CreateAvatarViewController.swift */; };
 		A040AB1525F67F760064978A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040AB1425F67F760064978A /* ImagePicker.swift */; };
 		A040AB3C25F681BB0064978A /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A040AB3B25F681BB0064978A /* Storage.swift */; };
@@ -250,6 +252,8 @@
 		A03FAC8325EEDCDB000BFC02 /* creationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = creationViewCell.swift; sourceTree = "<group>"; };
 		A03FAC8525EEDD09000BFC02 /* CreationThumbNailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationThumbNailView.swift; sourceTree = "<group>"; };
 		A040A556264767BB007008EC /* Fields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fields.swift; sourceTree = "<group>"; };
+		A040A5592648AE88007008EC /* NewMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
+		A040A55B2648B0D8007008EC /* searchUserMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserMessageCell.swift; sourceTree = "<group>"; };
 		A040AB0F25F676ED0064978A /* CreateAvatarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAvatarViewController.swift; sourceTree = "<group>"; };
 		A040AB1425F67F760064978A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		A040AB3B25F681BB0064978A /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
@@ -385,6 +389,7 @@
 		A0006913261D57B50020F307 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
+				A040A5592648AE88007008EC /* NewMessageViewController.swift */,
 				A0006914261D57E50020F307 /* MessageViewController.swift */,
 			);
 			path = Messaging;
@@ -470,6 +475,7 @@
 				A0911DAB260C3FF700D05642 /* searchUserCell.swift */,
 				A0EAE5B5260D5F9800F40EEC /* searchLocationCell.swift */,
 				A0579EDC260E41A4009D512F /* searchMusicCell.swift */,
+				A040A55B2648B0D8007008EC /* searchUserMessageCell.swift */,
 				A06E9A27260EA21E00B85CE9 /* commentCell.swift */,
 				A0006916261D5F500020F307 /* messageCell.swift */,
 				A0BEDC79262F2E1C003312E3 /* messageCreationCell.swift */,
@@ -1260,6 +1266,7 @@
 				A06B63B025E954A900AE746D /* DeleteMethods.swift in Sources */,
 				A023980C25EC27DD00F13F72 /* Protocols.swift in Sources */,
 				A0CBAFCB26015EC3001953C8 /* EditProfileViewController.swift in Sources */,
+				A040A55A2648AE88007008EC /* NewMessageViewController.swift in Sources */,
 				A006C01F26003072003613C0 /* UIImageView.swift in Sources */,
 				A06B641125E97F5F00AE746D /* CustomButtons.swift in Sources */,
 				A06B63E625E964A200AE746D /* InboxViewController.swift in Sources */,
@@ -1274,6 +1281,7 @@
 				A0579EDB260E4066009D512F /* SearchMusicView.swift in Sources */,
 				A03870AB25E9447C003989CE /* CustomTabBarController.swift in Sources */,
 				A006C01D260002AE003613C0 /* Providers.swift in Sources */,
+				A040A55C2648B0D8007008EC /* searchUserMessageCell.swift in Sources */,
 				A09A2AAB260AF3730023CABA /* Device.swift in Sources */,
 				A0137174261116C300AE4BA6 /* SearchUsersSendView.swift in Sources */,
 				A0D95BBD26081B6300DA5A07 /* LocalRemoveMethods.swift in Sources */,

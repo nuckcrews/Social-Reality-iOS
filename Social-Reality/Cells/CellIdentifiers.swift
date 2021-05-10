@@ -34,5 +34,6 @@ enum Cells: String {
     case commentCell
     case messageCell
     case messageCreationCell
+    case searchUserMessageCell
     
 }
