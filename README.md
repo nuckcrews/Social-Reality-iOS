@@ -27,8 +27,10 @@ pod install
 
 ### TODO
 
+- [ ] Scoial interaction functionality
 - [ ] User Finger Tracing for 3D Drawing
 - [ ] Remote AR Session Storage
+- [ ] Prepare for scale
 - [ ] More...
 
 ---
