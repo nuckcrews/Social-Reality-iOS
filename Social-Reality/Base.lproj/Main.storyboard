@@ -1079,6 +1079,7 @@
                     <navigationItem key="navigationItem" id="F70-c3-5Xd"/>
                     <connections>
                         <outlet property="containerView" destination="7De-bt-Kln" id="Y4o-5Q-0Dl"/>
+                        <outlet property="usernameTopButton" destination="g8U-5a-MUt" id="pLS-pJ-0KM"/>
                         <segue destination="Ckp-vX-0P0" kind="show" identifier="toSettingsFromProfile" id="MRE-Wn-i3k"/>
                         <segue destination="mFP-I9-LRb" kind="show" identifier="toCreationCollectionFromAccount" id="ABN-wd-D81"/>
                         <segue destination="9va-nW-FCl" kind="show" identifier="toCreationDetailFromAccount" id="ezT-G6-hyI"/>
@@ -5921,7 +5922,7 @@
         <segue reference="fnc-XW-6Bv"/>
         <segue reference="JU7-we-xcG"/>
         <segue reference="67m-qx-B5J"/>
-        <segue reference="BHe-Zv-di3"/>
+        <segue reference="ABN-wd-D81"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="apple.icon.sign" width="770" height="770"/>

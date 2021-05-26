@@ -77,7 +77,7 @@ extension InboxViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row % 2 == 0 { // Need to fix this
+        if indexPath.row % 2 == 0 { // #FIX
             if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.inboxCell.rawValue) as? inboxCell {
                 return cell
             } else {

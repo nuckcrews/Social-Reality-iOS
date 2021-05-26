@@ -12,13 +12,11 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var usernameTopButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        getUser()
         
     }
     
@@ -39,17 +37,6 @@ class ProfileViewController: UIViewController {
         let horzConsts = NSLayoutConstraint.constraints(withVisualFormat: "H:|[page1(==view)]|", options: [.alignAllTop, .alignAllBottom], metrics: nil, views: views)
         
         NSLayoutConstraint.activate(vertConsts + horzConsts)
-        
-    }
-    
-    func getUser() {
-        
-        guard let uid = Auth0.uid else { return }
-        
-        Query.subscribe.user(id: uid) { [weak self] model, lstn in
-            guard let model = model else { return }
-            self?.usernameTopButton.setTitle(model.username, for: .normal)
-        }
         
     }
     
