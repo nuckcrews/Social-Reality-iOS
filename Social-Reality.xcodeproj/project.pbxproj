@@ -124,6 +124,11 @@
 		A06F56AF2628CACE00576EDA /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56AE2628CACE00576EDA /* UIViewController.swift */; };
 		A06F56B12628D13B00576EDA /* ProfileScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */; };
 		A06F56B52628D9C500576EDA /* XLPagerTabStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */; };
+		A06FBFB226605A6F0041B6C9 /* CreationCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FBFB126605A6F0041B6C9 /* CreationCacheModel.swift */; };
+		A06FBFB426605A7B0041B6C9 /* CommentCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FBFB326605A7B0041B6C9 /* CommentCacheModel.swift */; };
+		A06FBFB626605A830041B6C9 /* LikeCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FBFB526605A830041B6C9 /* LikeCacheModel.swift */; };
+		A06FBFB826605A910041B6C9 /* ConversationCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FBFB726605A910041B6C9 /* ConversationCacheModel.swift */; };
+		A06FBFBA26605A980041B6C9 /* MessageCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06FBFB926605A980041B6C9 /* MessageCacheModel.swift */; };
 		A07191AC265F4BB100E907B9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191AB265F4BB100E907B9 /* Cache.swift */; };
 		A07191AE265F4BF300E907B9 /* WriteCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191AD265F4BF300E907B9 /* WriteCacheMethods.swift */; };
 		A07191B0265F4C2400E907B9 /* ReadCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191AF265F4C2400E907B9 /* ReadCacheMethods.swift */; };
@@ -321,6 +326,11 @@
 		A06F56AE2628CACE00576EDA /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScrollViewController.swift; sourceTree = "<group>"; };
 		A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLPagerTabStripViewController.swift; sourceTree = "<group>"; };
+		A06FBFB126605A6F0041B6C9 /* CreationCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationCacheModel.swift; sourceTree = "<group>"; };
+		A06FBFB326605A7B0041B6C9 /* CommentCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCacheModel.swift; sourceTree = "<group>"; };
+		A06FBFB526605A830041B6C9 /* LikeCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCacheModel.swift; sourceTree = "<group>"; };
+		A06FBFB726605A910041B6C9 /* ConversationCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCacheModel.swift; sourceTree = "<group>"; };
+		A06FBFB926605A980041B6C9 /* MessageCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCacheModel.swift; sourceTree = "<group>"; };
 		A07191AB265F4BB100E907B9 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		A07191AD265F4BF300E907B9 /* WriteCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCacheMethods.swift; sourceTree = "<group>"; };
 		A07191AF265F4C2400E907B9 /* ReadCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCacheMethods.swift; sourceTree = "<group>"; };
@@ -777,8 +787,8 @@
 		A06B633325E9511500AE746D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A07191BA265F53C400E907B9 /* Query */,
 				A040AB7E25F6D67B0064978A /* Auth */,
+				A07191BA265F53C400E907B9 /* Query */,
 				A0080F22265DDD3200A72B5B /* Cache */,
 				A00DD4142603D0F300E6C818 /* Remote */,
 				A040AB4025F682B40064978A /* Storage */,
@@ -822,6 +832,11 @@
 			isa = PBXGroup;
 			children = (
 				A07191B8265F4ECB00E907B9 /* UserCacheModel.swift */,
+				A06FBFB126605A6F0041B6C9 /* CreationCacheModel.swift */,
+				A06FBFB326605A7B0041B6C9 /* CommentCacheModel.swift */,
+				A06FBFB526605A830041B6C9 /* LikeCacheModel.swift */,
+				A06FBFB726605A910041B6C9 /* ConversationCacheModel.swift */,
+				A06FBFB926605A980041B6C9 /* MessageCacheModel.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1263,6 +1278,7 @@
 				A03A968D2603F8D400274793 /* FirebaseCodable.swift in Sources */,
 				A0ED2210261E0D56006BCBC7 /* CustomTableView.swift in Sources */,
 				A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */,
+				A06FBFB426605A7B0041B6C9 /* CommentCacheModel.swift in Sources */,
 				A0911DA9260C3E6E00D05642 /* SearchUsersView.swift in Sources */,
 				A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */,
 				A00DD4182603D43C00E6C818 /* ResultType.swift in Sources */,
@@ -1287,6 +1303,7 @@
 				A06E965A25F166FE009B92E5 /* mapViewCell.swift in Sources */,
 				A02397FD25EC197400F13F72 /* SignInViewController.swift in Sources */,
 				A000691D261D616D0020F307 /* ConversationModel.swift in Sources */,
+				A06FBFBA26605A980041B6C9 /* MessageCacheModel.swift in Sources */,
 				A0FD5C3B2627C73A00AF2A07 /* MyProfileHeaderViewController.swift in Sources */,
 				A0DCF1F425EC7CFC00F699E9 /* CreateUserViewController.swift in Sources */,
 				A06B63C825E9568400AE746D /* Comment.swift in Sources */,
@@ -1311,7 +1328,9 @@
 				A0D37B652612D79F00261567 /* CreationTableView.swift in Sources */,
 				A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */,
 				A0D95BB926081B2E00DA5A07 /* LocalDownloadMethods.swift in Sources */,
+				A06FBFB626605A830041B6C9 /* LikeCacheModel.swift in Sources */,
 				A0006919261D5FBD0020F307 /* MessageModel.swift in Sources */,
+				A06FBFB826605A910041B6C9 /* ConversationCacheModel.swift in Sources */,
 				A00DD4222603D57100E6C818 /* CommentModel.swift in Sources */,
 				A00DD4132603C26000E6C818 /* CreationAVPlayer.swift in Sources */,
 				A0DCF1FE25EC90CE00F699E9 /* CreatePasswordViewController.swift in Sources */,
@@ -1326,6 +1345,7 @@
 				A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */,
 				A06B63B525E954D000AE746D /* SubscribeRemoteMethods.swift in Sources */,
 				A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */,
+				A06FBFB226605A6F0041B6C9 /* CreationCacheModel.swift in Sources */,
 				A0FD5C3D2627C77E00AF2A07 /* CreationCollectionViewController.swift in Sources */,
 				A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */,
 				A0579ED9260E3AD9009D512F /* PushNotificationSender.swift in Sources */,
