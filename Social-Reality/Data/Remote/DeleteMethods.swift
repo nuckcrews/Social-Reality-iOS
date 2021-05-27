@@ -1,5 +1,5 @@
 //
-//  DeleteMethods.swift
+//  DeleteRemoteMethods.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 2/26/21.
@@ -8,9 +8,9 @@
 import Foundation
 import Firebase
 
-// MARK: Delete Query Methods - Local
+// MARK: Delete Remote Query Methods - Local
 
-struct DeleteMethods {
+struct DeleteRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     

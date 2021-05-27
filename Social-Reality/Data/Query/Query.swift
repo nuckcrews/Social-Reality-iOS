@@ -2,11 +2,11 @@
 //  Query.swift
 //  Social-Reality
 //
-//  Created by Nick Crews on 2/26/21.
+//  Created by Nick Crews on 5/27/21.
 //
 
 import Foundation
-import Firebase
+
 
 struct Query {
     

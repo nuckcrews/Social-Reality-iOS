@@ -1,5 +1,5 @@
 //
-//  WriteMethods.swift
+//  WriteRemoteMethods.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 2/26/21.
@@ -9,9 +9,9 @@ import Foundation
 import Firebase
 import CodableFirebase
 
-// MARK: - Write Query Methods - Local
+// MARK: - Write Remote Query Methods - Local
 
-struct WriteMethods {
+struct WriteRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     

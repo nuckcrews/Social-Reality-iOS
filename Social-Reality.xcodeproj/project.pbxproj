@@ -85,7 +85,7 @@
 		A0579EDD260E41A4009D512F /* searchMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0579EDC260E41A4009D512F /* searchMusicCell.swift */; };
 		A05AB2E725EAEEEC00748B04 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */; };
 		A063EA9A260674E700B3C2ED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A063EA99260674E700B3C2ED /* Date.swift */; };
-		A06B633525E9512400AE746D /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B633425E9512400AE746D /* Query.swift */; };
+		A06B633525E9512400AE746D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B633425E9512400AE746D /* Remote.swift */; };
 		A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B635E25E9527B00AE746D /* ReadMethods.swift */; };
 		A06B636425E9533F00AE746D /* WriteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B636325E9533F00AE746D /* WriteMethods.swift */; };
 		A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63AA25E9546D00AE746D /* UpdateMethods.swift */; };
@@ -124,6 +124,19 @@
 		A06F56AF2628CACE00576EDA /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56AE2628CACE00576EDA /* UIViewController.swift */; };
 		A06F56B12628D13B00576EDA /* ProfileScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */; };
 		A06F56B52628D9C500576EDA /* XLPagerTabStripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */; };
+		A07191AC265F4BB100E907B9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191AB265F4BB100E907B9 /* Cache.swift */; };
+		A07191AE265F4BF300E907B9 /* WriteCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191AD265F4BF300E907B9 /* WriteCacheMethods.swift */; };
+		A07191B0265F4C2400E907B9 /* ReadCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191AF265F4C2400E907B9 /* ReadCacheMethods.swift */; };
+		A07191B2265F4C4D00E907B9 /* UpdateCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191B1265F4C4D00E907B9 /* UpdateCacheMethods.swift */; };
+		A07191B4265F4C6A00E907B9 /* DeleteCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191B3265F4C6A00E907B9 /* DeleteCacheMethods.swift */; };
+		A07191B6265F4C9700E907B9 /* SubscribeCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191B5265F4C9700E907B9 /* SubscribeCacheMethods.swift */; };
+		A07191B9265F4ECB00E907B9 /* UserCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191B8265F4ECB00E907B9 /* UserCacheModel.swift */; };
+		A07191BC265F53D600E907B9 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191BB265F53D600E907B9 /* Query.swift */; };
+		A07191BE265F542400E907B9 /* WriteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191BD265F542400E907B9 /* WriteMethods.swift */; };
+		A07191C0265F542D00E907B9 /* ReadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191BF265F542D00E907B9 /* ReadMethods.swift */; };
+		A07191C2265F543800E907B9 /* UpdateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191C1265F543800E907B9 /* UpdateMethods.swift */; };
+		A07191C4265F544D00E907B9 /* DeleteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191C3265F544D00E907B9 /* DeleteMethods.swift */; };
+		A07191C6265F545D00E907B9 /* SubscribeMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191C5265F545D00E907B9 /* SubscribeMethods.swift */; };
 		A071B4C726240A790057BE35 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071B4C626240A790057BE35 /* Testing.swift */; };
 		A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5625ED335E00D59382 /* TestViewController.swift */; };
 		A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */; };
@@ -269,7 +282,7 @@
 		A0579EDC260E41A4009D512F /* searchMusicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchMusicCell.swift; sourceTree = "<group>"; };
 		A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A063EA99260674E700B3C2ED /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		A06B633425E9512400AE746D /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		A06B633425E9512400AE746D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		A06B635E25E9527B00AE746D /* ReadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMethods.swift; sourceTree = "<group>"; };
 		A06B636325E9533F00AE746D /* WriteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMethods.swift; sourceTree = "<group>"; };
 		A06B63AA25E9546D00AE746D /* UpdateMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMethods.swift; sourceTree = "<group>"; };
@@ -308,6 +321,19 @@
 		A06F56AE2628CACE00576EDA /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScrollViewController.swift; sourceTree = "<group>"; };
 		A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLPagerTabStripViewController.swift; sourceTree = "<group>"; };
+		A07191AB265F4BB100E907B9 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		A07191AD265F4BF300E907B9 /* WriteCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteCacheMethods.swift; sourceTree = "<group>"; };
+		A07191AF265F4C2400E907B9 /* ReadCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCacheMethods.swift; sourceTree = "<group>"; };
+		A07191B1265F4C4D00E907B9 /* UpdateCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCacheMethods.swift; sourceTree = "<group>"; };
+		A07191B3265F4C6A00E907B9 /* DeleteCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCacheMethods.swift; sourceTree = "<group>"; };
+		A07191B5265F4C9700E907B9 /* SubscribeCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeCacheMethods.swift; sourceTree = "<group>"; };
+		A07191B8265F4ECB00E907B9 /* UserCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCacheModel.swift; sourceTree = "<group>"; };
+		A07191BB265F53D600E907B9 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
+		A07191BD265F542400E907B9 /* WriteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMethods.swift; sourceTree = "<group>"; };
+		A07191BF265F542D00E907B9 /* ReadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMethods.swift; sourceTree = "<group>"; };
+		A07191C1265F543800E907B9 /* UpdateMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMethods.swift; sourceTree = "<group>"; };
+		A07191C3265F544D00E907B9 /* DeleteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMethods.swift; sourceTree = "<group>"; };
+		A07191C5265F545D00E907B9 /* SubscribeMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeMethods.swift; sourceTree = "<group>"; };
 		A071B4C626240A790057BE35 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		A072FC5625ED335E00D59382 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
@@ -395,6 +421,19 @@
 			path = Messaging;
 			sourceTree = "<group>";
 		};
+		A0080F22265DDD3200A72B5B /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				A07191AB265F4BB100E907B9 /* Cache.swift */,
+				A07191AD265F4BF300E907B9 /* WriteCacheMethods.swift */,
+				A07191AF265F4C2400E907B9 /* ReadCacheMethods.swift */,
+				A07191B1265F4C4D00E907B9 /* UpdateCacheMethods.swift */,
+				A07191B3265F4C6A00E907B9 /* DeleteCacheMethods.swift */,
+				A07191B5265F4C9700E907B9 /* SubscribeCacheMethods.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		A00DD40E2603961C00E6C818 /* Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,17 +452,17 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
-		A00DD4142603D0F300E6C818 /* FireStore */ = {
+		A00DD4142603D0F300E6C818 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				A06B633425E9512400AE746D /* Query.swift */,
+				A06B633425E9512400AE746D /* Remote.swift */,
 				A06B636325E9533F00AE746D /* WriteMethods.swift */,
 				A06B635E25E9527B00AE746D /* ReadMethods.swift */,
 				A06B63AA25E9546D00AE746D /* UpdateMethods.swift */,
 				A06B63AF25E954A900AE746D /* DeleteMethods.swift */,
 				A06B63B425E954D000AE746D /* SubscribeMethods.swift */,
 			);
-			path = FireStore;
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		A00DD41A2603D52600E6C818 /* View */ = {
@@ -738,9 +777,11 @@
 		A06B633325E9511500AE746D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A040AB4025F682B40064978A /* Storage */,
+				A07191BA265F53C400E907B9 /* Query */,
 				A040AB7E25F6D67B0064978A /* Auth */,
-				A00DD4142603D0F300E6C818 /* FireStore */,
+				A0080F22265DDD3200A72B5B /* Cache */,
+				A00DD4142603D0F300E6C818 /* Remote */,
+				A040AB4025F682B40064978A /* Storage */,
 				A00DD4152603D42A00E6C818 /* EventType.swift */,
 				A00DD4172603D43C00E6C818 /* ResultType.swift */,
 				A040A556264767BB007008EC /* Fields.swift */,
@@ -751,6 +792,7 @@
 		A06B63B925E9554500AE746D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A07191B7265F4EB500E907B9 /* Cache */,
 				A00DD41C2603D53200E6C818 /* Data */,
 				A00DD41B2603D52B00E6C818 /* Usage */,
 				A00DD41A2603D52600E6C818 /* View */,
@@ -774,6 +816,27 @@
 				A06B641925E99B9000AE746D /* trowel.usdz */,
 			);
 			path = 3DModels;
+			sourceTree = "<group>";
+		};
+		A07191B7265F4EB500E907B9 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				A07191B8265F4ECB00E907B9 /* UserCacheModel.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		A07191BA265F53C400E907B9 /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				A07191BB265F53D600E907B9 /* Query.swift */,
+				A07191BD265F542400E907B9 /* WriteMethods.swift */,
+				A07191BF265F542D00E907B9 /* ReadMethods.swift */,
+				A07191C1265F543800E907B9 /* UpdateMethods.swift */,
+				A07191C3265F544D00E907B9 /* DeleteMethods.swift */,
+				A07191C5265F545D00E907B9 /* SubscribeMethods.swift */,
+			);
+			path = Query;
 			sourceTree = "<group>";
 		};
 		A072FC5525ED334100D59382 /* Testing */ = {
@@ -1189,6 +1252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D87F92262A79820050540A /* ProfileMapViewController.swift in Sources */,
+				A07191BC265F53D600E907B9 /* Query.swift in Sources */,
 				A03FAC7D25EEC4FE000BFC02 /* ProfileCreationsHeaderView.swift in Sources */,
 				A0006917261D5F500020F307 /* messageCell.swift in Sources */,
 				A0006915261D57E50020F307 /* MessageViewController.swift in Sources */,
@@ -1203,12 +1267,14 @@
 				A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */,
 				A00DD4182603D43C00E6C818 /* ResultType.swift in Sources */,
 				A0D95BBF26081B6D00DA5A07 /* LocalListMethods.swift in Sources */,
+				A07191AE265F4BF300E907B9 /* WriteCacheMethods.swift in Sources */,
 				A06F56AF2628CACE00576EDA /* UIViewController.swift in Sources */,
 				A0FD5C362627C26300AF2A07 /* ViewControllers.swift in Sources */,
 				A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */,
 				A06B63BB25E9554D00AE746D /* User.swift in Sources */,
 				A0137172261106CE00AE4BA6 /* UITableView.swift in Sources */,
 				A03870B625E944AB003989CE /* NavigationController.swift in Sources */,
+				A07191C0265F542D00E907B9 /* ReadMethods.swift in Sources */,
 				A06B63F025E968EE00AE746D /* UIColor.swift in Sources */,
 				A006C01925FFF62C003613C0 /* Utility.swift in Sources */,
 				A03FAC8225EEDCB2000BFC02 /* InstantiatesFromNib.swift in Sources */,
@@ -1217,15 +1283,18 @@
 				A0EAE5B4260D5E1600F40EEC /* SearchLocationView.swift in Sources */,
 				A00DD4162603D42A00E6C818 /* EventType.swift in Sources */,
 				A06E965C25F16CB5009B92E5 /* EventCollectionView.swift in Sources */,
+				A07191B4265F4C6A00E907B9 /* DeleteCacheMethods.swift in Sources */,
 				A06E965A25F166FE009B92E5 /* mapViewCell.swift in Sources */,
 				A02397FD25EC197400F13F72 /* SignInViewController.swift in Sources */,
 				A000691D261D616D0020F307 /* ConversationModel.swift in Sources */,
 				A0FD5C3B2627C73A00AF2A07 /* MyProfileHeaderViewController.swift in Sources */,
 				A0DCF1F425EC7CFC00F699E9 /* CreateUserViewController.swift in Sources */,
 				A06B63C825E9568400AE746D /* Comment.swift in Sources */,
+				A07191C6265F545D00E907B9 /* SubscribeMethods.swift in Sources */,
 				A06B640225E978A400AE746D /* FadeViews.swift in Sources */,
 				A06B63D625E95B5D00AE746D /* ARViewCreation.swift in Sources */,
 				A03870BB25E944CC003989CE /* CustomTabBar.swift in Sources */,
+				A07191C2265F543800E907B9 /* UpdateMethods.swift in Sources */,
 				A006C01B25FFFF11003613C0 /* CellIdentifiers.swift in Sources */,
 				A040AB4A25F682D10064978A /* DownloadMethods.swift in Sources */,
 				A00DD41E2603D55400E6C818 /* UserModel.swift in Sources */,
@@ -1281,12 +1350,15 @@
 				A0579EDB260E4066009D512F /* SearchMusicView.swift in Sources */,
 				A03870AB25E9447C003989CE /* CustomTabBarController.swift in Sources */,
 				A006C01D260002AE003613C0 /* Providers.swift in Sources */,
+				A07191B9265F4ECB00E907B9 /* UserCacheModel.swift in Sources */,
+				A07191B0265F4C2400E907B9 /* ReadCacheMethods.swift in Sources */,
 				A040A55C2648B0D8007008EC /* searchUserMessageCell.swift in Sources */,
 				A09A2AAB260AF3730023CABA /* Device.swift in Sources */,
 				A0137174261116C300AE4BA6 /* SearchUsersSendView.swift in Sources */,
 				A0D95BBD26081B6300DA5A07 /* LocalRemoveMethods.swift in Sources */,
 				A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */,
 				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
+				A07191BE265F542400E907B9 /* WriteMethods.swift in Sources */,
 				A040AB1025F676ED0064978A /* CreateAvatarViewController.swift in Sources */,
 				A06F56B52628D9C500576EDA /* XLPagerTabStripViewController.swift in Sources */,
 				A071B4C726240A790057BE35 /* Testing.swift in Sources */,
@@ -1294,7 +1366,7 @@
 				A0911DAC260C3FF700D05642 /* searchUserCell.swift in Sources */,
 				A023980625EC242600F13F72 /* CustomShadows.swift in Sources */,
 				A00DD4102603964B00E6C818 /* CreationDetailViewController.swift in Sources */,
-				A06B633525E9512400AE746D /* Query.swift in Sources */,
+				A06B633525E9512400AE746D /* Remote.swift in Sources */,
 				A0579EDD260E41A4009D512F /* searchMusicCell.swift in Sources */,
 				A03FAC8625EEDD09000BFC02 /* CreationThumbNailView.swift in Sources */,
 				A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */,
@@ -1306,14 +1378,18 @@
 				A023980E25EC27E900F13F72 /* Variables.swift in Sources */,
 				A02397D425EB291B00F13F72 /* CustomScrollView.swift in Sources */,
 				A06B640C25E97CA000AE746D /* CustomImageViews.swift in Sources */,
+				A07191B2265F4C4D00E907B9 /* UpdateCacheMethods.swift in Sources */,
 				A06F56B12628D13B00576EDA /* ProfileScrollViewController.swift in Sources */,
 				A03870C225E94508003989CE /* UIImage.swift in Sources */,
 				A03FAC8025EEDC71000BFC02 /* ProfileHeaderData.swift in Sources */,
 				A000691B261D61120020F307 /* MessageTypes.swift in Sources */,
+				A07191B6265F4C9700E907B9 /* SubscribeCacheMethods.swift in Sources */,
 				A0EAE5B9260D6DB400F40EEC /* GooglePlaces.swift in Sources */,
 				A06F56A92628C8B700576EDA /* ProfileProtocols.swift in Sources */,
 				A06B642125E9A18E00AE746D /* UIButton.swift in Sources */,
+				A07191C4265F544D00E907B9 /* DeleteMethods.swift in Sources */,
 				A006462825EB17F900A3E1F3 /* Config.swift in Sources */,
+				A07191AC265F4BB100E907B9 /* Cache.swift in Sources */,
 				A03A968F26040D7400274793 /* Buzz.swift in Sources */,
 				A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */,
 				A0D37B692612E33800261567 /* CreationTableViewController.swift in Sources */,

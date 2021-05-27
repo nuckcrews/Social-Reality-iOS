@@ -1,5 +1,5 @@
 //
-//  UpdateMethods.swift
+//  UpdateRemoteMethods.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 2/26/21.
@@ -8,9 +8,9 @@
 import Foundation
 import Firebase
 
-// MARK: Update Query Methods - Local
+// MARK: Update Remote Query Methods - Local
 
-struct UpdateMethods {
+struct UpdateRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     

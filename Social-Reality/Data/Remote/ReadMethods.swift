@@ -1,5 +1,5 @@
 //
-//  ReadMethods.swift
+//  ReadRemoteMethods.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 2/26/21.
@@ -9,9 +9,9 @@ import Foundation
 import Firebase
 import CodableFirebase
 
-// MARK: Read Query Methods - Local
+// MARK: Read Remote Query Methods - Local
 
-struct ReadMethods {
+struct ReadRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
@@ -249,7 +249,6 @@ struct ReadMethods {
                 }
             }
     }
-    
     
     func comments(completion: @escaping(_ result: [CommentModel]?) -> Void) {
         db.collection(Collections.comments.rawValue).getDocuments { snapshot, error in
