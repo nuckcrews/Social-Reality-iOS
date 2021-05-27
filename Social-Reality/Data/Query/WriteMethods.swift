@@ -9,11 +9,13 @@ import Foundation
 
 struct WriteMethods {
     
-    func user(model: UserModel) {
+    func user(model: UserModel, completion: @escaping(_ result: ResultType) -> Void) {
         
-        Cache
+        Cache.write.user(model)
         
-        
+        Remote.write.user(model) { result in
+            completion(result)
+        }
         
     }
     

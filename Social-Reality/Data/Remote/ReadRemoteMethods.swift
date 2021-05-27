@@ -24,7 +24,6 @@ struct ReadRemoteMethods {
                 if let data = snapshot?.data() {
                     do {
                         let model = try FirestoreDecoder().decode(UserModel.self, from: data)
-                        print("Model: \(model)")
                         completion(model)
                     } catch {
                         completion(nil)

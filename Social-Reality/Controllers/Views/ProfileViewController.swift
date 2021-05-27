@@ -46,13 +46,10 @@ class ProfileViewController: UIViewController {
         
         guard let uid = Auth0.uid else { return }
         
-        if let model = Cache.get.user(uid) {
-            Query.subscribe.user(id: uid) { [weak self] model, lstn in
-                guard let model = model else { return }
-                self?.usernameTopButton.setTitle(model.username, for: .normal)
-            }
+        Query.subscribe.user(id: uid) { [weak self] model, lstn in
+            guard let model = model else { return }
+            self?.usernameTopButton.setTitle(model.username, for: .normal)
         }
-        self?.usernameTopButton.setTitle(model.username, for: .normal)
         
     }
     

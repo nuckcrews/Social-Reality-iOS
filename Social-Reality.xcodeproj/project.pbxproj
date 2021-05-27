@@ -86,11 +86,11 @@
 		A05AB2E725EAEEEC00748B04 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */; };
 		A063EA9A260674E700B3C2ED /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = A063EA99260674E700B3C2ED /* Date.swift */; };
 		A06B633525E9512400AE746D /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B633425E9512400AE746D /* Remote.swift */; };
-		A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B635E25E9527B00AE746D /* ReadMethods.swift */; };
-		A06B636425E9533F00AE746D /* WriteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B636325E9533F00AE746D /* WriteMethods.swift */; };
-		A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63AA25E9546D00AE746D /* UpdateMethods.swift */; };
-		A06B63B025E954A900AE746D /* DeleteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63AF25E954A900AE746D /* DeleteMethods.swift */; };
-		A06B63B525E954D000AE746D /* SubscribeMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63B425E954D000AE746D /* SubscribeMethods.swift */; };
+		A06B635F25E9527B00AE746D /* ReadRemoteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B635E25E9527B00AE746D /* ReadRemoteMethods.swift */; };
+		A06B636425E9533F00AE746D /* WriteRemoteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B636325E9533F00AE746D /* WriteRemoteMethods.swift */; };
+		A06B63AB25E9546D00AE746D /* UpdateRemoteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63AA25E9546D00AE746D /* UpdateRemoteMethods.swift */; };
+		A06B63B025E954A900AE746D /* DeleteRemoteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63AF25E954A900AE746D /* DeleteRemoteMethods.swift */; };
+		A06B63B525E954D000AE746D /* SubscribeRemoteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63B425E954D000AE746D /* SubscribeRemoteMethods.swift */; };
 		A06B63BB25E9554D00AE746D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63BA25E9554D00AE746D /* User.swift */; };
 		A06B63C325E9561B00AE746D /* Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63C225E9561B00AE746D /* Creation.swift */; };
 		A06B63C825E9568400AE746D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B63C725E9568400AE746D /* Comment.swift */; };
@@ -283,11 +283,11 @@
 		A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A063EA99260674E700B3C2ED /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		A06B633425E9512400AE746D /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
-		A06B635E25E9527B00AE746D /* ReadMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMethods.swift; sourceTree = "<group>"; };
-		A06B636325E9533F00AE746D /* WriteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMethods.swift; sourceTree = "<group>"; };
-		A06B63AA25E9546D00AE746D /* UpdateMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMethods.swift; sourceTree = "<group>"; };
-		A06B63AF25E954A900AE746D /* DeleteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteMethods.swift; sourceTree = "<group>"; };
-		A06B63B425E954D000AE746D /* SubscribeMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeMethods.swift; sourceTree = "<group>"; };
+		A06B635E25E9527B00AE746D /* ReadRemoteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRemoteMethods.swift; sourceTree = "<group>"; };
+		A06B636325E9533F00AE746D /* WriteRemoteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRemoteMethods.swift; sourceTree = "<group>"; };
+		A06B63AA25E9546D00AE746D /* UpdateRemoteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRemoteMethods.swift; sourceTree = "<group>"; };
+		A06B63AF25E954A900AE746D /* DeleteRemoteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteRemoteMethods.swift; sourceTree = "<group>"; };
+		A06B63B425E954D000AE746D /* SubscribeRemoteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeRemoteMethods.swift; sourceTree = "<group>"; };
 		A06B63BA25E9554D00AE746D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A06B63C225E9561B00AE746D /* Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creation.swift; sourceTree = "<group>"; };
 		A06B63C725E9568400AE746D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -456,11 +456,11 @@
 			isa = PBXGroup;
 			children = (
 				A06B633425E9512400AE746D /* Remote.swift */,
-				A06B636325E9533F00AE746D /* WriteMethods.swift */,
-				A06B635E25E9527B00AE746D /* ReadMethods.swift */,
-				A06B63AA25E9546D00AE746D /* UpdateMethods.swift */,
-				A06B63AF25E954A900AE746D /* DeleteMethods.swift */,
-				A06B63B425E954D000AE746D /* SubscribeMethods.swift */,
+				A06B636325E9533F00AE746D /* WriteRemoteMethods.swift */,
+				A06B635E25E9527B00AE746D /* ReadRemoteMethods.swift */,
+				A06B63AA25E9546D00AE746D /* UpdateRemoteMethods.swift */,
+				A06B63AF25E954A900AE746D /* DeleteRemoteMethods.swift */,
+				A06B63B425E954D000AE746D /* SubscribeRemoteMethods.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -1300,7 +1300,7 @@
 				A00DD41E2603D55400E6C818 /* UserModel.swift in Sources */,
 				A0C2FBB2260268B4005D773A /* PencilView.swift in Sources */,
 				A006461125EB0C8E00A3E1F3 /* inboxCell.swift in Sources */,
-				A06B63AB25E9546D00AE746D /* UpdateMethods.swift in Sources */,
+				A06B63AB25E9546D00AE746D /* UpdateRemoteMethods.swift in Sources */,
 				A05775E92624931800DDE78E /* VideoModel.swift in Sources */,
 				A03A968B2603EFA100274793 /* ProfileAccessibility.swift in Sources */,
 				A0BEDC7A262F2E1C003312E3 /* messageCreationCell.swift in Sources */,
@@ -1320,11 +1320,11 @@
 				A06E965625F15D5E009B92E5 /* MapHeaderData.swift in Sources */,
 				A040AB4F25F682E40064978A /* RemoveMethods.swift in Sources */,
 				A040AB5425F682EE0064978A /* ListMethods.swift in Sources */,
-				A06B636425E9533F00AE746D /* WriteMethods.swift in Sources */,
+				A06B636425E9533F00AE746D /* WriteRemoteMethods.swift in Sources */,
 				A038702F25E93D9D003989CE /* CreateViewController.swift in Sources */,
 				A040AB1525F67F760064978A /* ImagePicker.swift in Sources */,
 				A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */,
-				A06B63B525E954D000AE746D /* SubscribeMethods.swift in Sources */,
+				A06B63B525E954D000AE746D /* SubscribeRemoteMethods.swift in Sources */,
 				A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */,
 				A0FD5C3D2627C77E00AF2A07 /* CreationCollectionViewController.swift in Sources */,
 				A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */,
@@ -1332,7 +1332,7 @@
 				A006461625EB0D1300A3E1F3 /* promoCell.swift in Sources */,
 				A06B63F825E9783A00AE746D /* CustomSegmentControl.swift in Sources */,
 				A03FAC8425EEDCDB000BFC02 /* creationViewCell.swift in Sources */,
-				A06B63B025E954A900AE746D /* DeleteMethods.swift in Sources */,
+				A06B63B025E954A900AE746D /* DeleteRemoteMethods.swift in Sources */,
 				A023980C25EC27DD00F13F72 /* Protocols.swift in Sources */,
 				A0CBAFCB26015EC3001953C8 /* EditProfileViewController.swift in Sources */,
 				A040A55A2648AE88007008EC /* NewMessageViewController.swift in Sources */,
@@ -1357,7 +1357,7 @@
 				A0137174261116C300AE4BA6 /* SearchUsersSendView.swift in Sources */,
 				A0D95BBD26081B6300DA5A07 /* LocalRemoveMethods.swift in Sources */,
 				A038702D25E93D9D003989CE /* AppDelegate.swift in Sources */,
-				A06B635F25E9527B00AE746D /* ReadMethods.swift in Sources */,
+				A06B635F25E9527B00AE746D /* ReadRemoteMethods.swift in Sources */,
 				A07191BE265F542400E907B9 /* WriteMethods.swift in Sources */,
 				A040AB1025F676ED0064978A /* CreateAvatarViewController.swift in Sources */,
 				A06F56B52628D9C500576EDA /* XLPagerTabStripViewController.swift in Sources */,
