@@ -10,6 +10,11 @@ import Foundation
 struct DeleteCacheMethods {
     
     private let userCache = NSCache<NSString, UserCacheModel>()
+    private let creationCache = NSCache<NSString, CreationCacheModel>()
+    private let commentCache = NSCache<NSString, CommentCacheModel>()
+    private let likeCache = NSCache<NSString, LikeCacheModel>()
+    private let conversationCache = NSCache<NSString, ConversationCacheModel>()
+    private let messageCache = NSCache<NSString, MessageCacheModel>()
     
     func user(_ key: String) {
         guard key.count > 0 else { return }

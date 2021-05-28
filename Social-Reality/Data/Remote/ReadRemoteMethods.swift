@@ -15,7 +15,7 @@ struct ReadRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
-    func user(id: String, completion: @escaping(_ result: UserModel?) -> Void) {
+    func user(_ id: String, completion: @escaping(_ result: UserModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.users.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
@@ -36,7 +36,7 @@ struct ReadRemoteMethods {
         }
     }
     
-    func creation(id: String, completion: @escaping(_ result: CreationModel?) -> Void) {
+    func creation(_ id: String, completion: @escaping(_ result: CreationModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.creations.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
@@ -58,7 +58,7 @@ struct ReadRemoteMethods {
         }
     }
     
-    func comment(id: String, completion: @escaping(_ result: CommentModel?) -> Void) {
+    func comment(_ id: String, completion: @escaping(_ result: CommentModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.comments.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
@@ -80,7 +80,7 @@ struct ReadRemoteMethods {
         }
     }
     
-    func like(id: String, completion: @escaping(_ result: LikeModel?) -> Void) {
+    func like(_ id: String, completion: @escaping(_ result: LikeModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.likes.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
@@ -102,7 +102,7 @@ struct ReadRemoteMethods {
         }
     }
     
-    func message(conversationID: String, id: String, completion: @escaping(_ result: MessageModel?) -> Void) {
+    func message(_ id: String, conversationID: String, completion: @escaping(_ result: MessageModel?) -> Void) {
         guard conversationID.count > 0, id.count > 0 else { completion(nil); return }
         db.collection(Collections.conversations.rawValue)
             .document(conversationID)
@@ -127,7 +127,7 @@ struct ReadRemoteMethods {
             }
     }
     
-    func conversation(id: String, completion: @escaping(_ result: ConversationModel?) -> Void) {
+    func conversation(_ id: String, completion: @escaping(_ result: ConversationModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
         db.collection(Collections.conversations.rawValue).document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
