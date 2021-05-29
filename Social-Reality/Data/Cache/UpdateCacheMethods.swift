@@ -16,4 +16,15 @@ struct UpdateCacheMethods {
     private let conversationCache = NSCache<NSString, ConversationCacheModel>()
     private let messageCache = NSCache<NSString, MessageCacheModel>()
     
+    func user(_ id: String ,data: [String: Any], cache: Bool = false, completion: @escaping(_ result: ResultType) -> Void) {
+        guard data.count > 0 else { completion(.error); return }
+        
+        if cache {
+            if let model = userCache.object(forKey: id)?.user {
+                
+            }
+        }
+        
+    }
+    
 }

@@ -22,12 +22,67 @@ struct DeleteCacheMethods {
         userCache.removeObject(forKey: key as NSString)
     }
     
+    func creation(_ key: String) {
+        guard key.count > 0 else { return }
+        
+        creationCache.removeObject(forKey: key as NSString)
+    }
+    
+    func comment(_ key: String) {
+        guard key.count > 0 else { return }
+        
+        commentCache.removeObject(forKey: key as NSString)
+    }
+    
+    func like(_ key: String) {
+        guard key.count > 0 else { return }
+        
+        likeCache.removeObject(forKey: key as NSString)
+    }
+    
+    func conversation(_ key: String) {
+        guard key.count > 0 else { return }
+        
+        conversationCache.removeObject(forKey: key as NSString)
+    }
+    
+    func message(_ key: String) {
+        guard key.count > 0 else { return }
+        
+        messageCache.removeObject(forKey: key as NSString)
+    }
+    
     func removeAllUsers() {
         userCache.removeAllObjects()
     }
     
+    func removeAllCreations() {
+        creationCache.removeAllObjects()
+    }
+    
+    func removeAllComments() {
+        commentCache.removeAllObjects()
+    }
+    
+    func removeAllLikes() {
+        likeCache.removeAllObjects()
+    }
+    
+    func removeAllConversations() {
+        conversationCache.removeAllObjects()
+    }
+    
+    func removeAllMessages() {
+        messageCache.removeAllObjects()
+    }
+    
     func removeAll() {
         userCache.removeAllObjects()
+        creationCache.removeAllObjects()
+        commentCache.removeAllObjects()
+        likeCache.removeAllObjects()
+        conversationCache.removeAllObjects()
+        messageCache.removeAllObjects()
     }
     
 }

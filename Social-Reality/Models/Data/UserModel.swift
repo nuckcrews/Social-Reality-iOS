@@ -21,3 +21,13 @@ struct UserModel: Codable {
     public var fcmToken: String
     
 }
+
+extension UserModel {
+    
+    func update(data: [String: Any]) -> UserModel {
+        
+        // Need to convert data into model
+        
+    }
+    
+}
