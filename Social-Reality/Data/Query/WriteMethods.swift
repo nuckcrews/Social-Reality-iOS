@@ -12,10 +12,10 @@ struct WriteMethods {
     func user(model: UserModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
         
         if cache {
-            Cache.write.user(model)
+            Query.cache.write.user(model)
         }
         
-        Remote.write.user(model) { result in
+        Query.remote.write.user(model) { result in
             completion(result)
         }
         
@@ -24,10 +24,10 @@ struct WriteMethods {
     func creation(model: CreationModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
         
         if cache {
-            Cache.write.creation(model)
+            Query.cache.write.creation(model)
         }
         
-        Remote.write.creation(model) { result in
+        Query.remote.write.creation(model) { result in
             completion(result)
         }
         
@@ -36,10 +36,10 @@ struct WriteMethods {
     func comment(model: CommentModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
         
         if cache {
-            Cache.write.comment(model)
+            Query.cache.write.comment(model)
         }
         
-        Remote.write.comment(model) { result in
+        Query.remote.write.comment(model) { result in
             completion(result)
         }
         
@@ -48,10 +48,10 @@ struct WriteMethods {
     func like(model: LikeModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
         
         if cache {
-            Cache.write.like(model)
+            Query.cache.write.like(model)
         }
         
-        Remote.write.like(model) { result in
+        Query.remote.write.like(model) { result in
             completion(result)
         }
         
@@ -60,10 +60,10 @@ struct WriteMethods {
     func conversation(model: ConversationModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
         
         if cache {
-            Cache.write.conversation(model)
+            Query.cache.write.conversation(model)
         }
         
-        Remote.write.conversation(model) { result in
+        Query.remote.write.conversation(model) { result in
             completion(result)
         }
         
@@ -72,10 +72,10 @@ struct WriteMethods {
     func message(model: MessageModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
         
         if cache {
-            Cache.write.message(model)
+            Query.cache.write.message(model)
         }
         
-        Remote.write.message(model) { result in
+        Query.remote.write.message(model) { result in
             completion(result)
         }
         

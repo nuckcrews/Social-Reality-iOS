@@ -10,10 +10,10 @@ import Firebase
 
 struct Remote {
     
-    static var write = WriteRemoteMethods()
-    static var get = ReadRemoteMethods()
-    static var update = UpdateRemoteMethods()
-    static var delete = DeleteRemoteMethods()
-    static var subscribe = SubscribeRemoteMethods()
+    let write = WriteRemoteMethods()
+    let get = ReadRemoteMethods()
+    let update = UpdateRemoteMethods()
+    let delete = DeleteRemoteMethods()
+    let subscribe = SubscribeRemoteMethods()
     
 }

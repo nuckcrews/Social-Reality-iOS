@@ -10,10 +10,13 @@ import Foundation
 
 struct Query {
     
-    static var write = WriteMethods()
-    static var get = ReadMethods()
-    static var update = UpdateMethods()
-    static var delete = DeleteMethods()
-    static var subscribe = SubscribeMethods()
+    static let write = WriteMethods()
+    static let get = ReadMethods()
+    static let update = UpdateMethods()
+    static let delete = DeleteMethods()
+    static let subscribe = SubscribeMethods()
+    
+    static let cache = Cache()
+    static let remote = Remote()
     
 }

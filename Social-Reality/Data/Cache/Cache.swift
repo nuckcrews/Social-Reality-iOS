@@ -9,10 +9,10 @@ import Foundation
 
 struct Cache {
     
-    static let write = WriteCacheMethods()
-    static let get = ReadCacheMethods()
-    static let update = UpdateCacheMethods()
-    static let delete = DeleteCacheMethods()
-    static let subscribe = SubscribeCacheMethods()
+    let write = WriteCacheMethods()
+    let get = ReadCacheMethods()
+    let update = UpdateCacheMethods()
+    let delete = DeleteCacheMethods()
+    let subscribe = SubscribeCacheMethods()
     
 }

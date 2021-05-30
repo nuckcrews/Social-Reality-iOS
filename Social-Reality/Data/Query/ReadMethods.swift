@@ -13,15 +13,24 @@ struct ReadMethods {
         
         guard id.count > 0 else { completion(nil); return }
         
-        if cache, let model = Cache.get.user(id) {
-            completion(model)
-            return
+        let cacheModel = Query.cache.get.user(id)
+        if cache, let cacheModel = cacheModel {
+            completion(cacheModel)
         }
         
-        Remote.get.user(id) { model in
-            guard let model = model else { completion(nil); return }
-            Cache.write.user(model)
-            completion(model)
+        Query.remote.get.user(id) { remoteModel in
+            guard let remoteModel = remoteModel else {
+                if cache && cacheModel == nil {
+                    completion(nil)
+                }
+                return
+            }
+            if !cache {
+                completion(remoteModel)
+            } else if cacheModel != remoteModel {
+                Query.cache.write.user(remoteModel)
+                completion(remoteModel)
+            }
         }
         
     }
@@ -30,15 +39,24 @@ struct ReadMethods {
         
         guard id.count > 0 else { completion(nil); return }
         
-        if cache, let model = Cache.get.creation(id) {
-            completion(model)
-            return
+        let cacheModel = Query.cache.get.creation(id)
+        if cache, let cacheModel = cacheModel {
+            completion(cacheModel)
         }
         
-        Remote.get.creation(id) { model in
-            guard let model = model else { completion(nil); return }
-            Cache.write.creation(model)
-            completion(model)
+        Query.remote.get.creation(id) { remoteModel in
+            guard let remoteModel = remoteModel else {
+                if cache && cacheModel == nil {
+                    completion(nil)
+                }
+                return
+            }
+            if !cache {
+                completion(remoteModel)
+            } else if cacheModel != remoteModel {
+                Query.cache.write.creation(remoteModel)
+                completion(remoteModel)
+            }
         }
         
     }
@@ -47,15 +65,24 @@ struct ReadMethods {
         
         guard id.count > 0 else { completion(nil); return }
         
-        if cache, let model = Cache.get.comment(id) {
-            completion(model)
-            return
+        let cacheModel = Query.cache.get.comment(id)
+        if cache, let cacheModel = cacheModel {
+            completion(cacheModel)
         }
         
-        Remote.get.comment(id) { model in
-            guard let model = model else { completion(nil); return }
-            Cache.write.comment(model)
-            completion(model)
+        Query.remote.get.comment(id) { remoteModel in
+            guard let remoteModel = remoteModel else {
+                if cache && cacheModel == nil {
+                    completion(nil)
+                }
+                return
+            }
+            if !cache {
+                completion(remoteModel)
+            } else if cacheModel != remoteModel {
+                Query.cache.write.comment(remoteModel)
+                completion(remoteModel)
+            }
         }
         
     }
@@ -64,15 +91,24 @@ struct ReadMethods {
         
         guard id.count > 0 else { completion(nil); return }
         
-        if cache, let model = Cache.get.like(id) {
-            completion(model)
-            return
+        let cacheModel = Query.cache.get.like(id)
+        if cache, let cacheModel = cacheModel {
+            completion(cacheModel)
         }
         
-        Remote.get.like(id) { model in
-            guard let model = model else { completion(nil); return }
-            Cache.write.like(model)
-            completion(model)
+        Query.remote.get.like(id) { remoteModel in
+            guard let remoteModel = remoteModel else {
+                if cache && cacheModel == nil {
+                    completion(nil)
+                }
+                return
+            }
+            if !cache {
+                completion(remoteModel)
+            } else if cacheModel != remoteModel {
+                Query.cache.write.like(remoteModel)
+                completion(remoteModel)
+            }
         }
         
     }
@@ -81,15 +117,24 @@ struct ReadMethods {
         
         guard id.count > 0 else { completion(nil); return }
         
-        if cache, let model = Cache.get.conversation(id) {
-            completion(model)
-            return
+        let cacheModel = Query.cache.get.conversation(id)
+        if cache, let cacheModel = cacheModel {
+            completion(cacheModel)
         }
         
-        Remote.get.conversation(id) { model in
-            guard let model = model else { completion(nil); return }
-            Cache.write.conversation(model)
-            completion(model)
+        Query.remote.get.conversation(id) { remoteModel in
+            guard let remoteModel = remoteModel else {
+                if cache && cacheModel == nil {
+                    completion(nil)
+                }
+                return
+            }
+            if !cache {
+                completion(remoteModel)
+            } else if cacheModel != remoteModel {
+                Query.cache.write.conversation(remoteModel)
+                completion(remoteModel)
+            }
         }
         
     }
@@ -98,15 +143,24 @@ struct ReadMethods {
         
         guard id.count > 0 else { completion(nil); return }
         
-        if cache, let model = Cache.get.message(id) {
-            completion(model)
-            return
+        let cacheModel = Query.cache.get.message(id)
+        if cache, let cacheModel = cacheModel {
+            completion(cacheModel)
         }
         
-        Remote.get.message(id, conversationID: conversationID) { model in
-            guard let model = model else { completion(nil); return }
-            Cache.write.message(model)
-            completion(model)
+        Query.remote.get.message(id, conversationID: id) { remoteModel in
+            guard let remoteModel = remoteModel else {
+                if cache && cacheModel == nil {
+                    completion(nil)
+                }
+                return
+            }
+            if !cache {
+                completion(remoteModel)
+            } else if cacheModel != remoteModel {
+                Query.cache.write.message(remoteModel)
+                completion(remoteModel)
+            }
         }
         
     }

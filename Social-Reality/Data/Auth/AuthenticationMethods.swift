@@ -41,13 +41,13 @@ struct Auth0 {
     }
     
     static func userDataExists(id: String, completion: @escaping(_ result: Bool) -> Void) {
-        Query.get.user(id: id) { model in
+        Query.remote.get.user(id) { model in
             completion(model != nil)
         }
     }
     
     static func usernameExists(username: String, completion: @escaping(_ result: Bool) -> Void) {
-        Query.get.usersWithPredicate(field: "username", value: username) { models in
+        Query.remote.get.usersWithPredicate(field: Fields.user.username.rawValue, value: username) { models in
             completion(models?.count ?? 0 > 0)
         }
     }

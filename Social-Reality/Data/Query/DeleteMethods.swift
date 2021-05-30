@@ -10,43 +10,43 @@ import Foundation
 struct DeleteMethods {
     
     func user(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
-        Cache.delete.user(id)
-        Remote.delete.user(id) { result in
+        Query.cache.delete.user(id)
+        Query.remote.delete.user(id) { result in
             completion(result)
         }
     }
     
     func creation(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
-        Cache.delete.creation(id)
-        Remote.delete.creation(id) { result in
+        Query.cache.delete.creation(id)
+        Query.remote.delete.creation(id) { result in
             completion(result)
         }
     }
     
     func comment(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
-        Cache.delete.comment(id)
-        Remote.delete.comment(id) { result in
+        Query.cache.delete.comment(id)
+        Query.remote.delete.comment(id) { result in
             completion(result)
         }
     }
     
     func like(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
-        Cache.delete.like(id)
-        Remote.delete.like(id) { result in
+        Query.cache.delete.like(id)
+        Query.remote.delete.like(id) { result in
             completion(result)
         }
     }
     
     func conversation(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
-        Cache.delete.conversation(id)
-        Remote.delete.conversation(id) { result in
+        Query.cache.delete.conversation(id)
+        Query.remote.delete.conversation(id) { result in
             completion(result)
         }
     }
     
     func message(conversationID: String, id: String, completion: @escaping(_ result: ResultType) -> Void) {
-        Cache.delete.message(id)
-        Remote.delete.message(conversationID: conversationID, id: id) { result in
+        Query.cache.delete.message(id)
+        Query.remote.delete.message(conversationID: conversationID, id: id) { result in
             completion(result)
         }
     }

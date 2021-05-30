@@ -119,6 +119,7 @@ class MessageViewController: UIViewController {
             return
         }
         
+        
         Query.get.user(id: recipientID) { [weak self] model in
             guard let model = model else {
                 self?.recipient = Testing.defaultUser.model

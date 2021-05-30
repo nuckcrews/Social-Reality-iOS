@@ -10,18 +10,31 @@ import Firebase
 
 struct SubscribeMethods {
     
-    func user(id: String, completion: @escaping(_ result: UserModel?, _ listener: ListenerRegistration?) -> Void) {
+    func user(_ id: String, cache: Bool = true, completion: @escaping(_ result: UserModel?, _ listener: ListenerRegistration?) -> Void) {
         
         guard id.count > 0 else { completion(nil, nil); return }
         
-        if let model = Cache.get.user(id) {
-            completion(model, nil)
+        var cacheModel = Query.cache.get.user(id)
+        if cache, let cacheModel = cacheModel {
+            completion(cacheModel, nil)
         }
         
-        Remote.subscribe.user(id: id) { model, lstn in
-            guard let model = model else { return }
-            Cache.write.user(model)
-            completion(model, lstn)
+        Remote.subscribe.user(id: id) { remoteModel, lstn in
+            guard let remoteModel = remoteModel else {
+                if cache && cacheModel == nil {
+                    completion(nil, nil)
+                }
+                return
+            }
+            
+            if !cache {
+                completion(remoteModel, lstn)
+            } else if cacheModel != remoteModel {
+                Cache.write.user(remoteModel)
+                cacheModel = remoteModel
+                completion(remoteModel, lstn)
+            }
+            
         }
         
     }
