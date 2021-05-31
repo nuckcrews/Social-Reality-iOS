@@ -33,7 +33,7 @@ class Creation {
 extension Creation {
     
     public func getModel(completion: @escaping(_ result: CreationModel?) -> Void) {
-        Query.get.creation(id: id) { [weak self] res in
+        Query.remote.get.creation(id) { [weak self] res in
             guard let res = res else { completion(nil); return }
             self?._model = res
             completion(res)
@@ -41,7 +41,7 @@ extension Creation {
     }
     
     public func subscribeModel(completion: @escaping(_ result: CreationModel?) -> Void) {
-        Query.subscribe.creation(id: id) { [weak self] res, lstn in
+        Query.remote.subscribe.creation(id) { [weak self] res, lstn in
             if res != nil {
                 self?._model = res
                 self?.creationListener = lstn
@@ -58,7 +58,7 @@ extension Creation {
     }
     
     public func updateModel(data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
-        Query.update.creation(id: id, data: data) { res in
+        Query.remote.update.creation(id, data: data) { res in
             completion(res)
         }
     }
@@ -69,7 +69,7 @@ extension Creation {
     
     public func getUser(completion: @escaping(_ result: UserModel?) -> Void) {
         guard let userID = _model?.userID else { completion(nil); return }
-        Query.get.user(id: userID) { [weak self] result in
+        Query.remote.get.user(userID) { [weak self] result in
             if result != nil {
                 self?.user = result
             }
@@ -78,7 +78,7 @@ extension Creation {
     }
     
     public func getComments(completion: @escaping(_ result: [CommentModel]?) -> Void) {
-        Query.get.commentsWithPredicate(field: "creationID", value: id) { [weak self] result in
+        Query.remote.get.commentsWithPredicate(field: "creationID", value: id) { [weak self] result in
             if result != nil {
                 self?.comments = result
             }
@@ -87,7 +87,7 @@ extension Creation {
     }
     
     public func getLikes(completion: @escaping(_ result: [LikeModel]?) -> Void) {
-        Query.get.likesWithPredicate(field: "creationID", value: id) { [weak self] result in
+        Query.remote.get.likesWithPredicate(field: "creationID", value: id) { [weak self] result in
             if result != nil {
                 self?.likes = result
             }
@@ -97,7 +97,7 @@ extension Creation {
     
     public func subscribeUser(completion: @escaping(_ result: UserModel?) -> Void) {
         guard let userID = _model?.userID else { completion(nil); return }
-        Query.subscribe.user(id: userID) { [weak self] result, lstn in
+        Query.remote.subscribe.user(userID) { [weak self] result, lstn in
             if result != nil {
                 self?.user = result
                 self?.userListener = lstn
@@ -112,10 +112,10 @@ extension Creation {
     }
     
     public func subscribeComments(completion: @escaping(_ result: [CommentModel]?) -> Void) {
-        Query.subscribe.commentsWithPredicate(field: "creationID", value: id) { result, lstn  in
+        Query.remote.subscribe.commentsWithPredicate(field: "creationID", value: id) { [weak self] result, lstn  in
             if result != nil {
-                self.comments = result
-                self.commentListener = lstn
+                self?.comments = result
+                self?.commentListener = lstn
             }
             completion(result)
         }
@@ -127,10 +127,10 @@ extension Creation {
     }
     
     public func subscribeLikes(completion: @escaping(_ result: [LikeModel]?) -> Void) {
-        Query.subscribe.likesWithPredicate(field: "creationID", value: id) { result, lstn  in
+        Query.remote.subscribe.likesWithPredicate(field: "creationID", value: id) { [weak self] result, lstn  in
             if result != nil {
-                self.likes = result
-                self.likeListener = lstn
+                self?.likes = result
+                self?.likeListener = lstn
             }
             completion(result)
         }

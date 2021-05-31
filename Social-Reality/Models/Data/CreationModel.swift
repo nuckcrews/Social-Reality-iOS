@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CreationModel: Codable {
+struct CreationModel: Codable, Equatable {
     
     public let id: String
     public var title: String

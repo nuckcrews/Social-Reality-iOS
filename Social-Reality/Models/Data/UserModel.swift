@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel: Codable {
+struct UserModel: Codable, Equatable {
     
     public let id: String
     public var username: String
@@ -19,5 +19,15 @@ struct UserModel: Codable {
     public var image: String
     public var access: ProfileAccessibility
     public var fcmToken: String
+    
+}
+
+extension UserModel {
+    
+    func update(data: [String: Any]) -> UserModel {
+        
+        // Need to convert data into model
+        
+    }
     
 }

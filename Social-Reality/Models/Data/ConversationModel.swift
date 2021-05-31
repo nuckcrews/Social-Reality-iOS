@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ConversationModel: Codable {
+struct ConversationModel: Codable, Equatable {
     
     var id: String
     var userIDs: [String]

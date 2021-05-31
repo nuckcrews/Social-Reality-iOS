@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LikeModel : Codable {
+struct LikeModel : Codable, Equatable {
     
     public let id: String
     public var status: String?

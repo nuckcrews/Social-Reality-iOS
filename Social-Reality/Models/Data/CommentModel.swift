@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CommentModel: Codable {
+struct CommentModel: Codable, Equatable {
     
     public let id: String
     public var content: String

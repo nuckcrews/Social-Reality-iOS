@@ -33,7 +33,7 @@ class Comment {
     }
     
     private func getModel(completion: @escaping(_ result: CommentModel?) -> Void) {
-        Query.get.comment(id: id) { [weak self] result in
+        Query.remote.get.comment(id) { [weak self] result in
             if result != nil {
                 self?._model = result
             }
@@ -42,7 +42,7 @@ class Comment {
     }
     
     public func updateModel(data: [String: Any], completion: @escaping(_ result: ResultType?) -> Void) {
-        Query.update.comment(id: id, data: data) { res in
+        Query.remote.update.comment(id, data: data) { res in
             completion(res)
         }
     }

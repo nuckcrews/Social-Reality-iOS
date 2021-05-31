@@ -32,7 +32,7 @@ class Like {
     }
     
     private func getModel(completion: @escaping(_ result: LikeModel?) -> Void) {
-        Query.get.like(id: id) { [weak self] result in
+        Query.remote.get.like(id) { [weak self] result in
             if result != nil {
                 self?._model = result
             }
@@ -41,7 +41,7 @@ class Like {
     }
     
     public func updateModel(data: [String: Any], completion: @escaping(_ result: ResultType?) -> Void) {
-        Query.update.like(id: id, data: data) { res in
+        Query.remote.update.like(id, data: data) { res in
             completion(res)
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MessageModel: Codable {
+struct MessageModel: Codable, Equatable {
     
     var id: String
     var conversationID: String
