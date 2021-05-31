@@ -19,7 +19,7 @@ struct SubscribeMethods {
             completion(cacheModel, nil)
         }
         
-        Remote.subscribe.user(id: id) { remoteModel, lstn in
+        Query.remote.subscribe.user(id) { remoteModel, lstn in
             guard let remoteModel = remoteModel else {
                 if cache && cacheModel == nil {
                     completion(nil, nil)
@@ -30,11 +30,10 @@ struct SubscribeMethods {
             if !cache {
                 completion(remoteModel, lstn)
             } else if cacheModel != remoteModel {
-                Cache.write.user(remoteModel)
+                Query.cache.write.user(remoteModel)
                 cacheModel = remoteModel
                 completion(remoteModel, lstn)
             }
-            
         }
         
     }

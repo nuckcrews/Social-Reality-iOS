@@ -15,7 +15,7 @@ struct SubscribeRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
-    func user(id: String, completion: @escaping(_ result: UserModel?, _ listener: ListenerRegistration?) -> Void) {
+    func user(_ id: String, completion: @escaping(_ result: UserModel?, _ listener: ListenerRegistration?) -> Void) {
         guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.users.rawValue).document(id)
@@ -37,7 +37,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func creation(id: String, completion: @escaping(_ result: CreationModel?, _ listener: ListenerRegistration?) -> Void) {
+    func creation(_ id: String, completion: @escaping(_ result: CreationModel?, _ listener: ListenerRegistration?) -> Void) {
         guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.creations.rawValue).document(id)
@@ -59,7 +59,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func comment(id: String, completion: @escaping(_ result: CommentModel?, _ listener: ListenerRegistration?) -> Void) {
+    func comment(_ id: String, completion: @escaping(_ result: CommentModel?, _ listener: ListenerRegistration?) -> Void) {
         guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.comments.rawValue).document(id)
@@ -81,7 +81,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func like(id: String, completion: @escaping(_ result: LikeModel?, _ listener: ListenerRegistration?) -> Void) {
+    func like(_ id: String, completion: @escaping(_ result: LikeModel?, _ listener: ListenerRegistration?) -> Void) {
         guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.likes.rawValue).document(id)

@@ -33,7 +33,7 @@ class User {
 extension User {
     
     public func getModel(completion: @escaping(_ result: UserModel?) -> Void) {
-        Query.get.user(id: id) { [weak self] res in
+        Query.remote.get.user(id) { [weak self] res in
             guard let res = res else { completion(nil); return }
             self?._model = res
             completion(res)
@@ -41,7 +41,7 @@ extension User {
     }
     
     public func subscribeModel(completion: @escaping(_ result: UserModel?) -> Void) {
-        Query.subscribe.user(id: id) { [weak self] res, lstn in
+        Query.remote.subscribe.user(id) { [weak self] res, lstn in
             if res != nil {
                 self?._model = res
                 self?.userListener = lstn
@@ -58,7 +58,7 @@ extension User {
     }
     
     public func updateModel(data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
-        Query.update.user(id: id, data: data) { res in
+        Query.remote.update.user(id, data: data) { res in
             completion(res)
         }
     }
@@ -68,7 +68,7 @@ extension User {
     }
     
     public func getCreations(completion: @escaping(_ result: [CreationModel]?) -> Void) {
-        Query.get.creationsWithPredicate(field: "userID", value: id) { [weak self] result in
+        Query.remote.get.creationsWithPredicate(field: "userID", value: id) { [weak self] result in
             if result != nil {
                 self?.creations = result
             }
@@ -77,7 +77,7 @@ extension User {
     }
     
     public func getComments(completion: @escaping(_ result: [CommentModel]?) -> Void) {
-        Query.get.commentsWithPredicate(field: "userID", value: id) { [weak self] result in
+        Query.remote.get.commentsWithPredicate(field: "userID", value: id) { [weak self] result in
             if result != nil {
                 self?.comments = result
             }
@@ -86,7 +86,7 @@ extension User {
     }
     
     public func getLikes(completion: @escaping(_ result: [LikeModel]?) -> Void) {
-        Query.get.likesWithPredicate(field: "userID", value: id) { [weak self] result in
+        Query.remote.get.likesWithPredicate(field: "userID", value: id) { [weak self] result in
             if result != nil {
                 self?.likes = result
             }
@@ -95,10 +95,10 @@ extension User {
     }
     
     public func subscribeCreations(completion: @escaping(_ result: [CreationModel]?) -> Void) {
-        Query.subscribe.creationsWithPredicate(field: "userID", value: id) { result, lstn  in
+        Query.remote.subscribe.creationsWithPredicate(field: "userID", value: id) { [weak self] result, lstn  in
             if result != nil {
-                self.creations = result
-                self.creationListener = lstn
+                self?.creations = result
+                self?.creationListener = lstn
             }
             completion(result)
         }
@@ -110,10 +110,10 @@ extension User {
     }
     
     public func subscribeComments(completion: @escaping(_ result: [CommentModel]?) -> Void) {
-        Query.subscribe.commentsWithPredicate(field: "userID", value: id) { result, lstn  in
+        Query.remote.subscribe.commentsWithPredicate(field: "userID", value: id) { [weak self] result, lstn  in
             if result != nil {
-                self.comments = result
-                self.commentListener = lstn
+                self?.comments = result
+                self?.commentListener = lstn
             }
             completion(result)
         }
@@ -125,10 +125,10 @@ extension User {
     }
     
     public func subscribeLikes(completion: @escaping(_ result: [LikeModel]?) -> Void) {
-        Query.subscribe.likesWithPredicate(field: "userID", value: id) { result, lstn  in
+        Query.remote.subscribe.likesWithPredicate(field: "userID", value: id) { [weak self] result, lstn  in
             if result != nil {
-                self.likes = result
-                self.likeListener = lstn
+                self?.likes = result
+                self?.likeListener = lstn
             }
             completion(result)
         }

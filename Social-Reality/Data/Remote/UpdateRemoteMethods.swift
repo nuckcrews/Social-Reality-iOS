@@ -14,7 +14,7 @@ struct UpdateRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
-    func user(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+    func user(_ id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.users.rawValue).document(id).setData(data, merge: true) { error in
             if error != nil {
@@ -25,7 +25,7 @@ struct UpdateRemoteMethods {
         }
     }
     
-    func creation(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+    func creation(_ id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.creations.rawValue).document(id).setData(data, merge: true) { error in
             if error != nil {
@@ -36,7 +36,7 @@ struct UpdateRemoteMethods {
         }
     }
     
-    func comment(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+    func comment(_ id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.comments.rawValue).document(id).setData(data, merge: true) { error in
             if error != nil {
@@ -47,7 +47,7 @@ struct UpdateRemoteMethods {
         }
     }
     
-    func like(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+    func like(_ id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.likes.rawValue).document(id).setData(data, merge: true) { error in
             if error != nil {
@@ -71,7 +71,7 @@ struct UpdateRemoteMethods {
             }
     }
     
-    func conversation(id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
+    func conversation(_ id: String, data: [String: Any], completion: @escaping(_ result: ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.conversations.rawValue)
             .document(id).setData(data, merge: true) { error in
