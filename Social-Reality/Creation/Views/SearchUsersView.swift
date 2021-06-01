@@ -87,7 +87,8 @@ class SearchUsersView: UIView {
     // MARK: - User Fetching
     
     func getUsers() {
-        Query.get.users { res in
+        // #SCALEFIX
+        Query.remote.get.users { res in
             guard let res = res else { return }
             self.users.removeAll()
             self.users = res

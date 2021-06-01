@@ -23,3 +23,65 @@ struct CreationModel: Codable, Equatable {
     public var thumbnail: String?
     
 }
+
+extension CreationModel {
+    
+    mutating func update(data: [String: Any]) {
+        
+        for item in data {
+            
+            if item.key == Fields.creation.title.rawValue,
+               let value = item.value as? String {
+                title = value
+            }
+            
+            if item.key == Fields.creation.description.rawValue,
+               let value = item.value as? String {
+                description = value
+            }
+            
+            if item.key == Fields.creation.lastViewed.rawValue,
+               let value = item.value as? String {
+                lastViewed = value
+            }
+            
+            if item.key == Fields.creation.accessibility.rawValue,
+               let value = item.value as? CreationAccessibility {
+                accessibility = value
+            }
+            
+            if item.key == Fields.creation.status.rawValue,
+               let value = item.value as? String {
+                status = value
+            }
+            
+            if item.key == Fields.creation.date.rawValue,
+               let value = item.value as? String {
+                date = value
+            }
+            
+            if item.key == Fields.creation.userID.rawValue,
+               let value = item.value as? String {
+                userID = value
+            }
+            
+            if item.key == Fields.creation.userName.rawValue,
+               let value = item.value as? String {
+                userName = value
+            }
+            
+            if item.key == Fields.creation.videoURL.rawValue,
+               let value = item.value as? String {
+                videoURL = value
+            }
+            
+            if item.key == Fields.creation.thumbnail.rawValue,
+               let value = item.value as? String {
+                thumbnail = value
+            }
+            
+        }
+        
+    }
+    
+}

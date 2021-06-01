@@ -1,5 +1,5 @@
 //
-//  CreationCollectionViewController.swift
+//  CreationTableViewController.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 3/30/21.
@@ -18,7 +18,7 @@ class CreationTableViewController: UIViewController {
     
     // MARK: - Variables
     
-    var user: User?
+    var user: UserModel?
     var creations = [CreationModel]()
     var startIndex: Int = 0
     var indexSet = false
@@ -69,9 +69,15 @@ class CreationTableViewController: UIViewController {
         
         guard let uid = Auth0.uid else { return }
         
-        Query.get.user(id: uid) { [weak self] model in
+        user = Query.defaults.get.user(uid)
+        
+        Query.get.user(uid) { [weak self] model in
             guard let model = model else { return }
-            self?.user = User(model: model)
+            if self?.user != model {
+                Query.defaults.write.user(model)
+                self?.user = model
+            }
+            
         }
         
     }

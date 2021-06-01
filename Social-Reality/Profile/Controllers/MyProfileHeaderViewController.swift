@@ -44,7 +44,7 @@ class MyProfileHeaderViewController: UIViewController {
         
         guard let userID = userID else { return }
         
-        Query.subscribe.user(id: userID) { [weak self] model, lstn in
+        Query.subscribe.user(userID) { [weak self] model, lstn in
             self?.user = model
             self?.setupView()
         }

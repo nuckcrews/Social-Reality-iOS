@@ -34,7 +34,7 @@ class CoverViewController: UIViewController {
     private var bottomConstraintDefault: CGFloat = 120
     private var bottomConstraintTop: CGFloat = 0
     
-    var user: User?
+    var user: UserModel?
     
     var messageData: (String, String?) = ("", nil)
     
@@ -96,10 +96,19 @@ class CoverViewController: UIViewController {
     
     func getUser() {
         guard let uid = Auth0.uid else { return }
-        user = User(id: uid)
-        user?.subscribeModel(completion: { [weak self] _ in
-            self?.commentsView.user = self?.user
-        })
+        
+        if let user = Query.defaults.get.user(uid) {
+            commentsView.user = user
+        }
+        Query.subscribe.user(uid) { [weak self] model, lstn in
+            guard let model = model else { return }
+            if self?.user != model {
+                Query.defaults.write.user(model)
+                self?.user = model
+                self?.commentsView.user = model
+            }
+        }
+        
     }
     
     func checkuserData() {

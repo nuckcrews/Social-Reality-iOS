@@ -16,13 +16,56 @@ struct UpdateCacheMethods {
     private let conversationCache = NSCache<NSString, ConversationCacheModel>()
     private let messageCache = NSCache<NSString, MessageCacheModel>()
     
-    func user(_ id: String ,data: [String: Any], cache: Bool = false, completion: @escaping(_ result: ResultType) -> Void) {
-        guard data.count > 0 else { completion(.error); return }
+    func user(_ id: String, data: [String: Any]) {
+        guard data.count > 0 else { return }
         
-        if cache {
-            if let model = userCache.object(forKey: id)?.user {
-                
-            }
+        if var model = userCache.object(forKey: id as NSString)?.user {
+            model.update(data: data)
+        }
+        
+    }
+    
+    func creation(_ id: String, data: [String: Any]) {
+        guard data.count > 0 else { return }
+        
+        if var model = creationCache.object(forKey: id as NSString)?.creation {
+            model.update(data: data)
+        }
+        
+    }
+    
+    func comment(_ id: String, data: [String: Any]) {
+        guard data.count > 0 else { return }
+        
+        if var model = commentCache.object(forKey: id as NSString)?.comment {
+            model.update(data: data)
+        }
+        
+    }
+    
+    func like(_ id: String, data: [String: Any]) {
+        guard data.count > 0 else { return }
+        
+        if var model = likeCache.object(forKey: id as NSString)?.like {
+            model.update(data: data)
+        }
+        
+    }
+    
+    func conversation(_ id: String, data: [String: Any]) {
+        guard data.count > 0 else { return }
+        
+        if var model = conversationCache.object(forKey: id as NSString)?.conversation {
+            model.update(data: data)
+        }
+        
+    }
+    
+    func message(_ id: String, data: [String: Any]) {
+        guard data.count > 0 else { return }
+        
+        if var model = messageCache.object(forKey: id as NSString)?.message {
+            model.update(data: data)
         }
         
     }

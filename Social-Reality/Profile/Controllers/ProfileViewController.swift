@@ -14,6 +14,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var usernameTopButton: UIButton!
     
+    var user: UserModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,9 +48,19 @@ class ProfileViewController: UIViewController {
         
         guard let uid = Auth0.uid else { return }
         
-        Query.subscribe.user(id: uid) { [weak self] model, lstn in
+        if let model = Query.defaults.get.user(uid) {
+            user = model
+            usernameTopButton.setTitle(model.username, for: .normal)
+        }
+        
+        Query.subscribe.user(uid) { [weak self] model, lstn in
             guard let model = model else { return }
-            self?.usernameTopButton.setTitle(model.username, for: .normal)
+            if self?.user != model {
+                self?.usernameTopButton.setTitle(model.username, for: .normal)
+                Query.defaults.write.user(model)
+                self?.user = model
+            }
+            
         }
         
     }
