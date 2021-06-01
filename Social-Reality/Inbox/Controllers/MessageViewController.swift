@@ -39,7 +39,8 @@ class MessageViewController: UIViewController {
         
         setupView()
         
-        guard let uid = Auth0.uid, let recipientID = recipientID else { return }
+        guard let uid = Auth0.uid,
+              let recipientID = recipientID else { return }
         
         if conversationID == nil {
             var ids = [uid, recipientID]
@@ -120,7 +121,7 @@ class MessageViewController: UIViewController {
         }
         
         
-        Query.get.user(id: recipientID) { [weak self] model in
+        Query.get.user(recipientID) { [weak self] model in
             guard let model = model else {
                 self?.recipient = Testing.defaultUser.model
                 self?.userImageView.setImageFromURL(self?.recipient?.image ?? "")
@@ -140,7 +141,7 @@ class MessageViewController: UIViewController {
         
         guard let conversation = conversation else { return }
         
-        Query.subscribe.messages(conversationID: conversation.id) { [weak self] models, lst in
+        Query.remote.subscribe.messages(conversationID: conversation.id) { [weak self] models, lst in
             guard let models = models else { return }
             self?.messages = models
             self?.sortMessages()
@@ -151,11 +152,9 @@ class MessageViewController: UIViewController {
     func getCreations() {
         for message in messages {
             if message.type == .creation {
-                guard let id = message.creationID else {
-                    continue
-                }
+                guard let id = message.creationID else { continue }
                 creations.removeAll()
-                Query.get.creation(id: id) { [weak self] model in
+                Query.remote.get.creation(id) { [weak self] model in
                     if let model = model {
                         self?.creations.append(model)
                     }
@@ -224,7 +223,7 @@ class MessageViewController: UIViewController {
     func checkForConversation() {
         guard let conversationID = conversationID else { return }
         
-        Query.get.conversation(id: conversationID) { [weak self] model in
+        Query.get.conversation(conversationID) { [weak self] model in
             self?.conversation = model
             self?.getMessages()
         }

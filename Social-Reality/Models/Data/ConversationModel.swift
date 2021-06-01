@@ -16,3 +16,35 @@ struct ConversationModel: Codable, Equatable {
     var image: String
     
 }
+
+extension ConversationModel {
+    
+    mutating func update(data: [String: Any]) {
+        
+        for item in data {
+            
+            if item.key == Fields.conversation.userIDs.rawValue,
+               let value = item.value as? [String] {
+                userIDs = value
+            }
+            
+            if item.key == Fields.conversation.lastMessage.rawValue,
+               let value = item.value as? String {
+                lastMessage = value
+            }
+            
+            if item.key == Fields.conversation.lastMessageDate.rawValue,
+               let value = item.value as? String {
+                lastMessageDate = value
+            }
+            
+            if item.key == Fields.conversation.image.rawValue,
+               let value = item.value as? String {
+                image = value
+            }
+            
+        }
+        
+    }
+    
+}

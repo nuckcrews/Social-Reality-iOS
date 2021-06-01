@@ -115,8 +115,6 @@
 		A06B640725E97A8300AE746D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B640625E97A8300AE746D /* String.swift */; };
 		A06B640C25E97CA000AE746D /* CustomImageViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B640B25E97CA000AE746D /* CustomImageViews.swift */; };
 		A06B641125E97F5F00AE746D /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B641025E97F5F00AE746D /* CustomButtons.swift */; };
-		A06B641B25E99B9000AE746D /* trowel.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A06B641925E99B9000AE746D /* trowel.usdz */; };
-		A06B641C25E99B9000AE746D /* toy_robot_vintage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A06B641A25E99B9000AE746D /* toy_robot_vintage.usdz */; };
 		A06B642125E9A18E00AE746D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B642025E9A18E00AE746D /* UIButton.swift */; };
 		A06E964F25F1573F009B92E5 /* ExploreCreationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E964D25F1573F009B92E5 /* ExploreCreationHeaderView.swift */; };
 		A06E965025F1573F009B92E5 /* ExploreCreationHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A06E964E25F1573F009B92E5 /* ExploreCreationHeaderView.xib */; };
@@ -143,7 +141,6 @@
 		A07191B0265F4C2400E907B9 /* ReadCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191AF265F4C2400E907B9 /* ReadCacheMethods.swift */; };
 		A07191B2265F4C4D00E907B9 /* UpdateCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191B1265F4C4D00E907B9 /* UpdateCacheMethods.swift */; };
 		A07191B4265F4C6A00E907B9 /* DeleteCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191B3265F4C6A00E907B9 /* DeleteCacheMethods.swift */; };
-		A07191B6265F4C9700E907B9 /* SubscribeCacheMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191B5265F4C9700E907B9 /* SubscribeCacheMethods.swift */; };
 		A07191B9265F4ECB00E907B9 /* UserCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191B8265F4ECB00E907B9 /* UserCacheModel.swift */; };
 		A07191BC265F53D600E907B9 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191BB265F53D600E907B9 /* Query.swift */; };
 		A07191BE265F542400E907B9 /* WriteMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07191BD265F542400E907B9 /* WriteMethods.swift */; };
@@ -154,6 +151,10 @@
 		A071B4C726240A790057BE35 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A071B4C626240A790057BE35 /* Testing.swift */; };
 		A072FC5725ED335E00D59382 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5625ED335E00D59382 /* TestViewController.swift */; };
 		A072FC5B25ED39B200D59382 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */; };
+		A08BAF342665867E00350CD3 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF332665867E00350CD3 /* Defaults.swift */; };
+		A08BAF36266586DB00350CD3 /* WriteDefaultsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF35266586DB00350CD3 /* WriteDefaultsMethods.swift */; };
+		A08BAF38266586E700350CD3 /* ReadDefaultstMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF37266586E700350CD3 /* ReadDefaultstMethods.swift */; };
+		A08BAF3A2665891600350CD3 /* DeleteDefaultsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF392665891600350CD3 /* DeleteDefaultsMethods.swift */; };
 		A0911DAC260C3FF700D05642 /* searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0911DAB260C3FF700D05642 /* searchUserCell.swift */; };
 		A09A2AAB260AF3730023CABA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAA260AF3730023CABA /* Device.swift */; };
 		A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAD260AF6FE0023CABA /* RecordButton.swift */; };
@@ -327,8 +328,6 @@
 		A06B640625E97A8300AE746D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A06B640B25E97CA000AE746D /* CustomImageViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageViews.swift; sourceTree = "<group>"; };
 		A06B641025E97F5F00AE746D /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
-		A06B641925E99B9000AE746D /* trowel.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = trowel.usdz; path = ../../../../Downloads/trowel.usdz; sourceTree = "<group>"; };
-		A06B641A25E99B9000AE746D /* toy_robot_vintage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = toy_robot_vintage.usdz; path = ../../../../Downloads/toy_robot_vintage.usdz; sourceTree = "<group>"; };
 		A06B642025E9A18E00AE746D /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		A06E964D25F1573F009B92E5 /* ExploreCreationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCreationHeaderView.swift; sourceTree = "<group>"; };
 		A06E964E25F1573F009B92E5 /* ExploreCreationHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreCreationHeaderView.xib; sourceTree = "<group>"; };
@@ -355,7 +354,6 @@
 		A07191AF265F4C2400E907B9 /* ReadCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadCacheMethods.swift; sourceTree = "<group>"; };
 		A07191B1265F4C4D00E907B9 /* UpdateCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCacheMethods.swift; sourceTree = "<group>"; };
 		A07191B3265F4C6A00E907B9 /* DeleteCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCacheMethods.swift; sourceTree = "<group>"; };
-		A07191B5265F4C9700E907B9 /* SubscribeCacheMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeCacheMethods.swift; sourceTree = "<group>"; };
 		A07191B8265F4ECB00E907B9 /* UserCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCacheModel.swift; sourceTree = "<group>"; };
 		A07191BB265F53D600E907B9 /* Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Query.swift; sourceTree = "<group>"; };
 		A07191BD265F542400E907B9 /* WriteMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteMethods.swift; sourceTree = "<group>"; };
@@ -366,6 +364,10 @@
 		A071B4C626240A790057BE35 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 		A072FC5625ED335E00D59382 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A072FC5A25ED39B200D59382 /* CustomCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		A08BAF332665867E00350CD3 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		A08BAF35266586DB00350CD3 /* WriteDefaultsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDefaultsMethods.swift; sourceTree = "<group>"; };
+		A08BAF37266586E700350CD3 /* ReadDefaultstMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDefaultstMethods.swift; sourceTree = "<group>"; };
+		A08BAF392665891600350CD3 /* DeleteDefaultsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDefaultsMethods.swift; sourceTree = "<group>"; };
 		A0911DAB260C3FF700D05642 /* searchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserCell.swift; sourceTree = "<group>"; };
 		A09A2AAA260AF3730023CABA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		A09A2AAD260AF6FE0023CABA /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
@@ -442,7 +444,6 @@
 				A07191AB265F4BB100E907B9 /* Cache.swift */,
 				A07191B3265F4C6A00E907B9 /* DeleteCacheMethods.swift */,
 				A07191AF265F4C2400E907B9 /* ReadCacheMethods.swift */,
-				A07191B5265F4C9700E907B9 /* SubscribeCacheMethods.swift */,
 				A07191B1265F4C4D00E907B9 /* UpdateCacheMethods.swift */,
 				A07191AD265F4BF300E907B9 /* WriteCacheMethods.swift */,
 			);
@@ -946,7 +947,6 @@
 		A064CB7426653B8B00C02D57 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A06B63EA25E964C500AE746D /* AccountViewController.swift */,
 				A0FD5C3C2627C77E00AF2A07 /* CreationCollectionViewController.swift */,
 				A0FD5C3A2627C73A00AF2A07 /* MyProfileHeaderViewController.swift */,
 				A0D87F91262A79820050540A /* ProfileMapViewController.swift */,
@@ -954,6 +954,7 @@
 				A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */,
 				A05775EA2624ADAB00DDE78E /* ProfileViewController.swift */,
 				A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */,
+				A08BAF3B2665940A00350CD3 /* Archived */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1028,6 +1029,7 @@
 		A06B633325E9511500AE746D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A08BAF322665866800350CD3 /* Defaults */,
 				A0080F22265DDD3200A72B5B /* Cache */,
 				A07191BA265F53C400E907B9 /* Query */,
 				A00DD4142603D0F300E6C818 /* Remote */,
@@ -1060,8 +1062,6 @@
 		A06B641825E99B6E00AE746D /* 3DModels */ = {
 			isa = PBXGroup;
 			children = (
-				A06B641A25E99B9000AE746D /* toy_robot_vintage.usdz */,
-				A06B641925E99B9000AE746D /* trowel.usdz */,
 			);
 			path = 3DModels;
 			sourceTree = "<group>";
@@ -1090,6 +1090,25 @@
 				A07191BD265F542400E907B9 /* WriteMethods.swift */,
 			);
 			path = Query;
+			sourceTree = "<group>";
+		};
+		A08BAF322665866800350CD3 /* Defaults */ = {
+			isa = PBXGroup;
+			children = (
+				A08BAF332665867E00350CD3 /* Defaults.swift */,
+				A08BAF35266586DB00350CD3 /* WriteDefaultsMethods.swift */,
+				A08BAF37266586E700350CD3 /* ReadDefaultstMethods.swift */,
+				A08BAF392665891600350CD3 /* DeleteDefaultsMethods.swift */,
+			);
+			path = Defaults;
+			sourceTree = "<group>";
+		};
+		A08BAF3B2665940A00350CD3 /* Archived */ = {
+			isa = PBXGroup;
+			children = (
+				A06B63EA25E964C500AE746D /* AccountViewController.swift */,
+			);
+			path = Archived;
 			sourceTree = "<group>";
 		};
 		A09A2AAC260AF6E90023CABA /* Animations */ = {
@@ -1318,8 +1337,6 @@
 				A06E965025F1573F009B92E5 /* ExploreCreationHeaderView.xib in Resources */,
 				A038703425E93D9D003989CE /* Main.storyboard in Resources */,
 				A03FAC7E25EEC4FE000BFC02 /* ProfileCreationsHeaderView.xib in Resources */,
-				A06B641B25E99B9000AE746D /* trowel.usdz in Resources */,
-				A06B641C25E99B9000AE746D /* toy_robot_vintage.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1542,6 +1559,7 @@
 				A06E9A26260E9ED900B85CE9 /* CreationCommentsView.swift in Sources */,
 				A040AB4225F682C80064978A /* UploadMethods.swift in Sources */,
 				A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */,
+				A08BAF3A2665891600350CD3 /* DeleteDefaultsMethods.swift in Sources */,
 				A0D37B652612D79F00261567 /* CreationTableView.swift in Sources */,
 				A06B63FD25E9787600AE746D /* VSTextField.swift in Sources */,
 				A0D95BB926081B2E00DA5A07 /* LocalDownloadMethods.swift in Sources */,
@@ -1566,6 +1584,7 @@
 				A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */,
 				A06FBFB226605A6F0041B6C9 /* CreationCacheModel.swift in Sources */,
 				A0FD5C3D2627C77E00AF2A07 /* CreationCollectionViewController.swift in Sources */,
+				A08BAF342665867E00350CD3 /* Defaults.swift in Sources */,
 				A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */,
 				A064CB6B2665382200C02D57 /* searchLocationCell.swift in Sources */,
 				A0579ED9260E3AD9009D512F /* PushNotificationSender.swift in Sources */,
@@ -1592,6 +1611,7 @@
 				A006C01D260002AE003613C0 /* Providers.swift in Sources */,
 				A07191B9265F4ECB00E907B9 /* UserCacheModel.swift in Sources */,
 				A07191B0265F4C2400E907B9 /* ReadCacheMethods.swift in Sources */,
+				A08BAF36266586DB00350CD3 /* WriteDefaultsMethods.swift in Sources */,
 				A040A55C2648B0D8007008EC /* searchUserMessageCell.swift in Sources */,
 				A09A2AAB260AF3730023CABA /* Device.swift in Sources */,
 				A0137174261116C300AE4BA6 /* SearchUsersSendView.swift in Sources */,
@@ -1621,11 +1641,11 @@
 				A02397D425EB291B00F13F72 /* CustomScrollView.swift in Sources */,
 				A06B640C25E97CA000AE746D /* CustomImageViews.swift in Sources */,
 				A07191B2265F4C4D00E907B9 /* UpdateCacheMethods.swift in Sources */,
+				A08BAF38266586E700350CD3 /* ReadDefaultstMethods.swift in Sources */,
 				A06F56B12628D13B00576EDA /* ProfileScrollViewController.swift in Sources */,
 				A03870C225E94508003989CE /* UIImage.swift in Sources */,
 				A03FAC8025EEDC71000BFC02 /* ProfileHeaderData.swift in Sources */,
 				A000691B261D61120020F307 /* MessageTypes.swift in Sources */,
-				A07191B6265F4C9700E907B9 /* SubscribeCacheMethods.swift in Sources */,
 				A0EAE5B9260D6DB400F40EEC /* GooglePlaces.swift in Sources */,
 				A06F56A92628C8B700576EDA /* ProfileProtocols.swift in Sources */,
 				A06B642125E9A18E00AE746D /* UIButton.swift in Sources */,

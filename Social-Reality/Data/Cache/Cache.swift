@@ -13,6 +13,5 @@ struct Cache {
     let get = ReadCacheMethods()
     let update = UpdateCacheMethods()
     let delete = DeleteCacheMethods()
-    let subscribe = SubscribeCacheMethods()
     
 }

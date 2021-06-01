@@ -53,7 +53,8 @@ class NewMessageViewController: UIViewController {
     // MARK: - Fetch Users
     
     func getUsers() {
-        Query.get.users { [weak self] models in
+        // #SCALEFIX
+        Query.remote.get.users { [weak self] models in
             guard let models = models else { return }
             self?.users = models
             self?.tableView.reloadData()

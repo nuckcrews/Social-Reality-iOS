@@ -35,7 +35,7 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
             return
         }
         AppDelegate.fcmTOKEN = token
-        Query.update.user(id: id, data: ["fcmToken": token]) { result in
+        Query.update.user(id, data: [Fields.user.fcmToken.rawValue: token]) { result in
             print(result)
         }
         

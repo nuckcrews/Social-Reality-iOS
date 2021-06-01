@@ -72,7 +72,8 @@ class ExploreViewController: UIViewController {
     
     func fetchCreations() {
         
-        Query.get.creations { [weak self] models in
+        // #SCALEFIX
+        Query.remote.get.creations { [weak self] models in
             guard let models = models else { return }
             self?.creations.removeAll()
             self?.creationThumbNails.removeAll()

@@ -93,7 +93,8 @@ class SearchUsersSendView: UIView {
     // MARK: - User Fetching
     
     func getUsers() {
-        Query.get.users { res in
+        // #SCALEFIX
+        Query.remote.get.users { res in
             guard let res = res else { return }
             self.users.removeAll()
             self.users = res
@@ -144,7 +145,7 @@ class SearchUsersSendView: UIView {
     
     func checkForConversation(ids: [String], message: MessageModel, followMessage: MessageModel? = nil) {
         
-        Query.get.conversation(id: message.conversationID) { [weak self] model in
+        Query.get.conversation(message.conversationID) { [weak self] model in
             if model != nil {
                 self?.writeMessage(message, follow: followMessage)
             } else {

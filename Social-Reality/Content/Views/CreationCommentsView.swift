@@ -26,7 +26,7 @@ class CreationCommentsView: UIView {
     private var setup = false
     var creation: CreationModel?
     var comments = [CommentModel]()
-    weak var user: User?
+    var user: UserModel?
     
     weak var delegate: CreationCommentDelegate?
     
@@ -99,7 +99,7 @@ class CreationCommentsView: UIView {
             return
         }
         
-        Query.get.commentsWithPredicate(field: "creationID", value: creation.id) { models in
+        Query.remote.get.commentsWithPredicate(field: "creationID", value: creation.id) { models in
             guard let models = models else { return }
             
             self.comments = models
@@ -147,7 +147,8 @@ class CreationCommentsView: UIView {
     // MARK: - Comment Posting
     
     func postComment() {
-        guard let creation = creation, let uid = Auth0.uid else {
+        guard let creation = creation,
+              let uid = Auth0.uid else {
             return
         }
         
@@ -157,11 +158,11 @@ class CreationCommentsView: UIView {
                                    status: "ACTIVE",
                                    creationID: creation.id,
                                    userID: uid,
-                                   userImage: user?.model?.image,
-                                   userName: user?.model?.username,
+                                   userImage: user?.image,
+                                   userName: user?.username,
                                    date: Date().rawDateString)
         
-        Query.write.comment(comment) { res in
+        Query.remote.write.comment(comment) { res in
             if res == .success {
                 self.getComments()
                 self.textField.text = ""

@@ -16,6 +16,8 @@ class CreationCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - Variables
+    
     var creations = [CreationThumbNailView]()
     var creationModels = [CreationModel]()
     var selectedIndex = 0
@@ -64,7 +66,7 @@ class CreationCollectionViewController: UIViewController {
             return
         }
         
-        Query.subscribe.creationsWithPredicate(field: Fields.creation.userID.rawValue, value: uid) { [weak self] models, lstn in
+        Query.remote.subscribe.creationsWithPredicate(field: Fields.creation.userID.rawValue, value: uid) { [weak self] models, lstn in
             
             guard let models = models else { return}
             
@@ -72,6 +74,7 @@ class CreationCollectionViewController: UIViewController {
             self?.creationModels.removeAll()
             
             for model in models {
+                Query.cache.write.creation(model)
                 self?.creations.append(CreationThumbNailView(model: model))
                 self?.creationModels.append(model)
             }
@@ -93,7 +96,7 @@ class CreationCollectionViewController: UIViewController {
             guard let img = img else { return }
             Storage0.remote.upload.thumbnailImage(key: model.id, image: img) { res in
                 guard let res = res else { return }
-                Query.update.creation(id: model.id, data: [Fields.creation.thumbnail.rawValue: res]) { result in
+                Query.remote.update.creation(model.id, data: [Fields.creation.thumbnail.rawValue: res]) { result in
                     print(result)
                 }
 

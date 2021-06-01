@@ -67,11 +67,11 @@ struct Fields {
 
     enum conversation: String {
         
-        case idcase
+        case id
         case userIDs
         case lastMessage
         case lastMessageDate
-        case imagecase
+        case image
         
     }
 
@@ -79,10 +79,10 @@ struct Fields {
         
         case id
         case conversationID
-        case senderIDcase
-        case recipientIDcase
-        case contentcase
-        case datecase
+        case senderID
+        case recipientID
+        case content
+        case date
         case type
         
         case creationID

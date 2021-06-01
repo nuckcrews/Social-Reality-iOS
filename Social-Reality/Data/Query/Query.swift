@@ -18,5 +18,6 @@ struct Query {
     
     static let cache = Cache()
     static let remote = Remote()
+    static let defaults = Defaults()
     
 }
