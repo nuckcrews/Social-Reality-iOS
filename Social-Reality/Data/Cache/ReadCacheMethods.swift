@@ -15,6 +15,7 @@ struct ReadCacheMethods {
     private let likeCache = NSCache<NSString, LikeCacheModel>()
     private let conversationCache = NSCache<NSString, ConversationCacheModel>()
     private let messageCache = NSCache<NSString, MessageCacheModel>()
+    private let videoCache = NSCache<NSString, VideoCacheModel>()
     
     func user(_ key: String) -> UserModel? {
         guard key.count > 0 else { return nil }
@@ -50,6 +51,12 @@ struct ReadCacheMethods {
         guard key.count > 0 else { return nil }
         
         return messageCache.object(forKey: key as NSString)?.message
+    }
+    
+    func video(_ key: String) -> VideoCacheModel? {
+        guard key.count > 0 else { return nil }
+        
+        return videoCache.object(forKey: key as NSString)
     }
     
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVKit
 
 struct WriteCacheMethods {
  
@@ -15,6 +16,7 @@ struct WriteCacheMethods {
     private let likeCache = NSCache<NSString, LikeCacheModel>()
     private let conversationCache = NSCache<NSString, ConversationCacheModel>()
     private let messageCache = NSCache<NSString, MessageCacheModel>()
+    private let videoCache = NSCache<NSString, VideoCacheModel>()
     
     func user(_ model: UserModel) {
         guard model.id.count > 0,
@@ -62,6 +64,14 @@ struct WriteCacheMethods {
         else { return }
         
         messageCache.setObject(cacheModel, forKey: model.id as NSString)
+    }
+    
+    func video(_ model: VideoCacheModel) {
+        
+        guard let url = URL(string: model.urlString ?? "") else { return }
+        
+        videoCache.setObject(model, forKey: url.absoluteString as NSString)
+        
     }
    
 }

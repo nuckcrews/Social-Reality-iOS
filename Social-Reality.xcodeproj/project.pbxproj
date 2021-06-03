@@ -155,10 +155,14 @@
 		A08BAF36266586DB00350CD3 /* WriteDefaultsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF35266586DB00350CD3 /* WriteDefaultsMethods.swift */; };
 		A08BAF38266586E700350CD3 /* ReadDefaultstMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF37266586E700350CD3 /* ReadDefaultstMethods.swift */; };
 		A08BAF3A2665891600350CD3 /* DeleteDefaultsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF392665891600350CD3 /* DeleteDefaultsMethods.swift */; };
+		A08BAF3D2665CA1800350CD3 /* VideoCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF3C2665CA1800350CD3 /* VideoCacheModel.swift */; };
 		A0911DAC260C3FF700D05642 /* searchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0911DAB260C3FF700D05642 /* searchUserCell.swift */; };
 		A09A2AAB260AF3730023CABA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAA260AF3730023CABA /* Device.swift */; };
 		A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAD260AF6FE0023CABA /* RecordButton.swift */; };
 		A09DE0E925EA2FED0007438B /* settingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DE0E825EA2FED0007438B /* settingsCell.swift */; };
+		A0BA800626688808001E3099 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA800526688808001E3099 /* Navigation.swift */; };
+		A0BA8008266890EB001E3099 /* StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA8007266890EB001E3099 /* StoryBoard.swift */; };
+		A0BA800A26689107001E3099 /* StoryBoards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BA800926689107001E3099 /* StoryBoards.swift */; };
 		A0BB58EF260042C900523005 /* CLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB58EE260042C900523005 /* CLLocationManager.swift */; };
 		A0BEDC7A262F2E1C003312E3 /* messageCreationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BEDC79262F2E1C003312E3 /* messageCreationCell.swift */; };
 		A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C2FBAE26025C8D005D773A /* CustomBox.swift */; };
@@ -368,10 +372,14 @@
 		A08BAF35266586DB00350CD3 /* WriteDefaultsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteDefaultsMethods.swift; sourceTree = "<group>"; };
 		A08BAF37266586E700350CD3 /* ReadDefaultstMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDefaultstMethods.swift; sourceTree = "<group>"; };
 		A08BAF392665891600350CD3 /* DeleteDefaultsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDefaultsMethods.swift; sourceTree = "<group>"; };
+		A08BAF3C2665CA1800350CD3 /* VideoCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCacheModel.swift; sourceTree = "<group>"; };
 		A0911DAB260C3FF700D05642 /* searchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchUserCell.swift; sourceTree = "<group>"; };
 		A09A2AAA260AF3730023CABA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		A09A2AAD260AF6FE0023CABA /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		A09DE0E825EA2FED0007438B /* settingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCell.swift; sourceTree = "<group>"; };
+		A0BA800526688808001E3099 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
+		A0BA8007266890EB001E3099 /* StoryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoard.swift; sourceTree = "<group>"; };
+		A0BA800926689107001E3099 /* StoryBoards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoards.swift; sourceTree = "<group>"; };
 		A0BB58EE260042C900523005 /* CLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManager.swift; sourceTree = "<group>"; };
 		A0BEDC79262F2E1C003312E3 /* messageCreationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = messageCreationCell.swift; sourceTree = "<group>"; };
 		A0C2FBAE26025C8D005D773A /* CustomBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBox.swift; sourceTree = "<group>"; };
@@ -710,6 +718,7 @@
 				A006C01A25FFFF11003613C0 /* CellIdentifiers.swift */,
 				A016E05A25FAC03600D6D5D9 /* Segues.swift */,
 				A0FD5C352627C26300AF2A07 /* ViewControllers.swift */,
+				A0BA800926689107001E3099 /* StoryBoards.swift */,
 			);
 			path = Identifiers;
 			sourceTree = "<group>";
@@ -717,6 +726,7 @@
 		A064CB3E26652C8E00C02D57 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				A0BA8004266887E3001E3099 /* Models */,
 				A064CB7726653BFB00C02D57 /* Controllers */,
 				A064CB7826653C0500C02D57 /* Protocols */,
 			);
@@ -1075,6 +1085,7 @@
 				A06FBFB526605A830041B6C9 /* LikeCacheModel.swift */,
 				A06FBFB926605A980041B6C9 /* MessageCacheModel.swift */,
 				A07191B8265F4ECB00E907B9 /* UserCacheModel.swift */,
+				A08BAF3C2665CA1800350CD3 /* VideoCacheModel.swift */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -1118,6 +1129,15 @@
 				A09A2AAD260AF6FE0023CABA /* RecordButton.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		A0BA8004266887E3001E3099 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0BA800526688808001E3099 /* Navigation.swift */,
+				A0BA8007266890EB001E3099 /* StoryBoard.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A0C2FBAD26025C75005D773A /* Entities */ = {
@@ -1502,10 +1522,12 @@
 				A07191BC265F53D600E907B9 /* Query.swift in Sources */,
 				A03FAC7D25EEC4FE000BFC02 /* ProfileCreationsHeaderView.swift in Sources */,
 				A0006917261D5F500020F307 /* messageCell.swift in Sources */,
+				A08BAF3D2665CA1800350CD3 /* VideoCacheModel.swift in Sources */,
 				A0006915261D57E50020F307 /* MessageViewController.swift in Sources */,
 				A06B640725E97A8300AE746D /* String.swift in Sources */,
 				A06B63C325E9561B00AE746D /* Creation.swift in Sources */,
 				A0579ED7260E3A8F009D512F /* PushNotificationManager.swift in Sources */,
+				A0BA800626688808001E3099 /* Navigation.swift in Sources */,
 				A03A968D2603F8D400274793 /* FirebaseCodable.swift in Sources */,
 				A0ED2210261E0D56006BCBC7 /* CustomTableView.swift in Sources */,
 				A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */,
@@ -1546,6 +1568,7 @@
 				A064CB4126652DDB00C02D57 /* CoverToMainProtocolDelegate.swift in Sources */,
 				A006C01B25FFFF11003613C0 /* CellIdentifiers.swift in Sources */,
 				A040AB4A25F682D10064978A /* DownloadMethods.swift in Sources */,
+				A0BA8008266890EB001E3099 /* StoryBoard.swift in Sources */,
 				A00DD41E2603D55400E6C818 /* UserModel.swift in Sources */,
 				A0C2FBB2260268B4005D773A /* PencilView.swift in Sources */,
 				A006461125EB0C8E00A3E1F3 /* inboxCell.swift in Sources */,
@@ -1624,6 +1647,7 @@
 				A071B4C726240A790057BE35 /* Testing.swift in Sources */,
 				A0C2FBAF26025C8D005D773A /* CustomBox.swift in Sources */,
 				A0911DAC260C3FF700D05642 /* searchUserCell.swift in Sources */,
+				A0BA800A26689107001E3099 /* StoryBoards.swift in Sources */,
 				A023980625EC242600F13F72 /* CustomShadows.swift in Sources */,
 				A00DD4102603964B00E6C818 /* CreationDetailViewController.swift in Sources */,
 				A06B633525E9512400AE746D /* Remote.swift in Sources */,

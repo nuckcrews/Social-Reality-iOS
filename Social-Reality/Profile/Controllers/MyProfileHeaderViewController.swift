@@ -78,9 +78,10 @@ class MyProfileHeaderViewController: UIViewController {
     
     
     func toEditProfile() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
-        }
+//        DispatchQueue.main.async {
+//            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
+//        }
+        Navigation.modal(to: .EditProfileViewController, navigationController: navigationController, data: nil, style: .pageSheet)
     }
     
     @IBAction func tapEditProfile(_ sender: UIButton) {

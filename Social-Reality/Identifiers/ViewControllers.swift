@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - View Controller Identifiers
 
-enum ViewControllers: String {
+enum ViewController: String {
     
     case MyProfileHeader
     case CreationCollection
@@ -17,5 +17,7 @@ enum ViewControllers: String {
     case XLPagerTabStripViewController
     case ProfileScrollViewController
     case ProfileMap
+    case SettingsViewController
+    case EditProfileViewController
     
 }

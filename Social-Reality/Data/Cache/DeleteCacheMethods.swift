@@ -15,6 +15,7 @@ struct DeleteCacheMethods {
     private let likeCache = NSCache<NSString, LikeCacheModel>()
     private let conversationCache = NSCache<NSString, ConversationCacheModel>()
     private let messageCache = NSCache<NSString, MessageCacheModel>()
+    private let videoCache = NSCache<NSString, VideoCacheModel>()
     
     func user(_ key: String) {
         guard key.count > 0 else { return }
@@ -52,6 +53,12 @@ struct DeleteCacheMethods {
         messageCache.removeObject(forKey: key as NSString)
     }
     
+    func video(_ key: String) {
+        guard key.count > 0 else { return }
+        
+        videoCache.removeObject(forKey: key as NSString)
+    }
+    
     func removeAllUsers() {
         userCache.removeAllObjects()
     }
@@ -76,6 +83,10 @@ struct DeleteCacheMethods {
         messageCache.removeAllObjects()
     }
     
+    func removeAllVideos() {
+        videoCache.removeAllObjects()
+    }
+    
     func removeAll() {
         userCache.removeAllObjects()
         creationCache.removeAllObjects()
@@ -83,6 +94,7 @@ struct DeleteCacheMethods {
         likeCache.removeAllObjects()
         conversationCache.removeAllObjects()
         messageCache.removeAllObjects()
+        videoCache.removeAllObjects()
     }
     
 }
