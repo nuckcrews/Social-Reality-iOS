@@ -34,13 +34,13 @@ extension ProfileScrollViewController: UIScrollViewDelegate {
 extension ProfileScrollViewController: ScrollDataSource, PanProgressDelegate {
     
     func headerViewController() -> UIViewController {
-        headerVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewControllers.MyProfileHeader.rawValue) as? MyProfileHeaderViewController
+        headerVC = StoryBoard.viewController(type: .MyProfileHeader, storyBoard: .main) as? MyProfileHeaderViewController
         headerVC?.userID = Auth0.uid
         return headerVC!
     }
     
     func bottomViewController() -> UIViewController & PagerAwareProtocol {
-        bottomVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewControllers.XLPagerTabStripViewController.rawValue) as? XLPagerTabStripViewController
+        bottomVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewController.XLPagerTabStripViewController.rawValue) as? XLPagerTabStripViewController
         return bottomVC
     }
     

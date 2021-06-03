@@ -12,15 +12,11 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var usernameTopButton: UIButton!
-    
-    var user: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        getUser()
         
     }
     
@@ -29,7 +25,7 @@ class ProfileViewController: UIViewController {
         guard let storyboard = storyboard else { return }
         
         guard let profileVC = storyboard
-                        .instantiateViewController(withIdentifier: ViewController.ProfileScrollViewController.rawValue) as? ProfileScrollViewController else { return }
+                        .instantiateViewController(withIdentifier: ViewControllers.ProfileScrollViewController.rawValue) as? ProfileScrollViewController else { return }
         
         containerView.addSubview(profileVC.view)
         addChild(profileVC)
@@ -44,29 +40,10 @@ class ProfileViewController: UIViewController {
         
     }
     
-    func getUser() {
-        
-        guard let uid = Auth0.uid else { return }
-        
-        if let model = Query.defaults.get.user(uid) {
-            user = model
-            usernameTopButton.setTitle(model.username, for: .normal)
-        }
-        
-        Query.subscribe.user(uid) { [weak self] model, lstn in
-            guard let model = model else { return }
-            if self?.user != model {
-                self?.usernameTopButton.setTitle(model.username, for: .normal)
-                Query.defaults.write.user(model)
-                self?.user = model
-            }
-            
-        }
-        
-    }
-    
     func toSettings() {
-        Navigation.push(to: .SettingsViewController, navigationController: navigationController, data: nil)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
+        }
     }
     
     func toContentDetail() {

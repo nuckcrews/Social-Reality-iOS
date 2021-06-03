@@ -98,18 +98,15 @@ class AccountViewController: UIViewController {
     }
     
     func toEditProfile() {
-//        DispatchQueue.main.async {
-//            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
-//        }
-        Navigation.push(to: .EditProfileViewController, navigationController: navigationController, data: nil)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
+        }
     }
     
     func toSettings() {
-//        DispatchQueue.main.async {
-//            self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
-//        }
-        
-        Navigation.push(to: .SettingsViewController, navigationController: navigationController, data: nil)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
+        }
     }
     
     func toContentDetail() {

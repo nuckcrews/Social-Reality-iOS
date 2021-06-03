@@ -16,7 +16,6 @@ class CreationAVPlayerView: UIView {
     
     @IBOutlet weak var centerIndicator: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var starterImageView: UIImageView!
     
     // MARK: - Variables
     
@@ -50,12 +49,7 @@ class CreationAVPlayerView: UIView {
         
         playerObserver?.invalidate()
         
-        starterImageView.image = nil
-        starterImageView.alpha = 0
-        
         if player != nil && urlString == url {
-            starterImageView.image = nil
-            starterImageView.alpha = 0
             self.restartCreation()
             return
         }
@@ -90,18 +84,39 @@ class CreationAVPlayerView: UIView {
         
         print("got asset", url.absoluteString)
         
+        if let cachePlayer = Query.cache.get.video(url.absoluteString) {
+            
+            player = cachePlayer.player
+            player?.isMuted = Device.isMuted
+            playerLooper = cachePlayer.playerLooper
+            playerLayer = cachePlayer.playerLayer
+            
+            if let playerLayer = playerLayer,
+               let playerLooper = playerLooper,
+               let player = player {
+                layer.addSublayer(playerLayer)
+                
+                loadingIndicator.alpha = 1
+                loadingIndicator.startAnimating()
+                
+                bringSubviewToFront(centerIndicator)
+                
+                frame = adjustedFrame != nil ? adjustedFrame! : frame
+                setup = true
+                
+                return
+            }
+            
+            player = nil
+            playerLayer = nil
+            
+        }
+        
         let asset = AVAsset(url: url)
         let playerItem = AVPlayerItem(asset: asset)
         player = AVQueuePlayer(playerItem: playerItem)
-        player?.isMuted = Device.isMuted
         
-        if let _ = URL(string: starterURL ?? "") {
-            //            starterImageView.setImageFromURL(starterURL)
-            //            starterImageView.alpha = 1
-        } else {
-            starterImageView.image = nil
-            starterImageView.alpha = 0
-        }
+        player?.isMuted = Device.isMuted
         
         guard let player = player else { return }
         
@@ -113,22 +128,19 @@ class CreationAVPlayerView: UIView {
         
         guard let playerLayer = playerLayer else { return }
         
+        if let model = VideoCacheModel(urlString: url.absoluteString, player: player, looper: playerLooper, layer: playerLayer) {
+            Query.cache.write.video(model)
+        }
+        
         layer.addSublayer(playerLayer)
         
-        loadingIndicator.alpha = 1
-        loadingIndicator.startAnimating()
+    
         
-        bringSubviewToFront(centerIndicator)
-        
-        frame = adjustedFrame != nil ? adjustedFrame! : frame
-        setup = true
-        
-        playerObserver = playerItem.observe(\.status, options:  [.new, .old], changeHandler: { [weak self] (playerItem, change) in
-            if playerItem.status == .readyToPlay {
-                self?.starterImageView.alpha = 0
-                self?.starterImageView.image = nil
-            }
-        })
+        //        playerObserver = playerItem.observe(\.status, options:  [.new, .old], changeHandler: { [weak self] (playerItem, change) in
+        //            if playerItem.status == .readyToPlay {
+        //                //
+        //            }
+        //        })
         
     }
     

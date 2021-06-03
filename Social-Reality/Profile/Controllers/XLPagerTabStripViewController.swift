@@ -48,19 +48,19 @@ class XLPagerTabStripViewController: ButtonBarPagerTabStripViewController, Pager
 
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewControllers.CreationCollection.rawValue) as! CreationCollectionViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewController.CreationCollection.rawValue) as! CreationCollectionViewController
         vc.pageIndex = 0
         vc.pageTitle = "Posts"
         vc.segmentImage = UIImage(systemName: "square.grid.3x3.fill")
         let child_1 = vc
         
-        let vc1 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewControllers.ProfileMap.rawValue) as! ProfileMapViewController
+        let vc1 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewController.ProfileMap.rawValue) as! ProfileMapViewController
         vc1.pageIndex = 1
         vc1.pageTitle = "Locs"
         vc1.segmentImage = UIImage(named: Images.pinDrop.rawValue)
         let child_2 = vc1
         
-        let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewControllers.CreationCollection.rawValue) as! CreationCollectionViewController
+        let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewController.CreationCollection.rawValue) as! CreationCollectionViewController
         vc2.pageIndex = 2
         vc2.pageTitle = "Likes"
         vc2.segmentImage = UIImage(systemName: "heart.fill")
