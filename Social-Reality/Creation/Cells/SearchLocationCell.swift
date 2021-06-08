@@ -1,51 +1,51 @@
 //
-//  searchUserCell.swift
+//  SearchLocationCell.swift
 //  Social-Reality
 //
-//  Created by Nick Crews on 3/24/21.
+//  Created by Nick Crews on 5/31/21.
 //
 
 import UIKit
 
-// MARK: - Search User Cell
-
-class searchUserCell: UITableViewCell {
+// MARK: - TableView Cell
+class SearchLocationCell: UITableViewCell {
     
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case searchLocationCell
+    }
+
     // MARK: - Outlets
     
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userFirstLastLabel: UILabel!
+    @IBOutlet weak var locationImageView: UIImageView!
+    @IBOutlet weak var locationNameTopLabel: UILabel!
+    @IBOutlet weak var locationNameBottomLabel: UILabel!
     @IBOutlet weak var radioButton: UIButton!
     
-    private var selectedUser = false
+    // MARK: - Variables
     
-    // MARK: - Cell Lifecycle
+    private var selectedLocation = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        userImageView.image = UIImage(named: Images.profileImageDefault.rawValue)
-        
-    }
+    // MARK: - Configure Cell
     
-    // MARK: - Configure Methods
-    
-    func configureCell(user: UserModel, selectedCell: Bool) {
-        userImageView.setImageFromURL(user.image)
-        usernameLabel.text = "@" + user.username
-        userFirstLastLabel.text = user.first + " " + user.last
+    func configureCell(location: SearchLocation, selectedCell: Bool) {
         
-        selectedUser = selectedCell
+        locationNameTopLabel.text = location.topAddress
+        locationNameBottomLabel.text = location.bottomAddress
+        
+        selectedLocation = selectedCell
         if selectedCell {
             radioButton.tintColor = .primary
             radioButton.setImage(UIImage(systemName: "dot.square.fill"), for: .normal)
@@ -57,12 +57,12 @@ class searchUserCell: UITableViewCell {
     }
     
     func tapSelect() {
-        if !selectedUser {
-            selectedUser = true
+        if !selectedLocation {
+            selectedLocation = true
             radioButton.tintColor = .primary
             radioButton.setImage(UIImage(systemName: "dot.square.fill"), for: .normal)
         } else {
-            selectedUser = false
+            selectedLocation = false
             radioButton.tintColor = .grayText
             radioButton.setImage(UIImage(systemName: "square"), for: .normal)
         }

@@ -22,6 +22,17 @@ class EditProfileViewController: UIViewController {
     
     var user: User?
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> EditProfileViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(EditProfileViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -22,6 +22,18 @@ class NewMessageViewController: UIViewController {
     var filteredUsers = [UserModel]()
     private var isSearching = false
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> NewMessageViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(NewMessageViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -123,13 +135,13 @@ extension NewMessageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.searchUserMessageCell.rawValue, for: indexPath) as? searchUserMessageCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SearchUserMessageCell.identifiers.searchUserMessageCell.rawValue, for: indexPath) as? SearchUserMessageCell {
             isSearching ?
                 cell.configureCell(user: filteredUsers[indexPath.row]) :
                 cell.configureCell(user: users[indexPath.row])
             return cell
         } else {
-            return searchUserMessageCell()
+            return SearchUserMessageCell()
         }
     }
     

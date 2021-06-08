@@ -1,5 +1,5 @@
 //
-//  commentCell.swift
+//  CommentCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 3/26/21.
@@ -9,7 +9,13 @@ import UIKit
 
 // MARK: - Comment Cell
 
-class commentCell: UITableViewCell {
+class CommentCell: UITableViewCell {
+    
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case commentCell
+    }
     
     // MARK: - Outlets
     

@@ -24,6 +24,17 @@ class XLPagerTabStripViewController: ButtonBarPagerTabStripViewController, Pager
     //MARK: Properties
     var isReload = false
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> XLPagerTabStripViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(XLPagerTabStripViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         settings.style.buttonBarBackgroundColor = .background

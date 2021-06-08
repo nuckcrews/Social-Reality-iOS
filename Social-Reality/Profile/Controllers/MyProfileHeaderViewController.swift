@@ -31,6 +31,17 @@ class MyProfileHeaderViewController: UIViewController {
         static var likes = 4
     }
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> MyProfileHeaderViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(MyProfileHeaderViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,10 +89,15 @@ class MyProfileHeaderViewController: UIViewController {
     
     
     func toEditProfile() {
-//        DispatchQueue.main.async {
-//            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
-//        }
-        Navigation.modal(to: .EditProfileViewController, navigationController: navigationController, data: nil, style: .pageSheet)
+        
+        DispatchQueue.main.async {
+            
+            if let viewController = EditProfileViewController.instantiate() {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
+        }
+        
     }
     
     @IBAction func tapEditProfile(_ sender: UIButton) {

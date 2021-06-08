@@ -188,7 +188,7 @@ extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.searchLocationCell.rawValue, for: indexPath) as? searchLocationCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SearchLocationCell.identifiers.searchLocationCell.rawValue, for: indexPath) as? SearchLocationCell {
             isSearching ?
                 cell.configureCell(location: locationsFiltered[indexPath.row],
                                    selectedCell: isSelected(model: locationsFiltered[indexPath.row])) :
@@ -197,13 +197,13 @@ extension SearchLocationView: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         } else {
-            return searchLocationCell()
+            return SearchLocationCell()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let cell = tableView.cellForRow(at: indexPath) as? searchLocationCell else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? SearchLocationCell else {
             return
         }
         

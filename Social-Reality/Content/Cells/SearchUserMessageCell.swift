@@ -1,5 +1,5 @@
 //
-//  searchUserMessageCell.swift
+//  SearchUserMessageCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 5/9/21.
@@ -7,7 +7,14 @@
 
 import UIKit
 
-class searchUserMessageCell: UITableViewCell {
+class SearchUserMessageCell: UITableViewCell {
+    
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case searchUserMessageCell
+    }
+
 
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!

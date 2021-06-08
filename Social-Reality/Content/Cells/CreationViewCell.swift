@@ -1,5 +1,5 @@
 //
-//  creationViewCell.swift
+//  CreationViewCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 3/2/21.
@@ -10,7 +10,13 @@ import UIKit
 
 // MARK: - Creation View Cell
 
-class creationViewCell: UICollectionViewCell {
+class CreationViewCell: UICollectionViewCell {
+
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case creationViewCell
+    }
 
     // MARK: - Outlets
     

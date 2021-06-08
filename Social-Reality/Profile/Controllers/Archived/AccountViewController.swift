@@ -37,6 +37,17 @@ class AccountViewController: UIViewController {
     var user: User?
     var selectedIndex = 0
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> AccountViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(AccountViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +55,7 @@ class AccountViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
-        collectionView.register(ProfileCreationsHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ProfileCreationsHeaderView.rawValue)
+        collectionView.register(ProfileCreationsHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileCreationsHeaderView.identifiers.profileCreationsHeaderView.rawValue)
         
         
         configureDatasource()
@@ -101,7 +112,16 @@ class AccountViewController: UIViewController {
 //        DispatchQueue.main.async {
 //            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
 //        }
-        Navigation.push(to: .EditProfileViewController, navigationController: navigationController, data: nil)
+//        Navigation.push(to: .EditProfileViewController, navigationController: navigationController, data: nil)
+        
+        DispatchQueue.main.async {
+            
+            if let viewController = EditProfileViewController.instantiate() {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
+        }
+        
     }
     
     func toSettings() {
@@ -109,19 +129,31 @@ class AccountViewController: UIViewController {
 //            self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
 //        }
         
-        Navigation.push(to: .SettingsViewController, navigationController: navigationController, data: nil)
-    }
-    
-    func toContentDetail() {
+//        Navigation.push(to: .SettingsViewController, navigationController: navigationController, data: nil)
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreationDetailFromAccount.rawValue, sender: nil)
+            
+            if let viewController = SettingsViewController.instantiate() {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     func toContentCollection() {
+//        DispatchQueue.main.async {
+//            self.performSegue(withIdentifier: Segue.toCreationCollectionFromAccount.rawValue, sender: nil)
+//        }
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreationCollectionFromAccount.rawValue, sender: nil)
+            
+            if let viewController = CreationCollectionViewController.instantiate() {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     @IBAction func tapSettings(_ sender: UIButton) {
@@ -152,18 +184,18 @@ extension AccountViewController: UICollectionViewDelegate {
         
         switch item {
         case .header(let data):
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.profileHeaderCell.rawValue, for: indexPath) as? profileHeaderCell {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileHeaderCell.identifiers.profileHeaderCell.rawValue, for: indexPath) as? ProfileHeaderCell {
                 cell.configure(with: data)
                 return cell
             } else {
-                return profileHeaderCell()
+                return ProfileHeaderCell()
             }
         case .creation(let data):
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CreationViewCell.identifiers.creationViewCell.rawValue, for: indexPath) as? CreationViewCell {
                 cell.configureCell(at: indexPath.row, creation: data)
                 return cell
             } else {
-                return creationViewCell()
+                return CreationViewCell()
             }
         }
         
@@ -305,7 +337,7 @@ extension AccountViewController {
     }
     
     private func supplementary(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ProfileCreationsHeaderView.rawValue, for: indexPath)
+        return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileCreationsHeaderView.identifiers.profileCreationsHeaderView.rawValue, for: indexPath)
     }
     
 }

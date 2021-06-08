@@ -31,6 +31,17 @@ class MainViewController: UIViewController {
     
     var creation: Creation?
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> MainViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(MainViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarItem.tag = TabBarItemTag.firstViewController.rawValue

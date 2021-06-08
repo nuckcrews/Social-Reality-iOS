@@ -67,13 +67,13 @@ class CreationTableView: UIView {
     // MARK: - Creation Handling
     
     func playCreation() {
-        if let cell = tableView.cellForRow(at: IndexPath(item: currentIndex, section: 0)) as? creationVideoCell {
+        if let cell = tableView.cellForRow(at: IndexPath(item: currentIndex, section: 0)) as? CreationVideoCell {
             cell.creationAVPlayerView.playCreation()
         }
     }
     
     func pauseCreation() {
-        if let cell = tableView.cellForRow(at: IndexPath(item: currentIndex, section: 0)) as? creationVideoCell {
+        if let cell = tableView.cellForRow(at: IndexPath(item: currentIndex, section: 0)) as? CreationVideoCell {
             cell.creationAVPlayerView.pauseCreation()
         }
     }
@@ -83,7 +83,7 @@ class CreationTableView: UIView {
     func changedIndex(_ index: Int) {
         
         for i in 0..<creations.count {
-            if let cell = tableView.cellForRow(at: IndexPath(item: i, section: 0)) as? creationVideoCell {
+            if let cell = tableView.cellForRow(at: IndexPath(item: i, section: 0)) as? CreationVideoCell {
                 i != index ? cell.dismissed() : cell.presented()
             }
         }
@@ -122,14 +122,14 @@ extension CreationTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.creationVideoCell.rawValue, for: indexPath) as? creationVideoCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CreationVideoCell.identifiers.creationVideoCell.rawValue, for: indexPath) as? CreationVideoCell {
             cell.configureCell(creations[indexPath.row], user)
             if indexPath.row == currentIndex {
                 cell.presented()
             }
             return cell
         } else {
-            return creationVideoCell()
+            return CreationVideoCell()
         }
     }
     

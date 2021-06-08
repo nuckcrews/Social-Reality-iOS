@@ -1,5 +1,5 @@
 //
-//  creationVideoCell.swift
+//  CreationVideoCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 3/29/21.
@@ -9,7 +9,13 @@ import UIKit
 
 // MARK: - Creation Video Cell
 
-class creationVideoCell: UITableViewCell {
+class CreationVideoCell: UITableViewCell {
+    
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case creationVideoCell
+    }
     
     // MARK: - Outlets
     
@@ -140,7 +146,7 @@ class creationVideoCell: UITableViewCell {
 
 // MARK: - Creation AV Player Delegate
 
-extension creationVideoCell: CreationAVPlayerDelegate {
+extension CreationVideoCell: CreationAVPlayerDelegate {
     
     func doubleTappedVideo() {
         likeButton.tintColor = .primary

@@ -27,6 +27,20 @@ class ConfirmUserViewController: UIViewController {
         static var button = "Ok"
     }
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate(email: String?, password: String?) -> ConfirmUserViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(ConfirmUserViewController.self) else {
+            return nil
+        }
+        
+        viewController.email = email
+        viewController.password = password
+        
+        return viewController
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -72,9 +86,15 @@ class ConfirmUserViewController: UIViewController {
     // MARK: - Segues
     
     func toCreateUser() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreateUserFromConfirm.rawValue, sender: nil)
+            
+            if let viewController = CreateUserViewController.instantiate(email: self.email) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

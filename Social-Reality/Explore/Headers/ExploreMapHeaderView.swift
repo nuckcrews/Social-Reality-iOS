@@ -9,6 +9,12 @@ import UIKit
 
 class ExploreMapHeaderView: UICollectionReusableView, InstantiatesFromNib {
 
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case exploreMapHeaderView
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -35,6 +35,19 @@ class CreateUserViewController: UIViewController {
         static var button = "Ok"
     }
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate(email: String?) -> CreateUserViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(CreateUserViewController.self) else {
+            return nil
+        }
+        
+        viewController.email = email
+        
+        return viewController
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -152,14 +165,26 @@ class CreateUserViewController: UIViewController {
     // MARK: - Segues
     
     func toAvatar() {
+
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toAvatarFromCreateUser.rawValue, sender: nil)
+            
+            if let viewController = CreateAvatarViewController.instantiate(model: nil) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     func toHome() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toHomeFromCreateUser.rawValue, sender: nil)
+            
+            if let viewController = CoverViewController.instantiate() {
+                viewController.modalPresentationStyle = .fullScreen
+                self.navigationController?.present(viewController, animated: true)
+            }
+            
         }
     }
     

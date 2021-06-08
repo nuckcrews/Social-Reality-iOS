@@ -9,6 +9,12 @@ import UIKit
 
 class ExploreCreationHeaderView: UICollectionReusableView, InstantiatesFromNib {
 
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case exploreCreationHeaderView
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

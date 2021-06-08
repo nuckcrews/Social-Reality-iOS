@@ -22,6 +22,20 @@ class CreationTableViewController: UIViewController {
     var creations = [CreationModel]()
     var startIndex: Int = 0
     var indexSet = false
+
+    // MARK: - View Instantiation
+    
+    internal static func instantiate(creations: [CreationModel], selectedIndex: Int = 0) -> CreationTableViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(CreationTableViewController.self) else {
+            return nil
+        }
+        
+        viewController.creations = creations
+        viewController.startIndex = selectedIndex
+        
+        return viewController
+    }
     
     // MARK: - View Lifecycle
     
@@ -77,7 +91,6 @@ class CreationTableViewController: UIViewController {
                 Query.defaults.write.user(model)
                 self?.user = model
             }
-            
         }
         
     }

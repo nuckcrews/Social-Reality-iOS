@@ -1,5 +1,5 @@
 //
-//  messageCreationCell.swift
+//  MessageCreationCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 4/20/21.
@@ -9,8 +9,14 @@ import UIKit
 
 // MARK: - Message Creation Cell
 
-class messageCreationCell: UITableViewCell {
+class MessageCreationCell: UITableViewCell {
     
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case messageCreationCell
+    }
+
     // MARK: - Outlets
     
     @IBOutlet weak var leftMessageView: UIView!

@@ -40,6 +40,17 @@ class ExploreViewController: UIViewController {
         case creation(CreationThumbNailView)
     }
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> ExploreViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(ExploreViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,8 +59,8 @@ class ExploreViewController: UIViewController {
         searchTextField.delegate = self
         collectionView.delegate = self
         collectionView.setCollectionViewLayout(createLayout(), animated: false)
-        collectionView.register(ExploreMapHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreMapHeaderView.rawValue)
-        collectionView.register(ExploreCreationHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreCreationHeaderView.rawValue)
+        collectionView.register(ExploreMapHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ExploreMapHeaderView.identifiers.exploreMapHeaderView.rawValue)
+        collectionView.register(ExploreCreationHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ExploreCreationHeaderView.identifiers.exploreCreationHeaderView.rawValue)
         
         configureDatasource()
         setupLocationManager()
@@ -89,8 +100,13 @@ class ExploreViewController: UIViewController {
     // MARK: - Segues
     
     func toCreationTableView() {
+
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreationTableFromExplore.rawValue, sender: nil)
+            
+            if let viewController = CreationTableViewController.instantiate(creations: self.creations, selectedIndex: self.selectedIndex) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
     }
     
@@ -186,18 +202,18 @@ extension ExploreViewController {
     private func cell(collectionView: UICollectionView, indexPath: IndexPath, item: Item) -> UICollectionViewCell {
         switch item {
         case .map(let data):
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.mapViewCell.rawValue, for: indexPath) as? mapViewCell {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapViewCell.identifiers.mapViewCell.rawValue, for: indexPath) as? MapViewCell {
                 cell.configure(with: data, delegate: self)
                 return cell
             } else {
-                return mapViewCell()
+                return MapViewCell()
             }
         case .creation(let data):
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CreationViewCell.identifiers.creationViewCell.rawValue, for: indexPath) as? CreationViewCell {
                 cell.configureCell(at: indexPath.row, creation: data, del: self)
                 return cell
             } else {
-                return creationViewCell()
+                return CreationViewCell()
             }
             
         }
@@ -286,9 +302,9 @@ extension ExploreViewController {
     private func supplementary(collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView {
         
         if indexPath.section == 0 {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreMapHeaderView.rawValue, for: indexPath)
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ExploreMapHeaderView.identifiers.exploreMapHeaderView.rawValue, for: indexPath)
         } else {
-            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Cells.ExploreCreationHeaderView.rawValue, for: indexPath)
+            return collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ExploreCreationHeaderView.identifiers.exploreCreationHeaderView.rawValue, for: indexPath)
         }
         
     }

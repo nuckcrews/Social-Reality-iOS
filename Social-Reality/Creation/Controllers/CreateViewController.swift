@@ -70,6 +70,18 @@ class CreateViewController: UIViewController {
     
     private var blackView = UIView()
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> CreateViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(CreateViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -684,7 +696,7 @@ extension CreateViewController {
     
 }
 
-// MARK: - ScrollView Delegegate
+// MARK: - ScrollView Delegate
 extension CreateViewController: UIScrollViewDelegate {
     
     func scrollToOffset(_ offset: CGFloat) {

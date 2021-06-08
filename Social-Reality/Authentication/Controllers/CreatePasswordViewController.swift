@@ -35,6 +35,20 @@ class CreatePasswordViewController: UIViewController {
         static var button = "Ok"
     }
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate(email: String?, username: String? = nil, first: String? = nil, last: String? = nil) -> CreatePasswordViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(CreatePasswordViewController.self) else {
+            return nil
+        }
+        
+        viewController.email = email
+        viewController.username = username
+        
+        return viewController
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -129,15 +143,29 @@ class CreatePasswordViewController: UIViewController {
     // MARK: - Segues
     
     func toConfirmUser() {
+
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toConfirmUserFromCreatePassword.rawValue, sender: nil)
+            
+            if let viewController = ConfirmUserViewController.instantiate(email: self.email, password: self.passwordTextField.text) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
+        
     }
     
     func toCreateUser() {
+
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreateUserFromPassword.rawValue, sender: nil)
+            
+            if let viewController = CreateUserViewController.instantiate(email: self.email) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

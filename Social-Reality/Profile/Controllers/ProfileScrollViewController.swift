@@ -12,6 +12,18 @@ class ProfileScrollViewController: UIViewController {
     var headerVC: MyProfileHeaderViewController?
     var bottomVC: XLPagerTabStripViewController!
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> ProfileScrollViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(ProfileScrollViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +46,7 @@ extension ProfileScrollViewController: UIScrollViewDelegate {
 extension ProfileScrollViewController: ScrollDataSource, PanProgressDelegate {
     
     func headerViewController() -> UIViewController {
-        headerVC = StoryBoard.viewController(type: .MyProfileHeader, storyBoard: .main) as? MyProfileHeaderViewController
+        headerVC = MyProfileHeaderViewController.instantiate()
         headerVC?.userID = Auth0.uid
         return headerVC!
     }
