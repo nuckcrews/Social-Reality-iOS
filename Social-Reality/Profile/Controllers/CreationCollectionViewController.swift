@@ -16,6 +16,17 @@ class CreationCollectionViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> CreationCollectionViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(CreationCollectionViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     // MARK: - Variables
     
     var creations = [CreationThumbNailView]()
@@ -105,9 +116,15 @@ class CreationCollectionViewController: UIViewController {
     }
     
     func toContentCollection() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier:  Segue.toCreationTableFromProfile.rawValue, sender: nil)
+            
+            if let viewController = CreationTableViewController.instantiate(creations: self.creationModels, selectedIndex: self.selectedIndex) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -131,11 +148,11 @@ extension CreationCollectionViewController: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cells.creationViewCell.rawValue, for: indexPath) as? creationViewCell {
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CreationViewCell.identifiers.creationViewCell.rawValue, for: indexPath) as? CreationViewCell {
             cell.configureCell(at: indexPath.row, creation: creations[indexPath.row])
             return cell
         } else {
-            return creationViewCell()
+            return CreationViewCell()
         }
     }
     

@@ -32,6 +32,20 @@ class MessageViewController: UIViewController {
     var creations = [CreationModel]()
     var selectedIndex = 0
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate(conversationID: String?, recipientID: String) -> MessageViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(MessageViewController.self) else {
+            return nil
+        }
+        
+        viewController.conversationID = conversationID
+        viewController.recipientID = recipientID
+        
+        return viewController
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -249,9 +263,15 @@ class MessageViewController: UIViewController {
     // MARK: - Segues
     
     func toCreationTableView() {
+
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreationTableFromMessage.rawValue, sender: nil)
+            
+            if let viewController = CreationTableViewController.instantiate(creations: self.creations, selectedIndex: self.selectedIndex) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -325,18 +345,18 @@ extension MessageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch messages[indexPath.row].type {
         case .creation:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.messageCreationCell.rawValue, for: indexPath) as? messageCreationCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: MessageCreationCell.identifiers.messageCreationCell.rawValue, for: indexPath) as? MessageCreationCell {
                 cell.configureCell(message: messages[indexPath.row], del: self)
                 return cell
             } else {
-                return messageCreationCell()
+                return MessageCreationCell()
             }
         default:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.messageCell.rawValue, for: indexPath) as? messageCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: MessageCell.identifiers.messageCell.rawValue, for: indexPath) as? MessageCell {
                 cell.configureCell(message: messages[indexPath.row])
                 return cell
             } else {
-                return messageCell()
+                return MessageCell()
             }
         }
         

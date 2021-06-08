@@ -1,5 +1,5 @@
 //
-//  mapViewCell.swift
+//  MapViewCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 3/4/21.
@@ -11,9 +11,17 @@ import GooglePlaces
 
 // MARK: - Map View Cell
 
-class mapViewCell: UICollectionViewCell {
+class MapViewCell: UICollectionViewCell {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var mapView: GMSMapView!
+    
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case mapViewCell
+    }
     
     // MARK: - Variables
     
@@ -47,7 +55,7 @@ class mapViewCell: UICollectionViewCell {
 
 // MARK: - Map View Delegate
 
-extension mapViewCell: GMSMapViewDelegate {}
+extension MapViewCell: GMSMapViewDelegate {}
 
 // MARK: - Map Cell Delegate
 

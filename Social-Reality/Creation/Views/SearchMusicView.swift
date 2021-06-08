@@ -167,7 +167,7 @@ extension SearchMusicView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.searchMusicCell.rawValue, for: indexPath) as? searchMusicCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SearchMusicCell.identifiers.searchMusicCell.rawValue, for: indexPath) as? SearchMusicCell {
             isSearching ?
                 cell.configureCell(music: musicFiltered[indexPath.row],
                                    selectedCell: isSelected(model: musicFiltered[indexPath.row])) :
@@ -175,13 +175,13 @@ extension SearchMusicView: UITableViewDelegate, UITableViewDataSource {
                                    selectedCell: isSelected(model: music[indexPath.row]))
             return cell
         } else {
-            return searchMusicCell()
+            return SearchMusicCell()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let cell = tableView.cellForRow(at: indexPath) as? searchMusicCell else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? SearchMusicCell else {
             return
         }
         

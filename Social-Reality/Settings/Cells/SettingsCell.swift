@@ -1,5 +1,5 @@
 //
-//  accountCell.swift
+//  SettingsCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 2/27/21.
@@ -9,7 +9,13 @@ import UIKit
 
 // MARK: - Settings Cell
 
-class settingsCell: UITableViewCell {
+class SettingsCell: UITableViewCell {
+    
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case settingsCell
+    }
     
     // MARK: - Outlets
     

@@ -13,7 +13,7 @@
         <!--Main View Controller-->
         <scene sceneID="aTt-1X-IZR">
             <objects>
-                <viewController id="4AG-F6-bw4" customClass="MainViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="4AG-F6-bw4" customClass="MainViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PvV-sx-0a6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,7 +233,7 @@
         <!--Explore View Controller-->
         <scene sceneID="peM-8q-DKf">
             <objects>
-                <viewController id="QpT-Xp-6G8" customClass="ExploreViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExploreViewController" id="QpT-Xp-6G8" customClass="ExploreViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jHJ-sv-l2A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,7 +310,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapViewCell" id="bbA-zH-Puw" customClass="mapViewCell" customModule="Social_Reality" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mapViewCell" id="bbA-zH-Puw" customClass="MapViewCell" customModule="Social_Reality" customModuleProvider="target">
                                                 <rect key="frame" x="1" y="0.0" width="412" height="261"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="v95-ms-vIi">
@@ -372,7 +372,7 @@
                                                     <outlet property="mapView" destination="MqT-CS-AmE" id="lQo-Re-xH3"/>
                                                 </connections>
                                             </collectionViewCell>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="creationViewCell" id="iPM-b0-q7L" customClass="creationViewCell" customModule="Social_Reality" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="creationViewCell" id="iPM-b0-q7L" customClass="CreationViewCell" customModule="Social_Reality" customModuleProvider="target">
                                                 <rect key="frame" x="192" y="271" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FLn-bl-Bea">
@@ -470,7 +470,7 @@
         <!--Account View Controller-->
         <scene sceneID="OL1-Yh-fpH">
             <objects>
-                <viewController id="erS-xA-mXJ" customClass="AccountViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountViewController" id="erS-xA-mXJ" customClass="AccountViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fGS-Uj-PqA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -485,7 +485,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderCell" id="KT4-Mt-h1R" customClass="profileHeaderCell" customModule="Social_Reality" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderCell" id="KT4-Mt-h1R" customClass="ProfileHeaderCell" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="23.5" y="0.0" width="367" height="268"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KsC-cj-9Kc">
@@ -652,7 +652,7 @@
                                             <outlet property="numberOfLikesLabel" destination="3eU-Lw-d02" id="cYY-Gm-wSw"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="creationViewCell" id="R8e-vN-oId" customClass="creationViewCell" customModule="Social_Reality" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="creationViewCell" id="R8e-vN-oId" customClass="CreationViewCell" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="151.5" y="278" width="111" height="107"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JDY-9l-dO6">
@@ -769,7 +769,7 @@
         <!--Creation Detail View Controller-->
         <scene sceneID="MMz-Y0-TRp">
             <objects>
-                <viewController id="9va-nW-FCl" customClass="CreationDetailViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreationDetailViewController" id="9va-nW-FCl" customClass="CreationDetailViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bLt-ck-Keh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1005,7 +1005,7 @@
         <!--Profile View Controller-->
         <scene sceneID="fGO-c8-AiL">
             <objects>
-                <viewController id="3ni-VJ-AHt" customClass="ProfileViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="3ni-VJ-AHt" customClass="ProfileViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ES2-34-96f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1121,7 +1121,7 @@
         <!--Creation Table View Controller-->
         <scene sceneID="2cA-xi-l2H">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="mFP-I9-LRb" customClass="CreationTableViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreationTableViewController" modalPresentationStyle="fullScreen" id="mFP-I9-LRb" customClass="CreationTableViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="seW-zl-3bt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1133,7 +1133,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="creationVideoCell" rowHeight="726" id="c5o-PH-l5r" customClass="creationVideoCell" customModule="Social_Reality" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="creationVideoCell" rowHeight="726" id="c5o-PH-l5r" customClass="CreationVideoCell" customModule="Social_Reality" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="24.5" width="414" height="726"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c5o-PH-l5r" id="QCg-rc-oso">
@@ -1445,7 +1445,7 @@
                                                 <rect key="frame" x="0.0" y="68" width="406" height="642.5"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" rowHeight="62" id="um5-of-RCG" customClass="settingsCell" customModule="Social_Reality" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="settingsCell" rowHeight="62" id="um5-of-RCG" customClass="SettingsCell" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="24.5" width="406" height="62"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="um5-of-RCG" id="cup-Tg-Tkq">
@@ -1935,7 +1935,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="4qL-U8-Aqx"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="134" id="Wx9-Ej-fke" customClass="searchUserCell" customModule="Social_Reality" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="134" id="Wx9-Ej-fke" customClass="SearchUserCell" customModule="Social_Reality" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="24.5" width="414" height="134"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wx9-Ej-fke" id="fpn-UG-Ms0">
@@ -2075,7 +2075,7 @@
         <!--Inbox View Controller-->
         <scene sceneID="Gzh-38-pFI">
             <objects>
-                <viewController id="e3V-q6-ef7" customClass="InboxViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InboxViewController" id="e3V-q6-ef7" customClass="InboxViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fde-QS-XxS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2090,7 +2090,7 @@
                                 <rect key="frame" x="0.0" y="158.5" width="406" height="654.5"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="inboxCell" rowHeight="68" id="jtz-XU-C8H" customClass="inboxCell" customModule="Social_Reality" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="inboxCell" rowHeight="68" id="jtz-XU-C8H" customClass="InboxCell" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="406" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jtz-XU-C8H" id="EOG-TL-U8O">
@@ -2149,7 +2149,7 @@
                                             <outlet property="userNameLabel" destination="3wj-Uf-apd" id="UAc-r0-Q9J"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="promoCell" rowHeight="102" id="JDM-1J-O89" customClass="promoCell" customModule="Social_Reality" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="promoCell" rowHeight="102" id="JDM-1J-O89" customClass="PromoCell" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92.5" width="406" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JDM-1J-O89" id="zgR-oP-qS2">
@@ -2282,7 +2282,7 @@
         <!--Message View Controller-->
         <scene sceneID="EO6-WN-CIi">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="e25-VD-KZy" customClass="MessageViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageViewController" modalPresentationStyle="fullScreen" id="e25-VD-KZy" customClass="MessageViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T03-te-QC3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2329,7 +2329,7 @@
                                 <rect key="frame" x="0.0" y="135.5" width="414" height="668.5"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="80" id="ZNW-aJ-Niu" customClass="messageCell" customModule="Social_Reality" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="80" id="ZNW-aJ-Niu" customClass="MessageCell" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZNW-aJ-Niu" id="6cG-2x-61f">
@@ -2402,7 +2402,7 @@
                                             <outlet property="rightMessageView" destination="tbn-Zo-DYx" id="OCw-7r-icv"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCreationCell" rowHeight="349" id="bOx-Lu-awy" customClass="messageCreationCell" customModule="Social_Reality" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="messageCreationCell" rowHeight="349" id="bOx-Lu-awy" customClass="MessageCreationCell" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="104.5" width="414" height="349"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bOx-Lu-awy" id="iou-B5-WCb">
@@ -2662,7 +2662,7 @@
         <!--New Message View Controller-->
         <scene sceneID="EyR-NN-SzL">
             <objects>
-                <viewController id="6YZ-x2-Lxa" customClass="NewMessageViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewMessageViewController" id="6YZ-x2-Lxa" customClass="NewMessageViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="960-X6-ft2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2675,7 +2675,7 @@
                                 <rect key="frame" x="0.0" y="167" width="406" height="646"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchUserMessageCell" rowHeight="83" id="EfU-M6-FHI" customClass="searchUserMessageCell" customModule="Social_Reality" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchUserMessageCell" rowHeight="83" id="EfU-M6-FHI" customClass="SearchUserMessageCell" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="406" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EfU-M6-FHI" id="jdp-XA-Uzt">
@@ -2692,13 +2692,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5yc-AB-xyc">
                                                     <rect key="frame" x="78" y="23.5" width="278.5" height="36.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA4-Uz-i9f">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA4-Uz-i9f">
                                                             <rect key="frame" x="0.0" y="0.0" width="278.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" name="MainText"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4s-Ta-zDr">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4s-Ta-zDr">
                                                             <rect key="frame" x="0.0" y="19.5" width="278.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="GrayText"/>
@@ -3239,7 +3239,7 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="6k3-uO-aty"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchLocationCell" rowHeight="134" id="MkA-v6-Vwv" customClass="searchLocationCell" customModule="Social_Reality" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchLocationCell" rowHeight="134" id="MkA-v6-Vwv" customClass="SearchLocationCell" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="24.5" width="414" height="134"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MkA-v6-Vwv" id="kCS-7s-k8b">
@@ -3413,7 +3413,7 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="7e0-8r-9Rh"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="134" id="jc3-Tr-qQS" customClass="searchUserCell" customModule="Social_Reality" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="134" id="jc3-Tr-qQS" customClass="SearchUserCell" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="24.5" width="414" height="134"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jc3-Tr-qQS" id="RbC-aZ-uFg">
@@ -3572,7 +3572,7 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="cpd-wk-IXV"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchMusicCell" rowHeight="134" id="xU5-Di-UQ8" customClass="searchMusicCell" customModule="Social_Reality" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchMusicCell" rowHeight="134" id="xU5-Di-UQ8" customClass="SearchMusicCell" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="24.5" width="414" height="134"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xU5-Di-UQ8" id="5as-ZY-eKm">
@@ -3823,7 +3823,7 @@
         <!--Cover Navigation Controller-->
         <scene sceneID="hqS-ly-NIs">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="kyh-3S-HQa" customClass="CoverNavigationController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CoverNavigationController" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="kyh-3S-HQa" customClass="CoverNavigationController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="gSO-Rn-chz"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zih-yz-DdC">
@@ -3840,7 +3840,7 @@
         <!--Cover View Controller-->
         <scene sceneID="OWP-n7-TTh">
             <objects>
-                <viewController id="xZE-1R-MsZ" customClass="CoverViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CoverViewController" id="xZE-1R-MsZ" customClass="CoverViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Lw-YM-uLz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3891,7 +3891,7 @@
                                                 <rect key="frame" x="0.0" y="42" width="414" height="0.0"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="92" id="Y18-8E-1kd" customClass="commentCell" customModule="Social_Reality" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="92" id="Y18-8E-1kd" customClass="CommentCell" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="24.5" width="414" height="92"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y18-8E-1kd" id="kAf-Kc-kuG">
@@ -4148,7 +4148,7 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="Z68-q2-qmd"/>
                                                 </constraints>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="134" id="fuE-Ul-epr" customClass="searchUserCell" customModule="Social_Reality" customModuleProvider="target">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="134" id="fuE-Ul-epr" customClass="SearchUserCell" customModule="Social_Reality" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="24.5" width="414" height="134"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fuE-Ul-epr" id="T1v-K8-cTE">
@@ -4373,7 +4373,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="Tkh-9z-Ww7">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="FTn-T2-yFV" customClass="SignInViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" modalPresentationStyle="fullScreen" id="FTn-T2-yFV" customClass="SignInViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="22j-SS-KKj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4737,7 +4737,7 @@
         <!--Password View Controller-->
         <scene sceneID="xZI-C9-Zqg">
             <objects>
-                <viewController id="71Q-2i-1HC" customClass="PasswordViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PasswordViewController" id="71Q-2i-1HC" customClass="PasswordViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T7A-3S-vhX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4872,7 +4872,7 @@
         <!--Create User View Controller-->
         <scene sceneID="QBg-UX-7de">
             <objects>
-                <viewController id="Cbh-jO-4nN" customClass="CreateUserViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateUserViewController" id="Cbh-jO-4nN" customClass="CreateUserViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7r0-CE-8Ym">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5151,7 +5151,7 @@
         <!--Create Avatar View Controller-->
         <scene sceneID="TDa-Mf-FQz">
             <objects>
-                <viewController id="wHK-9Z-j3w" customClass="CreateAvatarViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateAvatarViewController" id="wHK-9Z-j3w" customClass="CreateAvatarViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JFD-kd-w5o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5257,7 +5257,7 @@
         <!--Create Password View Controller-->
         <scene sceneID="dHD-Cc-oaW">
             <objects>
-                <viewController id="k0r-YN-57c" customClass="CreatePasswordViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePasswordViewController" id="k0r-YN-57c" customClass="CreatePasswordViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="49J-4f-ylW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5447,7 +5447,7 @@
         <!--Confirm User View Controller-->
         <scene sceneID="ZfA-3C-AP1">
             <objects>
-                <viewController id="rwh-2D-TYR" customClass="ConfirmUserViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmUserViewController" id="rwh-2D-TYR" customClass="ConfirmUserViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m2X-My-Skw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5588,7 +5588,7 @@
         <!--My Profile Header View Controller-->
         <scene sceneID="UTT-RR-v9N">
             <objects>
-                <viewController storyboardIdentifier="MyProfileHeader" id="mtB-hu-Cyh" customClass="MyProfileHeaderViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyProfileHeaderViewController" id="mtB-hu-Cyh" customClass="MyProfileHeaderViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yUc-am-jtP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="324"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5833,7 +5833,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="2" maxX="0.0" maxY="220"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="creationViewCell" id="n5W-WH-Ro6" customClass="creationViewCell" customModule="Social_Reality" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="creationViewCell" id="n5W-WH-Ro6" customClass="CreationViewCell" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="2" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0K8-Ha-Td9">
@@ -5918,8 +5918,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fnc-XW-6Bv"/>
-        <segue reference="JU7-we-xcG"/>
-        <segue reference="67m-qx-B5J"/>
+        <segue reference="AcN-h1-ICO"/>
+        <segue reference="oIz-d0-JjT"/>
         <segue reference="8rY-CP-78d"/>
     </inferredMetricsTieBreakers>
     <resources>

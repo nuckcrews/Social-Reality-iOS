@@ -37,6 +37,17 @@ class SignInViewController: UIViewController {
         static var button = "Ok"
     }
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> SignInViewController? {
+        
+        guard let viewController = Storyboard.Main.instantiate(SignInViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -142,7 +153,7 @@ class SignInViewController: UIViewController {
     @IBAction func tapAppleSignIn(_ sender: UIButton) {
         Buzz.light()
         sender.pulsate()
-        appleSignIn()
+        appleSignIn() 
     }
     
     @IBAction func tapBack(_ sender: AnyObject) {
@@ -152,27 +163,52 @@ class SignInViewController: UIViewController {
     // MARK: - Segues
     
     func toCreatePassword() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreatePasswordFromSignIn.rawValue, sender: nil)
+            
+            if let viewController = CreatePasswordViewController.instantiate(email: self.emailTextField.text) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     func toEmailPassword() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toPasswordFromSign.rawValue, sender: nil)
+            
+            if let viewController = PasswordViewController.instantiate(email: self.emailTextField.text) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     func toNewUser() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toNewUserFromSign.rawValue, sender: nil)
+            
+            if let viewController = CreateUserViewController.instantiate(email: self.email) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     func toHome() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toHomeFromSignIn.rawValue, sender: nil)
+            
+            if let viewController = CoverViewController.instantiate() {
+                viewController.modalPresentationStyle = .fullScreen
+                self.navigationController?.present(viewController, animated: true, completion: nil)
+            }
+            
         }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

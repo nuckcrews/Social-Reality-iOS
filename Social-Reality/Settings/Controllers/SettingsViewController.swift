@@ -34,6 +34,18 @@ class SettingsViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> SettingsViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(SettingsViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
      
     
     override func viewDidLoad() {
@@ -70,13 +82,29 @@ class SettingsViewController: UIViewController {
     }
     
     func backToHome() {
+
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toHomeFromSettings.rawValue, sender: nil)
+            
+            if let viewController = CoverViewController.instantiate() {
+                viewController.modalPresentationStyle = .fullScreen
+                self.navigationController?.present(viewController, animated: true, completion: nil)
+            }
+            
         }
+        
     }
     
     @IBAction func tapBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    init(creations: [CreationModel]) {
+        super.init(nibName: nil, bundle: nil)
+        // initializer implementation goes here
     }
 
 }
@@ -88,11 +116,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.settingsCell.rawValue) as? settingsCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.identifiers.settingsCell.rawValue) as? SettingsCell {
             cell.configureCell(title: CellTitles.title(indexPath.row), index: indexPath.row)
             return cell
         } else {
-            return settingsCell()
+            return SettingsCell()
         }
     }
     

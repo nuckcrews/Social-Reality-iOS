@@ -1,5 +1,5 @@
 //
-//  searchMusicCell.swift
+//  SearchMusicCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 3/26/21.
@@ -9,7 +9,13 @@ import UIKit
 
 // MARK: - Search Music Cell
 
-class searchMusicCell: UITableViewCell {
+class SearchMusicCell: UITableViewCell {
+    
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case searchMusicCell
+    }
     
     // MARK: - Outlets
 

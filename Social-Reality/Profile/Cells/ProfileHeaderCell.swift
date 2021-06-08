@@ -7,7 +7,13 @@
 
 import UIKit
 
-class profileHeaderCell: UICollectionViewCell {
+class ProfileHeaderCell: UICollectionViewCell {
+    
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case profileHeaderCell
+    }
 
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!

@@ -18,9 +18,22 @@ class CreateAvatarViewController: UIViewController {
     
     // MARK: - Variables
     
-    var user: User?
+    var user: UserModel?
     var imagePicker: ImagePicker!
     var imageURL = ProfileImage.defaultURL
+    
+    // MARK: - View Instantiation
+    
+    internal static func instantiate(model: UserModel?) -> CreateAvatarViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(CreateAvatarViewController.self) else {
+            return nil
+        }
+        
+        viewController.user = model
+        
+        return viewController
+    }
     
     // MARK: - View Lifecycle
     
@@ -37,15 +50,15 @@ class CreateAvatarViewController: UIViewController {
     
     func getUser() {
         
-        guard let id = Auth0.uid else { return }
-        user = User(id: id)
-        user?.getModel(completion: { res in
-            if let res = res {
-                print(res)
-            } else {
-                print("no date")
+        guard let uid = Auth0.uid else { return }
+        
+        Query.get.user(uid) { [weak self] model in
+            guard let model = model else { return }
+            if self?.user != model {
+                Query.defaults.write.user(model)
+                self?.user = model
             }
-        })
+        }
         
     }
     
@@ -69,9 +82,13 @@ class CreateAvatarViewController: UIViewController {
     // MARK: - Save Image
     
     func saveImage() {
-        user?.updateModel(data: ["image": imageURL], completion: { [weak self] res in
+        
+        guard let id = user?.id else { return }
+        
+        Query.update.user(id, data: ["image": imageURL]) { [weak self] _ in
             self?.toHome()
-        })
+        }
+
     }
     
     // MARK: - Action Outlets
@@ -91,9 +108,16 @@ class CreateAvatarViewController: UIViewController {
     // MARK: - Segues
     
     func toHome() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toHomeFromAvatar.rawValue, sender: nil)
+            
+            if let viewController = CoverViewController.instantiate() {
+                viewController.modalPresentationStyle = .fullScreen
+                self.navigationController?.present(viewController, animated: true, completion: nil)
+            }
+            
         }
+        
     }
     
 }

@@ -27,6 +27,17 @@ class CreationDetailViewController: UIViewController {
     var user: User?
     var creation: Creation?
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> CreationDetailViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(CreationDetailViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {

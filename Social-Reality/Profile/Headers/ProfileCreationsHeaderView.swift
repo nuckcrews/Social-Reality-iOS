@@ -9,6 +9,10 @@ import UIKit
 
 class ProfileCreationsHeaderView: UICollectionReusableView, InstantiatesFromNib, CustomSegmentedControlDelegate {
     
+    enum identifiers: String {
+        case profileCreationsHeaderView
+    }
+    
     @IBOutlet weak var contentSegment: CustomSegmentedControl! {
         didSet {
             contentSegment.setButtonTitles(buttonTitles: [

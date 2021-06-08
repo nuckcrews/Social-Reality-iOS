@@ -14,6 +14,17 @@ class InboxViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> InboxViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(InboxViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarItem.tag = TabBarItemTag.fourthViewController.rawValue
@@ -33,7 +44,15 @@ class InboxViewController: UIViewController {
     }
     
     @IBAction func tapNewMessage(_ sender: UIButton) {
-        performSegue(withIdentifier: Segue.toNewMessageFromInbox.rawValue, sender: nil)
+
+        DispatchQueue.main.async { 
+            
+            if let viewController = NewMessageViewController.instantiate() {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
+        }
+        
     }
     
 }
@@ -78,16 +97,16 @@ extension InboxViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row % 2 == 0 { // #FIX
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.inboxCell.rawValue) as? inboxCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: InboxCell.identifiers.inboxCell.rawValue) as? InboxCell {
                 return cell
             } else {
-                return inboxCell()
+                return InboxCell()
             }
         } else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.promoCell.rawValue) as? promoCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: PromoCell.identifiers.promoCell.rawValue) as? PromoCell {
                 return cell
             } else {
-                return promoCell()
+                return PromoCell()
             }
         }
         

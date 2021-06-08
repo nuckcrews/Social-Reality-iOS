@@ -281,19 +281,19 @@ extension SearchUsersSendView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.searchUserCell.rawValue, for: indexPath) as? searchUserCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: SearchUserCell.identifiers.searchUserCell.rawValue, for: indexPath) as? SearchUserCell {
             isSearching ?
                 cell.configureCell(user: usersFiltered[indexPath.row], selectedCell: isSelected(model: usersFiltered[indexPath.row])) :
                 cell.configureCell(user: users[indexPath.row], selectedCell: isSelected(model: users[indexPath.row]))
             return cell
         } else {
-            return searchUserCell()
+            return SearchUserCell()
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let cell = tableView.cellForRow(at: indexPath) as? searchUserCell else {
+        guard let cell = tableView.cellForRow(at: indexPath) as? SearchUserCell else {
             return
         }
         

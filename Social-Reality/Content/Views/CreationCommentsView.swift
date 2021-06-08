@@ -233,11 +233,11 @@ extension CreationCommentsView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: Cells.commentCell.rawValue, for: indexPath) as? commentCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: CommentCell.identifiers.commentCell.rawValue, for: indexPath) as? CommentCell {
             cell.configureCell(comment: comments[indexPath.row], liked: nil)
             return cell
         } else {
-            return commentCell()
+            return CommentCell()
         }
     }
     

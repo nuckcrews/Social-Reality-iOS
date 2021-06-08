@@ -1,5 +1,5 @@
 //
-//  messageCell.swift
+//  MessageCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 4/6/21.
@@ -9,8 +9,14 @@ import UIKit
 
 // MARK: - Message Cell
 
-class messageCell: UITableViewCell {
+class MessageCell: UITableViewCell {
     
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case messageCell
+    }
+
     // MARK: - Outlets
     
     @IBOutlet weak var leftMessageView: UIView!

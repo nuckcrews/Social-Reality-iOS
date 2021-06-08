@@ -7,38 +7,37 @@
 
 import UIKit
 
-struct StoryBoard {
+public enum Storyboard: String {
     
-    static func viewController(type: ViewController, storyBoard: StoryBoards) -> UIViewController? {
-        
-        switch type {
-        case .SettingsViewController:
-            
-            guard let viewController = UIStoryboard.init(name: storyBoard.rawValue, bundle: nil).instantiateViewController(withIdentifier: ViewController.SettingsViewController.rawValue) as? SettingsViewController else
-            { return nil }
-            
-            return viewController
-        case .EditProfileViewController:
-            
-            
-            guard let viewController =  UIStoryboard.init(name: storyBoard.rawValue, bundle: nil).instantiateViewController(withIdentifier: ViewController.EditProfileViewController.rawValue) as? EditProfileViewController else {
-                return nil
-            }
-            
-            return viewController
-            
-        case .MyProfileHeader:
-            
-            guard let viewController =  UIStoryboard.init(name: storyBoard.rawValue, bundle: nil).instantiateViewController(withIdentifier: ViewController.MyProfileHeader.rawValue) as? MyProfileHeaderViewController else {
-                return nil
-            }
-            
-            return viewController
-            
-        default:
+    case Main
+
+    public func instantiate<VC: UIViewController>(_ viewController: VC.Type) -> VC? {
+        guard let vc = UIStoryboard(name: self.rawValue, bundle: nil)
+                .instantiateViewController(withIdentifier: VC.storyboardIdentifier) as? VC
+            else { return nil }
+
+        return vc
+    }
+
+    public func instantiateInitialVC() -> UIViewController? {
+
+        guard let vc = UIStoryboard(name: self.rawValue, bundle: nil).instantiateInitialViewController() else {
             return nil
         }
-        
+
+        return vc
+    }
+    
+}
+
+extension UIViewController {
+    
+    public static var defaultNib: String {
+        return self.description().components(separatedBy: ".").dropFirst().joined(separator: ".")
+    }
+
+    public static var storyboardIdentifier: String {
+        return self.description().components(separatedBy: ".").dropFirst().joined(separator: ".")
     }
     
 }

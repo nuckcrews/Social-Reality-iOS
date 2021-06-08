@@ -45,10 +45,6 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         let secondItemView = self.tabBar.subviews[1]
         self.secondTabBarItemImageView = secondItemView.subviews.first as? UIImageView
         self.secondTabBarItemImageView.contentMode = .center
-        
-//        let thirdItemView = tabBar.subviews[2]
-//        thirdTabBarItemImageView = thirdItemView.subviews.first as? UIImageView
-//        thirdTabBarItemImageView.contentMode = .center
 
         let fourthItemView = self.tabBar.subviews[2]
         self.fourthTabBarItemImageView = fourthItemView.subviews.first as? UIImageView
@@ -71,11 +67,16 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         case .secondViewController:
             animate(secondTabBarItemImageView)
         case .thirdViewController:
-            if let createViewController = storyboard?.instantiateViewController(identifier: "CreateViewController") as? CreateViewController {
-                self.present(createViewController, animated: true) {
-                    print("Presented Creation")
+            
+            DispatchQueue.main.async {
+                
+                if let viewController = CreateViewController.instantiate() {
+                    viewController.modalPresentationStyle = .fullScreen
+                    self.present(viewController, animated: true, completion: nil)
                 }
+                
             }
+            
         case .fourthViewController:
             animate(fourthTabBarItemImageView)
         case .fifthViewController:

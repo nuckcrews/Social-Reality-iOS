@@ -16,6 +16,17 @@ class ProfileViewController: UIViewController {
     
     var user: UserModel?
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> ProfileViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(ProfileViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,21 +77,17 @@ class ProfileViewController: UIViewController {
     }
     
     func toSettings() {
-        Navigation.push(to: .SettingsViewController, navigationController: navigationController, data: nil)
-    }
-    
-    func toContentDetail() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreationDetailFromAccount.rawValue, sender: nil)
+            
+            if let viewController = SettingsViewController.instantiate() {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
-    
-    func toContentCollection() {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreationCollectionFromAccount.rawValue, sender: nil)
-        }
-    }
-    
+        
     @IBAction func tapSettings(_ sender: UIButton) {
         
         sender.jump()

@@ -38,6 +38,17 @@ class CoverViewController: UIViewController {
     
     var messageData: (String, String?) = ("", nil)
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> CoverViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(CoverViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
@@ -148,13 +159,27 @@ class CoverViewController: UIViewController {
     // MARK: - Segues
     
     func toCreateUser() {
+        
         DispatchQueue.main.async {
-            self.performSegue(withIdentifier: Segue.toCreateUserFromCover.rawValue, sender: nil)
+            
+            if let viewController = CreateUserViewController.instantiate(email: Auth.auth().currentUser?.email) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
         }
+        
     }
     
     func toSignIn() {
-        self.performSegue(withIdentifier: Segue.toSignInFromCover.rawValue, sender: nil)
+
+        DispatchQueue.main.async {
+            
+            if let viewController = SignInViewController.instantiate() {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -391,8 +416,17 @@ extension CoverViewController: MainToCoverProtocolDelegate {
     }
     
     func segueToMessage(recipientID: String, conversationID: String?) {
+        
         messageData = (recipientID, conversationID)
-        performSegue(withIdentifier: Segue.toMessageFromCover.rawValue, sender: nil)
+
+        DispatchQueue.main.async {
+            
+            if let viewController = MessageViewController.instantiate(conversationID: conversationID, recipientID: recipientID) {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+            
+        }
+        
     }
     
 }

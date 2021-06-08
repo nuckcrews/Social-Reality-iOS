@@ -51,6 +51,17 @@ class ProfilePanViewController: UIViewController {
             }
         })
     }
+    
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> ProfilePanViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(ProfilePanViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
 
     override func loadView() {
 

@@ -1,5 +1,5 @@
 //
-//  inboxCell.swift
+//  PromoCell.swift
 //  Social-Reality
 //
 //  Created by Nick Crews on 2/27/21.
@@ -7,15 +7,22 @@
 
 import UIKit
 
-// MARK: - Inbox Cell
+// MARK: - Promo Cell
 
-class inboxCell: UITableViewCell {
+class PromoCell: UITableViewCell {
     
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case promoCell
+    }
+
     // MARK: - Outlets
     
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var titleImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var viewButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
     
     // MARK: - Cell Lifecycle
@@ -33,6 +40,9 @@ class inboxCell: UITableViewCell {
     
     // MARK: - Configure Methods
     
-    func configureCell() {}
+    func configureCell() {
+        
+    }
     
 }
+

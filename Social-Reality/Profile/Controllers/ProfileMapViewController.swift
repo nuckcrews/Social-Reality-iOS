@@ -18,6 +18,17 @@ class ProfileMapViewController: UIViewController {
     var pageTitle: String?
     var segmentImage: UIImage?
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> ProfileMapViewController? {
+
+        guard let viewController = Storyboard.Main.instantiate(ProfileMapViewController.self) else {
+            return nil
+        }
+        
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
