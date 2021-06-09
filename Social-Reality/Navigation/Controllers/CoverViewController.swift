@@ -191,16 +191,6 @@ class CoverViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreateUserViewController {
-            dest.email = Auth.auth().currentUser?.email
-        }
-        if let dest = segue.destination as? MessageViewController {
-            dest.recipientID = messageData.0
-            dest.conversationID = messageData.1
-        }
-    }
-    
 }
 
 // MARK: - Creation Comment Delegate

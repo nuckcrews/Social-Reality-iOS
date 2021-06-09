@@ -127,14 +127,6 @@ class CreationCollectionViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreationTableViewController {
-            dest.creations = creationModels
-            dest.startIndex = selectedIndex
-        }
-    }
-    
-    
 }
 
 extension CreationCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {

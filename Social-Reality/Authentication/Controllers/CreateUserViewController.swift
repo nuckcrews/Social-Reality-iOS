@@ -188,15 +188,6 @@ class CreateUserViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreatePasswordViewController {
-            dest.email = email
-            dest.username = usernameTextField.text
-            dest.first = firstNameTextField.text
-            dest.last = lastNameTextField.text
-        }
-    }
-    
 }
 
 // MARK: - TextField Delegate

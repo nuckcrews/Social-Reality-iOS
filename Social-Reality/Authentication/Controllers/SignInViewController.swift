@@ -211,18 +211,6 @@ class SignInViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreateUserViewController {
-            dest.email = email
-        }
-        if let dest = segue.destination as? CreatePasswordViewController {
-            dest.email = emailTextField.text
-        }
-        if let dest = segue.destination as? PasswordViewController {
-            dest.email = emailTextField.text
-        }
-    }
-    
 }
 
 // MARK: - Sign In Extension

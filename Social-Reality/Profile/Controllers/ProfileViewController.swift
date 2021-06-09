@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     
     internal static func instantiate() -> ProfileViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(ProfileViewController.self) else {
+        guard let viewController = Storyboard.ProfileViewController.instantiate(ProfileViewController.self) else {
             return nil
         }
         

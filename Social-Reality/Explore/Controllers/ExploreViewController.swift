@@ -44,7 +44,7 @@ class ExploreViewController: UIViewController {
     
     internal static func instantiate() -> ExploreViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(ExploreViewController.self) else {
+        guard let viewController = Storyboard.ExploreViewController.instantiate(ExploreViewController.self) else {
             return nil
         }
         
@@ -109,14 +109,6 @@ class ExploreViewController: UIViewController {
             
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreationTableViewController {
-            dest.creations = creations
-            dest.startIndex = selectedIndex
-        }
-    }
-    
     
 }
 extension ExploreViewController: UITextFieldDelegate {

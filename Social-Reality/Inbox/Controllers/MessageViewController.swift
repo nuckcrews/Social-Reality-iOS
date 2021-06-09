@@ -274,16 +274,6 @@ class MessageViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreationTableViewController {
-            guard creations.count > 0 else {
-                return
-            }
-            dest.creations = creations
-            dest.startIndex = selectedIndex
-        }
-    }
-    
 }
 
 // MARK: - ScrollView Delegate

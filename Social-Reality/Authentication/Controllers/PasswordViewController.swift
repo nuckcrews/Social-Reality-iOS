@@ -174,16 +174,6 @@ class PasswordViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreateUserViewController {
-            dest.email = email
-        }
-        if let dest = segue.destination as? ConfirmUserViewController {
-            dest.email = email
-            dest.password = passwordTextField.text
-        }
-    }
-    
 }
 
 // MARK: - TextField Delegate
