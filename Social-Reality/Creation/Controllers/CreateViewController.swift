@@ -74,7 +74,7 @@ class CreateViewController: UIViewController {
     
     internal static func instantiate() -> CreateViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(CreateViewController.self) else {
+        guard let viewController = Storyboard.CreateViewController.instantiate(CreateViewController.self) else {
             return nil
         }
         

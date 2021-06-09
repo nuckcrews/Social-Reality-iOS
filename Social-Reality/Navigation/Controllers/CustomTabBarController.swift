@@ -23,6 +23,9 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         super.viewDidLoad()
         
         self.delegate = self
+        
+        setupView()
+        
         self.buttonBarView.layer.shadowRadius = 16.0
         self.buttonBarView.layer.shadowColor = UIColor.black.cgColor
         self.buttonBarView.layer.shadowOffset = CGSize(width: 0.5, height: 1)
@@ -35,9 +38,9 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
             createTab.selectedImage = img
             createTab.imageInsets = UIEdgeInsets(top: 18, left: 8, bottom: 2, right: 8)
             createTab.title = nil
-            
+
         }
-        
+
         let firstItemView = tabBar.subviews.first!
         firstTabBarItemImageView = firstItemView.subviews.first as? UIImageView
         firstTabBarItemImageView.contentMode = .center
@@ -49,14 +52,28 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         let fourthItemView = self.tabBar.subviews[2]
         self.fourthTabBarItemImageView = fourthItemView.subviews.first as? UIImageView
         self.fourthTabBarItemImageView.contentMode = .center
-        
+
         let fifthItemView = tabBar.subviews[3]
         fifthTabBarItemImageView = fifthItemView.subviews.first as? UIImageView
         fifthTabBarItemImageView.contentMode = .center
         
     }
     
+    private func setupView() {
+        
+        let viewControllers = [NavigationController.instantiate(id: .MainNavigationController),
+                               NavigationController.instantiate(id: .ExploreNavigationController),
+                               NavigationController.instantiate(id: .CreateNavigationController),
+                               NavigationController.instantiate(id: .InboxNavigationController),
+                               NavigationController.instantiate(id: .ProfileNavigationController)]
+            .map { $0 ?? UIViewController() }
+        
+        self.setViewControllers(viewControllers, animated: true)
+        
+    }
+    
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
         guard let tabBarItemTag = TabBarItemTag(rawValue: item.tag) else {
             return
         }
@@ -69,14 +86,14 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         case .thirdViewController:
             
             DispatchQueue.main.async {
-                
+
                 if let viewController = CreateViewController.instantiate() {
                     viewController.modalPresentationStyle = .fullScreen
                     self.present(viewController, animated: true, completion: nil)
                 }
-                
+
             }
-            
+
         case .fourthViewController:
             animate(fourthTabBarItemImageView)
         case .fifthViewController:
@@ -85,7 +102,8 @@ class CustomerTabBarController: UITabBarController, TransitionableTab {
         
     }
     
-    private func animate(_ imageView: UIImageView) {
+    private func animate(_ imageView: UIImageView?) {
+        guard let imageView = imageView else { return }
         UIView.animate(withDuration: 0.1, animations: {
             imageView.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
         }) { _ in

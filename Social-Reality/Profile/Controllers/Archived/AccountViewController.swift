@@ -109,11 +109,7 @@ class AccountViewController: UIViewController {
     }
     
     func toEditProfile() {
-//        DispatchQueue.main.async {
-//            self.performSegue(withIdentifier: Segue.toEditProfileFromAccount.rawValue, sender: nil)
-//        }
-//        Navigation.push(to: .EditProfileViewController, navigationController: navigationController, data: nil)
-        
+
         DispatchQueue.main.async {
             
             if let viewController = EditProfileViewController.instantiate() {
@@ -125,12 +121,7 @@ class AccountViewController: UIViewController {
     }
     
     func toSettings() {
-//        DispatchQueue.main.async {
-//            self.performSegue(withIdentifier: Segue.toSettingsFromProfile.rawValue, sender: nil)
-//        }
-        
-//        Navigation.push(to: .SettingsViewController, navigationController: navigationController, data: nil)
-        
+
         DispatchQueue.main.async {
             
             if let viewController = SettingsViewController.instantiate() {
@@ -142,10 +133,7 @@ class AccountViewController: UIViewController {
     }
     
     func toContentCollection() {
-//        DispatchQueue.main.async {
-//            self.performSegue(withIdentifier: Segue.toCreationCollectionFromAccount.rawValue, sender: nil)
-//        }
-        
+
         DispatchQueue.main.async {
             
             if let viewController = CreationCollectionViewController.instantiate() {
@@ -168,12 +156,6 @@ class AccountViewController: UIViewController {
         sender.jump()
         toEditProfile()
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreationTableViewController {
-            dest.startIndex = selectedIndex
-        }
     }
     
 }

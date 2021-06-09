@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     
     internal static func instantiate() -> MainViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(MainViewController.self) else {
+        guard let viewController = Storyboard.MainViewController.instantiate(MainViewController.self) else {
             return nil
         }
         

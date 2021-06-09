@@ -18,7 +18,7 @@ class InboxViewController: UIViewController {
     
     internal static func instantiate() -> InboxViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(InboxViewController.self) else {
+        guard let viewController = Storyboard.InboxViewController.instantiate(InboxViewController.self) else {
             return nil
         }
         

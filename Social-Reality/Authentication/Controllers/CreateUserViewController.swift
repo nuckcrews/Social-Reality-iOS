@@ -180,20 +180,11 @@ class CreateUserViewController: UIViewController {
         
         DispatchQueue.main.async {
             
-            if let viewController = CoverViewController.instantiate() {
-                viewController.modalPresentationStyle = .fullScreen
-                self.navigationController?.present(viewController, animated: true)
+            if let navController = CoverNavigationController.instantiate() {
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: true, completion: nil)
             }
             
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreatePasswordViewController {
-            dest.email = email
-            dest.username = usernameTextField.text
-            dest.first = firstNameTextField.text
-            dest.last = lastNameTextField.text
         }
     }
     

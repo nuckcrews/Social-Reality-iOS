@@ -141,9 +141,9 @@ class PasswordViewController: UIViewController {
         
         DispatchQueue.main.async {
             
-            if let viewController = CoverViewController.instantiate() {
-                viewController.modalPresentationStyle = .fullScreen
-                self.navigationController?.present(viewController, animated: true, completion: nil)
+            if let navController = CoverNavigationController.instantiate() {
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: true, completion: nil)
             }
             
         }
@@ -172,16 +172,6 @@ class PasswordViewController: UIViewController {
             
         }
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreateUserViewController {
-            dest.email = email
-        }
-        if let dest = segue.destination as? ConfirmUserViewController {
-            dest.email = email
-            dest.password = passwordTextField.text
-        }
     }
     
 }

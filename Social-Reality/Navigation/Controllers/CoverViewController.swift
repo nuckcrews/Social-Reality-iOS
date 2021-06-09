@@ -46,6 +46,10 @@ class CoverViewController: UIViewController {
             return nil
         }
         
+//        let navigationController = CoverNavigationController.instantiate()
+//
+//        navigationController?.setViewControllers([viewController], animated: false)
+        
         return viewController
     }
     
@@ -54,6 +58,11 @@ class CoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        if navigationController == nil {
+//            let navigationController = CoverNavigationController.instantiate()
+//            navigationController?.setViewControllers([self], animated: false)
+//        }
+//
         MainToCoverDelegate = self
         
         blackView.alpha = 0
@@ -180,16 +189,6 @@ class CoverViewController: UIViewController {
             
         }
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreateUserViewController {
-            dest.email = Auth.auth().currentUser?.email
-        }
-        if let dest = segue.destination as? MessageViewController {
-            dest.recipientID = messageData.0
-            dest.conversationID = messageData.1
-        }
     }
     
 }

@@ -97,12 +97,6 @@ class ConfirmUserViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? CreateUserViewController {
-            dest.email = email
-        }
-    }
-    
 }
 
 // MARK: - TextField Delegate

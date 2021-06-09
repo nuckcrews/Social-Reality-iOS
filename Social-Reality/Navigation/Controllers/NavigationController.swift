@@ -8,7 +8,57 @@
 import Foundation
 import UIKit
 
-class NavigationController: UINavigationController {
+final class NavigationController: UINavigationController {
+    
+    // MARK: - Identifiers
+    
+    enum identifiers: String {
+        case MainNavigationController
+        case ExploreNavigationController
+        case CreateNavigationController
+        case InboxNavigationController
+        case ProfileNavigationController
+    }
+    
+    // MARK: - View Instantiation
+    
+    internal static func instantiate(id: identifiers) -> NavigationController? {
+        
+        switch id {
+        case .MainNavigationController:
+            guard let navigationController = Storyboard.MainViewController.instantiate(NavigationController.self, identifier: id.rawValue) else {
+                return nil
+            }
+            
+            return navigationController
+        case .ExploreNavigationController:
+            guard let navigationController = Storyboard.ExploreViewController.instantiate(NavigationController.self, identifier: id.rawValue) else {
+                return nil
+            }
+            
+            return navigationController
+        case .CreateNavigationController:
+            guard let navigationController = Storyboard.CreateViewController.instantiate(NavigationController.self, identifier: id.rawValue) else {
+                return nil
+            }
+            
+            return navigationController
+        case .InboxNavigationController:
+            guard let navigationController = Storyboard.InboxViewController.instantiate(NavigationController.self, identifier: id.rawValue) else {
+                return nil
+            }
+            
+            return navigationController
+        case .ProfileNavigationController:
+            guard let navigationController = Storyboard.ProfileViewController.instantiate(NavigationController.self, identifier: id.rawValue) else {
+                return nil
+            }
+            
+            return navigationController
+        }
+
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
