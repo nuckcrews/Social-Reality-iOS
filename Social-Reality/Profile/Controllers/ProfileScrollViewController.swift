@@ -52,7 +52,8 @@ extension ProfileScrollViewController: ScrollDataSource, PanProgressDelegate {
     }
     
     func bottomViewController() -> UIViewController & PagerAwareProtocol {
-        bottomVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewController.XLPagerTabStripViewController.rawValue) as? XLPagerTabStripViewController
+        bottomVC = Storyboard.Main.instantiate(XLPagerTabStripViewController.self)
+
         return bottomVC
     }
     

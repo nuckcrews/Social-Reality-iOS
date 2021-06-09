@@ -10,6 +10,17 @@ import UIKit
 
 class CoverNavigationController: UINavigationController {
     
+    // MARK: - View Instantiation
+    
+    internal static func instantiate() -> CoverNavigationController? {
+
+        guard let navigationController = Storyboard.Main.instantiate(CoverNavigationController.self) else {
+            return nil
+        }
+        
+        return navigationController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         interactivePopGestureRecognizer?.delegate = self

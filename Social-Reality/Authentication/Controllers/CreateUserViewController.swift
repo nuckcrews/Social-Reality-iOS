@@ -180,9 +180,9 @@ class CreateUserViewController: UIViewController {
         
         DispatchQueue.main.async {
             
-            if let viewController = CoverViewController.instantiate() {
-                viewController.modalPresentationStyle = .fullScreen
-                self.navigationController?.present(viewController, animated: true)
+            if let navController = CoverNavigationController.instantiate() {
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: true, completion: nil)
             }
             
         }

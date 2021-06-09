@@ -155,7 +155,11 @@
 		A08BAF3A2665891600350CD3 /* DeleteDefaultsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF392665891600350CD3 /* DeleteDefaultsMethods.swift */; };
 		A08BAF3D2665CA1800350CD3 /* VideoCacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BAF3C2665CA1800350CD3 /* VideoCacheModel.swift */; };
 		A0911DAC260C3FF700D05642 /* SearchUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0911DAB260C3FF700D05642 /* SearchUserCell.swift */; };
-		A0989474266D83DF00F625AF /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0989473266D83DF00F625AF /* NavigationDelegate.swift */; };
+		A093E261267074F4005AA2AC /* ExploreViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A093E260267074F4005AA2AC /* ExploreViewController.storyboard */; };
+		A093E26426707670005AA2AC /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A093E26326707670005AA2AC /* MainViewController.storyboard */; };
+		A093E267267076AD005AA2AC /* CreateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A093E266267076AD005AA2AC /* CreateViewController.storyboard */; };
+		A093E26A267076FB005AA2AC /* InboxViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A093E269267076FB005AA2AC /* InboxViewController.storyboard */; };
+		A093E26D2670772C005AA2AC /* ProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A093E26C2670772C005AA2AC /* ProfileViewController.storyboard */; };
 		A0989477266D866100F625AF /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0989476266D866100F625AF /* Transition.swift */; };
 		A09A2AAB260AF3730023CABA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAA260AF3730023CABA /* Device.swift */; };
 		A09A2AAE260AF6FE0023CABA /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09A2AAD260AF6FE0023CABA /* RecordButton.swift */; };
@@ -370,7 +374,11 @@
 		A08BAF392665891600350CD3 /* DeleteDefaultsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDefaultsMethods.swift; sourceTree = "<group>"; };
 		A08BAF3C2665CA1800350CD3 /* VideoCacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCacheModel.swift; sourceTree = "<group>"; };
 		A0911DAB260C3FF700D05642 /* SearchUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserCell.swift; sourceTree = "<group>"; };
-		A0989473266D83DF00F625AF /* NavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
+		A093E260267074F4005AA2AC /* ExploreViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExploreViewController.storyboard; sourceTree = "<group>"; };
+		A093E26326707670005AA2AC /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
+		A093E266267076AD005AA2AC /* CreateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateViewController.storyboard; sourceTree = "<group>"; };
+		A093E269267076FB005AA2AC /* InboxViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InboxViewController.storyboard; sourceTree = "<group>"; };
+		A093E26C2670772C005AA2AC /* ProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileViewController.storyboard; sourceTree = "<group>"; };
 		A0989476266D866100F625AF /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		A09A2AAA260AF3730023CABA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		A09A2AAD260AF6FE0023CABA /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
@@ -791,6 +799,7 @@
 				A00DD40F2603964B00E6C818 /* CreationDetailViewController.swift */,
 				A0D37B682612E33800261567 /* CreationTableViewController.swift */,
 				A03872C825E9497E003989CE /* MainViewController.swift */,
+				A093E2622670765E005AA2AC /* Storyboards */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -852,6 +861,7 @@
 			isa = PBXGroup;
 			children = (
 				A064CB6C2665389F00C02D57 /* CreateViewController.swift */,
+				A093E2652670769B005AA2AC /* Storyboards */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -878,6 +888,7 @@
 			isa = PBXGroup;
 			children = (
 				A06B63E025E9646900AE746D /* ExploreViewController.swift */,
+				A093E25F267074CF005AA2AC /* Storyboards */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -907,6 +918,7 @@
 				A06B63E525E964A200AE746D /* InboxViewController.swift */,
 				A0006914261D57E50020F307 /* MessageViewController.swift */,
 				A040A5592648AE88007008EC /* NewMessageViewController.swift */,
+				A093E268267076EB005AA2AC /* Storyboards */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -948,6 +960,7 @@
 				A06F56B02628D13B00576EDA /* ProfileScrollViewController.swift */,
 				A05775EA2624ADAB00DDE78E /* ProfileViewController.swift */,
 				A06F56B42628D9C500576EDA /* XLPagerTabStripViewController.swift */,
+				A093E26B2670771B005AA2AC /* Storyboards */,
 				A08BAF3B2665940A00350CD3 /* Archived */,
 			);
 			path = Controllers;
@@ -1106,6 +1119,46 @@
 			path = Archived;
 			sourceTree = "<group>";
 		};
+		A093E25F267074CF005AA2AC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A093E260267074F4005AA2AC /* ExploreViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A093E2622670765E005AA2AC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A093E26326707670005AA2AC /* MainViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A093E2652670769B005AA2AC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A093E266267076AD005AA2AC /* CreateViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A093E268267076EB005AA2AC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A093E269267076FB005AA2AC /* InboxViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A093E26B2670771B005AA2AC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A093E26C2670772C005AA2AC /* ProfileViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		A09A2AAC260AF6E90023CABA /* Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -1121,7 +1174,6 @@
 				A0FD5C352627C26300AF2A07 /* ViewControllers.swift */,
 				A0989476266D866100F625AF /* Transition.swift */,
 				A0BA8007266890EB001E3099 /* StoryBoard.swift */,
-				A0989473266D83DF00F625AF /* NavigationDelegate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1337,11 +1389,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A038703925E93D9E003989CE /* LaunchScreen.storyboard in Resources */,
+				A093E26426707670005AA2AC /* MainViewController.storyboard in Resources */,
+				A093E26D2670772C005AA2AC /* ProfileViewController.storyboard in Resources */,
 				A06E965425F15770009B92E5 /* ExploreMapHeaderView.xib in Resources */,
+				A093E261267074F4005AA2AC /* ExploreViewController.storyboard in Resources */,
 				A0D95BB52607BAFE00DA5A07 /* GoogleService-Info.plist in Resources */,
 				A038703625E93D9E003989CE /* Assets.xcassets in Resources */,
 				A06E965025F1573F009B92E5 /* ExploreCreationHeaderView.xib in Resources */,
+				A093E267267076AD005AA2AC /* CreateViewController.storyboard in Resources */,
 				A038703425E93D9D003989CE /* Main.storyboard in Resources */,
+				A093E26A267076FB005AA2AC /* InboxViewController.storyboard in Resources */,
 				A03FAC7E25EEC4FE000BFC02 /* profileCreationsHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1580,7 +1637,6 @@
 				A03A96892603EF9600274793 /* CreationAccessibility.swift in Sources */,
 				A03A969126040EA100274793 /* Crypto.swift in Sources */,
 				A06E965625F15D5E009B92E5 /* MapHeaderData.swift in Sources */,
-				A0989474266D83DF00F625AF /* NavigationDelegate.swift in Sources */,
 				A040AB4F25F682E40064978A /* RemoveMethods.swift in Sources */,
 				A040AB5425F682EE0064978A /* ListMethods.swift in Sources */,
 				A064CB6F266538E300C02D57 /* SearchLocationView.swift in Sources */,

@@ -37,11 +37,10 @@ class ProfileViewController: UIViewController {
     
     func setupView() {
         
-        guard let storyboard = storyboard else { return }
-        
-        guard let profileVC = storyboard
-                        .instantiateViewController(withIdentifier: ViewController.ProfileScrollViewController.rawValue) as? ProfileScrollViewController else { return }
-        
+        guard let profileVC = Storyboard.Main.instantiate(ProfileScrollViewController.self) else {
+            return
+        }
+            
         containerView.addSubview(profileVC.view)
         addChild(profileVC)
         profileVC.didMove(toParent: self)
