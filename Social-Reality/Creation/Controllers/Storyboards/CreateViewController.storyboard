@@ -599,8 +599,8 @@
                                     <outletCollection property="gestureRecognizers" destination="wks-7A-Gvp" appends="YES" id="AB3-F8-wPH"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xcS-NB-XcJ" customClass="CorneredView" customModule="Social_Reality" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="249" width="414" height="647"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcS-NB-XcJ" customClass="CorneredView" customModule="Social_Reality" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="861" width="414" height="35"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KlQ-Tl-hOD" customClass="SearchUsersView" customModule="Social_Reality" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>

@@ -16,7 +16,7 @@ class ProfileScrollViewController: UIViewController {
     
     internal static func instantiate() -> ProfileScrollViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(ProfileScrollViewController.self) else {
+        guard let viewController = Storyboard.ProfileScrollViewController.instantiate(ProfileScrollViewController.self) else {
             return nil
         }
         
@@ -52,7 +52,7 @@ extension ProfileScrollViewController: ScrollDataSource, PanProgressDelegate {
     }
     
     func bottomViewController() -> UIViewController & PagerAwareProtocol {
-        bottomVC = Storyboard.Main.instantiate(XLPagerTabStripViewController.self)
+        bottomVC = XLPagerTabStripViewController.instantiate()
 
         return bottomVC
     }

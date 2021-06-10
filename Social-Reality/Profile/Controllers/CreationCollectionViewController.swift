@@ -20,7 +20,7 @@ class CreationCollectionViewController: UIViewController {
     
     internal static func instantiate() -> CreationCollectionViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(CreationCollectionViewController.self) else {
+        guard let viewController = Storyboard.CreationCollectionViewController.instantiate(CreationCollectionViewController.self) else {
             return nil
         }
         

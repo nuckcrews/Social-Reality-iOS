@@ -26,7 +26,7 @@ class NewMessageViewController: UIViewController {
     
     internal static func instantiate() -> NewMessageViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(NewMessageViewController.self) else {
+        guard let viewController = Storyboard.NewMessageViewController.instantiate(NewMessageViewController.self) else {
             return nil
         }
         

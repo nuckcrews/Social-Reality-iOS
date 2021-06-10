@@ -39,14 +39,12 @@ class SettingsViewController: UIViewController {
     
     internal static func instantiate() -> SettingsViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(SettingsViewController.self) else {
+        guard let viewController = Storyboard.SettingsViewController.instantiate(SettingsViewController.self) else {
             return nil
         }
         
         return viewController
     }
-    
-     
     
     override func viewDidLoad() {
         super.viewDidLoad()

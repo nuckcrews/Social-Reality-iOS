@@ -41,7 +41,7 @@ class AccountViewController: UIViewController {
     
     internal static func instantiate() -> AccountViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(AccountViewController.self) else {
+        guard let viewController = Storyboard.AccountViewController.instantiate(AccountViewController.self) else {
             return nil
         }
         

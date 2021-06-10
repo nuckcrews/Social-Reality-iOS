@@ -28,7 +28,7 @@ class XLPagerTabStripViewController: ButtonBarPagerTabStripViewController, Pager
     
     internal static func instantiate() -> XLPagerTabStripViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(XLPagerTabStripViewController.self) else {
+        guard let viewController = Storyboard.XLPagerTabStripViewController.instantiate(XLPagerTabStripViewController.self) else {
             return nil
         }
         
@@ -59,25 +59,25 @@ class XLPagerTabStripViewController: ButtonBarPagerTabStripViewController, Pager
 
     // MARK: - PagerTabStripDataSource
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewController.CreationCollection.rawValue) as! CreationCollectionViewController
-        vc.pageIndex = 0
-        vc.pageTitle = "Posts"
-        vc.segmentImage = UIImage(systemName: "square.grid.3x3.fill")
+        let vc = CreationCollectionViewController.instantiate()
+        vc?.pageIndex = 0
+        vc?.pageTitle = "Posts"
+        vc?.segmentImage = UIImage(systemName: "square.grid.3x3.fill")
         let child_1 = vc
-        
-        let vc1 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewController.ProfileMap.rawValue) as! ProfileMapViewController
-        vc1.pageIndex = 1
-        vc1.pageTitle = "Locs"
-        vc1.segmentImage = UIImage(named: Images.pinDrop.rawValue)
+
+        let vc1 = ProfileMapViewController.instantiate()
+        vc1?.pageIndex = 1
+        vc1?.pageTitle = "Locs"
+        vc1?.segmentImage = UIImage(named: Images.pinDrop.rawValue)
         let child_2 = vc1
         
-        let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: ViewController.CreationCollection.rawValue) as! CreationCollectionViewController
-        vc2.pageIndex = 2
-        vc2.pageTitle = "Likes"
-        vc2.segmentImage = UIImage(systemName: "heart.fill")
+        let vc2 = CreationCollectionViewController.instantiate()
+        vc2?.pageIndex = 2
+        vc2?.pageTitle = "Likes"
+        vc2?.segmentImage = UIImage(systemName: "heart.fill")
         let child_3 = vc2
 
-        return [child_1, child_2, child_3]
+        return [child_1, child_2, child_3].compactMap { $0 }
     }
 
     override func reloadPagerTabStripView() {

@@ -36,7 +36,7 @@ class MessageViewController: UIViewController {
     
     internal static func instantiate(conversationID: String?, recipientID: String) -> MessageViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(MessageViewController.self) else {
+        guard let viewController = Storyboard.MessageViewController.instantiate(MessageViewController.self) else {
             return nil
         }
         

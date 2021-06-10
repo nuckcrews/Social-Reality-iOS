@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbL-kt-5Py" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="865" y="1696"/>
+            <point key="canvasLocation" x="862" y="1681"/>
         </scene>
         <!--Me-->
         <scene sceneID="cQe-kw-RBK">
@@ -106,7 +106,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbB-bb-9vD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="1702"/>
+            <point key="canvasLocation" x="-39" y="1681"/>
         </scene>
     </scenes>
     <resources>

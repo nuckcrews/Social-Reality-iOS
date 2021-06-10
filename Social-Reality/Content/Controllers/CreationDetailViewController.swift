@@ -31,7 +31,7 @@ class CreationDetailViewController: UIViewController {
     
     internal static func instantiate() -> CreationDetailViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(CreationDetailViewController.self) else {
+        guard let viewController = Storyboard.CreationDetailViewController.instantiate(CreationDetailViewController.self) else {
             return nil
         }
         

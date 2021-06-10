@@ -19,7 +19,7 @@ struct DownloadMethods {
         let pathReference = Storage.storage().reference(withPath: "videos/IMG_2742.mp4")
         
         pathReference.downloadURL { url, err in
-            print(url)
+            print(url?.absoluteString as Any)
         }
     }
     

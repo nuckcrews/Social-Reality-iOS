@@ -26,7 +26,7 @@ class CreateAvatarViewController: UIViewController {
     
     internal static func instantiate(model: UserModel?) -> CreateAvatarViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(CreateAvatarViewController.self) else {
+        guard let viewController = Storyboard.CreateAvatarViewController.instantiate(CreateAvatarViewController.self) else {
             return nil
         }
         

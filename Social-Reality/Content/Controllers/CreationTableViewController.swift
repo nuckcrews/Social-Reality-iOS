@@ -27,7 +27,7 @@ class CreationTableViewController: UIViewController {
     
     internal static func instantiate(creations: [CreationModel], selectedIndex: Int = 0) -> CreationTableViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(CreationTableViewController.self) else {
+        guard let viewController = Storyboard.CreationTableViewController.instantiate(CreationTableViewController.self) else {
             return nil
         }
         

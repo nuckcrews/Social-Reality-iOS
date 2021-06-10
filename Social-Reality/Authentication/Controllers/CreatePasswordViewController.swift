@@ -39,7 +39,7 @@ class CreatePasswordViewController: UIViewController {
     
     internal static func instantiate(email: String?, username: String? = nil, first: String? = nil, last: String? = nil) -> CreatePasswordViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(CreatePasswordViewController.self) else {
+        guard let viewController = Storyboard.CreatePasswordViewController.instantiate(CreatePasswordViewController.self) else {
             return nil
         }
         
