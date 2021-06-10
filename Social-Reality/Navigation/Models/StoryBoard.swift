@@ -15,6 +15,26 @@ public enum Storyboard: String {
     case CreateViewController
     case InboxViewController
     case ProfileViewController
+    case SignInViewController
+    case CreateUserViewController
+    case ConfirmUserViewController
+    case CreateAvatarViewController
+    case PasswordViewController
+    case CreatePasswordViewController
+    case MessageViewController
+    case NewMessageViewController
+    case CreationDetailViewController
+    case CreationTableViewController
+    case SettingsViewController
+    case EditProfileViewController
+    case AccountViewController
+    case ProfileScrollViewController
+    case CreationCollectionViewController
+    case MyProfileHeaderViewController
+    case ProfileMapViewController
+    case XLPagerTabStripViewController
+    case ProfilePanViewController
+    case TestViewController
 
     public func instantiate<VC: UIViewController>(_ viewController: VC.Type, identifier: String) -> VC? {
         guard let vc = UIStoryboard(name: self.rawValue, bundle: nil)

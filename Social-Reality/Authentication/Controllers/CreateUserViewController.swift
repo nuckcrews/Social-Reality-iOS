@@ -39,7 +39,7 @@ class CreateUserViewController: UIViewController {
     
     internal static func instantiate(email: String?) -> CreateUserViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(CreateUserViewController.self) else {
+        guard let viewController = Storyboard.CreateUserViewController.instantiate(CreateUserViewController.self) else {
             return nil
         }
         

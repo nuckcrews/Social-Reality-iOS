@@ -17,7 +17,7 @@ final class VideoCacheModel {
     
     init?(urlString: String?, player: AVQueuePlayer?, looper: AVPlayerLooper?, layer: AVPlayerLayer?) {
         if let url = URL(string: urlString ?? ""), let player = player, let looper = looper, let layer = layer {
-            self.urlString = urlString
+            self.urlString = url.absoluteString
             self.player = player
             self.playerLooper = looper
             self.playerLayer = layer

@@ -41,7 +41,7 @@ class SignInViewController: UIViewController {
     
     internal static func instantiate() -> SignInViewController? {
         
-        guard let viewController = Storyboard.Main.instantiate(SignInViewController.self) else {
+        guard let viewController = Storyboard.SignInViewController.instantiate(SignInViewController.self) else {
             return nil
         }
         

@@ -26,7 +26,7 @@ class EditProfileViewController: UIViewController {
     
     internal static func instantiate() -> EditProfileViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(EditProfileViewController.self) else {
+        guard let viewController = Storyboard.EditProfileViewController.instantiate(EditProfileViewController.self) else {
             return nil
         }
         

@@ -35,7 +35,7 @@ class MyProfileHeaderViewController: UIViewController {
     
     internal static func instantiate() -> MyProfileHeaderViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(MyProfileHeaderViewController.self) else {
+        guard let viewController = Storyboard.MyProfileHeaderViewController.instantiate(MyProfileHeaderViewController.self) else {
             return nil
         }
         
@@ -79,7 +79,7 @@ class MyProfileHeaderViewController: UIViewController {
             lastMinHeaderHeight = minHeaderHeight
             
             let y = progress * (view.frame.height - minHeaderHeight)
-            
+            print(y)
             guard covernitialHeight != nil else {
                 return
             }

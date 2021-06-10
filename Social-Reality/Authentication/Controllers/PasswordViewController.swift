@@ -22,6 +22,12 @@ class PasswordViewController: UIViewController {
     
     var email: String?
     
+    struct WrongPasswordError {
+        static var title = "Password Incorrect"
+        static var message = "Please ensure you are logging in to the correct account"
+        static var button = "Ok"
+    }
+    
     struct AlertError {
         static var title = "Error Signing In"
         static var message = "There could have been a mistake on our end. Please try signing in again."
@@ -32,7 +38,7 @@ class PasswordViewController: UIViewController {
     
     internal static func instantiate(email: String?) -> PasswordViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(PasswordViewController.self) else {
+        guard let viewController = Storyboard.PasswordViewController.instantiate(PasswordViewController.self) else {
             return nil
         }
         
@@ -105,9 +111,9 @@ class PasswordViewController: UIViewController {
                 self?.checkUserData(id: id)
             } else {
                 self?.stopLoading()
-                self?.presentAlert(title: AlertError.title,
-                                   message: AlertError.message,
-                                   button: AlertError.button)
+                self?.presentAlert(title: WrongPasswordError.title,
+                                   message: WrongPasswordError.message,
+                                   button: WrongPasswordError.button)
             }
         }
         

@@ -56,7 +56,7 @@ class ProfilePanViewController: UIViewController {
     
     internal static func instantiate() -> ProfilePanViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(ProfilePanViewController.self) else {
+        guard let viewController = Storyboard.ProfilePanViewController.instantiate(ProfilePanViewController.self) else {
             return nil
         }
         

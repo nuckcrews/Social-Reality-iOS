@@ -46,10 +46,6 @@ class CoverViewController: UIViewController {
             return nil
         }
         
-//        let navigationController = CoverNavigationController.instantiate()
-//
-//        navigationController?.setViewControllers([viewController], animated: false)
-        
         return viewController
     }
     
@@ -58,21 +54,10 @@ class CoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if navigationController == nil {
-//            let navigationController = CoverNavigationController.instantiate()
-//            navigationController?.setViewControllers([self], animated: false)
-//        }
-//
         MainToCoverDelegate = self
         
-        blackView.alpha = 0
-        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
-        blackView.frame = view.bounds
-        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissViews)))
-        
-        view.addSubview(blackView)
-        
-        
+        setupLoad()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,6 +82,20 @@ class CoverViewController: UIViewController {
     }
     
     // MARK: - View Setup
+    
+    func setupLoad() {
+        
+        bottomSearchUsersConstraint.constant = bottomConstraintDefault
+        bottomCommentsConstraint.constant = bottomConstraintDefault
+        
+        blackView.alpha = 0
+        blackView.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        blackView.frame = view.bounds
+        blackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissViews)))
+        
+        view.addSubview(blackView)
+        
+    }
     
     func setupView() {
         

@@ -27,6 +27,26 @@
 		A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD41F2603D55D00E6C818 /* CreationModel.swift */; };
 		A00DD4222603D57100E6C818 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD4212603D57100E6C818 /* CommentModel.swift */; };
 		A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD4232603D57900E6C818 /* LikeModel.swift */; };
+		A00FD62226718D6600529A76 /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62126718D6600529A76 /* SignInViewController.storyboard */; };
+		A00FD62426718DA100529A76 /* CreateUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62326718DA100529A76 /* CreateUserViewController.storyboard */; };
+		A00FD62626718E0F00529A76 /* CreateAvatarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62526718E0F00529A76 /* CreateAvatarViewController.storyboard */; };
+		A00FD62826718E1B00529A76 /* CreatePasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62726718E1B00529A76 /* CreatePasswordViewController.storyboard */; };
+		A00FD62A26718E2700529A76 /* PasswordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62926718E2700529A76 /* PasswordViewController.storyboard */; };
+		A00FD62C26718E4000529A76 /* ConfirmUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62B26718E4000529A76 /* ConfirmUserViewController.storyboard */; };
+		A00FD62E2671914D00529A76 /* MessageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62D2671914D00529A76 /* MessageViewController.storyboard */; };
+		A00FD6302671915B00529A76 /* NewMessageViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62F2671915B00529A76 /* NewMessageViewController.storyboard */; };
+		A00FD632267192EE00529A76 /* CreationDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD631267192EE00529A76 /* CreationDetailViewController.storyboard */; };
+		A00FD634267192FF00529A76 /* CreationTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD633267192FF00529A76 /* CreationTableViewController.storyboard */; };
+		A00FD6372671942000529A76 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD6362671942000529A76 /* SettingsViewController.storyboard */; };
+		A00FD6392671942900529A76 /* EditProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD6382671942900529A76 /* EditProfileViewController.storyboard */; };
+		A00FD63B267195F700529A76 /* AccountViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD63A267195F700529A76 /* AccountViewController.storyboard */; };
+		A00FD63D2671968600529A76 /* ProfileScrollViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD63C2671968600529A76 /* ProfileScrollViewController.storyboard */; };
+		A00FD63F267196B100529A76 /* CreationCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD63E267196B100529A76 /* CreationCollectionViewController.storyboard */; };
+		A00FD641267196F400529A76 /* MyProfileHeaderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD640267196F400529A76 /* MyProfileHeaderViewController.storyboard */; };
+		A00FD643267197BE00529A76 /* ProfileMapViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD642267197BE00529A76 /* ProfileMapViewController.storyboard */; };
+		A00FD645267197EB00529A76 /* XLPagerTabStripViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD644267197EB00529A76 /* XLPagerTabStripViewController.storyboard */; };
+		A00FD6472671987200529A76 /* TestViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD6462671987200529A76 /* TestViewController.storyboard */; };
+		A00FD64926719A4000529A76 /* ProfilePanViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD64826719A4000529A76 /* ProfilePanViewController.storyboard */; };
 		A0137172261106CE00AE4BA6 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0137171261106CE00AE4BA6 /* UITableView.swift */; };
 		A0137174261116C300AE4BA6 /* SearchUsersSendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0137173261116C300AE4BA6 /* SearchUsersSendView.swift */; };
 		A02397D225EB1B5A00F13F72 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02397D125EB1B5A00F13F72 /* CustomViews.swift */; };
@@ -240,6 +260,26 @@
 		A00DD41F2603D55D00E6C818 /* CreationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationModel.swift; sourceTree = "<group>"; };
 		A00DD4212603D57100E6C818 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		A00DD4232603D57900E6C818 /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
+		A00FD62126718D6600529A76 /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
+		A00FD62326718DA100529A76 /* CreateUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateUserViewController.storyboard; sourceTree = "<group>"; };
+		A00FD62526718E0F00529A76 /* CreateAvatarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAvatarViewController.storyboard; sourceTree = "<group>"; };
+		A00FD62726718E1B00529A76 /* CreatePasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePasswordViewController.storyboard; sourceTree = "<group>"; };
+		A00FD62926718E2700529A76 /* PasswordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasswordViewController.storyboard; sourceTree = "<group>"; };
+		A00FD62B26718E4000529A76 /* ConfirmUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfirmUserViewController.storyboard; sourceTree = "<group>"; };
+		A00FD62D2671914D00529A76 /* MessageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MessageViewController.storyboard; sourceTree = "<group>"; };
+		A00FD62F2671915B00529A76 /* NewMessageViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewMessageViewController.storyboard; sourceTree = "<group>"; };
+		A00FD631267192EE00529A76 /* CreationDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreationDetailViewController.storyboard; sourceTree = "<group>"; };
+		A00FD633267192FF00529A76 /* CreationTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreationTableViewController.storyboard; sourceTree = "<group>"; };
+		A00FD6362671942000529A76 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		A00FD6382671942900529A76 /* EditProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditProfileViewController.storyboard; sourceTree = "<group>"; };
+		A00FD63A267195F700529A76 /* AccountViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AccountViewController.storyboard; sourceTree = "<group>"; };
+		A00FD63C2671968600529A76 /* ProfileScrollViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileScrollViewController.storyboard; sourceTree = "<group>"; };
+		A00FD63E267196B100529A76 /* CreationCollectionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreationCollectionViewController.storyboard; sourceTree = "<group>"; };
+		A00FD640267196F400529A76 /* MyProfileHeaderViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyProfileHeaderViewController.storyboard; sourceTree = "<group>"; };
+		A00FD642267197BE00529A76 /* ProfileMapViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileMapViewController.storyboard; sourceTree = "<group>"; };
+		A00FD644267197EB00529A76 /* XLPagerTabStripViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = XLPagerTabStripViewController.storyboard; sourceTree = "<group>"; };
+		A00FD6462671987200529A76 /* TestViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestViewController.storyboard; sourceTree = "<group>"; };
+		A00FD64826719A4000529A76 /* ProfilePanViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfilePanViewController.storyboard; sourceTree = "<group>"; };
 		A0137171261106CE00AE4BA6 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		A0137173261116C300AE4BA6 /* SearchUsersSendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersSendView.swift; sourceTree = "<group>"; };
 		A02397D125EB1B5A00F13F72 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
@@ -512,6 +552,36 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		A00FD62026718D5200529A76 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A00FD62126718D6600529A76 /* SignInViewController.storyboard */,
+				A00FD62326718DA100529A76 /* CreateUserViewController.storyboard */,
+				A00FD62526718E0F00529A76 /* CreateAvatarViewController.storyboard */,
+				A00FD62726718E1B00529A76 /* CreatePasswordViewController.storyboard */,
+				A00FD62926718E2700529A76 /* PasswordViewController.storyboard */,
+				A00FD62B26718E4000529A76 /* ConfirmUserViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A00FD6352671940F00529A76 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A00FD6362671942000529A76 /* SettingsViewController.storyboard */,
+				A00FD6382671942900529A76 /* EditProfileViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A00FD64A26719DC900529A76 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A038703225E93D9D003989CE /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		A023980725EC261B00F13F72 /* Global */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,11 +634,10 @@
 				A064CB5226652F4000C02D57 /* Utility */,
 				A038702C25E93D9D003989CE /* AppDelegate.swift */,
 				A006462725EB17F900A3E1F3 /* Config.swift */,
+				A038703725E93D9E003989CE /* LaunchScreen.storyboard */,
 				A038703025E93D9D003989CE /* Experience.rcproject */,
 				A0D95BB42607BAFE00DA5A07 /* GoogleService-Info.plist */,
 				A038703A25E93D9E003989CE /* Info.plist */,
-				A038703725E93D9E003989CE /* LaunchScreen.storyboard */,
-				A038703225E93D9D003989CE /* Main.storyboard */,
 				A008BAF125F2F6F400F70ECF /* Social-Reality.entitlements */,
 			);
 			path = "Social-Reality";
@@ -766,6 +835,7 @@
 			children = (
 				A072FC5625ED335E00D59382 /* TestViewController.swift */,
 				A071B4C626240A790057BE35 /* Testing.swift */,
+				A00FD6462671987200529A76 /* TestViewController.storyboard */,
 			);
 			path = Testing;
 			sourceTree = "<group>";
@@ -789,6 +859,7 @@
 				A0DCF1F325EC7CFC00F699E9 /* CreateUserViewController.swift */,
 				A0DCF20225EC95FC00F699E9 /* PasswordViewController.swift */,
 				A02397FC25EC197400F13F72 /* SignInViewController.swift */,
+				A00FD62026718D5200529A76 /* Storyboards */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -990,6 +1061,7 @@
 				A023980025EC1CD500F13F72 /* CoverViewController.swift */,
 				A03870AA25E9447C003989CE /* CustomTabBarController.swift */,
 				A03870B525E944AB003989CE /* NavigationController.swift */,
+				A00FD64A26719DC900529A76 /* Storyboards */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1008,6 +1080,7 @@
 			children = (
 				A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */,
 				A05AB2E625EAEEEC00748B04 /* SettingsViewController.swift */,
+				A00FD6352671940F00529A76 /* Storyboards */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1115,6 +1188,7 @@
 			isa = PBXGroup;
 			children = (
 				A06B63EA25E964C500AE746D /* AccountViewController.swift */,
+				A00FD63A267195F700529A76 /* AccountViewController.storyboard */,
 			);
 			path = Archived;
 			sourceTree = "<group>";
@@ -1131,6 +1205,8 @@
 			isa = PBXGroup;
 			children = (
 				A093E26326707670005AA2AC /* MainViewController.storyboard */,
+				A00FD631267192EE00529A76 /* CreationDetailViewController.storyboard */,
+				A00FD633267192FF00529A76 /* CreationTableViewController.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1147,6 +1223,8 @@
 			isa = PBXGroup;
 			children = (
 				A093E269267076FB005AA2AC /* InboxViewController.storyboard */,
+				A00FD62D2671914D00529A76 /* MessageViewController.storyboard */,
+				A00FD62F2671915B00529A76 /* NewMessageViewController.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1155,6 +1233,12 @@
 			isa = PBXGroup;
 			children = (
 				A093E26C2670772C005AA2AC /* ProfileViewController.storyboard */,
+				A00FD63C2671968600529A76 /* ProfileScrollViewController.storyboard */,
+				A00FD63E267196B100529A76 /* CreationCollectionViewController.storyboard */,
+				A00FD640267196F400529A76 /* MyProfileHeaderViewController.storyboard */,
+				A00FD642267197BE00529A76 /* ProfileMapViewController.storyboard */,
+				A00FD644267197EB00529A76 /* XLPagerTabStripViewController.storyboard */,
+				A00FD64826719A4000529A76 /* ProfilePanViewController.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1389,16 +1473,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				A038703925E93D9E003989CE /* LaunchScreen.storyboard in Resources */,
+				A00FD632267192EE00529A76 /* CreationDetailViewController.storyboard in Resources */,
 				A093E26426707670005AA2AC /* MainViewController.storyboard in Resources */,
+				A00FD634267192FF00529A76 /* CreationTableViewController.storyboard in Resources */,
+				A00FD63B267195F700529A76 /* AccountViewController.storyboard in Resources */,
+				A00FD6472671987200529A76 /* TestViewController.storyboard in Resources */,
 				A093E26D2670772C005AA2AC /* ProfileViewController.storyboard in Resources */,
 				A06E965425F15770009B92E5 /* ExploreMapHeaderView.xib in Resources */,
+				A00FD62A26718E2700529A76 /* PasswordViewController.storyboard in Resources */,
+				A00FD643267197BE00529A76 /* ProfileMapViewController.storyboard in Resources */,
+				A00FD63D2671968600529A76 /* ProfileScrollViewController.storyboard in Resources */,
+				A00FD62826718E1B00529A76 /* CreatePasswordViewController.storyboard in Resources */,
 				A093E261267074F4005AA2AC /* ExploreViewController.storyboard in Resources */,
+				A00FD6392671942900529A76 /* EditProfileViewController.storyboard in Resources */,
 				A0D95BB52607BAFE00DA5A07 /* GoogleService-Info.plist in Resources */,
+				A00FD6372671942000529A76 /* SettingsViewController.storyboard in Resources */,
+				A00FD6302671915B00529A76 /* NewMessageViewController.storyboard in Resources */,
+				A00FD64926719A4000529A76 /* ProfilePanViewController.storyboard in Resources */,
+				A00FD645267197EB00529A76 /* XLPagerTabStripViewController.storyboard in Resources */,
+				A00FD63F267196B100529A76 /* CreationCollectionViewController.storyboard in Resources */,
 				A038703625E93D9E003989CE /* Assets.xcassets in Resources */,
+				A00FD62626718E0F00529A76 /* CreateAvatarViewController.storyboard in Resources */,
+				A00FD641267196F400529A76 /* MyProfileHeaderViewController.storyboard in Resources */,
+				A00FD62E2671914D00529A76 /* MessageViewController.storyboard in Resources */,
 				A06E965025F1573F009B92E5 /* ExploreCreationHeaderView.xib in Resources */,
+				A00FD62426718DA100529A76 /* CreateUserViewController.storyboard in Resources */,
 				A093E267267076AD005AA2AC /* CreateViewController.storyboard in Resources */,
+				A00FD62C26718E4000529A76 /* ConfirmUserViewController.storyboard in Resources */,
 				A038703425E93D9D003989CE /* Main.storyboard in Resources */,
 				A093E26A267076FB005AA2AC /* InboxViewController.storyboard in Resources */,
+				A00FD62226718D6600529A76 /* SignInViewController.storyboard in Resources */,
 				A03FAC7E25EEC4FE000BFC02 /* profileCreationsHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

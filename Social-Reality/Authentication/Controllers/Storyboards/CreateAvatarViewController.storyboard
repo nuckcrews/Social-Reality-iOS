@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Avatar View Controller-->
+        <scene sceneID="R1Z-90-nQp">
+            <objects>
+                <viewController storyboardIdentifier="CreateAvatarViewController" id="HNM-mo-DVm" customClass="CreateAvatarViewController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VcF-t0-5Tz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="pkK-g6-CG0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dg-at-DE5">
+                                <rect key="frame" x="16" y="56" width="15" height="22"/>
+                                <color key="tintColor" name="MainText"/>
+                                <state key="normal" image="chevron.left" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBack:" destination="HNM-mo-DVm" eventType="touchUpInside" id="CqM-EZ-ME4"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile.image.default" translatesAutoresizingMaskIntoConstraints="NO" id="7Rr-LT-Qbg" customClass="CircleImageView" customModule="Social_Reality" customModuleProvider="target">
+                                <rect key="frame" x="64" y="138" width="286" height="286"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7Rr-LT-Qbg" secondAttribute="height" multiplier="1:1" id="Ngf-pj-cCV"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your Avatar" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eM-e9-hfd">
+                                <rect key="frame" x="123" y="90" width="168" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" name="Primary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFE-Hn-2MN" customClass="ShadowButtonBox" customModule="Social_Reality" customModuleProvider="target">
+                                <rect key="frame" x="32" y="492" width="350" height="42"/>
+                                <color key="backgroundColor" name="Primary"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="28z-WJ-h3r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="Primary"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tapContinue:" destination="HNM-mo-DVm" eventType="touchUpInside" id="VYU-iR-7WT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTt-ou-WqF">
+                                <rect key="frame" x="168" y="436" width="78" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Edit Avatar">
+                                    <color key="titleColor" name="AccentColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapEditAvatar:" destination="HNM-mo-DVm" eventType="touchUpInside" id="fug-JB-CqT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydZ-D2-yT9">
+                                <rect key="frame" x="64" y="138" width="286" height="286"/>
+                                <connections>
+                                    <action selector="tapEditAvatar:" destination="HNM-mo-DVm" eventType="touchUpInside" id="V5A-3d-Ba0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ept-5v-IIB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cFE-Hn-2MN" firstAttribute="top" secondItem="WTt-ou-WqF" secondAttribute="bottom" constant="24" id="9Xp-LV-hLD"/>
+                            <constraint firstItem="cFE-Hn-2MN" firstAttribute="leading" secondItem="ept-5v-IIB" secondAttribute="leading" constant="32" id="F1C-T2-hjR"/>
+                            <constraint firstItem="7Rr-LT-Qbg" firstAttribute="leading" secondItem="ept-5v-IIB" secondAttribute="leading" constant="64" id="HMa-QD-FNP"/>
+                            <constraint firstItem="ept-5v-IIB" firstAttribute="trailing" secondItem="7Rr-LT-Qbg" secondAttribute="trailing" constant="64" id="JA2-Or-98F"/>
+                            <constraint firstItem="3eM-e9-hfd" firstAttribute="top" secondItem="5dg-at-DE5" secondAttribute="bottom" constant="12" id="JSM-Mu-Xwh"/>
+                            <constraint firstItem="3eM-e9-hfd" firstAttribute="centerX" secondItem="VcF-t0-5Tz" secondAttribute="centerX" id="NnR-Cx-9Ud"/>
+                            <constraint firstItem="ydZ-D2-yT9" firstAttribute="height" secondItem="7Rr-LT-Qbg" secondAttribute="height" id="Smh-4m-Off"/>
+                            <constraint firstItem="ydZ-D2-yT9" firstAttribute="width" secondItem="7Rr-LT-Qbg" secondAttribute="width" id="T9R-Eq-8Tc"/>
+                            <constraint firstItem="ept-5v-IIB" firstAttribute="trailing" secondItem="pkK-g6-CG0" secondAttribute="trailing" id="Ti3-GG-uDy"/>
+                            <constraint firstItem="WTt-ou-WqF" firstAttribute="top" secondItem="7Rr-LT-Qbg" secondAttribute="bottom" constant="12" id="TlQ-wm-Jar"/>
+                            <constraint firstAttribute="bottom" secondItem="pkK-g6-CG0" secondAttribute="bottom" id="Uic-p5-cnr"/>
+                            <constraint firstItem="5dg-at-DE5" firstAttribute="top" secondItem="ept-5v-IIB" secondAttribute="top" constant="12" id="VpR-iM-ame"/>
+                            <constraint firstItem="7Rr-LT-Qbg" firstAttribute="top" secondItem="3eM-e9-hfd" secondAttribute="bottom" constant="24" id="aKy-rz-CoS"/>
+                            <constraint firstItem="ydZ-D2-yT9" firstAttribute="centerY" secondItem="7Rr-LT-Qbg" secondAttribute="centerY" id="abH-jN-6TT"/>
+                            <constraint firstItem="ept-5v-IIB" firstAttribute="trailing" secondItem="cFE-Hn-2MN" secondAttribute="trailing" constant="32" id="bWJ-ex-Z0e"/>
+                            <constraint firstItem="pkK-g6-CG0" firstAttribute="leading" secondItem="ept-5v-IIB" secondAttribute="leading" id="czi-Ng-Dv9"/>
+                            <constraint firstItem="5dg-at-DE5" firstAttribute="leading" secondItem="ept-5v-IIB" secondAttribute="leading" constant="16" id="dUV-sH-Su5"/>
+                            <constraint firstItem="WTt-ou-WqF" firstAttribute="centerX" secondItem="VcF-t0-5Tz" secondAttribute="centerX" id="t4D-hA-dIR"/>
+                            <constraint firstItem="pkK-g6-CG0" firstAttribute="top" secondItem="VcF-t0-5Tz" secondAttribute="top" id="tKh-HZ-VCH"/>
+                            <constraint firstItem="ydZ-D2-yT9" firstAttribute="centerX" secondItem="7Rr-LT-Qbg" secondAttribute="centerX" id="x1k-Wc-GWo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Tw-5S-PzP"/>
+                    <connections>
+                        <outlet property="avatarImageView" destination="7Rr-LT-Qbg" id="OAd-el-akU"/>
+                        <outlet property="loadingIndicator" destination="pkK-g6-CG0" id="tqg-YZ-XFa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YPx-Zk-FYt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="156"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="profile.image.default" width="251" height="250"/>
+        <namedColor name="AccentColor">
+            <color red="0.49399998784065247" green="0.4309999942779541" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="MainText">
+            <color red="0.2630000114440918" green="0.2630000114440918" blue="0.2630000114440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Primary">
+            <color red="0.49399998784065247" green="0.4309999942779541" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

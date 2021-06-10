@@ -22,7 +22,7 @@ class ProfileMapViewController: UIViewController {
     
     internal static func instantiate() -> ProfileMapViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(ProfileMapViewController.self) else {
+        guard let viewController = Storyboard.ProfileMapViewController.instantiate(ProfileMapViewController.self) else {
             return nil
         }
         

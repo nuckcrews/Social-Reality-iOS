@@ -31,7 +31,7 @@ class ConfirmUserViewController: UIViewController {
     
     internal static func instantiate(email: String?, password: String?) -> ConfirmUserViewController? {
 
-        guard let viewController = Storyboard.Main.instantiate(ConfirmUserViewController.self) else {
+        guard let viewController = Storyboard.ConfirmUserViewController.instantiate(ConfirmUserViewController.self) else {
             return nil
         }
         
