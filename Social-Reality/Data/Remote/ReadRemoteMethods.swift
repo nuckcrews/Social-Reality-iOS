@@ -15,9 +15,11 @@ struct ReadRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
-    func user(_ id: String, completion: @escaping(_ result: UserModel?) -> Void) {
+    func user(_ id: String, completion: @escaping (UserModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
-        db.collection(Collections.users.rawValue).document(id).getDocument { snapshot, error in
+        db.collection(Collections.users.rawValue)
+            .document(id)
+            .getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -36,9 +38,11 @@ struct ReadRemoteMethods {
         }
     }
     
-    func creation(_ id: String, completion: @escaping(_ result: CreationModel?) -> Void) {
+    func creation(_ id: String, completion: @escaping (CreationModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
-        db.collection(Collections.creations.rawValue).document(id).getDocument { snapshot, error in
+        db.collection(Collections.creations.rawValue)
+            .document(id)
+            .getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -58,9 +62,11 @@ struct ReadRemoteMethods {
         }
     }
     
-    func comment(_ id: String, completion: @escaping(_ result: CommentModel?) -> Void) {
+    func comment(_ id: String, completion: @escaping (CommentModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
-        db.collection(Collections.comments.rawValue).document(id).getDocument { snapshot, error in
+        db.collection(Collections.comments.rawValue)
+            .document(id)
+            .getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -80,9 +86,11 @@ struct ReadRemoteMethods {
         }
     }
     
-    func like(_ id: String, completion: @escaping(_ result: LikeModel?) -> Void) {
+    func like(_ id: String, completion: @escaping (LikeModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
-        db.collection(Collections.likes.rawValue).document(id).getDocument { snapshot, error in
+        db.collection(Collections.likes.rawValue)
+            .document(id)
+            .getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -102,12 +110,13 @@ struct ReadRemoteMethods {
         }
     }
     
-    func message(_ id: String, conversationID: String, completion: @escaping(_ result: MessageModel?) -> Void) {
+    func message(_ id: String, conversationID: String, completion: @escaping (MessageModel?) -> Void) {
         guard conversationID.count > 0, id.count > 0 else { completion(nil); return }
         db.collection(Collections.conversations.rawValue)
             .document(conversationID)
             .collection(Collections.messages.rawValue)
-            .document(id).getDocument { snapshot, error in
+            .document(id)
+            .getDocument { snapshot, error in
                 if error != nil || snapshot == nil {
                     completion(nil)
                 } else {
@@ -127,9 +136,10 @@ struct ReadRemoteMethods {
             }
     }
     
-    func conversation(_ id: String, completion: @escaping(_ result: ConversationModel?) -> Void) {
+    func conversation(_ id: String, completion: @escaping (ConversationModel?) -> Void) {
         guard id.count > 0 else { completion(nil); return }
-        db.collection(Collections.conversations.rawValue).document(id).getDocument { snapshot, error in
+        db.collection(Collections.conversations.rawValue)
+            .document(id).getDocument { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -149,8 +159,9 @@ struct ReadRemoteMethods {
         }
     }
     
-    func users(completion: @escaping(_ result: [UserModel]?) -> Void) {
-        db.collection(Collections.users.rawValue).getDocuments { snapshot, error in
+    func users(completion: @escaping ([UserModel]?) -> Void) {
+        db.collection(Collections.users.rawValue)
+            .getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -173,10 +184,11 @@ struct ReadRemoteMethods {
         }
     }
     
-    func usersWithPredicate(field: String, value: String, completion: @escaping(_ result: [UserModel]?) -> Void) {
+    func usersWithPredicate(field: String, value: String, completion: @escaping ([UserModel]?) -> Void) {
         guard field.count > 0, value.count > 0 else { completion(nil); return }
         db.collection(Collections.users.rawValue)
-            .whereField(field, isEqualTo: value).getDocuments { snapshot, error in
+            .whereField(field, isEqualTo: value)
+            .getDocuments { snapshot, error in
                 if error != nil || snapshot == nil {
                     completion(nil)
                 } else {
@@ -199,8 +211,9 @@ struct ReadRemoteMethods {
             }
     }
     
-    func creations(completion: @escaping(_ result: [CreationModel]?) -> Void) {
-        db.collection(Collections.creations.rawValue).getDocuments { snapshot, error in
+    func creations(completion: @escaping ([CreationModel]?) -> Void) {
+        db.collection(Collections.creations.rawValue)
+            .getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -223,10 +236,11 @@ struct ReadRemoteMethods {
         }
     }
     
-    func creationsWithPredicate(field: String, value: String, completion: @escaping(_ result: [CreationModel]?) -> Void) {
+    func creationsWithPredicate(field: String, value: String, completion: @escaping ([CreationModel]?) -> Void) {
         guard field.count > 0, value.count > 0 else { completion(nil); return }
         db.collection(Collections.creations.rawValue)
-            .whereField(field, isEqualTo: value).getDocuments { snapshot, error in
+            .whereField(field, isEqualTo: value)
+            .getDocuments { snapshot, error in
                 if error != nil || snapshot == nil {
                     completion(nil)
                 } else {
@@ -249,8 +263,9 @@ struct ReadRemoteMethods {
             }
     }
     
-    func comments(completion: @escaping(_ result: [CommentModel]?) -> Void) {
-        db.collection(Collections.comments.rawValue).getDocuments { snapshot, error in
+    func comments(completion: @escaping ([CommentModel]?) -> Void) {
+        db.collection(Collections.comments.rawValue)
+            .getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -273,10 +288,11 @@ struct ReadRemoteMethods {
         }
     }
     
-    func commentsWithPredicate(field: String, value: String, completion: @escaping(_ result: [CommentModel]?) -> Void) {
+    func commentsWithPredicate(field: String, value: String, completion: @escaping ([CommentModel]?) -> Void) {
         guard field.count > 0, value.count > 0 else { completion(nil); return }
         db.collection(Collections.comments.rawValue)
-            .whereField(field, isEqualTo: value).getDocuments { snapshot, error in
+            .whereField(field, isEqualTo: value)
+            .getDocuments { snapshot, error in
                 if error != nil || snapshot == nil {
                     completion(nil)
                 } else {
@@ -299,8 +315,9 @@ struct ReadRemoteMethods {
             }
     }
     
-    func likes(completion: @escaping(_ result: [LikeModel]?) -> Void) {
-        db.collection(Collections.likes.rawValue).getDocuments { snapshot, error in
+    func likes(completion: @escaping ([LikeModel]?) -> Void) {
+        db.collection(Collections.likes.rawValue)
+            .getDocuments { snapshot, error in
             if error != nil || snapshot == nil {
                 completion(nil)
             } else {
@@ -323,10 +340,11 @@ struct ReadRemoteMethods {
         }
     }
     
-    func likesWithPredicate(field: String, value: String, completion: @escaping(_ result: [LikeModel]?) -> Void) {
+    func likesWithPredicate(field: String, value: String, completion: @escaping ([LikeModel]?) -> Void) {
         guard field.count > 0, value.count > 0 else { completion(nil); return }
         db.collection(Collections.likes.rawValue)
-            .whereField(field, isEqualTo: value).getDocuments { snapshot, error in
+            .whereField(field, isEqualTo: value)
+            .getDocuments { snapshot, error in
                 if error != nil || snapshot == nil {
                     completion(nil)
                 } else {
@@ -349,7 +367,64 @@ struct ReadRemoteMethods {
             }
     }
     
-    func messages(conversationID: String, completion: @escaping(_ result: [MessageModel]?) -> Void) {
+    func userLikes(_ userID: String, completion: @escaping ([UserLikeModel]?) -> Void) {
+        guard userID.count > 0 else { completion(nil); return }
+        db.collection(Collections.users.rawValue)
+            .document(userID)
+            .collection(Collections.likes.rawValue)
+            .getDocuments { snapshot, error in
+                if error != nil || snapshot == nil {
+                    completion(nil)
+                } else {
+                    if let docs = snapshot?.documents {
+                        do {
+                            var models = [UserLikeModel]()
+                            try docs.forEach { doc in
+                                let model = try FirestoreDecoder().decode(UserLikeModel.self, from: doc.data())
+                                models.append(model)
+                            }
+                            completion(models)
+                        } catch {
+                            completion(nil)
+                        }
+                    } else {
+                        print("Does not exist")
+                        completion(nil)
+                    }
+                }
+        }
+    }
+    
+    func userLikedWithPredicate(userID: String, field: String, value: String, completion: @escaping ([LikeModel]?) -> Void) {
+        guard userID.count > 0, field.count > 0, value.count > 0 else { completion(nil); return }
+        db.collection(Collections.users.rawValue)
+            .document(userID)
+            .collection(Collections.likes.rawValue)
+            .whereField(field, isEqualTo: value)
+            .getDocuments { snapshot, error in
+                if error != nil || snapshot == nil {
+                    completion(nil)
+                } else {
+                    if let docs = snapshot?.documents {
+                        do {
+                            var models = [LikeModel]()
+                            try docs.forEach { doc in
+                                let model = try FirestoreDecoder().decode(LikeModel.self, from: doc.data())
+                                models.append(model)
+                            }
+                            completion(models)
+                        } catch {
+                            completion(nil)
+                        }
+                    } else {
+                        print("Does not exist")
+                        completion(nil)
+                    }
+                }
+            }
+    }
+    
+    func messages(conversationID: String, completion: @escaping ([MessageModel]?) -> Void) {
         guard conversationID.count > 0 else { completion(nil); return }
         db.collection(Collections.conversations.rawValue)
             .document(conversationID)

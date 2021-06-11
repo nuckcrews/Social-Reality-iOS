@@ -24,8 +24,8 @@ class CreationDetailViewController: UIViewController {
     
     // MARK: - Variables
     
-    var user: User?
-    var creation: Creation?
+    var user: UserModel?
+    var creation: CreationModel?
     
     // MARK: - View Instantiation
     
@@ -70,14 +70,14 @@ class CreationDetailViewController: UIViewController {
         
         guard let creation = creation else { return }
         
-        creatorAvatarImage.setImageFromURL(creation.model?.userImage ?? "")
-        creationTitleLabel.text = creation.model?.title
-        creationDescriptionLabel.text = creation.model?.description
-        let date = creation.model?.date?.rawDate
+        creatorAvatarImage.setImageFromURL(creation.userImage ?? "")
+        creationTitleLabel.text = creation.title
+        creationDescriptionLabel.text = creation.description
+        let date = creation.date?.rawDate
         creationTimeLabel.text = date?.currentDistance(to: Date())
         
         creationAVPlayerView.delegate = self
-        creationAVPlayerView.setupVideo(url: creation.model?.videoURL)
+        creationAVPlayerView.setupVideo(url: creation.videoURL)
         
     }
     
@@ -101,7 +101,7 @@ class CreationDetailViewController: UIViewController {
         sender.jump()
         
         Buzz.light()
-        MainToCoverDelegate?.tappedComments(creation: creation?.model)
+        MainToCoverDelegate?.tappedComments(creation: creation)
         
     }
     
@@ -109,7 +109,7 @@ class CreationDetailViewController: UIViewController {
         sender.jump()
         Buzz.light()
         
-        MainToCoverDelegate?.tappedSendCreation(creation: creation?.model)
+        MainToCoverDelegate?.tappedSendCreation(creation: creation)
     }
     
     @IBAction func tapPausePlay(_ sender: UIButton) {

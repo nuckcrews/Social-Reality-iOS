@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kyh-3S-HQa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kyh-3S-HQa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -81,7 +82,7 @@
                                                 <color key="backgroundColor" name="Background"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commentCell" rowHeight="92" id="Y18-8E-1kd" customClass="CommentCell" customModule="Social_Reality" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="24.5" width="414" height="92"/>
+                                                        <rect key="frame" x="0.0" y="50" width="414" height="92"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y18-8E-1kd" id="kAf-Kc-kuG">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
@@ -325,20 +326,20 @@
                                                 </state>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Results." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqT-iN-bil">
-                                                <rect key="frame" x="32" y="84" width="78" height="18"/>
+                                                <rect key="frame" x="32" y="89" width="78" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <color key="textColor" name="MainText"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="80c-Oi-Xdx">
-                                                <rect key="frame" x="0.0" y="72" width="414" height="505"/>
+                                                <rect key="frame" x="0.0" y="77" width="414" height="500"/>
                                                 <color key="backgroundColor" name="Background"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="Z68-q2-qmd"/>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchUserCell" rowHeight="134" id="fuE-Ul-epr" customClass="SearchUserCell" customModule="Social_Reality" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="24.5" width="414" height="134"/>
+                                                        <rect key="frame" x="0.0" y="50" width="414" height="134"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fuE-Ul-epr" id="T1v-K8-cTE">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
@@ -413,7 +414,7 @@
                                                 </prototypes>
                                             </tableView>
                                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Share with Your Friends" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y3p-gy-KW3">
-                                                <rect key="frame" x="12" y="21" width="390" height="51"/>
+                                                <rect key="frame" x="12" y="21" width="390" height="56"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </searchBar>
                                         </subviews>
@@ -519,7 +520,6 @@
         <!--Customer Tab Bar Controller-->
         <scene sceneID="KeC-Ki-S2H">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OKg-LH-cel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController id="fjf-zx-Kmb" customClass="CustomerTabBarController" customModule="Social_Reality" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="brR-Eg-xfY"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VMB-hL-Z6T">
@@ -532,6 +532,7 @@
                         <outlet property="buttonBarView" destination="VMB-hL-Z6T" id="prX-kr-9K8"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OKg-LH-cel" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-555" y="831"/>
         </scene>

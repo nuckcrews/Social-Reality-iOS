@@ -29,7 +29,7 @@ struct Auth0 {
         case inactive = "INACTIVE"
     }
     
-    static func userExists(email: String, completion: @escaping(_ result: Bool?) -> Void) {
+    static func userExists(email: String, completion: @escaping (Bool?) -> Void) {
         guard email.isValidEmail() else { completion(nil); return }
         Auth.auth().fetchSignInMethods(forEmail: email) { methods, error in
             if error != nil || methods?.count ?? 0 == 0 {
@@ -40,19 +40,19 @@ struct Auth0 {
         }
     }
     
-    static func userDataExists(id: String, completion: @escaping(_ result: Bool) -> Void) {
+    static func userDataExists(id: String, completion: @escaping (Bool) -> Void) {
         Query.remote.get.user(id) { model in
             completion(model != nil)
         }
     }
     
-    static func usernameExists(username: String, completion: @escaping(_ result: Bool) -> Void) {
+    static func usernameExists(username: String, completion: @escaping (Bool) -> Void) {
         Query.remote.get.usersWithPredicate(field: Fields.user.username.rawValue, value: username) { models in
             completion(models?.count ?? 0 > 0)
         }
     }
     
-    static func signUp(email: String, password: String, completion: @escaping(_ result: AuthDataResult?) -> Void) {
+    static func signUp(email: String, password: String, completion: @escaping (AuthDataResult?) -> Void) {
         guard email.isValidEmail(), password.isValidPassword() else { completion(nil); return }
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if error != nil || authResult == nil {
@@ -63,13 +63,13 @@ struct Auth0 {
         }
     }
     
-    static func sendEmailVerification(email: String, completion: @escaping(_ result: ResultType) -> Void) {
+    static func sendEmailVerification(email: String, completion: @escaping (ResultType) -> Void) {
         Auth.auth().currentUser?.sendEmailVerification(completion: { error in
             error == nil ? completion(.success) : completion(.error)
         })
     }
     
-    static func signInWithProvider(credential: AuthCredential, completion: @escaping(_ result: AuthDataResult?) -> Void) {
+    static func signInWithProvider(credential: AuthCredential, completion: @escaping (AuthDataResult?) -> Void) {
         Auth.auth().signIn(with: credential) { (authResult, error) in
             if error != nil || authResult == nil {
                 completion(nil)
@@ -80,7 +80,7 @@ struct Auth0 {
     }
     
     
-    static func signIn(email: String, password: String, completion: @escaping(_ result: AuthDataResult?) -> Void) {
+    static func signIn(email: String, password: String, completion: @escaping (AuthDataResult?) -> Void) {
         guard email.isValidEmail() else { completion(nil); return }
         
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
@@ -92,7 +92,7 @@ struct Auth0 {
         }
     }
     
-    static func signOut(completion: @escaping(_ result: ResultType) -> Void) {
+    static func signOut(completion: @escaping (ResultType) -> Void) {
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()

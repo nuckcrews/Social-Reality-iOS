@@ -30,7 +30,7 @@ target 'Social-Reality' do
   pod 'CodableFirebase'
   
   # FB Pods
-  pod 'FBSDKLoginKit'
+  pod 'FBSDKLoginKit', '~> 9.3.0'
   
   # Utility Pods
   pod 'Kingfisher'

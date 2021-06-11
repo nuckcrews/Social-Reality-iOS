@@ -9,7 +9,7 @@ import Foundation
 
 struct WriteMethods {
     
-    func user(_ model: UserModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func user(_ model: UserModel, cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         
         if cache {
             Query.cache.write.user(model)
@@ -21,7 +21,7 @@ struct WriteMethods {
         
     }
     
-    func creation(_ model: CreationModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func creation(_ model: CreationModel, cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         
         if cache {
             Query.cache.write.creation(model)
@@ -33,7 +33,7 @@ struct WriteMethods {
         
     }
     
-    func comment(_ model: CommentModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func comment(_ model: CommentModel, cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         
         if cache {
             Query.cache.write.comment(model)
@@ -45,7 +45,7 @@ struct WriteMethods {
         
     }
     
-    func like(_ model: LikeModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func like(_ model: LikeModel, cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         
         if cache {
             Query.cache.write.like(model)
@@ -57,7 +57,7 @@ struct WriteMethods {
         
     }
     
-    func conversation(_ model: ConversationModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func conversation(_ model: ConversationModel, cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         
         if cache {
             Query.cache.write.conversation(model)
@@ -69,7 +69,7 @@ struct WriteMethods {
         
     }
     
-    func message(_ model: MessageModel, cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func message(_ model: MessageModel, cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         
         if cache {
             Query.cache.write.message(model)

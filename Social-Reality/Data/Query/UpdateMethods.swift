@@ -9,7 +9,7 @@ import Foundation
 
 struct UpdateMethods {
     
-    func user(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func user(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
         
         if cache {
@@ -22,7 +22,7 @@ struct UpdateMethods {
         
     }
     
-    func creation(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func creation(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
 
         if cache {
@@ -35,7 +35,7 @@ struct UpdateMethods {
         
     }
     
-    func comment(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func comment(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
 
         if cache {
@@ -48,7 +48,7 @@ struct UpdateMethods {
         
     }
     
-    func like(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func like(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
 
         if cache {
@@ -61,7 +61,7 @@ struct UpdateMethods {
         
     }
     
-    func message(conversationID: String, id: String, data: [String: Any], cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func message(conversationID: String, id: String, data: [String: Any], cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         guard conversationID.count > 0, id.count > 0 else { completion(.error); return }
 
         if cache {
@@ -74,7 +74,7 @@ struct UpdateMethods {
         
     }
     
-    func conversation(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping(_ result: ResultType) -> Void) {
+    func conversation(_ id: String, data: [String: Any], cache: Bool = true, completion: @escaping (ResultType) -> Void) {
         guard id.count > 0 else { completion(.error); return }
 
         if cache {

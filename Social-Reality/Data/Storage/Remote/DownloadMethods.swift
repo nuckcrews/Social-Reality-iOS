@@ -10,7 +10,7 @@ import Firebase
 
 struct DownloadMethods {
     
-    func imageURL(key: String, completion: @escaping(_ result: URL?) -> Void) {
+    func imageURL(key: String, completion: @escaping (URL?) -> Void) {
         
     }
     

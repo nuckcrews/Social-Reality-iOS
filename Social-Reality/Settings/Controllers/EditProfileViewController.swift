@@ -20,7 +20,7 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var firstNameIndicator: UIButton!
     @IBOutlet weak var lastNameIndicator: UIButton!
     
-    var user: User?
+    var user: UserModel?
     
     // MARK: - View Instantiation
     

@@ -11,7 +11,7 @@ import AVFoundation
 
 struct Video0 {
     
-    static func getThumbnailImage(forUrl str: String?, completion: @escaping(_ result: UIImage?) -> Void){
+    static func getThumbnailImage(forUrl str: String?, completion: @escaping (UIImage?) -> Void){
         DispatchQueue.global().async {
             guard let url = URL(string: str ?? "") else { completion(nil); return }
             

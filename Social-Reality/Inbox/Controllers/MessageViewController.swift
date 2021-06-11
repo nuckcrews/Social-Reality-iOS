@@ -128,7 +128,7 @@ class MessageViewController: UIViewController {
     func getRecipient() {
         
         guard let recipientID = recipientID else {
-            recipient = Testing.defaultUser.model
+            recipient = Testing.defaultUser
             userImageView.setImageFromURL(recipient?.image ?? "")
             userNameLabel.text = recipient?.username
             return
@@ -137,7 +137,7 @@ class MessageViewController: UIViewController {
         
         Query.get.user(recipientID) { [weak self] model in
             guard let model = model else {
-                self?.recipient = Testing.defaultUser.model
+                self?.recipient = Testing.defaultUser
                 self?.userImageView.setImageFromURL(self?.recipient?.image ?? "")
                 self?.userNameLabel.text = self?.recipient?.username
                 return

@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     
     private let locationManager: CLLocationManager = CLLocationManager()
     
-    var creation: Creation?
+    var creation: CreationModel?
     
     // MARK: - View Instantiation
     
@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         tabBarItem.tag = TabBarItemTag.firstViewController.rawValue
         
-        CoverToMainDelegate? = self
+        CoverToMainDelegate = self
         
         if Auth0.loggedIn {
             setupLocationManager()
@@ -88,10 +88,10 @@ class MainViewController: UIViewController {
         
         guard let creation = creation else { return }
         
-        creatorAvatarImage.setImageFromURL(creation.model?.userImage ?? "")
-        creationTitleLabel.text = creation.model?.title
-        creationDescriptionLabel.text = creation.model?.description
-        let date = creation.model?.date?.rawDate
+        creatorAvatarImage.setImageFromURL(creation.userImage ?? "")
+        creationTitleLabel.text = creation.title
+        creationDescriptionLabel.text = creation.description
+        let date = creation.date?.rawDate
         creationTimeLabel.text = date?.currentDistance(to: Date())
         
         
@@ -131,7 +131,7 @@ class MainViewController: UIViewController {
             
             entity.generateCollisionShapes(recursive: true)
             arView.installGestures([.rotation, .translation], for: entity)
-            
+
             let anchorEntity = AnchorEntity(anchor: anchor)
             anchorEntity.addChild(entity)
             arView.scene.addAnchor(anchorEntity)
@@ -161,14 +161,14 @@ class MainViewController: UIViewController {
     @IBAction func tapComment(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
-        MainToCoverDelegate?.tappedComments(creation: creation?.model)
+        MainToCoverDelegate?.tappedComments(creation: creation)
     }
     
     @IBAction func tapShare(_ sender: UIButton) {
         sender.jump()
         Buzz.light()
         
-        MainToCoverDelegate?.tappedSendCreation(creation: creation?.model)
+        MainToCoverDelegate?.tappedSendCreation(creation: creation)
         
     }
     

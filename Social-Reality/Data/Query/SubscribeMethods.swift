@@ -10,7 +10,7 @@ import Firebase
 
 struct SubscribeMethods {
     
-    func user(_ id: String, cache: Bool = true, completion: @escaping(_ result: UserModel?, _ listener: ListenerRegistration?) -> Void) {
+    func user(_ id: String, cache: Bool = true, completion: @escaping (UserModel?, _ listener: ListenerRegistration?) -> Void) {
         
         guard id.count > 0 else { completion(nil, nil); return }
         
@@ -38,7 +38,7 @@ struct SubscribeMethods {
         
     }
     
-    func creation(_ id: String, cache: Bool = true, completion: @escaping(_ result: CreationModel?, _ listener: ListenerRegistration?) -> Void) {
+    func creation(_ id: String, cache: Bool = true, completion: @escaping (CreationModel?, _ listener: ListenerRegistration?) -> Void) {
         
         guard id.count > 0 else { completion(nil, nil); return }
         
@@ -66,7 +66,7 @@ struct SubscribeMethods {
         
     }
     
-    func comment(_ id: String, cache: Bool = true, completion: @escaping(_ result: CommentModel?, _ listener: ListenerRegistration?) -> Void) {
+    func comment(_ id: String, cache: Bool = true, completion: @escaping (CommentModel?, _ listener: ListenerRegistration?) -> Void) {
         
         guard id.count > 0 else { completion(nil, nil); return }
         
@@ -94,7 +94,7 @@ struct SubscribeMethods {
         
     }
     
-    func like(_ id: String, cache: Bool = true, completion: @escaping(_ result: LikeModel?, _ listener: ListenerRegistration?) -> Void) {
+    func like(_ id: String, cache: Bool = true, completion: @escaping (LikeModel?, _ listener: ListenerRegistration?) -> Void) {
         
         guard id.count > 0 else { completion(nil, nil); return }
         
