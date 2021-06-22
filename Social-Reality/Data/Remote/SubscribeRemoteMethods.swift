@@ -15,7 +15,7 @@ struct SubscribeRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
-    func user(_ id: String, completion: @escaping(_ result: UserModel?, _ listener: ListenerRegistration?) -> Void) {
+    func user(_ id: String, completion: @escaping (UserModel?, _ listener: ListenerRegistration?) -> Void) {
         guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.users.rawValue).document(id)
@@ -37,7 +37,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func creation(_ id: String, completion: @escaping(_ result: CreationModel?, _ listener: ListenerRegistration?) -> Void) {
+    func creation(_ id: String, completion: @escaping (CreationModel?, _ listener: ListenerRegistration?) -> Void) {
         guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.creations.rawValue).document(id)
@@ -59,7 +59,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func comment(_ id: String, completion: @escaping(_ result: CommentModel?, _ listener: ListenerRegistration?) -> Void) {
+    func comment(_ id: String, completion: @escaping (CommentModel?, _ listener: ListenerRegistration?) -> Void) {
         guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.comments.rawValue).document(id)
@@ -81,7 +81,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func like(_ id: String, completion: @escaping(_ result: LikeModel?, _ listener: ListenerRegistration?) -> Void) {
+    func like(_ id: String, completion: @escaping (LikeModel?, _ listener: ListenerRegistration?) -> Void) {
         guard id.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.likes.rawValue).document(id)
@@ -103,7 +103,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func users(completion: @escaping(_ result: [UserModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func users(completion: @escaping ([UserModel]?, _ listener: ListenerRegistration?) -> Void) {
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.users.rawValue)
             .addSnapshotListener(includeMetadataChanges: false, listener: { snapshot, error in
@@ -124,7 +124,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func creations(completion: @escaping(_ result: [CreationModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func creations(completion: @escaping ([CreationModel]?, _ listener: ListenerRegistration?) -> Void) {
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.creations.rawValue)
             .addSnapshotListener(includeMetadataChanges: false, listener: { snapshot, error in
@@ -145,7 +145,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func comments(completion: @escaping(_ result: [CommentModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func comments(completion: @escaping ([CommentModel]?, _ listener: ListenerRegistration?) -> Void) {
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.comments.rawValue)
             .addSnapshotListener(includeMetadataChanges: false, listener: { snapshot, error in
@@ -166,7 +166,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func likes(completion: @escaping(_ result: [LikeModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func likes(completion: @escaping ([LikeModel]?, _ listener: ListenerRegistration?) -> Void) {
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.likes.rawValue)
             .addSnapshotListener(includeMetadataChanges: false, listener: { snapshot, error in
@@ -187,7 +187,7 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func messages(conversationID: String, completion: @escaping(_ result: [MessageModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func messages(conversationID: String, completion: @escaping ([MessageModel]?, _ listener: ListenerRegistration?) -> Void) {
         guard conversationID.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.conversations.rawValue)
@@ -211,7 +211,8 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func usersWithPredicate(field: String, value: String, completion: @escaping(_ result: [UserModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func usersWithPredicate(field: String, value: String, completion: @escaping ([UserModel]?, _ listener: ListenerRegistration?) -> Void) {
+        guard field.count > 0, value.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.users.rawValue)
             .whereField(field, isEqualTo: value)
@@ -233,7 +234,8 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func creationsWithPredicate(field: String, value: String, completion: @escaping(_ result: [CreationModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func creationsWithPredicate(field: String, value: String, completion: @escaping ([CreationModel]?, _ listener: ListenerRegistration?) -> Void) {
+        guard field.count > 0, value.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.creations.rawValue)
             .whereField(field, isEqualTo: value)
@@ -255,7 +257,8 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func commentsWithPredicate(field: String, value: String, completion: @escaping(_ result: [CommentModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func commentsWithPredicate(field: String, value: String, completion: @escaping ([CommentModel]?, _ listener: ListenerRegistration?) -> Void) {
+        guard field.count > 0, value.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.comments.rawValue)
             .whereField(field, isEqualTo: value)
@@ -277,7 +280,8 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func likesWithPredicate(field: String, value: String, completion: @escaping(_ result: [LikeModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func likesWithPredicate(field: String, value: String, completion: @escaping ([LikeModel]?, _ listener: ListenerRegistration?) -> Void) {
+        guard field.count > 0, value.count > 0 else { completion(nil, nil); return }
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.likes.rawValue)
             .whereField(field, isEqualTo: value)
@@ -299,7 +303,56 @@ struct SubscribeRemoteMethods {
             })
     }
     
-    func conversationsWithPredicate(field: String, value: String, completion: @escaping(_ result: [ConversationModel]?, _ listener: ListenerRegistration?) -> Void) {
+    func userLikes(_ userID: String, completion: @escaping ([UserLikeModel]?, _ listener: ListenerRegistration?) -> Void) {
+        guard userID.count > 0 else { completion(nil, nil); return }
+        var lstn: ListenerRegistration?
+        lstn = db.collection(Collections.users.rawValue)
+            .document(userID)
+            .collection(Collections.likes.rawValue)
+            .addSnapshotListener(includeMetadataChanges: false, listener: { snapshot, error in
+                guard let snapshot = snapshot, error == nil else {
+                    completion(nil, nil)
+                    return
+                }
+                var models = [UserLikeModel]()
+                snapshot.documents.forEach({ doc in
+                    do {
+                        let model = try FirestoreDecoder().decode(UserLikeModel.self, from: doc.data())
+                        models.append(model)
+                    } catch {
+                        print("doc error")
+                    }
+                })
+                completion(models, lstn)
+        })
+    }
+    
+    func userLikedWithPredicate(userID: String, field: String, value: String, completion: @escaping ([LikeModel]?, _ listener: ListenerRegistration?) -> Void) {
+        guard userID.count > 0, field.count > 0, value.count > 0 else { completion(nil, nil); return }
+        var lstn: ListenerRegistration?
+        lstn = db.collection(Collections.users.rawValue)
+            .document(userID)
+            .collection(Collections.likes.rawValue)
+            .whereField(field, isEqualTo: value)
+            .addSnapshotListener(includeMetadataChanges: false, listener: { snapshot, error in
+                guard let snapshot = snapshot, error == nil else {
+                    completion(nil, nil)
+                    return
+                }
+                var models = [LikeModel]()
+                snapshot.documents.forEach({ doc in
+                    do {
+                        let model = try FirestoreDecoder().decode(LikeModel.self, from: doc.data())
+                        models.append(model)
+                    } catch {
+                        print("doc error")
+                    }
+                })
+                completion(models, lstn)
+            })
+    }
+    
+    func conversationsWithPredicate(field: String, value: String, completion: @escaping ([ConversationModel]?, _ listener: ListenerRegistration?) -> Void) {
         var lstn: ListenerRegistration?
         lstn = db.collection(Collections.conversations.rawValue)
             .whereField(field, arrayContains: value)

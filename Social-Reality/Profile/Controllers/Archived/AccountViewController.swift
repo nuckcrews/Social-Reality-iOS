@@ -34,7 +34,7 @@ class AccountViewController: UIViewController {
         case creation(CreationThumbNailView)
     }
     
-    var user: User?
+    var user: UserModel?
     var selectedIndex = 0
     
     // MARK: - View Instantiation
@@ -88,13 +88,8 @@ class AccountViewController: UIViewController {
             return
         }
         
-        user = User(id: id)
+        user = Testing.defaultUser
         
-        user?.subscribeModel(completion: { [weak self] res in
-            if res != nil {
-                self?.populateViews()
-            }
-        })
         
     }
     
@@ -102,7 +97,7 @@ class AccountViewController: UIViewController {
         
         reloadDataSource()
         
-        guard let model = user?.model else { return }
+        guard let model = user else { return }
         
         usernameTitleButton.setTitle(model.username, for: .normal)
         
@@ -213,10 +208,10 @@ extension AccountViewController: UICollectionViewDelegate {
         var snapshot = Snapshot()
         
         let profileData = ProfileHeaderData(
-            image: user?.model?.image ?? ProfileImage.defaultURL,
-            first: user?.model?.first ?? "Your",
-            last: user?.model?.last ?? "Name",
-            username: user?.model?.username ?? "username",
+            image: user?.image ?? ProfileImage.defaultURL,
+            first: user?.first ?? "Your",
+            last: user?.last ?? "Name",
+            username: user?.username ?? "username",
             followerCount: followers.count,
             followingCount: following.count,
             likesCount: likes.count)

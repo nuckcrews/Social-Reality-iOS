@@ -14,7 +14,8 @@ struct DeleteRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
-    func user(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+    func user(_ id: String, completion: @escaping (ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.users.rawValue).document(id).delete { error in
             if error != nil {
                 completion(.error)
@@ -24,7 +25,8 @@ struct DeleteRemoteMethods {
         }
     }
     
-    func creation(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+    func creation(_ id: String, completion: @escaping (ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.creations.rawValue).document(id).delete { error in
             if error != nil {
                 completion(.error)
@@ -34,7 +36,8 @@ struct DeleteRemoteMethods {
         }
     }
     
-    func comment(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+    func comment(_ id: String, completion: @escaping (ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.comments.rawValue).document(id).delete { error in
             if error != nil {
                 completion(.error)
@@ -44,7 +47,8 @@ struct DeleteRemoteMethods {
         }
     }
     
-    func like(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+    func like(_ id: String, completion: @escaping (ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.likes.rawValue).document(id).delete { error in
             if error != nil {
                 completion(.error)
@@ -54,7 +58,22 @@ struct DeleteRemoteMethods {
         }
     }
     
-    func message(conversationID: String, id: String, completion: @escaping(_ result: ResultType) -> Void) {
+    func userLike(userID: String, id: String, completion: @escaping (ResultType) -> Void) {
+        guard id.count > 0, userID.count > 0 else { completion(.error); return }
+        db.collection(Collections.users.rawValue)
+            .document(userID)
+            .collection(Collections.likes.rawValue)
+            .document(id).delete { error in
+            if error != nil {
+                completion(.error)
+            } else {
+                completion(.success)
+            }
+        }
+    }
+    
+    func message(conversationID: String, id: String, completion: @escaping (ResultType) -> Void) {
+        guard id.count > 0, conversationID.count > 0 else { completion(.error); return }
         db.collection(Collections.conversations.rawValue).document(conversationID)
             .collection(Collections.likes.rawValue).document(id).delete { error in
                 if error != nil {
@@ -65,7 +84,8 @@ struct DeleteRemoteMethods {
             }
     }
     
-    func conversation(_ id: String, completion: @escaping(_ result: ResultType) -> Void) {
+    func conversation(_ id: String, completion: @escaping (ResultType) -> Void) {
+        guard id.count > 0 else { completion(.error); return }
         db.collection(Collections.conversations.rawValue).document(id).delete { error in
             if error != nil {
                 completion(.error)

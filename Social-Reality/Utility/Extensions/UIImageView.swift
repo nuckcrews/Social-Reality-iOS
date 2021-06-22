@@ -18,7 +18,7 @@ extension UIImageView {
         self.kf.setImage(with: resource)
     }
     
-    func setImageFromURL(_ urlString: String?, completion: @escaping(_ result: ResultType) -> Void) {
+    func setImageFromURL(_ urlString: String?, completion: @escaping (ResultType) -> Void) {
         guard let url = URL(string: urlString ?? "") else { return }
         let resource = ImageResource(downloadURL: url, cacheKey: urlString)
         kf.indicatorType = .activity

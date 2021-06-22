@@ -9,16 +9,14 @@ import Foundation
 
 struct Testing {
     
-    static var defaultUser: User {
+    static var defaultUser: UserModel {
         
         let model = UserModel(id: "testuser", username: "testuser", status: "ACTIVE", first: "Test", last: "User", lastActive: "", email: "tester@user.com", image: "", access: .public, fcmToken: "")
         
-        let user = User(model: model)
-        
-        return user
+        return model
     }
     
-    static var defaultCreation: Creation {
+    static var defaultCreation: CreationModel {
         
         let model = CreationModel(id: "abcdefg",
                                   title: "The Default Creation",
@@ -37,9 +35,7 @@ struct Testing {
         // https://firebasestorage.googleapis.com/v0/b/social-reality-306200.appspot.com/o/videos%2FIMG_1387.mp4?alt=media&token=64054925-f210-45e1-9cfc-b92a76bd283d
         
         
-        let creation = Creation(model: model)
-        
-        return creation
+        return model
     }
     
     static var defaultCreations: [CreationModel] = {

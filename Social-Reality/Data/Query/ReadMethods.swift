@@ -9,7 +9,7 @@ import Foundation
 
 struct ReadMethods {
     
-    func user(_ id: String, cache: Bool = true, completion: @escaping(_ result: UserModel?) -> Void) {
+    func user(_ id: String, cache: Bool = true, completion: @escaping (UserModel?) -> Void) {
         
         guard id.count > 0 else { completion(nil); return }
         
@@ -35,7 +35,7 @@ struct ReadMethods {
         
     }
     
-    func creation(_ id: String, cache: Bool = true, completion: @escaping(_ result: CreationModel?) -> Void) {
+    func creation(_ id: String, cache: Bool = true, completion: @escaping (CreationModel?) -> Void) {
         
         guard id.count > 0 else { completion(nil); return }
         
@@ -61,7 +61,7 @@ struct ReadMethods {
         
     }
     
-    func comment(_ id: String, cache: Bool = true, completion: @escaping(_ result: CommentModel?) -> Void) {
+    func comment(_ id: String, cache: Bool = true, completion: @escaping (CommentModel?) -> Void) {
         
         guard id.count > 0 else { completion(nil); return }
         
@@ -87,7 +87,7 @@ struct ReadMethods {
         
     }
     
-    func like(_ id: String, cache: Bool = true, completion: @escaping(_ result: LikeModel?) -> Void) {
+    func like(_ id: String, cache: Bool = true, completion: @escaping (LikeModel?) -> Void) {
         
         guard id.count > 0 else { completion(nil); return }
         
@@ -113,7 +113,7 @@ struct ReadMethods {
         
     }
     
-    func conversation(_ id: String, cache: Bool = true, completion: @escaping(_ result: ConversationModel?) -> Void) {
+    func conversation(_ id: String, cache: Bool = true, completion: @escaping (ConversationModel?) -> Void) {
         
         guard id.count > 0 else { completion(nil); return }
         
@@ -139,7 +139,7 @@ struct ReadMethods {
         
     }
     
-    func message(_ id: String, conversationID: String, cache: Bool = true, completion: @escaping(_ result: MessageModel?) -> Void) {
+    func message(_ id: String, conversationID: String, cache: Bool = true, completion: @escaping (MessageModel?) -> Void) {
         
         guard id.count > 0 else { completion(nil); return }
         

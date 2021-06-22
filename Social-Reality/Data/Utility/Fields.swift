@@ -64,6 +64,18 @@ struct Fields {
         case userName
         
     }
+    
+    enum commentLike: String {
+        
+        case id
+        case status
+        case commentID
+        case userID
+        case userImage
+        case userName
+        
+    }
+
 
     enum conversation: String {
         

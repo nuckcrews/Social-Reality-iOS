@@ -14,7 +14,7 @@ struct Places {
     
     var placesClient = GMSPlacesClient()
     
-    func autoComplete(searchText: String, filter: GMSAutocompleteFilter?, completion: @escaping(_ result: [SearchLocation]?) -> Void) {
+    func autoComplete(searchText: String, filter: GMSAutocompleteFilter?, completion: @escaping ([SearchLocation]?) -> Void) {
         
         let token = GMSAutocompleteSessionToken.init()
         
@@ -44,7 +44,7 @@ struct Places {
         
     }
     
-    func nearbyLocations(completion: @escaping(_ result: [SearchLocation]?) -> Void) {
+    func nearbyLocations(completion: @escaping ([SearchLocation]?) -> Void) {
         
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
                                                     UInt(GMSPlaceField.placeID.rawValue) |

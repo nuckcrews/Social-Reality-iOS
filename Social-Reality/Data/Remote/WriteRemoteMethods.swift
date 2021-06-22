@@ -15,7 +15,7 @@ struct WriteRemoteMethods {
     
     private let db = Firestore.firestore().collection(Environment.dbs).document(Environment.env)
     
-    func user(_ user: UserModel, completion: @escaping(_ result: ResultType) -> Void) {
+    func user(_ user: UserModel, completion: @escaping (ResultType) -> Void) {
         guard user.id.count > 0  else { completion(.error); return }
         do {
             let docData = try FirestoreEncoder().encode(user)
@@ -33,7 +33,7 @@ struct WriteRemoteMethods {
         }
     }
     
-    func creation(_ creation: CreationModel, completion: @escaping(_ result: ResultType) -> Void) {
+    func creation(_ creation: CreationModel, completion: @escaping (ResultType) -> Void) {
         guard creation.id.count > 0  else { completion(.error); return }
         do {
             let docData = try FirestoreEncoder().encode(creation)
@@ -87,7 +87,29 @@ struct WriteRemoteMethods {
         }
     }
     
-    func message(_ message: MessageModel, completion: @escaping(_ result: ResultType) -> Void) {
+    func userLike(_ userLike: UserLikeModel, completion: @escaping (ResultType) -> Void) {
+        guard userLike.id.count > 0, userLike.userID.count > 0 else { completion(.error); return }
+        do {
+            let docData = try FirestoreEncoder().encode(userLike)
+            db.collection(Collections.users.rawValue)
+                .document(userLike.userID)
+                .collection(Collections.likes.rawValue)
+                .document(userLike.id)
+                .setData(docData, merge: true, completion: { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                    completion(.error)
+                } else {
+                    print("Document successfully written!")
+                    completion(.success)
+                }
+            })
+        } catch {
+            completion(.error)
+        }
+    }
+    
+    func message(_ message: MessageModel, completion: @escaping (ResultType) -> Void) {
         guard message.id.count > 0 else { completion(.error); return }
         do {
             let docData = try FirestoreEncoder().encode(message)
@@ -108,7 +130,7 @@ struct WriteRemoteMethods {
         }
     }
     
-    func conversation(_ conversation: ConversationModel, completion: @escaping(_ result: ResultType) -> Void) {
+    func conversation(_ conversation: ConversationModel, completion: @escaping (ResultType) -> Void) {
         guard conversation.id.count > 0 else { completion(.error); return }
         do {
             let docData = try FirestoreEncoder().encode(conversation)

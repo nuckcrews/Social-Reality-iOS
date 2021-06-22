@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
 
 // MARK: - Creation Video Cell
 
@@ -31,15 +33,29 @@ class CreationVideoCell: UITableViewCell {
     
     var user: UserModel?
     var creation: CreationModel?
+    var creationData: CreationData?
     var presenting = false
+    var likeID: String?
+    var likeLstn: ListenerRegistration?
+    var likesCreation = false {
+        didSet {
+            if likesCreation {
+                likeButton.tintColor = .primary
+                likeButton.backgroundColor = .background
+            } else {
+                likeButton.tintColor = .white
+                likeButton.backgroundColor = UIColor(white: 0, alpha: 0.1)
+            }
+        }
+    }
     
     // MARK: - Cell Lifecycle
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        likeButton.tintColor = .white
-        likeButton.backgroundColor = UIColor(white: 0, alpha: 0.1)
+//        likeButton.tintColor = .white
+//        likeButton.backgroundColor = UIColor(white: 0, alpha: 0.1)
         
     }
     
@@ -56,6 +72,19 @@ class CreationVideoCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
+    }
+    
+    // MARK: - Get Data
+    
+    func getData() {
+        
+        guard let creation = creation, let uid = Auth0.uid, likeLstn == nil else { return }
+        
+        Query.remote.subscribe.userLikedWithPredicate(userID: uid, field: Fields.like.creationID.rawValue, value: creation.id) { [weak self] models, lstn in
+            self?.likesCreation = models?.count ?? 0 > 0
+            self?.likeLstn = lstn
+        }
+        
     }
     
     // MARK: - Configure Methods
@@ -81,7 +110,7 @@ class CreationVideoCell: UITableViewCell {
         
         creationAVPlayerView.setupVideo(url: creation?.videoURL, starterURL: creation?.thumbnail)
         
-        
+        getData()
         
     }
     
@@ -103,6 +132,40 @@ class CreationVideoCell: UITableViewCell {
         
     }
     
+    func likeCreation() {
+        if likeID == nil {
+            likeID = UUID().uuidString
+        }
+        guard let likeID = likeID else {
+            return
+        }
+        let likeModel = UserLikeModel(id: likeID,
+                                      creationID: creation?.id ?? "",
+                                      thumbnail: creation?.thumbnail ?? "",
+                                      userID: Auth0.uid ?? "",
+                                      userImage: user?.id ?? "")
+        
+        if !likesCreation {
+            Query.remote.write.userLike(likeModel) { result in
+                switch result {
+                case .success:
+                    print("Success liking")
+                case .error:
+                    print("Error liking")
+                }
+            }
+        } else {
+            Query.remote.delete.like(likeID) { result in
+                switch result {
+                case .success:
+                    print("Success disliking")
+                case .error:
+                    print("Error disliking")
+                }
+            }
+        }
+    }
+    
     // MARK: - Action Outlets
     
     @IBAction func tapLike(_ sender: UIButton) {
@@ -117,6 +180,7 @@ class CreationVideoCell: UITableViewCell {
             sender.backgroundColor = .background
         }
         
+        likeCreation()
     }
     
     @IBAction func tapComment(_ sender: UIButton) {
@@ -149,8 +213,17 @@ class CreationVideoCell: UITableViewCell {
 extension CreationVideoCell: CreationAVPlayerDelegate {
     
     func doubleTappedVideo() {
-        likeButton.tintColor = .primary
-        likeButton.backgroundColor = .background
+        
+        Buzz.light()
+        likeCreation()
+        if likeButton.tintColor == .primary {
+            likeButton.tintColor = .white
+            likeButton.backgroundColor = UIColor(white: 0, alpha: 0.1)
+        } else {
+            likeButton.tintColor = .primary
+            likeButton.backgroundColor = .background
+        }
+        
     }
     
 }

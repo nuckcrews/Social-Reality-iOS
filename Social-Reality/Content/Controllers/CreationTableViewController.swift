@@ -104,7 +104,7 @@ class CreationTableViewController: UIViewController {
         } else {
             creationTableView.creations = creations
         }
-
+        
         creationTableView.reloadCollection()
         
     }
