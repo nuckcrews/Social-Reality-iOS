@@ -190,6 +190,9 @@
 		A0C6EA602681A4720039B16B /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C6EA5F2681A4720039B16B /* AccountView.swift */; };
 		A0CBAFC52601294F001953C8 /* ConfirmUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */; };
 		A0CBAFCB26015EC3001953C8 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */; };
+		A0CE01B02682F1C700CAD891 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE01AF2682F1C700CAD891 /* ButtonStyles.swift */; };
+		A0CE01B22682F20D00CAD891 /* ImageStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE01B12682F20D00CAD891 /* ImageStyles.swift */; };
+		A0CE01B42682F22E00CAD891 /* Measurements.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CE01B32682F22E00CAD891 /* Measurements.swift */; };
 		A0D37B652612D79F00261567 /* CreationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B642612D79F00261567 /* CreationTableView.swift */; };
 		A0D37B672612D94A00261567 /* CreationVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B662612D94A00261567 /* CreationVideoCell.swift */; };
 		A0D37B692612E33800261567 /* CreationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D37B682612E33800261567 /* CreationTableViewController.swift */; };
@@ -428,6 +431,9 @@
 		A0C6EA5F2681A4720039B16B /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		A0CBAFC42601294F001953C8 /* ConfirmUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmUserViewController.swift; sourceTree = "<group>"; };
 		A0CBAFCA26015EC3001953C8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		A0CE01AF2682F1C700CAD891 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		A0CE01B12682F20D00CAD891 /* ImageStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyles.swift; sourceTree = "<group>"; };
+		A0CE01B32682F22E00CAD891 /* Measurements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurements.swift; sourceTree = "<group>"; };
 		A0D37B642612D79F00261567 /* CreationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationTableView.swift; sourceTree = "<group>"; };
 		A0D37B662612D94A00261567 /* CreationVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationVideoCell.swift; sourceTree = "<group>"; };
 		A0D37B682612E33800261567 /* CreationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationTableViewController.swift; sourceTree = "<group>"; };
@@ -640,6 +646,7 @@
 				A064CB56266530FD00C02D57 /* Testing */,
 				A064CB5226652F4000C02D57 /* Utility */,
 				A038702C25E93D9D003989CE /* AppDelegate.swift */,
+				A0CE01AE2682F19E00CAD891 /* PicassoKit */,
 				A006462725EB17F900A3E1F3 /* Config.swift */,
 				A038703725E93D9E003989CE /* LaunchScreen.storyboard */,
 				A038703025E93D9D003989CE /* Experience.rcproject */,
@@ -1293,6 +1300,16 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
+		A0CE01AE2682F19E00CAD891 /* PicassoKit */ = {
+			isa = PBXGroup;
+			children = (
+				A0CE01AF2682F1C700CAD891 /* ButtonStyles.swift */,
+				A0CE01B12682F20D00CAD891 /* ImageStyles.swift */,
+				A0CE01B32682F22E00CAD891 /* Measurements.swift */,
+			);
+			path = PicassoKit;
+			sourceTree = "<group>";
+		};
 		A0D95BB626081AF000DA5A07 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
@@ -1695,6 +1712,7 @@
 				A00DD4182603D43C00E6C818 /* ResultType.swift in Sources */,
 				A064CB4326652E0000C02D57 /* MainToCoverProtocolDelegate.swift in Sources */,
 				A0D95BBF26081B6D00DA5A07 /* LocalListMethods.swift in Sources */,
+				A0CE01B02682F1C700CAD891 /* ButtonStyles.swift in Sources */,
 				A064CB4726652E4500C02D57 /* SearchUserSendDelegate.swift in Sources */,
 				A07191AE265F4BF300E907B9 /* WriteCacheMethods.swift in Sources */,
 				A06F56AF2628CACE00576EDA /* UIViewController.swift in Sources */,
@@ -1735,12 +1753,14 @@
 				A06B63AB25E9546D00AE746D /* UpdateRemoteMethods.swift in Sources */,
 				A064CB4926652E7600C02D57 /* SearchLocationDelegate.swift in Sources */,
 				A05775E92624931800DDE78E /* VideoModel.swift in Sources */,
+				A0CE01B42682F22E00CAD891 /* Measurements.swift in Sources */,
 				A064CB4F26652ECB00C02D57 /* MainVolumeDelegate.swift in Sources */,
 				A03A968B2603EFA100274793 /* ProfileAccessibility.swift in Sources */,
 				A0BEDC7A262F2E1C003312E3 /* MessageCreationCell.swift in Sources */,
 				A06F56AB2628C98E00576EDA /* ProfilePanViewController.swift in Sources */,
 				A06E9A26260E9ED900B85CE9 /* CreationCommentsView.swift in Sources */,
 				A040AB4225F682C80064978A /* UploadMethods.swift in Sources */,
+				A0CE01B22682F20D00CAD891 /* ImageStyles.swift in Sources */,
 				A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */,
 				A08BAF3A2665891600350CD3 /* DeleteDefaultsMethods.swift in Sources */,
 				A0D37B652612D79F00261567 /* CreationTableView.swift in Sources */,

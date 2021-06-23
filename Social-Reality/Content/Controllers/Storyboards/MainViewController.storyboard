@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DXm-C8-c5J">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                            </arView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIk-j0-MJp">
                                 <rect key="frame" x="0.0" y="751.5" width="414" height="110.5"/>
                                 <subviews>
@@ -196,26 +194,21 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="uOI-SQ-jsk"/>
-                        <color key="backgroundColor" name="Background"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uOI-SQ-jsk" firstAttribute="trailing" secondItem="emG-ch-8tG" secondAttribute="trailing" constant="16" id="4hS-Gd-9ro"/>
                             <constraint firstItem="8Jg-wd-QcE" firstAttribute="centerX" secondItem="i8J-dM-X6C" secondAttribute="centerX" id="5Rd-PZ-xxU"/>
                             <constraint firstItem="emG-ch-8tG" firstAttribute="top" secondItem="uOI-SQ-jsk" secondAttribute="top" constant="12" id="LdA-Mh-bvK"/>
-                            <constraint firstItem="DXm-C8-c5J" firstAttribute="trailing" secondItem="uOI-SQ-jsk" secondAttribute="trailing" id="T9d-cv-Gep"/>
                             <constraint firstItem="dMW-xn-PR2" firstAttribute="trailing" secondItem="uOI-SQ-jsk" secondAttribute="trailing" id="a2k-Id-te5"/>
-                            <constraint firstItem="DXm-C8-c5J" firstAttribute="top" secondItem="i8J-dM-X6C" secondAttribute="top" id="a6U-fz-hdF"/>
                             <constraint firstItem="8Jg-wd-QcE" firstAttribute="top" secondItem="uOI-SQ-jsk" secondAttribute="top" id="dsJ-Pr-cnk"/>
                             <constraint firstItem="RIk-j0-MJp" firstAttribute="bottom" secondItem="uOI-SQ-jsk" secondAttribute="bottom" id="flQ-uL-Oas"/>
-                            <constraint firstItem="uOI-SQ-jsk" firstAttribute="bottom" secondItem="DXm-C8-c5J" secondAttribute="bottom" id="gdS-Wf-ywr"/>
                             <constraint firstItem="RIk-j0-MJp" firstAttribute="leading" secondItem="uOI-SQ-jsk" secondAttribute="leading" id="oU2-el-uG9"/>
                             <constraint firstAttribute="trailing" secondItem="RIk-j0-MJp" secondAttribute="trailing" id="pnf-v6-gdc"/>
                             <constraint firstItem="dMW-xn-PR2" firstAttribute="bottom" secondItem="uOI-SQ-jsk" secondAttribute="bottom" id="sGQ-x4-Uuj"/>
-                            <constraint firstItem="DXm-C8-c5J" firstAttribute="leading" secondItem="uOI-SQ-jsk" secondAttribute="leading" id="so7-ap-wxQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sng-kD-XVf"/>
                     <connections>
-                        <outlet property="arView" destination="DXm-C8-c5J" id="mov-1U-jre"/>
                         <outlet property="creationDescriptionLabel" destination="kum-ww-45W" id="rdn-Ix-I8K"/>
                         <outlet property="creationTechniqueLabel" destination="Gdq-tg-Chc" id="j28-fe-kkD"/>
                         <outlet property="creationTimeLabel" destination="hy0-qB-Ie8" id="LN2-tX-cB9"/>
@@ -255,9 +248,6 @@
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="profile.image.default" width="251" height="250"/>
         <image name="speaker.wave.2" catalog="system" width="128" height="90"/>
-        <namedColor name="Background">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </namedColor>
         <namedColor name="Tinted">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
