@@ -16,8 +16,6 @@ class CreateViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var arView: ARViewCreation!
-    
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var tutorialView: UIView!
     @IBOutlet weak var tutorialScrollView: UIScrollView!
@@ -95,8 +93,6 @@ class CreateViewController: UIViewController {
         
         setupView()
         
-        arView.setupView()
-        
     }
     
     // MARK: - View Setup
@@ -114,7 +110,6 @@ class CreateViewController: UIViewController {
         
         toolkitButton1.tintColor = .white
         
-        view.sendSubviewToBack(arView)
         bottomContentConstraint.constant = bottomConstraintDefault
         bottomSearchUserConstraint.constant = bottomConstraintDefault
         bottomSearchLocationConstraint.constant = bottomConstraintDefault
@@ -383,39 +378,39 @@ extension CreateViewController: CustomSegmentedControlDelegate {
 }
 
 // MARK: Augmented Reality Functionality
-extension CreateViewController {
-    
-    func initializeReality() {
-        
-        self.arView.startCoaching()
-        
-        let box = CustomBox(color: .red)
-        
-        arView.installGestures(.all, for: box) // Can change what gestures to use
-        box.generateCollisionShapes(recursive: true)
-        
-        arView.scene.anchors.append(box)
-        
-        
-        let mesh = MeshResource.generateText(
-            "RealityKit",
-            extrusionDepth: 0.1,
-            font: .systemFont(ofSize: 2),
-            containerFrame: .zero,
-            alignment: .left,
-            lineBreakMode: .byTruncatingTail)
-        
-        let material = SimpleMaterial(color: .white, isMetallic: false)
-        let entity = ModelEntity(mesh: mesh, materials: [material])
-        entity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
-        
-        box.addChild(entity)
-        
-        entity.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: box)
-        
-    }
-    
-}
+//extension CreateViewController {
+//
+//    func initializeReality() {
+//
+//        self.arView.startCoaching()
+//
+//        let box = CustomBox(color: .red)
+//
+//        arView.installGestures(.all, for: box) // Can change what gestures to use
+//        box.generateCollisionShapes(recursive: true)
+//
+//        arView.scene.anchors.append(box)
+//
+//
+//        let mesh = MeshResource.generateText(
+//            "RealityKit",
+//            extrusionDepth: 0.1,
+//            font: .systemFont(ofSize: 2),
+//            containerFrame: .zero,
+//            alignment: .left,
+//            lineBreakMode: .byTruncatingTail)
+//
+//        let material = SimpleMaterial(color: .white, isMetallic: false)
+//        let entity = ModelEntity(mesh: mesh, materials: [material])
+//        entity.scale = SIMD3<Float>(0.03, 0.03, 0.1)
+//
+//        box.addChild(entity)
+//
+//        entity.setPosition(SIMD3<Float>(0, 0.05, 0), relativeTo: box)
+//
+//    }
+//
+//}
 
 // MARK: Tutorial Functionality
 extension CreateViewController {
@@ -431,7 +426,7 @@ extension CreateViewController {
             self.rightBottomButton.alpha = 1
             self.view.layoutIfNeeded()
         } completion: { _ in
-            self.initializeReality()
+//            self.initializeReality()
         }
         
     }

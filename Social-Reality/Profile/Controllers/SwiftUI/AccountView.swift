@@ -10,20 +10,96 @@ import Combine
 
 class AccountViewModel: ObservableObject {
     
-    @Published var user: UserModel?
+    @Published public var user: UserModel
+    private let defaultUser = Testing.defaultUser
     
     init(user: UserModel?) {
-        self.user = user
+        if let user = user {
+            self.user = user
+        } else {
+            self.user = defaultUser
+        }
+        
+    }
+
+}
+
+struct AccountHeaderView: View {
+    
+    @ObservedObject public var viewModel = AccountViewModel(user: nil)
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Button(action: {
+                    print("button pressed")
+                }) {
+                    Image(systemName: "gear")
+                }
+                Spacer()
+                Text(viewModel.user.first)
+                    .font(.headline)
+                Spacer()
+                Button(action: {
+                    print("button pressed")
+                }) {
+                    Image(systemName: "person.crop.circle.fill.badge.plus")
+                }
+            }
+            .padding(.horizontal, .l1)
+            .padding(.vertical, .m2)
+            Divider()
+        }
+        
     }
     
 }
 
 struct AccountView: View {
     
-//    @ObservedObject private var viewModel = AccountViewModel(user: nil)
+    @ObservedObject private var viewModel = AccountViewModel(user: nil)
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            AccountHeaderView(viewModel: viewModel)
+            PKCircleImage(image: Images.profileImageDefault.rawValue, size: 100)
+            Text(viewModel.user.username)
+                .font(.title3)
+            HStack(alignment: .center) {
+                VStack {
+                    Text("0")
+                        .font(.title2)
+                    Text("Posts")
+                        .font(.caption)
+                }
+                VStack {
+                    Text("0")
+                        .font(.title2)
+                    Text("Followers")
+                        .font(.caption)
+                }
+                .padding(.horizontal, .m2)
+                .padding(.vertical, .s1)
+                VStack {
+                    Text("0")
+                        .font(.title2)
+                    Text("Likes")
+                        .font(.caption)
+                }
+                
+            }
+            Button(action: {
+                print("button pressed")
+            }) {
+                Text("Edit Profile")
+            }
+            .buttonStyle(PKSquareBorderedButton())
+            .padding(.vertical, .s3)
+            
+            Spacer()
+        }
+        
     }
 }
 
