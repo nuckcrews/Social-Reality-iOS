@@ -26,7 +26,7 @@ class AccountViewModel: ObservableObject {
 
 struct AccountHeaderView: View {
     
-    @ObservedObject public var viewModel = AccountViewModel(user: nil)
+    public var title: String
     
     var body: some View {
         VStack {
@@ -37,7 +37,7 @@ struct AccountHeaderView: View {
                     Image(systemName: "gear")
                 }
                 Spacer()
-                Text(viewModel.user.first)
+                Text(title)
                     .font(.headline)
                 Spacer()
                 Button(action: {
@@ -48,12 +48,74 @@ struct AccountHeaderView: View {
             }
             .padding(.horizontal, .l1)
             .padding(.vertical, .m2)
-            Divider()
         }
         
     }
     
 }
+
+struct AccountInformationView: View {
+    
+    @ObservedObject public var viewModel = AccountViewModel(user: nil)
+    
+    var body: some View {
+        
+        PKCircleImage(image: Images.profileImageDefault.rawValue, size: 100)
+        Text(viewModel.user.username)
+            .font(.title3)
+        HStack(alignment: .center) {
+            VStack {
+                Text("0")
+                    .font(.title2)
+                Text("Posts")
+                    .font(.caption)
+            }
+            VStack {
+                Text("0")
+                    .font(.title2)
+                Text("Followers")
+                    .font(.caption)
+            }
+            .padding(.horizontal, .m2)
+            .padding(.vertical, .s1)
+            VStack {
+                Text("0")
+                    .font(.title2)
+                Text("Likes")
+                    .font(.caption)
+            }
+            
+        }
+        Button(action: {
+            print("button pressed")
+        }) {
+            Text("Edit Profile")
+        }
+        .buttonStyle(PKSquareBorderedButton())
+        .padding(.top, .s3)
+        .padding(.bottom, .m3)
+        
+        
+    }
+}
+
+struct AccountSectionView: View {
+    @State private var favoriteColor = 0
+    
+    var body: some View {
+        VStack {
+            Picker(selection: $favoriteColor, label: Text("What is your favorite color?")) {
+                Image(systemName: "square.grid.2x2.fill").tag(0)
+                Image(systemName: "drop.fill").tag(1)
+                Image(systemName: "heart.fill").tag(2)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+
+        }
+    }
+    
+}
+
 
 struct AccountView: View {
     
@@ -62,42 +124,13 @@ struct AccountView: View {
     var body: some View {
         
         VStack {
-            AccountHeaderView(viewModel: viewModel)
-            PKCircleImage(image: Images.profileImageDefault.rawValue, size: 100)
-            Text(viewModel.user.username)
-                .font(.title3)
-            HStack(alignment: .center) {
-                VStack {
-                    Text("0")
-                        .font(.title2)
-                    Text("Posts")
-                        .font(.caption)
-                }
-                VStack {
-                    Text("0")
-                        .font(.title2)
-                    Text("Followers")
-                        .font(.caption)
-                }
-                .padding(.horizontal, .m2)
-                .padding(.vertical, .s1)
-                VStack {
-                    Text("0")
-                        .font(.title2)
-                    Text("Likes")
-                        .font(.caption)
-                }
-                
-            }
-            Button(action: {
-                print("button pressed")
-            }) {
-                Text("Edit Profile")
-            }
-            .buttonStyle(PKSquareBorderedButton())
-            .padding(.vertical, .s3)
-            
+            AccountHeaderView(title: viewModel.user.first)
+            Divider()
+            AccountInformationView(viewModel: viewModel)
+            Divider()
+            AccountSectionView()
             Spacer()
+
         }
         
     }
