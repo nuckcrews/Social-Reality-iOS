@@ -20,7 +20,11 @@ extension CGFloat {
     static let xs3: CGFloat = {
         return 1
     }()
-    
+
+    static let s0: CGFloat = {
+        return 0
+    }()
+
     static let s1: CGFloat = {
         return 2
     }()

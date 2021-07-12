@@ -28,6 +28,9 @@
 		A00DD4202603D55D00E6C818 /* CreationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD41F2603D55D00E6C818 /* CreationModel.swift */; };
 		A00DD4222603D57100E6C818 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD4212603D57100E6C818 /* CommentModel.swift */; };
 		A00DD4242603D57900E6C818 /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00DD4232603D57900E6C818 /* LikeModel.swift */; };
+		A00F5203269BEAF2007F513C /* SegmentedPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F5202269BEAF2007F513C /* SegmentedPicker.swift */; };
+		A00F5205269BEFCD007F513C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00F5204269BEFCD007F513C /* Colors.swift */; };
+		A00F5207269BF06B007F513C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00F5206269BF06B007F513C /* Colors.xcassets */; };
 		A00FD62226718D6600529A76 /* SignInViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62126718D6600529A76 /* SignInViewController.storyboard */; };
 		A00FD62426718DA100529A76 /* CreateUserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62326718DA100529A76 /* CreateUserViewController.storyboard */; };
 		A00FD62626718E0F00529A76 /* CreateAvatarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00FD62526718E0F00529A76 /* CreateAvatarViewController.storyboard */; };
@@ -262,6 +265,9 @@
 		A00DD41F2603D55D00E6C818 /* CreationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationModel.swift; sourceTree = "<group>"; };
 		A00DD4212603D57100E6C818 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		A00DD4232603D57900E6C818 /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
+		A00F5202269BEAF2007F513C /* SegmentedPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedPicker.swift; sourceTree = "<group>"; };
+		A00F5204269BEFCD007F513C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A00F5206269BF06B007F513C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A00FD62126718D6600529A76 /* SignInViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignInViewController.storyboard; sourceTree = "<group>"; };
 		A00FD62326718DA100529A76 /* CreateUserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateUserViewController.storyboard; sourceTree = "<group>"; };
 		A00FD62526718E0F00529A76 /* CreateAvatarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAvatarViewController.storyboard; sourceTree = "<group>"; };
@@ -1298,6 +1304,8 @@
 				A0CE01AF2682F1C700CAD891 /* ButtonStyles.swift */,
 				A0CE01B12682F20D00CAD891 /* ImageStyles.swift */,
 				A0F0D05726841D550038BFFE /* GridStyles.swift */,
+				A00F5202269BEAF2007F513C /* SegmentedPicker.swift */,
+				A00F5204269BEFCD007F513C /* Colors.swift */,
 				A0CE01B32682F22E00CAD891 /* Measurements.swift */,
 			);
 			path = PicassoKit;
@@ -1331,6 +1339,7 @@
 				A06B641825E99B6E00AE746D /* 3DModels */,
 				A0D95BC12608433200DA5A07 /* AssetNames.swift */,
 				A038703525E93D9E003989CE /* Assets.xcassets */,
+				A00F5206269BF06B007F513C /* Colors.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1535,6 +1544,7 @@
 				A00FD62C26718E4000529A76 /* ConfirmUserViewController.storyboard in Resources */,
 				A038703425E93D9D003989CE /* Main.storyboard in Resources */,
 				A093E26A267076FB005AA2AC /* InboxViewController.storyboard in Resources */,
+				A00F5207269BF06B007F513C /* Colors.xcassets in Resources */,
 				A00FD62226718D6600529A76 /* SignInViewController.storyboard in Resources */,
 				A03FAC7E25EEC4FE000BFC02 /* profileCreationsHeaderView.xib in Resources */,
 			);
@@ -1724,6 +1734,7 @@
 				A064CB5126652EF000C02D57 /* CreationAVPlayerDelegate.swift in Sources */,
 				A06B63BB25E9554D00AE746D /* UserData.swift in Sources */,
 				A0137172261106CE00AE4BA6 /* UITableView.swift in Sources */,
+				A00F5203269BEAF2007F513C /* SegmentedPicker.swift in Sources */,
 				A0F0D05826841D550038BFFE /* GridStyles.swift in Sources */,
 				A03870B625E944AB003989CE /* NavigationController.swift in Sources */,
 				A07191C0265F542D00E907B9 /* ReadMethods.swift in Sources */,
@@ -1845,6 +1856,7 @@
 				A038703125E93D9D003989CE /* Experience.rcproject in Sources */,
 				A0DCF1F925EC7E3C00F699E9 /* UIView.swift in Sources */,
 				A0D37B672612D94A00261567 /* CreationVideoCell.swift in Sources */,
+				A00F5205269BEFCD007F513C /* Colors.swift in Sources */,
 				A0DCF20325EC95FC00F699E9 /* PasswordViewController.swift in Sources */,
 				A023980E25EC27E900F13F72 /* Variables.swift in Sources */,
 				A02397D425EB291B00F13F72 /* CustomScrollView.swift in Sources */,

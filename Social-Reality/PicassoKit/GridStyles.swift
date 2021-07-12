@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentGrid: View {
     private var columns: [GridItem] = [
-        GridItem(.fixed(100), spacing: 16),
-        GridItem(.fixed(100), spacing: 16),
-        GridItem(.fixed(100), spacing: 16)
+        GridItem(.flexible(minimum: .s0, maximum: 300), spacing: 0),
+        GridItem(.flexible(minimum: .s0, maximum: 300), spacing: 0),
+        GridItem(.flexible(minimum: .s0, maximum: 300), spacing: 0)
     ] 
 
     var body: some View {
@@ -19,7 +19,7 @@ struct ContentGrid: View {
             LazyVGrid(
                 columns: columns,
                 alignment: .center,
-                spacing: 16,
+                spacing: 0,
                 pinnedViews: [.sectionHeaders, .sectionFooters]
             ) {
                 Section(header: Text("Section 1").font(.title)) {
